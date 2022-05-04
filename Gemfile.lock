@@ -133,7 +133,11 @@ GEM
     minitest (5.15.0)
     msgpack (1.5.1)
     nio4r (2.5.8)
+<<<<<<< HEAD
     nokogiri (1.13.4-arm64-darwin)
+=======
+    nokogiri (1.13.4-x86_64-darwin)
+>>>>>>> d80f7b8 (feat: 🎸 Re-install tailwind and update 404/500 error pages)
       racc (~> 1.4)
     nokogiri (1.13.4-x86_64-linux)
       racc (~> 1.4)
@@ -151,8 +155,6 @@ GEM
       activesupport (>= 3.0.0)
     racc (1.6.0)
     rack (2.2.3)
-    rack-mini-profiler (2.3.4)
-      rack (>= 1.2.0)
     rack-proxy (0.7.2)
       rack
     rack-test (1.1.0)
@@ -283,6 +285,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -303,7 +306,6 @@ DEPENDENCIES
   pg
   puma (~> 5.0)
   pundit (~> 2.2)
-  rack-mini-profiler (~> 2.0)
   rails (>= 6.1.5.1)
   rspec-rails (~> 5.1)
   rubocop (~> 1.28)
