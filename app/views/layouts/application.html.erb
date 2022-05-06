@@ -12,6 +12,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: 'home/navbar', locals: { company: Company.all} %>
+    <div class="container">
+      <% if notice %>
+        <%= render 'layouts/alerts' %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

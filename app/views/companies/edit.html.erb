@@ -1,0 +1,47 @@
+<h1>編輯公司資訊</h1>
+
+<%= form_with(model: @company) do |form| %>
+  <% if @company.errors.any?  %>
+    <ul>
+      <% @company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="field">
+    <%= form.label :company_title, "公司名稱" %>
+    <%= form.text_field :company_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vat_number, "統一編號" %>
+    <%= form.text_field :vat_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :principal, "負責人" %>
+    <%= form.text_field :principal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address, "公司地址" %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :linkman, "公司聯絡人" %>
+    <%= form.text_field :linkman %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email, "公司信箱" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+
