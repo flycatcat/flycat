@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  match "/404", to: "application#not_found", via: :all
+  match "/500", to: "application#internal_server_error", via: :all
+  root 'application#not_found'
 end
