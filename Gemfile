@@ -2,7 +2,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.5'
-
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth'
+gem 'figaro'
 gem 'pg'
 gem 'rubocop', '~> 1.28', require: false
 gem 'paranoia', '~> 2.6'
@@ -32,7 +36,7 @@ end
 group :development do
   gem 'foreman', '~> 0.87.2'
   gem 'web-console', '>= 4.1.0'
-  gem 'rack-mini-profiler', '~> 2.0'
+  # gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   gem 'spring'
 end

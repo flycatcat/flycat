@@ -1,2 +1,22 @@
 class ApplicationController < ActionController::Base
+    include Pundit::Authorization
+    # rescue_from ActiveRecord::RecordNotFound, with: :not_found
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
+    before_action :authenticate_user!
+    
+    # def not_found
+    #   render status: 404
+    # end
+  
+    # def internal_server_error
+    #   render status: 500
+    # end
+
+    private
+  
+    def user_not_authorized
+      flash[:notice] = "你沒有檢視該頁面的權限!"
+      redirect_to root_path
+    end
 end
