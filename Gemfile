@@ -2,7 +2,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.5'
-
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth'
+gem 'figaro'
 gem 'pg'
 gem 'rubocop', '~> 1.28', require: false
 gem 'paranoia', '~> 2.6'
