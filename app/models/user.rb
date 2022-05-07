@@ -27,23 +27,3 @@ def self.from_omniauth(auth)
   end
 end
 
-
-# #Github
-# def self.from_omniauth(access_token)
-#   data = access_token.info
-#   user = User.where(email: data["email"]).first
-
-#   user ||= User.create(
-#     email: data["email"],
-#     password: Devise.friendly_token[0, 20]
-#   )
-
-#   user.email = access_token.info.email
-#   # user.image = access_token.info.image
-#   user.provider = access_token.provider
-#   user.uid = access_token.uid
-#   user.save
-
-#   user
-# end
-end

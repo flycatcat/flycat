@@ -1,5 +1,6 @@
-class BulletinPolicy < ApplicationPolicy
+# frozen_string_literal: true
 
+class BulletinPolicy < ApplicationPolicy
   def index?
     vendor || staff || trial
   end

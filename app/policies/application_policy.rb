@@ -54,21 +54,21 @@ class ApplicationPolicy
   private
 
   def admin
-    user && user.role == "admin"
+    user && user.role == 'admin'
   end
 
   def vendor
-    user && user.role == "vendor"
+    user && user.role == 'vendor'
   end
   # def vendor
   #   user && user.role.in?(["company", "staff"])
   # end
 
   def trial
-    user && user.role == "trial"
+    user && user.role == 'trial'
   end
 
   def staff
-    user && user.role == "staff"
+    user && user.role == 'staff'
   end
 end

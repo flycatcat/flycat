@@ -1,2 +1,0 @@
-module Admin::BulletinsHelper
-end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DepartmentPolicy < ApplicationPolicy
   def index?
     vendor || trial
@@ -14,7 +16,6 @@ class DepartmentPolicy < ApplicationPolicy
   def destroy?
     index?
   end
-
 
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
