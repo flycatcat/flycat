@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
+
+  def after_sign_in_path_for(resource)
+    root_path
+  end
 
   def not_found
     render status:404

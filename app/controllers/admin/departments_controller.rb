@@ -9,12 +9,12 @@ module Admin
     end
 
     def new
-      # authorize :department
+      authorize :department
       @department = Department.new
     end
 
     def create
-      # authorize :department
+      authorize :department
       @department = Department.new(department_params)
       if @department.save
         redirect_to admin_departments_path, notice: '已新增部門'
@@ -26,11 +26,11 @@ module Admin
     def show; end
 
     def edit
-      # authorize :department
+      authorize :department
     end
 
     def update
-      # authorize :department
+      authorize :department
       if @department.update(department_params)
         redirect_to root_path, notice: '更新成功'
       else
@@ -39,7 +39,7 @@ module Admin
     end
 
     def destroy
-      # authorize :department
+      authorize :department
       @department.destroy
       redirect_to admin_departments_path, notice: '已刪除部門'
     end

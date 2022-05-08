@@ -13,7 +13,6 @@ class StaffsController < ApplicationController
 
   def create
     @staff = Staff.new(staff_params)
-
     if @staff.save
       redirect_to root_path, notice: '新增成功'
     else
@@ -40,8 +39,8 @@ class StaffsController < ApplicationController
 
   private
 
-  def set_staff
-    @staff = Staff.find(params[:id])
+  def find_staff
+    @staff = Staff.friendly.find(params[:id])
   end
 
   def staff_params

@@ -1,12 +1,10 @@
-<%= form_with(model: bulletin, url: new_admin_bulletin_path) do |form| %>
+<%= form_with(model: bulletin, url: admin_bulletins_path,method: "post") do |form| %>
   <% if bulletin.errors.any? %>
-    <div id="error_explanation">
       <ul>
-        <% bulletin.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% bulletin.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
-    </div>
   <% end %>
 
   <div class="field">

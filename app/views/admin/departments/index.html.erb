@@ -1,13 +1,10 @@
 <h1>部門管理</h1>
-
-
 <table>
     <tr>
         <td>部門名稱</td>
         <td>編輯資訊</td>
         <td>刪除部門</td>
     </tr>
-
 
     <% @departments.each do |department|  %>
     <tr>
@@ -22,5 +19,5 @@
 </table>
 </br>
 <div>
-<%= link_to "新增部門", new_admin_department_path %>
+<%= link_to "新增部門", new_admin_department_path if policy(:department).create? %>
 </div>

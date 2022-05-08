@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Staff < ApplicationRecord
+  include Slugable
   belongs_to :department, optional: true
 
   validates :staff_no, presence: true, uniqueness: true
@@ -9,6 +10,10 @@ class Staff < ApplicationRecord
   validates :gender, presence: true
   validates :start_at, presence: true
 
+  def normalize_friendly_id(value)
+    value.to_s.parameterize(preserve_case: true)
+  end
+  
   def self.all_gender
     [
       %w[男生], %w[女生]
