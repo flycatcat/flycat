@@ -1,0 +1,7 @@
+PG_DATABASE: "YOUR_PG_DATABASE"
+PG_USERNAME: "YOUR_PG_USERNAME"
+PG_PASSWORD: "YOUR_PG_PASSWORD"
+Github_Client_ID: "YOUR_Github_Client_ID"
+Github_Client_Secret: "YOUR_Github_Client_Secret"
+google_client_id: "YOUR_google_client_id"
+google_client_secret: "YOUR_google_client_secret"
