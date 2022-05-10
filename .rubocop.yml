@@ -1,0 +1,14 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "vendor/**/*"
+    - "tmp/**/*"
+    - ".git/**/*"
+    - "bin/*"
+    - "db/**/*"
+    - "config/routes.rb"
+  TargetRubyVersion: 2.7.5
+  SuggestExtensions: false
+
+Style/Documentation:
+  Enabled: false

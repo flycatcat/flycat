@@ -1,0 +1,24 @@
+<h1>公布欄</h1>
+
+<table>
+    <tr>
+        <td>公告</td>
+        <td>編輯資訊</td>
+        <td>刪除公告</td>
+    </tr>
+
+
+    <% @bulletins.each do |bulletin|  %>
+    <tr>
+        <td><%= link_to bulletin.title , admin_bulletin_path(bulletin) %></td>
+        <td><%= link_to "編輯", edit_admin_bulletin_path(bulletin) %></td>
+        <td><%= link_to "刪除", admin_bulletin_path(bulletin.id), method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:bulletin).destroy?%></td>
+    </tr>
+    <% end %>
+    
+</table>
+</br>
+
+<div>
+    <%= link_to "新增公告", new_admin_bulletin_path %>
+</div>

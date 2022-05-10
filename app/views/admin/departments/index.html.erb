@@ -1,0 +1,23 @@
+<h1>部門管理</h1>
+<table>
+    <tr>
+        <td>部門名稱</td>
+        <td>編輯資訊</td>
+        <td>刪除部門</td>
+    </tr>
+
+    <% @departments.order(id: :asc).each do |department|  %>
+    <tr>
+        <td><%= department.department_name %></td>
+   
+        <td><%= link_to "編輯", edit_admin_department_path(department) %></td>
+
+        <td><%= link_to "刪除", admin_department_path(department.id), method: 'delete', data: {confirm: '確定要刪除嗎？'} %></td>
+    </tr>
+    <% end %>
+    
+</table>
+</br>
+<div>
+<%= link_to "新增部門", new_admin_department_path if policy(:department).create? %>
+</div>

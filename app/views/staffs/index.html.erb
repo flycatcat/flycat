@@ -1,0 +1,28 @@
+<h1>個人資料</h1>
+
+<table>
+  <tr>
+      <td>員工編號</td>
+      <td>姓名</td>
+      <td>部門名稱</td>
+      <td>性別</td>
+      <td>報到日期</td>
+      <td>編輯員工資訊</td>
+      <td>刪除員工資訊</td>
+  <tr>
+
+  <% @staffs.order(id: :asc).each do |staff|  %>
+    <tr>
+        <td><%= staff.staff_no %></td>
+        <td><%= staff.name %></td>
+        <td><%= staff.department.department_name %></td>
+        <td><%= staff.gender %></td>
+        <td><%= staff.start_at %></td>
+        <td><%= link_to "編輯", edit_staff_path(staff) %></td>
+        <td><%= link_to "刪除", staff_path(staff.id), method: "delete", data: {confirm: '確定要刪除嗎？'} %></td>
+    <tr>
+  <% end %>
+  
+</table>
+
+<%= link_to '新增員工資料', new_staff_path %>

@@ -1,0 +1,24 @@
+<%= form_with(model: bulletin, url: admin_bulletins_path,method: "post") do |form| %>
+  <% if bulletin.errors.any? %>
+      <ul>
+        <% bulletin.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "公告標題" %>
+    <%= form.text_field :title %>
+  </div>
+
+<div class="field">
+    <%= form.label :content, "公告內容" %>
+    <%= form.text_area :content %>
+  </div>
+
+    <div class="actions">
+    <%= form.submit %>
+    </div>
+
+<% end %>
