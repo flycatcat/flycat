@@ -20,5 +20,8 @@ module Flycat
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.i18n.available_locales = [:en, :'zh-TW'] #支援語系
+    config.i18n.default_locale = :'zh-TW' #預設語系
+
   end
 end

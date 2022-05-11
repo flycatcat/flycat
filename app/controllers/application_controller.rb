@@ -3,6 +3,17 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   
+  before_action :set_locale
+
+
+
+  def set_locale
+    if params[:locale] && I18n.available_locales.include?(  params[:locale].to_sym )
+            session[:locale] = params[:locale]
+    end
+
+    I18n.locale = session[:locale] || I18n.default_locale
+  end
 
   def after_sign_in_path_for(resource)
     root_path

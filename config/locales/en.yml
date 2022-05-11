@@ -30,4 +30,71 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  user: "User"
+  feedback: "Feedback"
+  company: "Company"
+  sign_up: "Sign Up"
+  飛天貓: "FlyCat"
+  登入: "Log In"
+  登出: "Log Out"
+  註冊: "Sign Up"
+  歡迎來到Flycat出勤管理系統: "Welcome to Flycat"
+  請輸入以下資訊登入: "Log in Page"
+  電子郵件: "Email"
+  密碼: "Password"
+  新增部門: "Create Department"
+  部門管理: "Department"
+  部門名稱: "Department Name"
+  編輯資訊: "Edit"
+  刪除部門: "Delete"
+  公布欄: "Bulletin"
+  公佈欄: "Bulletin"
+  新增佈告欄: "Create Bulletin"
+  公告: "Bulletin"
+  公告標題: "Title"
+  公告內容: "Content"
+  編輯公告: "Edit"
+  刪除公告: "Delete"
+  新增公告: "Create Bulletin"
+  新增員工: "Create Staff"
+  新增員工資料: "Create Staff"
+  員工列表: "Staff"
+  員工編號: "Staff No"
+  個人資料: "Staff Info"
+  編輯員工資訊: "Edit"
+  刪除員工資訊: "Delete"
+  輸入編號: ""
+  輸入姓名: ""
+  輸入手機號碼: ""
+  姓名: "Name"
+  電話號碼: "Tel"
+  性別: "Gender"
+  報到日期: "Start Date"
+  部門名稱: "Department ID"
+  新增公司資訊: "Company Info"
+  公司名稱: "Company Title"
+  統一編號: "Vat Number"
+  負責人: "Principal"
+  公司地址: "Company Address"
+  公司聯絡人: "Linkman"
+  公司信箱: "Company Email"
+  activerecord:
+    models:
+      feedback: 
+      bulletin: "Bulletin"
+      company: 
+      department: 
+      staff: "Staff"
+      user: 
+      log_in: "Log in"
+      
+    attributes:
+      user: 
+        登入: "Log in"
+      submit:
+        登入: "Log in"
+      bulletin:
+        title: "Title"
+      all_gender: 
+        男生: "Male"
+        女生: "Female"
