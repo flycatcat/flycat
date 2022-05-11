@@ -1,4 +1,4 @@
-<h1>新增公司資訊</h1>
+<h1><%= t('新增公司資訊') %></h1>
 
 <%= form_with(model: @company) do |form| %>
   <% if @company.errors.any?  %>
@@ -9,32 +9,32 @@
     </ul>
   <% end %>
   <div class="field">
-    <%= form.label :company_title, "公司名稱" %>
+    <%= form.label :company_title, t("公司名稱") %>
     <%= form.text_field :company_title %>
   </div>
 
   <div class="field">
-    <%= form.label :vat_number, "統一編號" %>
+    <%= form.label :vat_number, t("統一編號") %>
     <%= form.text_field :vat_number %>
   </div>
 
   <div class="field">
-    <%= form.label :principal, "負責人" %>
+    <%= form.label :principal, t("負責人") %>
     <%= form.text_field :principal %>
   </div>
 
   <div class="field">
-    <%= form.label :address, "公司地址" %>
+    <%= form.label :address, t("公司地址") %>
     <%= form.text_field :address %>
   </div>
 
   <div class="field">
-    <%= form.label :linkman, "公司聯絡人" %>
+    <%= form.label :linkman, t("公司聯絡人") %>
     <%= form.text_field :linkman %>
   </div>
 
   <div class="field">
-    <%= form.label :email, "公司信箱" %>
+    <%= form.label :email, t("公司信箱") %>
     <%= form.text_field :email %>
   </div>
 

@@ -1,9 +1,9 @@
-<h1>部門管理</h1>
+<h1><%= t('部門管理') %></h1>
 <table>
     <tr>
-        <td>部門名稱</td>
-        <td>編輯資訊</td>
-        <td>刪除部門</td>
+        <td><%= t('部門名稱') %></td>
+        <td><%= t('編輯資訊') %></td>
+        <td><%= t('刪除部門') %></td>
     </tr>
 
     <% @departments.order(id: :asc).each do |department|  %>
@@ -19,5 +19,5 @@
 </table>
 </br>
 <div>
-<%= link_to "新增部門", new_admin_department_path if policy(:department).create? %>
+<%= link_to t("新增部門"), new_admin_department_path if policy(:department).create? %>
 </div>

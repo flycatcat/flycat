@@ -1,14 +1,14 @@
-<h1>個人資料</h1>
+<h1><%= t('個人資料') %></h1>
 
 <table>
   <tr>
-      <td>員工編號</td>
-      <td>姓名</td>
-      <td>部門名稱</td>
-      <td>性別</td>
-      <td>報到日期</td>
-      <td>編輯員工資訊</td>
-      <td>刪除員工資訊</td>
+      <td><%= t('員工編號') %></td>
+      <td><%= t('姓名') %></td>
+      <td><%= t('部門名稱') %></td>
+      <td><%= t('性別') %></td>
+      <td><%= t('報到日期') %></td>
+      <td><%= t('編輯員工資訊') %></td>
+      <td><%= t('刪除員工資訊') %></td>
   <tr>
 
   <% @staffs.order(id: :asc).each do |staff|  %>
@@ -25,4 +25,4 @@
   
 </table>
 
-<%= link_to '新增員工資料', new_staff_path %>
+<%= link_to t('新增員工資料'), new_staff_path %>

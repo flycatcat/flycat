@@ -13,28 +13,14 @@
 ActiveRecord::Schema.define(version: 2022_05_09_041355) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "adminpack"
   enable_extension "plpgsql"
-
-  create_table "admins", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "role", default: "user"
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
 
   create_table "bulletins", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "deleted_at", precision: 6
+    t.datetime "deleted_at"
     t.string "slug"
     t.index ["slug"], name: "index_bulletins_on_slug", unique: true
   end
@@ -55,8 +41,15 @@ ActiveRecord::Schema.define(version: 2022_05_09_041355) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
-    t.datetime "deleted_at", precision: 6
+    t.datetime "deleted_at"
     t.index ["slug"], name: "index_departments_on_slug", unique: true
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "author"
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -70,6 +63,22 @@ ActiveRecord::Schema.define(version: 2022_05_09_041355) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "order_no"
+    t.string "username"
+    t.integer "amount"
+    t.string "transaction_no"
+    t.integer "user_id"
+    t.string "state"
+    t.text "memo"
+    t.string "pay_type"
+    t.string "pay_token"
+    t.datetime "pay_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_no"], name: "index_orders_on_order_no", unique: true
+  end
+
   create_table "staffs", force: :cascade do |t|
     t.string "staff_no"
     t.string "name"
@@ -80,7 +89,7 @@ ActiveRecord::Schema.define(version: 2022_05_09_041355) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
-    t.datetime "deleted_at", precision: 6
+    t.datetime "deleted_at"
     t.index ["department_id"], name: "index_staffs_on_department_id"
     t.index ["slug"], name: "index_staffs_on_slug", unique: true
   end

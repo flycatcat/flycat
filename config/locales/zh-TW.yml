@@ -1,0 +1,49 @@
+zh-TW:
+  sign_up: "註冊"
+  登入: "登入"
+  輸入編號: "輸入編號"
+  輸入姓名: "輸入姓名"
+  輸入手機號碼: "輸入手機號碼"
+  activerecord:
+    models:
+      feedback: 
+      bulletin: "公告"
+      company: "公司"
+      department: "部門"
+      staff: "員工"
+      user: "使用者"
+      log_in: "登入"
+      sign_up: "註冊"
+    attributes:
+      department:
+        department_name: "部門名稱"
+        department: "部門"
+      bulletin:
+        title: "標題"
+        content: "內容"
+      user:
+        email: "電子郵件"
+        sign_up: "註冊"
+        password: "密碼"
+        minimum_password_length: "至少六個字元"
+        password_confirmation: "密碼確認"
+        remember_me: "記住我"
+        log_in: "登入"
+      company:
+        company_title: "公司名稱"
+        email: "電子郵件"
+        vat_number: "統一編號"
+        principal: "負責人"
+        address: "公司地址"
+        linkman: "公司聯絡人"
+      staff:
+        staff_no: "員工編號"
+        name: "姓名"
+        tel: "電話號碼"
+        start_at: "報到日期"
+  helpers:
+    label:
+      resource:
+        name: "姓名"
+        email: "電子信箱"
+        password: "密碼"
