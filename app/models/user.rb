@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[google_oauth2 github]
-  has_many :departments
+    # Include default devise modules. Others available are:
+    # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+    devise :database_authenticatable, :registerable,
+          :recoverable, :rememberable, :validatable,
+          :omniauthable, omniauth_providers: [:google_oauth2, :github]
+    belongs_to :company
+    accepts_nested_attributes_for :company
+
   # 找到user的話就登入，找不到就create新的user
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |user|
@@ -27,4 +29,17 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
+
+  def self.all_gender
+    [
+      %w[男生], %w[女生]
+    ]
+  end
+
+  def self.all_role
+    [
+      %w[staff], %w[manager]
+    ]
+  end
+  
 end

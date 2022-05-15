@@ -26,12 +26,11 @@ ActiveRecord::Schema.define(version: 2022_05_17_093319) do
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string "company_title"
+    t.string "title"
     t.string "vat_number"
-    t.string "principal"
+    t.string "person_in_charge"
     t.string "address"
-    t.string "linkman"
-    t.string "email"
+    t.string "contact_person"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -43,13 +42,6 @@ ActiveRecord::Schema.define(version: 2022_05_17_093319) do
     t.string "slug"
     t.datetime "deleted_at"
     t.index ["slug"], name: "index_departments_on_slug", unique: true
-  end
-
-  create_table "feedbacks", force: :cascade do |t|
-    t.string "author"
-    t.string "message"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -103,12 +95,25 @@ ActiveRecord::Schema.define(version: 2022_05_17_093319) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "role", default: "vendor"
+    t.string "role", default: "admin"
     t.string "provider"
     t.string "uid"
+    t.string "title"
+    t.integer "vat_number"
+    t.string "principal"
+    t.string "address"
+    t.string "contact_person"
+    t.integer "staff_no"
+    t.string "name"
+    t.date "start_at"
+    t.string "job_title"
+    t.string "department"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "staffs", "departments"
+  add_foreign_key "users", "companies"
 end
