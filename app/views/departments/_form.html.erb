@@ -1,9 +1,7 @@
-<h1>編輯部門</h1>
-
-<%= form_with(model: @department, url:admin_department_path, method: 'patch') do |form| %>
-  <% if @department.errors.any?  %>
+<%= form_with(model: department) do |form| %>
+  <% if department.errors.any?  %>
     <ul>
-      <% @department.errors.full_messages.each do |message| %>
+      <% department.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>

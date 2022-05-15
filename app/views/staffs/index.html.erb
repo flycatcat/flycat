@@ -11,11 +11,11 @@
       <td><%= t('刪除員工資訊') %></td>
   <tr>
 
-  <% @staffs.order(id: :asc).each do |staff|  %>
+  <% @staffs.each do |staff|  %>
     <tr>
         <td><%= staff.staff_no %></td>
         <td><%= staff.name %></td>
-        <td><%= staff.department.department_name %></td>
+        <td><%= staff.department%></td>
         <td><%= staff.gender %></td>
         <td><%= staff.start_at %></td>
         <td><%= link_to "編輯", edit_staff_path(staff) %></td>

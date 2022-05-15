@@ -6,15 +6,11 @@ Rails.application.routes.draw do
 
   resources :companies
   resources :staffs
+  resources :departments
+  resources :bulletins
+
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root 'home#index'
-  get 'home/about'
-
-  namespace :admin do
-    resources :departments
-    resources :bulletins
-    resources :vendors
-  end
 end

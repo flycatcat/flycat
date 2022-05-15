@@ -1,4 +1,4 @@
-<%= form_with(model: staff) do |f| %>
+<%= form_with(model: staff, url: staffs_path, method: 'post') do |f| %>
   <% if staff.errors.any?  %>
     <ul>
         <% staff.errors.full_messages.each do |message| %>
@@ -6,6 +6,7 @@
         <% end %>
     </ul>
   <% end %>
+
   <div class="field">
     <%= f.label :staff_no, t("員工編號") %>
     <%= f.text_field :staff_no, placeholder: t("輸入編號") %>
@@ -17,13 +18,28 @@
   </div>
 
   <div class="field">
-    <%= f.label :tel, t("電話號碼") %>
-    <%= f.text_field :tel, placeholder: t("輸入手機號碼") %>
+    <%= f.label :email, "登入信箱" %>
+    <%= f.text_field :email %>
   </div>
 
   <div class="field">
-    <%= f.label :gender, t("性別") %>
-    <%= f.select :gender , Staff.all_gender %>
+    <%= f.label :password, "輸入密碼" %>
+    <%= f.text_field :password  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "確認密碼" %>
+    <%= f.text_field :password_confirmation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :department, "所屬部門" %>
+    <%= f.select :department, current_company.departments.all.map{ |c| [c.department_name] }  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :job_title, "職稱" %>
+    <%= f.text_field :job_title   %>
   </div>
 
   <div class="field">
@@ -31,12 +47,23 @@
     <%= f.date_field :start_at  %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :department_id, t("部門名稱") %>
-    <%= f.select :department_id, Department.all.map{ |i| [i.department_name, i.id] }, :class => "form-control" %>
+  <div class="field">
+    <%= f.label :gender, t("性別") %>
+    <%= f.select :gender , User.all_gender %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tel, t("電話號碼") %>
+    <%= f.text_field :tel, placeholder: t("輸入手機號碼") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role, "權限" %>
+    <%= f.select :role , User.all_role %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
+  
 <% end %>

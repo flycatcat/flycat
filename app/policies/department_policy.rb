@@ -2,7 +2,7 @@
 
 class DepartmentPolicy < ApplicationPolicy
   def index?
-    vendor || trial
+    admin || trial 
   end
 
   def new?
