@@ -31,10 +31,6 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
-
-  def normalize_friendly_id(value)
-    value.to_s.parameterize(preserve_case: true)
-  end
   
   def self.all_gender
     [

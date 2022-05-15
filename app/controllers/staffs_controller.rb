@@ -5,7 +5,7 @@ class StaffsController < ApplicationController
 
   def index
     if current_user.role == "admin"
-      @staffs = current_company.users.all
+      @staffs = current_company.users.all.select{ |u| u.id != current_user.id}
     else
       @staffs = current_company.users.all.select{ |u| u.role != "admin" }
     end
@@ -48,6 +48,6 @@ class StaffsController < ApplicationController
   end
 
   def staffs_params
-    params.require(:user).permit(:staff_no, :name, :gender, :start_at, :email, :password, :password_confirmation, :job_title, :department, :company_id, :role)
+    params.require(:user).permit(:staff_no, :name, :gender, :start_at, :email, :password, :password_confirmation, :job_title, :department, :company_id, :role, :tel)
   end
 end
