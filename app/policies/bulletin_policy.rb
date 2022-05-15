@@ -2,15 +2,15 @@
 
 class BulletinPolicy < ApplicationPolicy
   def index?
-    vendor || staff || trial
+    admin || staff 
   end
 
   def create?
-    vendor || trial
+    admin 
   end
 
   def new?
-    vendor || trial
+    admin 
   end
 
   def edit?

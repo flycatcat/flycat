@@ -2,11 +2,11 @@
 
 class EmployeePolicy < ApplicationPolicy
   def index?
-    vendor || staff || trial
+    admin || staff || trial
   end
 
   def new?
-    vendor || trial
+    admin || trial
   end
 
   def create?
@@ -14,11 +14,11 @@ class EmployeePolicy < ApplicationPolicy
   end
 
   def edit?
-    vendor || staff || trial
+    admin || staff || trial
   end
 
   def update?
-    vendor || staff || trial
+    admin || staff || trial
   end
 
   def destroy?

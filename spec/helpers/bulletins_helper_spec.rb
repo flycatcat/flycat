@@ -12,6 +12,6 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe Admin::BulletinsHelper, type: :helper do
+RSpec.describe BulletinsHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
 end
