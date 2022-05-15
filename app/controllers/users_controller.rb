@@ -44,7 +44,7 @@ class StaffsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:company_id, :title, :vat_number, :principal, :address, :contact_person).merge(role: "admin")
+    params.require(:user).permit(:company_id, :title, :vat_number, :person_in_charge, :address, :contact_person).merge(role: "admin")
   end
 
 end
