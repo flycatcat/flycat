@@ -32,6 +32,10 @@ class User < ApplicationRecord
     end
   end
 
+  def normalize_friendly_id(value)
+    value.to_s.parameterize(preserve_case: true)
+  end
+  
   def self.all_gender
     [
       %w[男生], %w[女生]

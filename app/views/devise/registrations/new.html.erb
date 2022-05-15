@@ -21,6 +21,38 @@
   <hr>
 
   <div class="field">
+    <%= f.fields_for :company, Company.new do |c| %>
+      <div>
+        <%= c.label :title, '公司名稱' %>
+        <%= c.text_field :title %>
+      </div>
+
+      <div>
+        <%= c.label :vat_number, '統一編號' %>
+        <%= c.text_field :vat_number %>
+      </div>
+
+      <div>
+        <%= c.label :person_in_charge, '公司負責人' %>
+        <%= c.text_field :person_in_charge %>
+      </div>
+
+      <div>
+        <%= c.label :address, '地址' %>
+        <%= c.text_field :address %>
+      </div>
+
+      <div>
+        <%= c.label :contact_person, '公司聯絡人' %>
+        <%= c.text_field :contact_person %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <hr>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
