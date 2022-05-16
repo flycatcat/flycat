@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UsersController < ApplicationController
+class UserAccountsController < ApplicationController
   before_action :find_user, only: %i[show edit update destroy]
 
   def index
@@ -43,8 +43,8 @@ class UsersController < ApplicationController
     @user = current_company.users.friendly.find(params[:id])
   end
 
-  def user_params
-    params.require(:user).permit(:company_id, :title).merge(role: "admin")
+  def users_params
+    params.require(:user).permit(:company_id, :email, :password, :password_confirmation).merge(role: "staff")
   end
 
 end
