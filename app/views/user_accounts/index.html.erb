@@ -1,0 +1,24 @@
+<h1>個人資料</h1>
+<table>
+  <tr>
+      <td>員工編號</td>
+      <td>姓名</td>
+      <td>部門名稱</td>
+      <td>性別</td>
+      <td>報到日期</td>
+      <td>編輯員工資訊</td>
+      <td>刪除員工資訊</td>
+  <tr>
+
+  <% @users.each do |user|  %>
+    <tr>
+        <td><%= user.staff_no %></td>
+        <td><%= user.name %></td>
+        <td><%= user.gender %></td>
+        <td><%= user.start_at %></td>
+        <td><%= link_to "編輯", edit_admin_user_path(user) %></td>
+        <td><%= link_to "刪除", admin_user_path(user), method: "delete", data: {confirm: '確定要刪除嗎？'} %></td>
+    <tr>
+  <% end %>
+  
+</table>

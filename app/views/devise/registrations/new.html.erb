@@ -1,14 +1,14 @@
 <h2><%= t('sign_up') %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
-data:{controller: "vatnumber"}) do |f| %>
+) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field" >
     <%= f.fields_for :company, Company.new do |c| %>
       <div>
         <%= c.label :title, '公司名稱' %>
-        <%= c.text_field :title , id:'vat' %>
+        <%= c.text_field :title  %>
       </div>
     <% end %>
   </div>
@@ -34,7 +34,7 @@ data:{controller: "vatnumber"}) do |f| %>
   </div>
 
   <div class="actions">
-    <%= f.submit t("sign_up") ,data:{action:'click->vatnumber#get'} %>
+    <%= f.submit t("sign_up")  %>
   </div>
 <% end %>
 
