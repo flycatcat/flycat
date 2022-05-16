@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class StaffsController < ApplicationController
+class UsersController < ApplicationController
   before_action :find_user, only: %i[show edit update destroy]
 
   def index
@@ -44,7 +44,7 @@ class StaffsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:company_id, :title, :vat_number, :person_in_charge, :address, :contact_person).merge(role: "admin")
+    params.require(:user).permit(:company_id, :title).merge(role: "admin")
   end
 
 end

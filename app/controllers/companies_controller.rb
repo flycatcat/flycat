@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class CompaniesController < ApplicationController
   before_action :find_company, only: %i[edit update show destroy]
   
