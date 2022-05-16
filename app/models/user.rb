@@ -6,6 +6,7 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable,
           :omniauthable, omniauth_providers: [:google_oauth2, :github]
     belongs_to :company
+    # before_create :create_company
     accepts_nested_attributes_for :company
   
 

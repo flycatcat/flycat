@@ -1,35 +1,15 @@
 <h2><%= t('sign_up') %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+data:{controller: "vatnumber"}) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="field" >
     <%= f.fields_for :company, Company.new do |c| %>
       <div>
         <%= c.label :title, '公司名稱' %>
-        <%= c.text_field :title %>
+        <%= c.text_field :title , id:'vat' %>
       </div>
-
-      <div>
-        <%= c.label :vat_number, '統一編號' %>
-        <%= c.text_field :vat_number %>
-      </div>
-
-      <div>
-        <%= c.label :person_in_charge, '公司負責人' %>
-        <%= c.text_field :person_in_charge %>
-      </div>
-
-      <div>
-        <%= c.label :address, '地址' %>
-        <%= c.text_field :address %>
-      </div>
-
-      <div>
-        <%= c.label :contact_person, '公司聯絡人' %>
-        <%= c.text_field :contact_person %>
-      </div>
-
     <% end %>
   </div>
 
@@ -54,7 +34,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t("sign_up") %>
+    <%= f.submit t("sign_up") ,data:{action:'click->vatnumber#get'} %>
   </div>
 <% end %>
 

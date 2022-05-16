@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_15_075419) do
+ActiveRecord::Schema.define(version: 2022_05_16_084811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,9 @@ ActiveRecord::Schema.define(version: 2022_05_15_075419) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.datetime "deleted_at"
+    t.string "role"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_staffs_on_company_id"
     t.index ["slug"], name: "index_staffs_on_slug", unique: true
   end
 
@@ -83,20 +86,9 @@ ActiveRecord::Schema.define(version: 2022_05_15_075419) do
     t.string "role", default: "admin"
     t.string "provider"
     t.string "uid"
-    t.string "title"
-    t.integer "vat_number"
-    t.string "principal"
-    t.string "address"
-    t.string "contact_person"
-    t.integer "staff_no"
-    t.string "name"
-    t.date "start_at"
-    t.string "job_title"
-    t.string "department"
     t.bigint "company_id"
-    t.string "tel"
-    t.string "gender"
     t.string "slug"
+    t.string "title"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -105,5 +97,6 @@ ActiveRecord::Schema.define(version: 2022_05_15_075419) do
 
   add_foreign_key "bulletins", "companies"
   add_foreign_key "departments", "companies"
+  add_foreign_key "staffs", "companies"
   add_foreign_key "users", "companies"
 end
