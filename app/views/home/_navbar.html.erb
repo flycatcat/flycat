@@ -20,12 +20,14 @@
           <%= link_to t("新增員工"), new_staff_path %>
         </li>
         <li>
-            
           <%= link_to t("員工列表"), staffs_path %>
-            
         </li>
 
+    
         <% if user_signed_in? %>
+        <li>
+        <%= link_to "編輯公司資訊", edit_company_path(current_company.id) %>
+        </li>
         <li>
           <%= link_to current_user.email, edit_user_registration_path %>
         </li>

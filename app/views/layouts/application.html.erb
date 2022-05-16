@@ -17,7 +17,7 @@
 
     <%= link_to "資助飛天貓", new_order_path %>
     
-    <%= render partial: 'home/navbar', locals: { company: Company.all} %>
+    <%= render partial: 'home/navbar' %>
     <div class="container">
       <% if notice %>
         <%= render 'layouts/alerts' %>

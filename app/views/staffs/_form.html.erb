@@ -18,21 +18,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :email, "登入信箱" %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "輸入密碼" %>
-    <%= f.text_field :password  %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "確認密碼" %>
-    <%= f.text_field :password_confirmation %>
-  </div>
-
-  <div class="field">
     <%= f.label :department, "所屬部門" %>
     <%= f.select :department, current_company.departments.all.map{ |c| [c.department_name] }  %>
   </div>
