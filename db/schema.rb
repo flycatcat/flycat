@@ -119,11 +119,7 @@ ActiveRecord::Schema.define(version: 2022_05_18_140140) do
 
   add_foreign_key "bulletins", "companies"
   add_foreign_key "departments", "companies"
-<<<<<<< HEAD
   add_foreign_key "profiles", "companies"
   add_foreign_key "profiles", "users"
-=======
-  add_foreign_key "staffs", "companies"
->>>>>>> fix staff model
   add_foreign_key "users", "companies"
 end
