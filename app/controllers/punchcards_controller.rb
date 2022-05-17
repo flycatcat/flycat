@@ -10,7 +10,7 @@ class PunchcardsController < ApplicationController
 
   def create
       authorize :punchcard
-      @punchcard = current_user.punchcards.create(punchcards_params)
+      @punchcard = current_user.punchcards.new(punchcards_params)
       if @punchcard.save
       redirect_to punchcards_path, notice: '打卡成功'
       else

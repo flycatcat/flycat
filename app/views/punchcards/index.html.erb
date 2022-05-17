@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Flycat考勤打卡系統</h1>
 <table>
   <thead>
@@ -19,7 +18,7 @@
       <tr>
         <td><%= current_user.company.title %></td>
         <td><%= current_user.email %></td>
-        <td><%= p.is_first_punchcard_today %></td>
+        <td><%= p.is_first_punchcard_today ? "是" : "否" %></td>
         <td><%= p.punch_in_at.strftime("%H:%M:%S") %></td>
         <td><%= p.punch_out_at.strftime("%H:%M:%S") %></td>
         <td><%= p.body_temperature %></td>

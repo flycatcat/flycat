@@ -1,5 +1,5 @@
     <% @punchcards.each do |p| %>
-        <% if p.is_first_punchcard_today == true %>
+        <% if p.is_first_punchcard_today == true && p.is_first_punchcard_today.today?  %>
           <%= form_with(model: Punchcard ) do |f_in| %>
             <div class="flex field">
               <%= f_in.label :punch_in_at %>
@@ -19,7 +19,7 @@
                 <%= f_out.submit "下班打卡" %>
               </div>
           <% end %>
-        <% end %>
+    <% end %>
     <%= form_with(model: Punchcard ) do |f| %>
       <div class="field">
         <%= f.label :body_temperature, "體溫回報" %>
