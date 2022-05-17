@@ -1,0 +1,11 @@
+
+<% if @response.status === "SUCCESS" %>
+
+    <h1>感謝您讓飛天貓飛高高</h1>
+    <h1>您的捐款編號為</h1>
+    <%= @response.order_no %>
+
+<% else %>  
+    <h1>資助失敗，請再試一次</h1>
+
+<% end %>

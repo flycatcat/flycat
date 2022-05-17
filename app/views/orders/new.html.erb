@@ -1,0 +1,24 @@
+    <% if @order.errors.any? %>
+        <ul>
+            <% @order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    <% end %>
+    
+    <%= form_with(model: @order, url: orders_path, method: 'post') do |form| %>
+        <div >
+            <%= form.label :username, "名字" %>
+            <%= form.text_field :username %>
+        </div>
+        <div>
+            <%= form.label :amount, "金額" %>
+            <%= form.number_field :amount, placeholder: "請填入捐款金額", min:1 %>
+        </div>
+        <div >
+            <%= form.label :memo, "留言" %>
+            <%= form.text_area :memo, rows: 5 %>
+        </div>
+        
+            <%= form.submit :贊助飛天貓 %>
+    <% end %>

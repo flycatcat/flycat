@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_09_041355) do
+ActiveRecord::Schema.define(version: 2022_05_17_093319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,13 +69,14 @@ ActiveRecord::Schema.define(version: 2022_05_09_041355) do
     t.integer "amount"
     t.string "transaction_no"
     t.integer "user_id"
-    t.string "state"
     t.text "memo"
     t.string "pay_type"
-    t.string "pay_token"
     t.datetime "pay_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "card_last_4_no"
+    t.integer "newebpay_amt"
+    t.string "status"
     t.index ["order_no"], name: "index_orders_on_order_no", unique: true
   end
 

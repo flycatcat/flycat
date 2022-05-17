@@ -14,6 +14,8 @@
   <body>
     <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
     <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
+
+    <%= link_to "資助飛天貓", new_order_path %>
     
     <%= render partial: 'home/navbar', locals: { company: Company.all} %>
     <div class="container">
