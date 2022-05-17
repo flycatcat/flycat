@@ -1,0 +1,26 @@
+<h1>飛天貓</h1>
+
+<%= form_with(model: Punchcard ) do |f| %>
+
+    <div class="flex field">
+      <%= f.label :punch_in_at %>
+      <%= f.text_field :punch_in_at ,value: Time.current %>
+    </div>
+    <div class="actions">
+      <%= f.submit  "上班打卡"%>
+    </div>
+
+    <div class="flex field">
+      <%= f.label :punch_out_at %>
+        <%= f.text_field :punch_out_at ,value: Time.current %>
+    </div>
+    <div class="actions">
+      <%= f.submit "下班打卡" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :body_temperature, "體溫回報" %>
+      <%= f.text_field :body_temperature %>
+
+    </div>
+<% end %>

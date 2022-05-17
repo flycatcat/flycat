@@ -1,28 +1,28 @@
 # frozen_string_literal: true
 
-class EmployeePolicy < ApplicationPolicy
+class PunchcardPolicy < ApplicationPolicy
   def index?
-    admin || staff
-  end
-
-  def new?
-    admin || trial
+    admin || staff 
   end
 
   def create?
-    new?
+    index? 
+  end
+
+  def new?
+    index?
   end
 
   def edit?
-    admin || staff || trial
+    admin
   end
 
   def update?
-    admin || staff || trial
+    index?
   end
 
   def destroy?
-    new?
+    admin
   end
 
   class Scope < Scope
