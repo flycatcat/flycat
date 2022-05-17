@@ -2,7 +2,7 @@
 
 class DepartmentPolicy < ApplicationPolicy
   def index?
-    admin || trial 
+    admin || manager
   end
 
   def new?

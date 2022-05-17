@@ -6,11 +6,12 @@ class ApplicationController < ActionController::Base
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   helper_method :current_company
 
   def current_company
     return nil unless user_signed_in?
+
     @current_company ||= current_user.company
   end
 
@@ -33,14 +34,15 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit( :title,
-                          :email,
-                          :password,
-                          :password_confirmation,
-                          company_attributes: [:id, :title]
-                        )
+      user_params.permit(:title,
+                         :vat_number,
+                         :email,
+                         :password,
+                         :password_confirmation,
+                         company_attributes: %i[id title vat_number user_id])
     end
   end
 

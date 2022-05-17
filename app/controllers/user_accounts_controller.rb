@@ -44,7 +44,6 @@ class UserAccountsController < ApplicationController
   end
 
   def users_params
-    params.require(:user).permit(:company_id, :email, :password, :password_confirmation).merge(role: "staff")
+    params.require(:user).permit(:company_id, :email, :password, :password_confirmation).merge(role: 'staff')
   end
-
 end

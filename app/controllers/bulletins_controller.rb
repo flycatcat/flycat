@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
 class BulletinsController < ApplicationController
-  before_action :find_Bulletins, only: %i[edit update show destroy]
+  before_action :find_bulletins, only: %i[edit update show destroy]
   def index
     @bulletins = current_company.bulletins.all
   end
 
-def new
-  authorize :bulletin
-  @bulletin = current_company.bulletins.new
-end
+  def new
+    authorize :bulletin
+    @bulletin = current_company.bulletins.new
+  end
 
   def create
-      authorize :bulletin
-      @bulletin = current_company.bulletins.new(bulletins_params)
-      if @bulletin.save
+    authorize :bulletin
+    @bulletin = current_company.bulletins.new(bulletins_params)
+    if @bulletin.save
       redirect_to bulletins_path, notice: '已刊登公告'
-      else
+    else
       render :new
-      end
+    end
   end
 
   def show; end
@@ -48,8 +48,7 @@ end
     params.require(:bulletin).permit(:title, :content)
   end
 
-  def find_Bulletins
+  def find_bulletins
     @bulletin = current_company.bulletins.friendly.find(params[:id])
   end
 end
-

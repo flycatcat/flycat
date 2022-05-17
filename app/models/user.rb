@@ -2,19 +2,18 @@
 
 class User < ApplicationRecord
   include Slugable
-    # Include default devise modules. Others available are:
-    # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-    devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :validatable,
-          :omniauthable, omniauth_providers: [:google_oauth2, :github]
-    belongs_to :company
-    # before_create :create_company
-    accepts_nested_attributes_for :company
-  
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[google_oauth2 github]
+  belongs_to :company
+  has_one :profile
+  accepts_nested_attributes_for :company
 
-    def normalize_friendly_id(value)
-      value.to_s.parameterize(preserve_case: true)
-    end
+  def normalize_friendly_id(value)
+    value.to_s.parameterize(preserve_case: true)
+  end
 
   # 找到user的話就登入，找不到就create新的user
   def self.create_from_provider_data(provider_data)
@@ -36,7 +35,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
-  
+
   def self.all_gender
     [
       %w[男生], %w[女生]
@@ -48,5 +47,4 @@ class User < ApplicationRecord
       %w[staff], %w[manager]
     ]
   end
-  
 end

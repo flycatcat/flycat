@@ -1,11 +1,15 @@
-<%= form_with(model: staff, url: staffs_path, method: 'post') do |f| %>
-  <% if staff.errors.any?  %>
+<h1>編輯員工資訊</h1>
+
+<%= form_with(model: @profile, url: profile_path, method: 'patch') do |f| %>
+  <% if @profile.errors.any?  %>
     <ul>
-        <% staff.errors.full_messages.each do |message| %>
+        <% @profile.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
     </ul>
   <% end %>
+
+
 
   <div class="field">
     <%= f.label :staff_no, t("員工編號") %>
