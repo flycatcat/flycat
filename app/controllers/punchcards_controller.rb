@@ -1,11 +1,15 @@
 class PunchcardsController < ApplicationController
   before_action :find_punchcards, only: %i[edit update show destroy]
   def index
+    authorize :punchcard
     @punchcards = current_user.punchcards.all
   end
 
   def new
+    authorize :punchcard
+    @punchcard = current_user.punchcards.new
     @punchcards = current_user.punchcards.all
+
   end
 
   def create
@@ -14,7 +18,7 @@ class PunchcardsController < ApplicationController
       if @punchcard.save
       redirect_to punchcards_path, notice: '打卡成功'
       else
-      render :new
+        render :new
       end
   end
 
