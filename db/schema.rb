@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_16_190633) do
+ActiveRecord::Schema.define(version: 2022_05_17_124521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2022_05_16_190633) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
-  create_table "staffs", force: :cascade do |t|
+  create_table "profiles", force: :cascade do |t|
     t.string "staff_no"
     t.string "name"
     t.string "tel"
@@ -72,8 +72,12 @@ ActiveRecord::Schema.define(version: 2022_05_16_190633) do
     t.string "role"
     t.bigint "company_id"
     t.string "department"
-    t.index ["company_id"], name: "index_staffs_on_company_id"
-    t.index ["slug"], name: "index_staffs_on_slug", unique: true
+    t.string "job_title"
+    t.bigint "user_id"
+    t.string "email"
+    t.index ["company_id"], name: "index_profiles_on_company_id"
+    t.index ["slug"], name: "index_profiles_on_slug", unique: true
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,6 +102,7 @@ ActiveRecord::Schema.define(version: 2022_05_16_190633) do
 
   add_foreign_key "bulletins", "companies"
   add_foreign_key "departments", "companies"
-  add_foreign_key "staffs", "companies"
+  add_foreign_key "profiles", "companies"
+  add_foreign_key "profiles", "users"
   add_foreign_key "users", "companies"
 end

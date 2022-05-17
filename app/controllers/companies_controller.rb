@@ -1,16 +1,14 @@
 # frozen_string_literal: true
+
 class CompaniesController < ApplicationController
   before_action :find_company, only: %i[edit update show destroy]
-
 
   def new
     @company = Company.new
   end
 
-  def edit
-    
-  end
-  
+  def edit; end
+
   def create
     @company = Company.new(company_params)
     if @company.save
@@ -24,7 +22,7 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
-      redirect_to companies_path, notice: '更新成功'
+      redirect_to root_path, notice: '更新成功'
     else
       render :edit
     end

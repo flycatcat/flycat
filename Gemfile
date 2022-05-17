@@ -20,13 +20,12 @@ gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'pundit', '~> 2.2'
 gem 'rails', '6.1.5.1'
+gem 'rails-i18n'
 gem 'rubocop', '~> 1.29', require: false
 gem 'sass-rails', '>= 6'
 gem 'stimulus-rails', '~> 1.0', '>= 1.0.4'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem "rails-i18n"
-
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

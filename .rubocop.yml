@@ -7,8 +7,22 @@ AllCops:
     - "bin/*"
     - "db/**/*"
     - "config/routes.rb"
+    - 'script/**/*'
+    - 'spec/fixtures/**/*'
   TargetRubyVersion: 2.7.5
   SuggestExtensions: false
 
 Style/Documentation:
   Enabled: false
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']  
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'spec/*/.rb'
+    - 'config/environments/development.rb' 
+Layout/LineLength:
+  Max: 200
+
+

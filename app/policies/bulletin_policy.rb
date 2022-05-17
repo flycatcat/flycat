@@ -2,15 +2,15 @@
 
 class BulletinPolicy < ApplicationPolicy
   def index?
-    admin || staff 
+    admin || manager
   end
 
   def create?
-    admin 
+    admin
   end
 
   def new?
-    admin 
+    admin
   end
 
   def edit?

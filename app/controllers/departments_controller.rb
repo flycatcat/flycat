@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DepartmentsController <  ApplicationController
+class DepartmentsController < ApplicationController
   before_action :find_departments, only: %i[edit update show destroy]
 
   def index
@@ -53,4 +53,3 @@ class DepartmentsController <  ApplicationController
     @department = current_company.departments.friendly.find(params[:id])
   end
 end
-

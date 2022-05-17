@@ -57,7 +57,6 @@ class ApplicationPolicy
     user && user.role == 'admin'
   end
 
-
   def manager
     user && user.role == 'manager'
   end
