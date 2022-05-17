@@ -7,7 +7,7 @@ class PunchcardsController < ApplicationController
 
   def new
       authorize :punchcard
-      @punchcard = current_user.punchcards.new(punchcards_params)
+      @punchcard = current_user.punchcards.new
   end
 
   def create

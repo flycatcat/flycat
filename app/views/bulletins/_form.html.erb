@@ -1,4 +1,4 @@
-<%= form_with(model: bulletin ) do |form| %>
+<%= form_with model: bulletin do |form| %>
   <% if bulletin.errors.any? %>
       <ul>
         <% bulletin.errors.full_messages.each do |message| %>

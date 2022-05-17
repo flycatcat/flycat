@@ -1,33 +1,31 @@
-
-        <% form_with model: punchcard do |p_in| %>
-          <div class="flex field">
-            <%= p_in.label :punch_in_at, "上班打卡" %>
-            <%= p_in.text_field :punch_in_at ,value: Time.current %>
-          </div>
-          <div class="actions">
-            <%= p_in.submit  "上班打卡"%>
-          </div>
-          <div class="field">
-              <%= p_in.label :body_temperature, "體溫回報" %>
-              <%= p_in.text_field :body_temperature %>
-          </div>
-        <% end %>
-
-        <% form_with(model: @punchcard ) do |p_out| %>
-            <div class="flex field">
-              <%= p_out.label :punch_out_at, "下班打卡" %>
-                <%= p_out.text_field :punch_out_at ,value: Time.current %>
+        <%= form_with model: punchcard  do |f| %>
+            <% if punchcard.errors.any? %>
+                <ul>
+                  <% punchcard.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+            <% end %>
+    現在時間<%= Time.current %>
+    <% current_user.punchcards  .each do |p| %>
+    <%# <%% if p.is_first_punchcard_today == true %>
+            <div class="field">
+              <% f.label :punch_inflex_at, "上班打卡" %>
+              <% f.text_field :punch_in_at %>
             </div>
-            <div class="actions">
-              <%= p_out.submit "下班打卡" %>
+            <div class="field">
+                <%= f.label :body_temperature, "體溫回報" %>
+                <%= f.text_field :body_temperature %>
+            </div>
+    <%# <% else %>
+            <div class="field">
+                <% f.label :punch_out_at, "下班打卡" %>
+                <% f.text_field :punch_out_at %>
+              </div>
+              <div class="actions">
+                <%= f.submit "打卡" %>
+              </div>
             </div>
         <% end %>
-
-
-
-
-
-
-
-
-
+    <%# <% end %>
+<% end %>
