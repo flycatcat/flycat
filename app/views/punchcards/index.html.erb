@@ -16,7 +16,7 @@
   <tbody>
     <% @punchcards.each do |p| %>
       <tr>
-        <td><%= current_user.company.title %></td>
+        <td><%= current_user.email %></td>
         <td><%= current_user.email %></td>
         <td><%= p.is_first_punchcard_today ? "是" : "否" %></td>
         <td><%= p.punch_in_at.strftime("%H:%M:%S") %></td>

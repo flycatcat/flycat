@@ -1,15 +1,13 @@
 class PunchcardsController < ApplicationController
   before_action :find_punchcards, only: %i[edit update show destroy]
   def index
-    authorize :punchcard
-    @punchcards = current_user.punchcards.all
+      authorize :punchcard
+      @punchcards = current_user.punchcards.all
   end
 
   def new
-    authorize :punchcard
-    @punchcard = current_user.punchcards.new
-    @punchcards = current_user.punchcards.all
-
+      authorize :punchcard
+      @punchcard = current_user.punchcards.new(punchcards_params)
   end
 
   def create
