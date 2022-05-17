@@ -1,4 +1,33 @@
-<%= current_user.punchcards %>
+<p id="notice"><%= notice %></p>
+
+<h1>Flycat考勤打卡系統</h1>
+<table>
+  <thead>
+    <tr>
+      <th>公司名稱</th>
+      <th>員工名稱</th>
+      <th>首次打卡</th>
+      <th>上班時間</th>
+      <th>下班時間</th>
+      <th>體溫(°C)</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @punchcards.each do |p| %>
+      <tr>
+        <td><%= current_user.company.title %></td>
+        <td><%= current_user.email %></td>
+        <td><%= p.is_first_punchcard_today %></td>
+        <td><%= p.punch_in_at.strftime("%H:%M:%S") %></td>
+        <td><%= p.punch_out_at.strftime("%H:%M:%S") %></td>
+        <td><%= p.body_temperature %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br>
 
-
+<%= link_to '新增打卡', new_punchcard_path %>

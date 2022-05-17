@@ -4,6 +4,6 @@ class Punchcard < ApplicationRecord
 
   #Callback
   after_create do
-    update(is_punched_in_today: true)
+    update(is_first_punchcard_today: false)
   end
 end

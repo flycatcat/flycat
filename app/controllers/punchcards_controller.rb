@@ -5,6 +5,7 @@ class PunchcardsController < ApplicationController
   end
 
   def new
+    @punchcards = current_user.punchcards.all
   end
 
   def create
