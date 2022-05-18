@@ -2,7 +2,6 @@
 
 class Profile < ApplicationRecord
   include Slugable
-  acts_as_paranoid
 
   validates :staff_no, presence: true
   validates :name, presence: true
@@ -14,6 +13,6 @@ class Profile < ApplicationRecord
   validates :job_title,  presence: true
   validates :email,  presence: true
 
-  belongs_to :user
+  belongs_to :user, dependent: :delete
   belongs_to :company
 end

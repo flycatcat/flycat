@@ -8,8 +8,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2 github]
   belongs_to :company
-  has_one :profile
+  has_one :profile, dependent: :delete
   accepts_nested_attributes_for :company
+  
 
   def normalize_friendly_id(value)
     value.to_s.parameterize(preserve_case: true)

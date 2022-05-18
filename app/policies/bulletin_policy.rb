@@ -2,33 +2,26 @@
 
 class BulletinPolicy < ApplicationPolicy
   def index?
-    admin || manager
-  end
-
-  def create?
-    admin
+    admin || manager || staff
   end
 
   def new?
-    admin
+    create?
+  end
+
+  def create?
+    admin || manager
   end
 
   def edit?
-    create?
+    update?
   end
 
   def update?
-    create?
+    admin || manager
   end
 
   def destroy?
-    create?
-  end
-
-  class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+    admin || manager
   end
 end

@@ -1,4 +1,4 @@
-<h2><%= t('sign_up') %></h2>
+<h1>員工帳號註冊</h1>
 
 <%= form_with(model: @user, url: user_accounts_path, method: 'post') do |f| %>
   <% if @user.errors.any?  %>
@@ -8,7 +8,9 @@
       <% end %>
     </ul>
   <% end %>
-
+  </br>
+  <div>公司密碼預設為公司統一編號</div>
+  </br>
   <div class="field">
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -16,12 +18,17 @@
 
   <div class="field">
     <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "new-password", value: current_company.vat_number %>
+    <%= f.password_field :password, autocomplete: "new-password", value: current_company.vat_number , readonly: true%>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",  value: current_company.vat_number %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",  value: current_company.vat_number, readonly: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role, "身份" %>
+    <%= f.select :role , User.all_role %>
   </div>
 
   <div class="actions">

@@ -1,0 +1,18 @@
+<h1> 員工帳號資訊 </h1>
+
+<table>
+  <tr>
+      <td>員工信箱</td>
+      <td><%= t('編輯員工資訊') %></td>
+      <td><%= t('刪除員工資訊') %></td>
+  <tr>
+  
+  <% @users.each do |user|  %>
+    <tr>
+        <td><%= user.email %></td>
+        <td><%= link_to "編輯", edit_user_registration_path(user) %></td>
+        <td><%= link_to "刪除", user_account_path(user.id), method: "delete", data: {confirm: '確定要刪除嗎？'} %></td>
+    <tr>
+  <% end %>
+  
+</table>
