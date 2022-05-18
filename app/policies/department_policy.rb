@@ -6,11 +6,11 @@ class DepartmentPolicy < ApplicationPolicy
   end
 
   def new?
-    index?
+    create?
   end
 
   def create?
-    index?
+    admin || manager
   end
 
   def edit?
@@ -25,10 +25,4 @@ class DepartmentPolicy < ApplicationPolicy
     index?
   end
 
-  class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
-  end
 end

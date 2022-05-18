@@ -14,7 +14,7 @@ class UserAccountsController < ApplicationController
   def create
     @user = current_company.users.new(users_params)
     if @user.save
-      redirect_to root_path, notice: '新增成功'
+      redirect_to root_path, notice: '新增員工成功'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class UserAccountsController < ApplicationController
 
   def update
     if @user.update(users_params)
-      redirect_to users_path, notice: '新增成功'
+      redirect_to users_path, notice: '更新成功'
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class UserAccountsController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_path, notice: '已刪除公司相關資訊'
+    redirect_to user_accounts_path, notice: '已刪除員工相關資訊'
   end
 
   private
@@ -44,6 +44,6 @@ class UserAccountsController < ApplicationController
   end
 
   def users_params
-    params.require(:user).permit(:company_id, :email, :password, :password_confirmation).merge(role: 'staff')
+    params.require(:user).permit(:company_id, :email, :password, :password_confirmation, :role)
   end
 end

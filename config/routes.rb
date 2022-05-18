@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :profiles, except: [:show]
   resources :departments, except: [:show]
   resources :bulletins, except: []
-  resources :user_accounts, only: [:new, :create]
+  resources :user_accounts, only: [:index, :new, :create, :destroy]
 
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
