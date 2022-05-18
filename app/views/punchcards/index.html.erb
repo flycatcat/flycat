@@ -18,7 +18,7 @@
         <td td class="px-6"><%= current_user.id %></td>
         <td td class="px-6"><%= current_user.email %></td>
         <td td class="px-6"><%= p.is_first_punchcard_today ? "是" : "否" %></td>
-        <td class="px-6"><%= p.punch_in_at.to_s %></td>
+        <td class="px-6"><%= p.punch_in_at %></td>
         <td class="px-6"><%= p.punch_out_at %></td>
         <%# <td><%= p.punch_in_at.strftime("%H:%M:%S")</td> %>
         <%# <td><%= p.punch_out_at.strftime("%H:%M:%S")</td> %>
