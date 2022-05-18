@@ -1,17 +1,20 @@
-<p id="notice"><%= notice %></p>
 <h1>Flycat考勤打卡系統</h1>
-<%= link_to '上班打卡', new_punchcard_path %>
+<br>
+<%= link_to '上班打卡', new_punchcard_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+<br>
+<br>
 <table>
   <thead>
     <tr>
-      <th>員工id</th>
-      <th>員工email</th>
-      <th>是否首次打卡</th>
-      <th>上班時間</th>
-      <th>下班時間</th>
-      <th>編輯打卡</th>
-      <th>刪除打卡</th>
-      <th>體溫(°C)</th>
+      <th class="px-4">員工id</th>
+      <th class="px-4">員工email</th>
+      <th class="px-4">已打上班卡</th>
+      <th class="px-4">已打下班卡</th>
+      <th class="px-4">上班時間</th>
+      <th class="px-4">下班時間</th>
+      <th class="px-4">編輯打卡</th>
+      <th class="px-4">刪除打卡</th>
+      <th class="px-4">體溫(°C)</th>
     </tr>
   </thead>
 
@@ -20,7 +23,8 @@
       <tr>
         <td td class="px-6"><%= current_user.id %></td>
         <td td class="px-6"><%= current_user.email %></td>
-        <td td class="px-6"><%= punchcard.is_first_punchcard_today ? "是" : "否" %></td>
+        <td td class="px-6"><%= punchcard.punch_in_at.to_s.empty?  ? "否" : "是" %></td>
+        <td td class="px-6"><%= punchcard.punch_out_at.to_s.empty? ? "否" : "是" %></td>
         <td class="px-6"><%= punchcard.punch_in_at %></td>
         <td class="px-6"><%= punchcard.punch_out_at %></td>
         <td><%= link_to "下班打卡", edit_punchcard_path(punchcard) %></td>
