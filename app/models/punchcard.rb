@@ -13,9 +13,7 @@ class Punchcard < ApplicationRecord
   
   after_create do
     update(is_first_punchcard_today: false)
-    if is_first_punchcard_today
-      update(punch_in_at: Time.current)
-    end
   end
+  
 end
 
