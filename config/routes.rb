@@ -17,4 +17,12 @@ Rails.application.routes.draw do
     resources :bulletins
     resources :vendors
   end
+
+
+  resources :orders, only: [:new, :create] do
+    collection do
+      post :confirm
+    end
+  end
+  
 end

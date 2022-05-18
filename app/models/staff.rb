@@ -4,7 +4,7 @@ class Staff < ApplicationRecord
   include Slugable
   belongs_to :department, optional: true
 
-  validates :staff_no, presence: true, uniqueness: true, length: {minimum: 1 ,  maximum: 6}
+  validates :staff_no, presence: true, uniqueness: true, length: { minimum: 1, maximum: 6 }
   validates :name, presence: true
   validates :tel, presence: true, uniqueness: true
   validates :gender, presence: true
@@ -13,7 +13,7 @@ class Staff < ApplicationRecord
   def normalize_friendly_id(value)
     value.to_s.parameterize(preserve_case: true)
   end
-  
+
   def self.all_gender
     [
       %w[男生], %w[女生]

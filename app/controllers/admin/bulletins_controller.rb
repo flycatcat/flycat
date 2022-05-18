@@ -7,19 +7,19 @@ module Admin
       @bulletins = Bulletin.all
     end
 
-  def new
-    authorize :bulletin
-    @bulletin = Bulletin.new
-  end
+    def new
+      authorize :bulletin
+      @bulletin = Bulletin.new
+    end
 
     def create
-        authorize :bulletin
-        @bulletin = Bulletin.new(bulletins_params)
-        if @bulletin.save
+      authorize :bulletin
+      @bulletin = Bulletin.new(bulletins_params)
+      if @bulletin.save
         redirect_to admin_bulletins_path, notice: '已刊登公告'
-        else
+      else
         render :new
-        end
+      end
     end
 
     def show; end

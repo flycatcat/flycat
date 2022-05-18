@@ -10,10 +10,8 @@ class CompaniesController < ApplicationController
     @company = Company.new
   end
 
-  def edit
-    
-  end
-  
+  def edit; end
+
   def create
     @company = Company.new(company_params)
     if @company.save

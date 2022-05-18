@@ -1,6 +1,6 @@
 ## Issue Link
 
-https://github.com/mingohan/flycat/issues/(在這填上票號)
+https://github.com/flycatcat/flycat/issues/(在這填上票號)
 
 ## Changes
 

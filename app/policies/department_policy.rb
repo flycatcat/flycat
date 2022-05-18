@@ -16,6 +16,7 @@ class DepartmentPolicy < ApplicationPolicy
   def edit?
     index?
   end
+
   def update?
     index?
   end
