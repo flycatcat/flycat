@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
       card_last_4_no: @response.card_last_4_no,
       pay_type: @response.pay_type
     )
+    @username = order.username
   end
 
   def order_params
