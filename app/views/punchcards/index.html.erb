@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 <h1>Flycat考勤打卡系統</h1>
+<%= link_to '上班打卡', new_punchcard_path %>
 <table>
   <thead>
     <tr>
@@ -15,21 +16,17 @@
   </thead>
 
   <tbody class="text-center ">
-    <% @punchcards.each do |punchcard| %>
+    <% @punchcards.order(created_at: :desc).each do |punchcard| %>
       <tr>
         <td td class="px-6"><%= current_user.id %></td>
         <td td class="px-6"><%= current_user.email %></td>
         <td td class="px-6"><%= punchcard.is_first_punchcard_today ? "是" : "否" %></td>
         <td class="px-6"><%= punchcard.punch_in_at %></td>
         <td class="px-6"><%= punchcard.punch_out_at %></td>
-        <td><%= link_to "編輯", edit_punchcard_path(punchcard) %></td>
+        <td><%= link_to "下班打卡", edit_punchcard_path(punchcard) %></td>
         <td><%= link_to "刪除", punchcard_path(punchcard.id), method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:punchcard).destroy?%></td>
         <td class="px-6"><%= punchcard.body_temperature %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to '新增打卡', new_punchcard_path %>

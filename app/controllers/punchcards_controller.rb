@@ -14,7 +14,7 @@ class PunchcardsController < ApplicationController
       authorize :punchcard
       @punchcard = current_user.punchcards.new(punchcards_params)
       if @punchcard.save
-      redirect_to punchcards_path, notice: '打卡成功'
+        redirect_to punchcards_path, notice: '打卡成功'
       else
         render :new
       end
@@ -38,7 +38,7 @@ class PunchcardsController < ApplicationController
 
   def destroy
     authorize :punchcard
-    @punchcard.update(deleted_at: Time.current)
+    @punchcard.destroy
     redirect_to punchcards_path, notice: '已刪除打卡紀錄'
   end
 
