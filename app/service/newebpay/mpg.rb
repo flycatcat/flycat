@@ -42,7 +42,7 @@ module Newebpay
       info[:RespondType] = "JSON"
       info[:Version] = "2.0"
 			# url 也建議使用環境變數
-      info[:ReturnURL] = ENV['ReturnURL']
+      info[:ReturnURL] = ENV['ReturnURL'] 
       info[:NotifyURL] = "https://...."
       info[:LoginType] = 0
       info[:CREDIT] =  1,
