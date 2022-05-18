@@ -1,36 +1,36 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
-    protect_from_forgery except: :create
+  protect_from_forgery except: :create
 
-    def new
-        @order = Order.new 
-    end
+  def new
+    @order = Order.new
+  end
 
-    def create
-        
-        @order = Order.new(order_params)
-        if @order.save
-            @form_info = Newebpay::Mpg.new.form_info
-        else
-            render :new 
-        end
-        
+  def create
+    @order = Order.new(order_params)
+    if @order.save
+      @form_info = Newebpay::Mpg.new.form_info
+    else
+      render :new
     end
+  end
 
-    def confirm
-        @response = Newebpay::MpgResponse.new(params[:TradeInfo])
-        order = Order.last
-        order.update(
-            order_no: @response.order_no,
-            transaction_no: @response.trans_no,
-            newebpay_amt: @response.newebpay_amt,
-            pay_at: @response.pay_at,
-            status: @response.status,
-            card_last_4_no: @response.card_last_4_no,
-            pay_type: @response.pay_type
-            )
-    end
-    
-    def order_params
-        params.require(:order).permit(:username, :amount, :memo)
-    end
+  def confirm
+    @response = Newebpay::MpgResponse.new(params[:TradeInfo])
+    order = Order.last
+    order.update(
+      order_no: @response.order_no,
+      transaction_no: @response.trans_no,
+      newebpay_amt: @response.newebpay_amt,
+      pay_at: @response.pay_at,
+      status: @response.status,
+      card_last_4_no: @response.card_last_4_no,
+      pay_type: @response.pay_type
+    )
+  end
+
+  def order_params
+    params.require(:order).permit(:username, :amount, :memo)
+  end
 end
