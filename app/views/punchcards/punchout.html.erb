@@ -1,11 +1,11 @@
-  <% if punchcard.errors.any? %>
+  <% if @punchcard.errors.any? %>
       <ul>
-        <% punchcard.errors.full_messages.each do |message| %>
+        <% @punchcard.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
   <% end %>
-<%= form_with model: punchcard  do |f| %>
+<%= form_with model: @punchcard  do |f| %>
   <%= request.remote_ip %>
   <div class="p-5 border-8 border-green-500 w-96">
     <div class="field">
@@ -22,7 +22,7 @@
   </div>
 <% end %>
 <div class="py-10 ">
-  <%= form_with model: punchcard  do |f1| %>
+  <%= form_with model: @punchcard  do |f1| %>
       <div class="p-5 border-8 border-blue-500 w-96">
         <div class="field">
           <% f1.label :punch_out_at, "下班打卡" %>

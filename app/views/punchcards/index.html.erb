@@ -8,21 +8,23 @@
       <th>是否首次打卡</th>
       <th>上班時間</th>
       <th>下班時間</th>
+      <th>編輯打卡</th>
+      <th>刪除打卡</th>
       <th>體溫(°C)</th>
     </tr>
   </thead>
 
   <tbody class="text-center ">
-    <% @punchcards.each do |p| %>
+    <% @punchcards.each do |punchcard| %>
       <tr>
         <td td class="px-6"><%= current_user.id %></td>
         <td td class="px-6"><%= current_user.email %></td>
-        <td td class="px-6"><%= p.is_first_punchcard_today ? "是" : "否" %></td>
-        <td class="px-6"><%= p.punch_in_at %></td>
-        <td class="px-6"><%= p.punch_out_at %></td>
-        <%# <td><%= p.punch_in_at.strftime("%H:%M:%S")</td> %>
-        <%# <td><%= p.punch_out_at.strftime("%H:%M:%S")</td> %>
-        <td class="px-6"><%= p.body_temperature %></td>
+        <td td class="px-6"><%= punchcard.is_first_punchcard_today ? "是" : "否" %></td>
+        <td class="px-6"><%= punchcard.punch_in_at %></td>
+        <td class="px-6"><%= punchcard.punch_out_at %></td>
+        <td><%= link_to "編輯", edit_punchcard_path(punchcard) %></td>
+        <td><%= link_to "刪除", punchcard_path(punchcard.id), method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:punchcard).destroy?%></td>
+        <td class="px-6"><%= punchcard.body_temperature %></td>
       </tr>
     <% end %>
   </tbody>
