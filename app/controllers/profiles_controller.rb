@@ -2,13 +2,14 @@
 
 class ProfilesController < ApplicationController
   before_action :find_profile, only: %i[show edit update destroy]
+  # before_action :email_difference, only: %i[new]
 
   def index
     @profiles = if current_user.role == 'admin'
                 current_company.profiles.all.reject { |u| u.id == current_company.id }
-              else
+                else
                 current_company.profiles.all.reject { |u| u.role == 'admin' }
-              end
+                end
   end
 
   def new
@@ -17,7 +18,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @staff_profiles = current_company.users.where(role: %w[staff manager]).map(&:email)
+    @staff_profiles = current_company.users.where(role: %w[staff manager]).map{ |u| u.email}
     @profile = current_company.profiles.new(params_combine_id)
 
     if @profile.save
