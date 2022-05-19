@@ -2,6 +2,8 @@
 
 class BulletinsController < ApplicationController
   before_action :find_bulletins, only: %i[edit update show destroy]
+  before_action :authenticate_user!
+  
   def index
     @bulletins = current_company.bulletins.all
   end

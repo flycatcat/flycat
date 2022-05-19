@@ -2,10 +2,11 @@
 
 class UserAccountsController < ApplicationController
   before_action :find_user, only: %i[show edit update destroy]
-
+  before_action :authenticate_user!
+  
   def index
     if current_user.role == 'admin'
-      @users =  current_company.users.all.reject { |u| u.id == current_company.id }
+      @users =  current_company.users.select { |u| u.role != "admin" }
     end
   end
 

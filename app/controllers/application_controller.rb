@@ -5,13 +5,11 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :set_locale
-  before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :current_company
 
   def current_company
     return nil unless user_signed_in?
-
     @current_company ||= current_user.company
   end
 
@@ -19,10 +17,6 @@ class ApplicationController < ActionController::Base
     session[:locale] = params[:locale] if params[:locale] && I18n.available_locales.include?(params[:locale].to_sym)
 
     I18n.locale = session[:locale] || I18n.default_locale
-  end
-
-  def after_sign_in_path_for(_resource)
-    root_path
   end
 
   def not_found
@@ -33,28 +27,11 @@ class ApplicationController < ActionController::Base
     render status: 500
   end
 
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit(:title,
-                         :vat_number,
-                         :email,
-                         :password,
-                         :password_confirmation,
-                         company_attributes: %i[id title vat_number user_id])
-    end
-  end
-
   private
 
   def user_not_authorized
     flash[:notice] = '你沒有檢視該頁面的權限!'
     redirect_to root_path
   end
-
-  def check_permission
-    available_roles = %w[admin staff manager]
-    redirect_to root_path unless user_signed_in? && current_user.role.in?(available_roles)
-  end
+  
 end

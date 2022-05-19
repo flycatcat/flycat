@@ -2,13 +2,11 @@
 
 class ProfilesController < ApplicationController
   before_action :find_profile, only: %i[show edit update destroy]
-  # before_action :email_difference, only: %i[new]
+  before_action :authenticate_user!
 
   def index
     @profiles = if current_user.role == 'admin'
-                current_company.profiles.all.reject { |u| u.id == current_company.id }
-                else
-                current_company.profiles.all.reject { |u| u.role == 'admin' }
+                  current_company.profiles.select { |u| u.role != 'admin' }
                 end
   end
 

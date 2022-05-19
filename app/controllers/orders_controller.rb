@@ -2,7 +2,7 @@
 
 class OrdersController < ApplicationController
   protect_from_forgery except: :create
-
+  
   def new
     @order = Order.new
   end
