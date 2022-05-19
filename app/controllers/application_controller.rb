@@ -9,8 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_company
 
   def current_company
-    return nil unless user_signed_in?
-    @current_company ||= current_user.company
+    @current_company = current_user.company
   end
 
   def set_locale
