@@ -18,19 +18,6 @@
     <% end %>
   </div>
 
-  <hr>
-
-  <div class="field">
-    <%= f.fields_for :company, Company.new do |c| %>
-      <div>
-        <%= c.label :title, '公司名稱' %>
-        <%= c.text_field :title , id:'vat' %>
-      </div>
-    <% end %>
-  </div>
-
-  <hr>
-
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

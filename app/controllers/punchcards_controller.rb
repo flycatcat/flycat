@@ -3,7 +3,7 @@ class PunchcardsController < ApplicationController
   def index
       authorize :punchcard
       @punchcards = current_user.punchcards.all
-      @punchout = current_user.punchcards.last.slug
+      @punchout = current_user.punchcards.last
       @first_punch = current_user.punchcards.last
   end
 

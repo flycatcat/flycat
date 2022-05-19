@@ -5,7 +5,7 @@ class DepartmentsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @departments = current_company.all
+    @departments = current_company.departments.all
   end
 
   def new
