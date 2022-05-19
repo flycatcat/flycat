@@ -3,6 +3,7 @@ class PunchcardsController < ApplicationController
   def index
       authorize :punchcard
       @punchcards = current_user.punchcards.all
+      @punchout = current_user.punchcards.last.slug
   end
 
   def new
@@ -12,7 +13,14 @@ class PunchcardsController < ApplicationController
 
   def create
     authorize :punchcard
-    if current_user.punchcards.last.punch_in_at.today? ===true
+    if current_user.punchcards.empty? ===true
+      @punchcard = current_user.punchcards.new(punchcards_params)
+      if @punchcard.save
+        redirect_to punchcards_path, notice: '打卡成功!!!'
+      else
+        render :new, notice: '打卡失敗，請勿重複打卡!!!'
+      end
+    elsif current_user.punchcards.last.punch_in_at.today? ===true
       redirect_to punchcards_path, notice: '今日已有上班打卡紀錄，請打下班卡!!!'
     else
       @punchcard = current_user.punchcards.new(punchcards_params)

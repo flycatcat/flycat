@@ -1,35 +1,35 @@
 <h1>Flycat考勤打卡系統</h1>
 <br>
-<%= link_to '上班打卡', new_punchcard_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+<%= link_to '今日上班打卡', new_punchcard_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+<%= link_to "今日下班打卡", edit_punchcard_path(@punchout), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-4" %>
 <br>
 <br>
+
 <table>
   <thead>
-    <tr>
-      <th class="px-4">員工id</th>
-      <th class="px-4">員工email</th>
-      <th class="px-4">已打上班卡</th>
-      <th class="px-4">已打下班卡</th>
-      <th class="px-4">上班時間</th>
-      <th class="px-4">下班時間</th>
-      <th class="px-4">編輯打卡</th>
-      <th class="px-4">刪除打卡</th>
-      <th class="px-4">體溫(°C)</th>
+    <tr class="text-white bg-gray-800">
+      <th class="px-4 border-2">員工id</th>
+      <th class="px-4 border-2">員工email</th>
+      <th class="px-4 border-2">今天已打過上班卡</th>
+      <th class="px-4 border-2">今天已打過下班卡</th>
+      <th class="px-4 border-2">體溫(°C)</th>
+      <th class="px-4 border-2">上班時間</th>
+      <th class="px-4 border-2">下班時間</th>
+      <th class="px-4 border-2">刪除打卡</th>
     </tr>
   </thead>
 
   <tbody class="text-center ">
     <% @punchcards.order(created_at: :desc).each do |punchcard| %>
       <tr>
-        <td td class="px-6"><%= current_user.id %></td>
-        <td td class="px-6"><%= current_user.email %></td>
-        <td td class="px-6"><%= punchcard.punch_in_at.to_s.empty?  ? "否" : "是" %></td>
-        <td td class="px-6"><%= punchcard.punch_out_at.to_s.empty? ? "否" : "是" %></td>
+        <td td class="px-6 "><%= current_user.id %></td>
+        <td td class="px-6 "><%= current_user.email %></td>
+        <td td class="px-6 "><%= punchcard.punch_in_at.to_s.empty?  ? "否" : "是" %></td>
+        <td td class="px-6 "><%= punchcard.punch_out_at.to_s.empty? ? "否" : "是" %></td>
+        <td class="px-6"><%= punchcard.body_temperature %></td>
         <td class="px-6"><%= punchcard.punch_in_at %></td>
         <td class="px-6"><%= punchcard.punch_out_at %></td>
-        <td><%= link_to "下班打卡", edit_punchcard_path(punchcard) %></td>
         <td><%= link_to "刪除", punchcard_path(punchcard.id), method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:punchcard).destroy?%></td>
-        <td class="px-6"><%= punchcard.body_temperature %></td>
       </tr>
     <% end %>
   </tbody>
