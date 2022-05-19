@@ -50,7 +50,7 @@ class ProfilesController < ApplicationController
   def email_difference
     @user_email = current_company.users.where(role: %w[staff manager]).map(&:email)
     @profile_email = current_company.profiles.where(role: %w[staff manager]).map(&:email)
-    @profiles = @user_email - @profile_email
+    @profiles = @user_email - @profile_email 
   end
 
   def find_profile

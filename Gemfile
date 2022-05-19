@@ -7,16 +7,16 @@ ruby '2.7.5'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'braintree', '~> 4.7'
 gem 'devise', '~> 4.2'
-gem 'figaro'
+gem 'figaro', '~> 1.2'
 gem 'friendly_id', '~> 5.4'
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
-gem 'omniauth'
+gem 'omniauth', '~> 2.1'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'paranoia', '~> 2.6'
-gem 'pg'
+gem 'pg', '1.3.5'
 gem 'puma', '~> 5.0'
 gem 'pundit', '~> 2.2'
 gem 'rails', '6.1.5.1'
@@ -39,9 +39,7 @@ end
 group :development do
   gem 'foreman', '~> 0.87.2'
   gem 'web-console', '>= 4.1.0'
-  # gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
-  gem 'spring'
 end
 
 group :test do

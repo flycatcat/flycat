@@ -21,8 +21,4 @@ class Staff < ApplicationRecord
       %w[男生], %w[女生]
     ]
   end
-  
-
-  
-  
 end

@@ -17,12 +17,6 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/about'
 
-  namespace :admin do
-    resources :departments
-    resources :bulletins
-    resources :vendors
-  end
-
 
   resources :orders, only: [:new, :create] do
     collection do
