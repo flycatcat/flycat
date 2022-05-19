@@ -20,6 +20,6 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def destroy?
-    admin
+    admin || manager
   end
 end
