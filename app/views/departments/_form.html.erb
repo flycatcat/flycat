@@ -1,0 +1,20 @@
+<% if department.errors.any?  %>
+  <ul>
+    <% department.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: department) do |form| %>
+
+  <div class="field">
+    <%= form.label :department_name, "部門名稱" %>
+    <%= form.text_field :department_name %>
+  </div>
+
+    <div class="actions">
+    <%= form.submit %>
+    </div>
+
+<% end %>

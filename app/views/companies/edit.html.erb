@@ -9,8 +9,8 @@
     </ul>
   <% end %>
   <div class="field">
-    <%= form.label :company_title, "公司名稱" %>
-    <%= form.text_field :company_title %>
+    <%= form.label :title, "公司名稱" %>
+    <%= current_company.title %>
   </div>
 
   <div class="field">
@@ -19,8 +19,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :principal, "負責人" %>
-    <%= form.text_field :principal %>
+    <%= form.label :person_in_charge, "負責人" %>
+    <%= form.text_field :person_in_charge %>
   </div>
 
   <div class="field">
@@ -29,14 +29,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :linkman, "公司聯絡人" %>
-    <%= form.text_field :linkman %>
+    <%= form.label :contact_person, "公司聯絡人" %>
+    <%= form.text_field :contact_person %>
   </div>
 
-  <div class="field">
-    <%= form.label :email, "公司信箱" %>
-    <%= form.text_field :email %>
-  </div>
+  
 
   <div class="actions">
     <%= form.submit %>

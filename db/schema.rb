@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_17_093319) do
+ActiveRecord::Schema.define(version: 2022_05_18_140140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,16 +22,17 @@ ActiveRecord::Schema.define(version: 2022_05_17_093319) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
     t.string "slug"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_bulletins_on_company_id"
     t.index ["slug"], name: "index_bulletins_on_slug", unique: true
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string "company_title"
+    t.string "title"
     t.string "vat_number"
-    t.string "principal"
+    t.string "person_in_charge"
     t.string "address"
-    t.string "linkman"
-    t.string "email"
+    t.string "contact_person"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,14 +43,9 @@ ActiveRecord::Schema.define(version: 2022_05_17_093319) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.datetime "deleted_at"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_departments_on_company_id"
     t.index ["slug"], name: "index_departments_on_slug", unique: true
-  end
-
-  create_table "feedbacks", force: :cascade do |t|
-    t.string "author"
-    t.string "message"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -80,19 +76,25 @@ ActiveRecord::Schema.define(version: 2022_05_17_093319) do
     t.index ["order_no"], name: "index_orders_on_order_no", unique: true
   end
 
-  create_table "staffs", force: :cascade do |t|
+  create_table "profiles", force: :cascade do |t|
     t.string "staff_no"
     t.string "name"
     t.string "tel"
     t.string "gender"
     t.date "start_at"
-    t.bigint "department_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.datetime "deleted_at"
-    t.index ["department_id"], name: "index_staffs_on_department_id"
-    t.index ["slug"], name: "index_staffs_on_slug", unique: true
+    t.bigint "company_id"
+    t.string "department"
+    t.string "job_title"
+    t.bigint "user_id"
+    t.string "email"
+    t.string "role"
+    t.index ["company_id"], name: "index_profiles_on_company_id"
+    t.index ["slug"], name: "index_profiles_on_slug", unique: true
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,12 +105,21 @@ ActiveRecord::Schema.define(version: 2022_05_17_093319) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "role", default: "vendor"
+    t.string "role", default: "admin"
     t.string "provider"
     t.string "uid"
+    t.bigint "company_id"
+    t.string "slug"
+    t.string "title"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
-  add_foreign_key "staffs", "departments"
+  add_foreign_key "bulletins", "companies"
+  add_foreign_key "departments", "companies"
+  add_foreign_key "profiles", "companies"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "users", "companies"
 end

@@ -1,0 +1,30 @@
+<h1><%= t('個人資料') %></h1>
+
+<table>
+  <tr>
+      <td><%= t('員工編號') %></td>
+      <td><%= t('姓名') %></td>
+      <td><%= t('部門名稱') %></td>
+      <td><%= t('性別') %></td>
+      <td><%= t('報到日期') %></td>
+      <td><%= "聯絡電話" %></td>
+      <td><%= t('編輯員工資訊') %></td>
+      <td><%= t('刪除員工資訊') %></td>
+  <tr>
+  
+  <% @profiles.each do |profile|  %>
+    <tr>
+        <td><%= profile.staff_no %></td>
+        <td><%= profile.name %></td>
+        <td><%= profile.department%></td>
+        <td><%= profile.gender %></td>
+        <td><%= profile.start_at %></td>
+        <td><%= profile.tel %></td>
+        <td><%= link_to "編輯", edit_profile_path(profile) %></td>
+        <td><%= link_to "刪除", profile_path(profile.id), method: "delete", data: {confirm: '確定要刪除嗎？'} %></td>
+    <tr>
+  <% end %>
+  
+</table>
+
+<%= link_to t('新增員工資料'), new_profile_path %>

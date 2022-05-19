@@ -1,0 +1,58 @@
+<h1>編輯員工資訊</h1>
+
+<%= form_with(model: @profile, url: profile_path, method: 'patch') do |f| %>
+  <% if @profile.errors.any?  %>
+    <ul>
+        <% @profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+    </ul>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= f.label :staff_no, t("員工編號") %>
+    <%= f.text_field :staff_no, placeholder: t("輸入編號") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, t("姓名") %>
+    <%= f.text_field :name,placeholder: t("輸入姓名") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :department, "所屬部門" %>
+    <%= f.select :department, current_company.departments.all.map{ |c| [c.department_name] }  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :job_title, "職稱" %>
+    <%= f.text_field :job_title   %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_at, t("報到日期") %>
+    <%= f.date_field :start_at  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender, t("性別") %>
+    <%= f.select :gender , User.all_gender %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tel, t("電話號碼") %>
+    <%= f.text_field :tel, placeholder: t("輸入手機號碼") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role, "權限" %>
+    <%= f.select :role , User.all_role %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>
