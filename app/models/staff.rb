@@ -3,7 +3,6 @@
 class Staff < ApplicationRecord
   include Slugable
   acts_as_paranoid
-
   
   belongs_to :company
 end

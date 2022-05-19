@@ -19,6 +19,5 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
-  end
-  
+  end  
 end
