@@ -1,5 +1,5 @@
 class Punchcard < ApplicationRecord
-  #include Slugable
+  include Slugable
   belongs_to :user
 
   #Callback

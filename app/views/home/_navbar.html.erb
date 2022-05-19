@@ -12,11 +12,14 @@
 
       <% if user_signed_in? %>
         <% if policy(:profile).create?  %>
-          <li>
+           <li>
             <%= link_to '員工帳號列表', user_accounts_path %>
           </li>
           <li>
             <%= link_to '註冊員工帳號', new_user_account_path %>
+          </li>
+          <li>
+            <%= link_to '上/下打卡系統', new_punchcard_path %>
           </li>
           <li>
             <%= link_to t("新增員工資料"), new_profile_path %>

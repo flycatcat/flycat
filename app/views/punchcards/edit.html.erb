@@ -1,6 +1,13 @@
 <h1>下班打卡</h1>
 
- <div class="py-10 ">
+  <% if @punchcard.errors.any? %>
+      <ul>
+        <% @punchcard.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+<div class="py-10 ">
   <%= form_with model: @punchcard  do |f1| %>
       <div class="p-5 border-8 border-blue-500 w-96">
         <div class="field">
