@@ -29,7 +29,12 @@ module Users
 
     def configure_sign_up_params
       devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-        user_params.permit(:title,:vat_number,:email,:password,:password_confirmation,company_attributes: %i[id title vat_number user_id])
+        user_params.permit(:title,
+                           :vat_number,
+                           :email,
+                           :password,
+                           :password_confirmation,
+                           company_attributes: %i[id title vat_number user_id])
       end
     end
 
