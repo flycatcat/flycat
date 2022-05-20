@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_company
 
-  helper_method :current_company
-
   def current_company
     @current_company = current_user.company
   end
@@ -29,18 +27,18 @@ class ApplicationController < ActionController::Base
     render status: 500
   end
 
-  protected
+   private
+
+  def user_not_authorized
+    flash[:notice] = '你沒有檢視該頁面的權限!'
+    redirect_to root_path
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
       user_params.permit( :title,:email,:password,:password_confirmation,company_attributes: [:id, :title])
     end
   end
 
-  private
-
-  def user_not_authorized
-    flash[:notice] = '你沒有檢視該頁面的權限!'
-    redirect_to root_path
-  end
   
 end
