@@ -20,6 +20,7 @@ gem 'puma', '~> 5.0'
 gem 'pundit', '~> 2.2'
 gem 'rails', '6.1.5.1'
 gem 'rubocop', '~> 1.29', require: false
+gem 'rails-i18n', '~> 7.0', '>= 7.0.3'
 gem 'sass-rails', '>= 6'
 gem 'stimulus-rails', '~> 1.0', '>= 1.0.4'
 gem 'turbolinks', '~> 5'
