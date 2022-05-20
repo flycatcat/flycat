@@ -12,12 +12,6 @@ class ApplicationController < ActionController::Base
     @current_company = current_user.company
   end
 
-  def set_locale
-    session[:locale] = params[:locale] if params[:locale] && I18n.available_locales.include?(params[:locale].to_sym)
-
-    I18n.locale = session[:locale] || I18n.default_locale
-  end
-
   def not_found
     render status: 404
   end
@@ -26,11 +20,17 @@ class ApplicationController < ActionController::Base
     render status: 500
   end
 
-   private
+  private
 
+  def set_locale
+    session[:locale] = params[:locale] if params[:locale] && I18n.available_locales.include?(params[:locale].to_sym)
+
+    I18n.locale = session[:locale] || I18n.default_locale
+  end
+  
   def user_not_authorized
     flash[:notice] = '你沒有檢視該頁面的權限!'
     redirect_to root_path
   end
- 
+
 end

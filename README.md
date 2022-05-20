@@ -23,7 +23,7 @@ Website : https://flycat.works/
 * 資料庫: PostgreSQL
 * 部署: Heroku
 * 金流: Newebpay
-* 第三方登入: Google / Github
+* 第三方登入: Google / GitHub
 
 ## 開發團隊
 
@@ -61,7 +61,7 @@ https://github.com/linyunxi
 - 佈告欄已閱功能
 - Excel資料匯入
 
-黃麒修
+黃麒修 ChiShiou Huang 
 https://github.com/erichg007
 
 負責項目

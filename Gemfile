@@ -5,7 +5,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.5'
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'braintree', '~> 4.7'
 gem 'devise', '~> 4.2'
 gem 'figaro', '~> 1.2'
 gem 'friendly_id', '~> 5.4'
@@ -20,7 +19,6 @@ gem 'pg', '1.3.5'
 gem 'puma', '~> 5.0'
 gem 'pundit', '~> 2.2'
 gem 'rails', '6.1.5.1'
-gem 'rails-i18n', '~> 7.0', '>= 7.0.3'
 gem 'rubocop', '~> 1.29', require: false
 gem 'sass-rails', '>= 6'
 gem 'stimulus-rails', '~> 1.0', '>= 1.0.4'
@@ -33,7 +31,6 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.7', require: 'dotenv/rails-now'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.20'
-  gem 'rspec-rails', '~> 5.1'
 end
 
 group :development do
