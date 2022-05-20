@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_18_140140) do
+ActiveRecord::Schema.define(version: 2022_05_19_154155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,16 +64,14 @@ ActiveRecord::Schema.define(version: 2022_05_18_140140) do
     t.string "username"
     t.integer "amount"
     t.string "transaction_no"
-    t.integer "user_id"
     t.text "memo"
     t.string "pay_type"
     t.datetime "pay_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "card_last_4_no"
     t.integer "newebpay_amt"
     t.string "status"
-    t.index ["order_no"], name: "index_orders_on_order_no", unique: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -95,6 +93,18 @@ ActiveRecord::Schema.define(version: 2022_05_18_140140) do
     t.index ["company_id"], name: "index_profiles_on_company_id"
     t.index ["slug"], name: "index_profiles_on_slug", unique: true
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "punchcards", force: :cascade do |t|
+    t.datetime "punch_in_at"
+    t.datetime "punch_out_at"
+    t.decimal "body_temperature"
+    t.boolean "first_punch"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["user_id"], name: "index_punchcards_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -121,5 +131,6 @@ ActiveRecord::Schema.define(version: 2022_05_18_140140) do
   add_foreign_key "departments", "companies"
   add_foreign_key "profiles", "companies"
   add_foreign_key "profiles", "users"
+  add_foreign_key "punchcards", "users"
   add_foreign_key "users", "companies"
 end

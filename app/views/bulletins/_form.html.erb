@@ -1,12 +1,11 @@
-<% if bulletin.errors.any? %>
-    <ul>
-      <% bulletin.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-<% end %>
-
-<%= form_with(model: bulletin ) do |form| %>
+<%= form_with model: bulletin do |form| %>
+  <% if bulletin.errors.any? %>
+      <ul>
+        <% bulletin.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
 
   <div class="field">
     <%= form.label :title, t("公告標題") %>
@@ -18,8 +17,8 @@
     <%= form.text_area :content, data: { controller: "markdown-editor"} %>
   </div>
 
-    <div class="actions">
+  <div class="actions">
     <%= form.submit %>
-    </div>
+  </div>
 
 <% end %>

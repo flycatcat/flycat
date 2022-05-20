@@ -2,19 +2,20 @@
 
 <table>
   <tr>
-      <td><%= t('公告') %></td>
-      <td><%= t('編輯資訊') %></td>
-      <td><%= t('刪除公告') %></td>
+    <td><%= t('公告') %></td>
+    <td><%= t('編輯資訊') %></td>
+    <td><%= t('刪除公告') %></td>
   </tr>
 
 
   <% @bulletins.each do |bulletin|  %>
   <tr>
     <td><%= link_to bulletin.title , bulletin_path(bulletin) %></td>
-    <% if policy(:bulletin).create?  %>
-      <td><%= link_to "編輯", edit_bulletin_path(bulletin) %></td>
-      <td><%= link_to "刪除", bulletin_path(bulletin.id), method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:bulletin).destroy?%></td>
-    <% end %>
+      <% if policy(:bulletin).create?  %>
+        <td><%= link_to "編輯", edit_bulletin_path(bulletin) %></td>
+        <td><%= link_to "刪除", bulletin_path(bulletin.id), method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:bulletin).destroy?%>
+      </td>
+      <% end %>
   </tr>
   <% end %>
   

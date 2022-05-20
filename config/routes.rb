@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :departments, except: [:show]
   resources :bulletins, except: []
   resources :user_accounts, only: [:index, :new, :create, :destroy]
+  resources :punchcards
 
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
@@ -19,6 +20,5 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
-  end
-  
+  end  
 end

@@ -6,9 +6,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2 github]
   belongs_to :company
+  has_many :punchcards
   has_one :profile, dependent: :delete
   accepts_nested_attributes_for :company
-  accepts_nested_attributes_for :profile
 
   def normalize_friendly_id(value)
     value.to_s.parameterize(preserve_case: true)
@@ -31,7 +31,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
-
+  
   def self.all_gender
     [
       %w[男生], %w[女生]
