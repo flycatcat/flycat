@@ -7,6 +7,7 @@
         <% end %>
     </ul>
   <% end %>
+
   <form>
     <div class="w-screen max-w-xl px-10 mt-20 mb-16 bg-white shadow-md rounded-xl ">
       <div>
@@ -55,3 +56,51 @@
   </form>
 <% end %>  
 </div>
+
+  <div class="field">
+    <%= f.label :staff_no, t("員工編號") %>
+    <%= f.text_field :staff_no, placeholder: t("輸入編號") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, t("姓名") %>
+    <%= f.text_field :name,placeholder: t("輸入姓名") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :department, "所屬部門" %>
+    <%= f.select :department, current_company.departments.all.map{ |c| [c.department_name] }  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :job_title, "職稱" %>
+    <%= f.text_field :job_title   %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_at, t("報到日期") %>
+    <%= f.date_field :start_at  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender, t("性別") %>
+    <%= f.select :gender , User.all_gender %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tel, t("電話號碼") %>
+    <%= f.text_field :tel, placeholder: t("輸入手機號碼") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_at, "離職日期" %>
+    <%= f.date_field :end_at  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新增員工資訊" %>
+  </div>
+  
+<% end %>
+
+
