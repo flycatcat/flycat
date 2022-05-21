@@ -2,7 +2,7 @@
 
 class BulletinPolicy < ApplicationPolicy
   def index?
-    admin || manager || staff
+    staff || manager || admin
   end
 
   def new?
@@ -10,7 +10,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def create?
-    admin || manager
+    manager || admin
   end
 
   def edit?
@@ -18,10 +18,10 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def update?
-    admin || manager
+    manager || admin
   end
 
   def destroy?
-    admin || manager
+    manager || admin
   end
 end

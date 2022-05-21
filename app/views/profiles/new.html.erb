@@ -11,7 +11,7 @@
 
   <div class="field">
     <%= f.label :email, "員工綁定信箱" %>
-    <%= f.select :email, @profiles   %>
+    <%= f.select :email, @unbound_profiles   %>
   </div>
 
   <div class="field">
@@ -47,11 +47,6 @@
   <div class="field">
     <%= f.label :tel, t("電話號碼") %>
     <%= f.text_field :tel, placeholder: t("輸入手機號碼") %>
-  </div>
-
-  <div class="field">
-    <%= f.label :role, "權限" %>
-    <%= f.select :role , User.all_role %>
   </div>
 
   <div class="actions">

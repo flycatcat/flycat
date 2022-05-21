@@ -3,9 +3,9 @@
 class BulletinsController < ApplicationController
   before_action :find_bulletins, only: %i[edit update show destroy]
   before_action :authenticate_user!
-  
+
   def index
-    @bulletins = current_company.bulletins.all
+    @bulletins = current_company.bulletins
   end
 
   def new
@@ -40,7 +40,7 @@ class BulletinsController < ApplicationController
 
   def destroy
     authorize :bulletin
-    @bulletin.update(deleted_at: Time.now)
+    @bulletin.destroy
     redirect_to bulletins_path, notice: '已刪除公告'
   end
 

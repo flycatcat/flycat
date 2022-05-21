@@ -5,18 +5,16 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @profiles = if current_user.role == 'admin'
-                  current_company.profiles.select { |u| u.role != 'admin' }
-                end
+    @profiles = current_company.profiles.where.not(role: "admin")
   end
 
   def new
     @profile = current_company.profiles.new
-    email_difference
+    not_userd_email
   end
 
   def create
-    @staff_profiles = current_company.users.where(role: %w[staff manager]).map{ |u| u.email}
+    @staff_profiles = current_company.users.where(role: %w[staff manager]).select(:email)
     @profile = current_company.profiles.new(params_combine_id)
 
     if @profile.save
@@ -45,10 +43,10 @@ class ProfilesController < ApplicationController
 
   private
 
-  def email_difference
-    @user_email = current_company.users.where(role: %w[staff manager]).map(&:email)
-    @profile_email = current_company.profiles.where(role: %w[staff manager]).map(&:email)
-    @profiles = @user_email - @profile_email 
+  def not_userd_email
+    @user_email = current_company.users.where.not(role:"admin").map(&:email)
+    @profile_email = current_company.profiles.where.not(staff_no: nil).map(&:email)
+    @unbound_profiles = @user_email - @profile_email 
   end
 
   def find_profile
@@ -56,10 +54,11 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_params
-    params.require(:profile).permit(:staff_no, :name, :gender, :department, :company_id, :role, :tel, :start_at, :job_title, :email)
+    params.require(:profile).permit(:staff_no, :name, :gender, :department, :tel, :start_at, :job_title, :email)
   end
 
   def params_combine_id
     profiles_params.merge(user_id: User.find_by(email: params['profile']['email']).id)
   end
+
 end

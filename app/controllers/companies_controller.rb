@@ -3,13 +3,13 @@ class CompaniesController < ApplicationController
   before_action :find_company, only: %i[edit update show destroy]
   
   def new
-    @company = Company.new
+    @company = current_user.company.new
   end
 
   def edit; end
 
   def create
-    @company = Company.new(configure_permitted_parameters)
+    @company = current_user.new(company_params)
     if @company.save
       redirect_to root_path, notice: '新增成功'
     else
@@ -35,11 +35,11 @@ class CompaniesController < ApplicationController
   private
 
   def find_company
-    @company = Company.find(params[:id])
+    @company = current_user.company
   end
 
   def company_params
-    params.require(:company).permit(:title, :vat_number, :person_in_charge, :address, :contact_person, :email)
+    params.require(:company).permit(:title, :ubn, :person_in_charge, :address, :contact_person, :email)
   end
 
 end

@@ -1,14 +1,14 @@
 class ProfilePolicy < ApplicationPolicy
   def index?
-    update?
+    admin
   end
 
   def new?
-    update?
+    create?
   end
 
   def create?
-    update?
+    admin
   end
 
   def edit?
@@ -20,6 +20,6 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def destroy?
-    admin || manager
+    manager || admin
   end
 end

@@ -5,7 +5,7 @@ class DepartmentsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @departments = current_company.departments.all
+    @departments = current_company.departments
   end
 
   def new
@@ -40,7 +40,7 @@ class DepartmentsController < ApplicationController
 
   def destroy
     authorize :department
-    @department.update(deleted_at: Time.now)
+    @department.destroy
     redirect_to departments_path, notice: '已刪除部門'
   end
 
