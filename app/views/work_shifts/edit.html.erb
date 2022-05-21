@@ -1,9 +1,9 @@
 <h1>變更工作表</h1>
 
 <%= form_with(model: @work_shift, url: work_shift_path, method: 'patch') do |form| %>
-  <% if work_shift.errors.any?  %>
+  <% if @work_shift.errors.any?  %>
     <ul>
-      <% work_shift.errors.full_messages.each do |message| %>
+      <% @work_shift.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
