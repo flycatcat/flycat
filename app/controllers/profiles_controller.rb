@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @profiles = current_company.profiles.where.not(role: "admin")
+    @profiles = current_company.profiles
   end
 
   def new
