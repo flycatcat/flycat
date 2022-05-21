@@ -5,36 +5,16 @@ module Users
     before_action :configure_account_update_params, only: [:update]
     before_action :configure_sign_up_params, only: [:create]
 
-    def new
-      super
-    end
-
-    def create
-      super
-    end
-
-    def edit
-      super
-    end
-
-    def update
-      super
-    end
-
-    def destroy
-      super
-    end
-
     private
 
     def configure_sign_up_params
       devise_parameter_sanitizer.permit(:sign_up) do |user_params|
         user_params.permit(:title,
-                           :vat_number,
+                           :ubn,
                            :email,
                            :password,
                            :password_confirmation,
-                           company_attributes: %i[id title vat_number user_id])
+                           company_attributes: %i[id title ubn user_id])
       end
     end
 

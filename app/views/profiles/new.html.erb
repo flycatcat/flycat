@@ -11,7 +11,7 @@
 
   <div class="field">
     <%= f.label :email, "員工綁定信箱" %>
-    <%= f.select :email, @profiles   %>
+    <%= f.select :email, @unpaired_profiles %>
   </div>
 
   <div class="field">
@@ -50,8 +50,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :role, "權限" %>
-    <%= f.select :role , User.all_role %>
+    <%= f.label :end_at, "離職日期" %>
+    <%= f.date_field :end_at  %>
   </div>
 
   <div class="actions">

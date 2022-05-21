@@ -49,6 +49,11 @@ module Newebpay
       info[:VACC] = 1
     end
 
+    def flycatOrderNo
+      flycat = "flycat#{Time.current.strftime('%Y%m%d%H%M%w')}"
+      random = [*'a'..'z', *'A'..'Z', *'0'..'9']
+      flycat + random.sample(7).join
+    end
 
     def url_encoded_query_string
       URI.encode_www_form(info)
