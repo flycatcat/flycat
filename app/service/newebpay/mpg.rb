@@ -4,12 +4,13 @@ module Newebpay
   class Mpg
     attr_accessor :info
 
-    def initialize
-      # 建議 hash key / iv & merchant id 都使用環境變數
+    def initialize(order)
       @key = ENV.fetch('hash_key', nil)
       @iv = ENV.fetch('hash_iv', nil)
       @merchant_id = ENV.fetch('merchant_id', nil)
-      @info = {} # 使用 attr_accessor 讓 info 方便存取
+      @info = {} 
+      @flycatOrderNo = order.order_no
+      @amount = order.amount
       set_info
     end
 
@@ -24,42 +25,31 @@ module Newebpay
 
     private
 
-    # AES256加密後資訊
     def trade_info
       aes_encode(url_encoded_query_string)
     end
 
-    # SHA加密後資訊
     def trade_sha
       sha256_encode(@key, @iv, trade_info)
     end
 
     def set_info
-      order = Order.last
       info[:MerchantID] = @merchant_id
-      info[:MerchantOrderNo] = flycatOrderNo
-      info[:Amt] = order.amount
+      info[:MerchantOrderNo] = @flycatOrderNo
+      info[:Amt] = @amount
       info[:ItemDesc] = 'Flycat'
       info[:Email] = ''
       info[:TimeStamp] = Time.now.to_i
       info[:RespondType] = 'JSON'
       info[:Version] = '2.0'
-      # url 也建議使用環境變數
       info[:ReturnURL] = ENV.fetch('ReturnURL', nil)
-      info[:NotifyURL] = 'https://....'
+      info[:NotifyURL] = ENV.fetch('NotifyURL', nil)
       info[:LoginType] = 0
       info[:CREDIT] =  1,
       info[:VACC] = 1
     end
 
-    # 將商品編號設置年月日時分星期+亂碼7位數
-    def flycatOrderNo
-      flycat = "flycat#{Time.current.strftime('%Y%m%d%H%M%w')}"
-      random = [*'a'..'z', *'A'..'Z', *'0'..'9']
-      flycat + random.sample(7).join
-    end
 
-    # 將加密後的內容轉為query string
     def url_encoded_query_string
       URI.encode_www_form(info)
     end

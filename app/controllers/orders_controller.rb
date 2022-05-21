@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      @form_info = Newebpay::Mpg.new.form_info
+      @form_info = Newebpay::Mpg.new(@order).form_info
     else
       render :new
     end
@@ -18,9 +18,8 @@ class OrdersController < ApplicationController
 
   def confirm
     @response = Newebpay::MpgResponse.new(params[:TradeInfo])
-    order = Order.last
+    order = Order.find_by(order_no: @response.order_no)
     order.update(
-      order_no: @response.order_no,
       transaction_no: @response.trans_no,
       newebpay_amt: @response.newebpay_amt,
       pay_at: @response.pay_at,
