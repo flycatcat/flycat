@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = current_company.profiles.new
-    not_userd_email
+    unused_email
   end
 
   def create
@@ -43,10 +43,10 @@ class ProfilesController < ApplicationController
 
   private
 
-  def not_userd_email
+  def unused_email
     @user_email = current_company.users.where.not(role:"admin").map(&:email)
     @profile_email = current_company.profiles.where.not(staff_no: nil).map(&:email)
-    @unbound_profiles = @user_email - @profile_email 
+    @unpaired_profiles = @user_email - @profile_email 
   end
 
   def find_profile
@@ -54,7 +54,7 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_params
-    params.require(:profile).permit(:staff_no, :name, :gender, :department, :tel, :start_at, :job_title, :email)
+    params.require(:profile).permit(:staff_no, :name, :gender, :department, :tel, :start_at, :job_title, :email, :end_at)
   end
 
   def params_combine_id

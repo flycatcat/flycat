@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_20_152532) do
+ActiveRecord::Schema.define(version: 2022_05_21_092119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,13 +46,6 @@ ActiveRecord::Schema.define(version: 2022_05_20_152532) do
     t.bigint "company_id"
     t.index ["company_id"], name: "index_departments_on_company_id"
     t.index ["slug"], name: "index_departments_on_slug", unique: true
-  end
-
-  create_table "feedbacks", force: :cascade do |t|
-    t.string "author"
-    t.string "message"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -96,6 +89,7 @@ ActiveRecord::Schema.define(version: 2022_05_20_152532) do
     t.string "job_title"
     t.bigint "user_id"
     t.string "email"
+    t.date "end_at"
     t.index ["company_id"], name: "index_profiles_on_company_id"
     t.index ["slug"], name: "index_profiles_on_slug", unique: true
     t.index ["user_id"], name: "index_profiles_on_user_id"

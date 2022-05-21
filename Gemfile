@@ -25,12 +25,11 @@ gem 'sass-rails', '>= 6'
 gem 'stimulus-rails', '~> 1.0', '>= 1.0.4'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'taiwanese_ubn_validator'
+gem 'taiwanese_ubn_validator', '~> 0.0.1'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 3.36'
-  gem 'dotenv-rails', '~> 2.7', require: 'dotenv/rails-now'
 end
 
 group :development do
