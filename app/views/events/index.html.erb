@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>排班列表</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>開始時間</th>
+      <th>結束時間</th>
+      <th>排班名稱</th>
+      <th colspan="3">執行動作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.start_time %></td>
+        <td><%= event.end_time %></td>
+        <td><%= event.title %></td>
+        <td><%= link_to '明細', event_path(@work_shift.id,event.id) %></td>
+        <td><%= link_to '編輯', edit_event_path(@work_shift.id,event.id) %></td>
+        <td><%= link_to '刪除', event_path(@work_shift.id,event.id), method: :delete, data: { confirm: '你確定嗎?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新增', new_event_path((@work_shift.id)) %>
+

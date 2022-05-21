@@ -1,0 +1,28 @@
+<h1>新增工作表</h1>
+
+<%= form_with(model: @work_shift, url:work_shifts_path, method: 'post' ) do |form| %>
+  <% if @work_shift.errors.any?  %>
+    <ul>
+      <% @work_shift.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="title">
+    <%= form.label :title, "工作表名稱" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="kind">
+    <%= form.radio_button :kind, '1' %>
+    <%= form.label :kind, "固定班表" %>
+    <%= form.radio_button :kind, '2' %>
+    <%= form.label :kind, "彈性班表" %> 
+  </div>
+
+  <div class="submit">
+    <%= form.submit "新增"%>
+  </div>
+
+<% end %>

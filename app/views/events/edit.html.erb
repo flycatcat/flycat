@@ -1,0 +1,47 @@
+<h1>編輯排班</h1>
+
+<%= form_with(model: @event , url:event_path(@work_shift.id,@event.id),  method: 'patch', local: true) do |form| %>
+    <% if @event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+  
+        <ul>
+          <% @event.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :all_day, "全日" %>
+      <%= form.check_box :all_day %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :start_time, "開始時間" %>
+      <%= form.datetime_select :start_time %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :end_time, "結束時間" %>
+      <%= form.datetime_select :end_time %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :title, "標題" %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :content, "內容" %>
+      <%= form.text_field :content %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit "儲存"%>
+    </div>
+  <% end %>
+
+<%= link_to '明細', event_path(@work_shift.id,@event.id) %> |
+<%= link_to '返回', sets_work_shift_path(@work_shift.id) %>
