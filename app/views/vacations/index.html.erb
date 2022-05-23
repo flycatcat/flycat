@@ -1,0 +1,25 @@
+<h1><%= '請假管理' %></h1>
+<table>
+  <tr>
+      <td><%= '假別' %></td>
+      <td><%= '請假日' %></td>
+      <td><%= '簽核狀態' %></td>
+      <td><%= '原因' %></td>
+  </tr>
+
+  <% @vacations.each do |vacation|  %>
+  <tr>
+        <td><%= vacation.vacation_type %></td>
+        <td><%= vacation.vacation_at %></td>
+        <td><%= vacation.status %></td>
+        <td><%= vacation.reason %></td>
+        <td><%= link_to '展開', vacation %></td>
+        <td><%= link_to '編輯', edit_vacation_path(vacation) %></td>
+        <td><%= link_to '刪除', vacation_path(vacation.id), method: :delete, data: { confirm: '確定要刪除嗎?' } %></td>
+      </tr>
+    <% end %>
+</table>
+<br>
+<div>
+<%= link_to "新增假單", new_vacation_path %>
+</div>

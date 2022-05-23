@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[google_oauth2 github]
   belongs_to :company
   has_many :punchcards
+  has_many :vacations
   has_one :profile, dependent: :delete
   accepts_nested_attributes_for :company
 

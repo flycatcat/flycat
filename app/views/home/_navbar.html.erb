@@ -33,6 +33,9 @@
           <li>
             <%= link_to "編輯公司資訊", edit_company_path(current_company.id) %>
           </li>
+           <li>
+            <%= link_to "請假管理", vacations_path %>
+          </li>
         <% end %>
         <% if policy(:bulletin).index? %>
           <li>

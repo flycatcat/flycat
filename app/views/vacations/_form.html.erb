@@ -1,0 +1,29 @@
+<%= form_with(model: vacation) do |form| %>
+  <% if vacation.errors.any? %>
+      <ul>
+        <% vacation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :vacation_type %>
+    <%= form.select :vacation_type, Vacation.all_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vacation_at %>
+    <%= form.date_field :vacation_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reason %>
+    <%= form.text_field :reason %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
