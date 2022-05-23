@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+
 class CompaniesController < ApplicationController
   before_action :find_company, only: %i[edit update show destroy]
-  
+
   def new
     @company = current_user.company.new
   end
@@ -41,5 +42,4 @@ class CompaniesController < ApplicationController
   def company_params
     params.require(:company).permit(:title, :ubn, :person_in_charge, :address, :contact_person, :email)
   end
-
 end

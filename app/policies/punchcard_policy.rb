@@ -2,11 +2,11 @@
 
 class PunchcardPolicy < ApplicationPolicy
   def index?
-    admin || staff 
+    admin || staff
   end
 
   def create?
-    index? 
+    index?
   end
 
   def new?

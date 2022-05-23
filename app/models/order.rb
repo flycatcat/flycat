@@ -8,6 +8,7 @@ class Order < ApplicationRecord
   before_create :flycatOrderNo
 
   private
+
   def flycatOrderNo
     flycat = "flycat#{Time.current.strftime('%Y%m%d%H%M%w')}"
     random = [*'a'..'z', *'A'..'Z', *'0'..'9']

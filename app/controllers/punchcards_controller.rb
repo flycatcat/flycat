@@ -1,26 +1,29 @@
+# frozen_string_literal: true
+
 class PunchcardsController < ApplicationController
   before_action :find_punchcards, only: %i[edit update show destroy]
   def index
-      authorize :punchcard
-      @punchcards = current_user.punchcards.all
-      @punchout = current_user.punchcards.last.slug
+    authorize :punchcard
+    @punchcards = current_user.punchcards.all
+    @punchout = current_user.punchcards.last.slug
   end
 
   def new
-      authorize :punchcard
-      @punchcard = current_user.punchcards.new
+    authorize :punchcard
+    @punchcard = current_user.punchcards.new
   end
 
   def create
     authorize :punchcard
-    if current_user.punchcards.empty? ===true
+    case true
+    when current_user.punchcards.empty?
       @punchcard = current_user.punchcards.new(punchcards_params)
       if @punchcard.save
         redirect_to punchcards_path, notice: '打卡成功!!!'
       else
         render :new, notice: '打卡失敗，請勿重複打卡!!!'
       end
-    elsif current_user.punchcards.last.punch_in_at.today? ===true
+    when current_user.punchcards.last.punch_in_at.today?
       redirect_to punchcards_path, notice: '今日已有上班打卡紀錄，請打下班卡!!!'
     else
       @punchcard = current_user.punchcards.new(punchcards_params)
@@ -32,8 +35,7 @@ class PunchcardsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     authorize :punchcard
@@ -41,7 +43,7 @@ class PunchcardsController < ApplicationController
 
   def update
     authorize :punchcard
-    if current_user.punchcards.last.punch_out_at.to_s.empty? ===true
+    if current_user.punchcards.last.punch_out_at.to_s.empty? === true
       @punchcard.update(punchcards_params)
       redirect_to punchcards_path, notice: '已更新下班打卡紀錄!!!'
     else

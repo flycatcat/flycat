@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :set_locale
-  
+
   helper_method :current_company
 
   def current_company
@@ -27,10 +27,9 @@ class ApplicationController < ActionController::Base
 
     I18n.locale = session[:locale] || I18n.default_locale
   end
-  
+
   def user_not_authorized
     flash[:notice] = '你沒有檢視該頁面的權限!'
     redirect_to root_path
   end
-
 end

@@ -8,7 +8,7 @@ module Newebpay
       @key = ENV.fetch('hash_key', nil)
       @iv = ENV.fetch('hash_iv', nil)
       @merchant_id = ENV.fetch('merchant_id', nil)
-      @info = {} 
+      @info = {}
       @flycatOrderNo = order.order_no
       @amount = order.amount
       set_info
@@ -46,7 +46,7 @@ module Newebpay
       info[:NotifyURL] = ENV.fetch('NotifyURL', nil)
       info[:LoginType] = 0
       info[:CREDIT] =  1,
-      info[:VACC] = 1
+                       info[:VACC] = 1
     end
 
     def flycatOrderNo

@@ -17,7 +17,7 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @vacation.reason %>
+  <%= @vacation.reason if policy(:vacation).show?%>
 </p>
 
 <%= link_to 'Edit', edit_vacation_path(@vacation) %> |
