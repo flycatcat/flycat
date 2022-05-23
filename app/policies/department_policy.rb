@@ -2,7 +2,7 @@
 
 class DepartmentPolicy < ApplicationPolicy
   def index?
-    admin || manager
+    manager || admin
   end
 
   def new?
@@ -10,15 +10,15 @@ class DepartmentPolicy < ApplicationPolicy
   end
 
   def create?
-    admin || manager
+    manager || admin
   end
 
   def edit?
-    index?
+    update?
   end
 
   def update?
-    index?
+    manager || admin
   end
 
   def destroy?

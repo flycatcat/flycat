@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "new-password", value: current_company.vat_number , readonly: true%>
+    <%= f.password_field :password, autocomplete: "new-password", value: current_company.ubn , readonly: true%>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",  value: current_company.vat_number, readonly: true %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",  value: current_company.ubn, readonly: true %>
   </div>
 
   <div class="field">

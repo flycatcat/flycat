@@ -87,18 +87,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    dotenv (2.7.6)
-    dotenv-rails (2.7.6)
-      dotenv (= 2.7.6)
-      railties (>= 3.2)
     erubi (1.10.0)
-    factory_bot (6.2.1)
-      activesupport (>= 5.0.0)
-    factory_bot_rails (6.2.0)
-      factory_bot (~> 6.2.0)
-      railties (>= 5.0.0)
-    faker (2.20.0)
-      i18n (>= 1.8.11, < 2)
     faraday (2.3.0)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
@@ -266,6 +255,7 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
+    taiwanese_ubn_validator (0.0.1)
     thor (1.2.1)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -306,9 +296,6 @@ DEPENDENCIES
   byebug
   capybara (~> 3.36)
   devise (~> 4.2)
-  dotenv-rails (~> 2.7)
-  factory_bot_rails (~> 6.2)
-  faker (~> 2.20)
   figaro (~> 1.2)
   foreman (~> 0.87.2)
   friendly_id (~> 5.4)
@@ -329,6 +316,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   stimulus-rails (~> 1.0, >= 1.0.4)
+  taiwanese_ubn_validator (~> 0.0.1)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
@@ -339,4 +327,4 @@ RUBY VERSION
    ruby 2.7.5p203
 
 BUNDLED WITH
-   2.3.11
+   2.3.12
