@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   resources :punchcards
   
   resources :vacations do
-      member do
-        get :signoff
-        post :signoff_completed
-      end
+    member do
+      get :signoff
+      post :signoff_completed
     end
+  end
 
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
