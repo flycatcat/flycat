@@ -21,12 +21,11 @@ class EventsController < ApplicationController
   
     def create
       @event = Event.new(event_params.merge(work_shift_id: params[:work_shift_id]))
-  
       if @event.save
         redirect_to sets_work_shift_path, notice: '新增成功!'
       else
         render :new
-      end
+      end 
     end
   
     def update
@@ -52,6 +51,6 @@ class EventsController < ApplicationController
     end
   
     def event_params
-      params.require(:event).permit(:all_day, :start_time, :end_time, :title, :content)
+      params.require(:event).permit(:all_day, :start_time, :end_time, :title, :content, :vacation_set)
     end
   end

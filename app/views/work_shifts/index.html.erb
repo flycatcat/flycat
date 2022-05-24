@@ -9,16 +9,12 @@
   <% @work_shifts.each do |work_shift| %>
   <tr>
     <td><%= work_shift.title %></td>
-    <% if work_shift.kind == 'value 1' %>
-      <td>固定班表</td>
-    <% else %>
-      <td>彈性班表</td>
-    <% end %>
+    <td><%= work_shift.kind %></td>
     <td>
       <%= link_to '編輯' , edit_work_shift_path(work_shift.id) %> 
       <%= link_to'刪除' , work_shift_path(work_shift.id), method: 'delete', data: {
       confirm: '確定要刪除嗎？'} %>
-      <%= link_to'設定' , sets_work_shift_path(work_shift.id) %>
+      <%= link_to'設定' , set_work_shift_path(work_shift.id) %>
     </td>
   </tr>
   <% end %>

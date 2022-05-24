@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :work_shifts, param: :work_shift_id do
     member do
       resources :events, param: :event_id
-      get 'sets/index', to: 'sets#index', as: 'sets'
+      get 'set', to: 'work_shifts#set', as: 'set'
     end
   end
   

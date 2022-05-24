@@ -8,20 +8,30 @@
                 <%= form.label :all_day, "全日" %>
                 <%= form.check_box :all_day %>
               </div>
-  
-              <div class="field">
+
+              <div class="field", data: { target: 'calendar.start_time' }>
                 <%= form.label :start_time, "開始時間" %>
-                <%= form.text_field :start_time, data: { target: 'calendar.start_time' } %>
+                <%= form.datetime_select :start_time %>
               </div>
   
-              <div class="field">
+              <div class="field", data: { target: 'calendar.end_time' }>
                 <%= form.label :end_time, "結束時間" %>
-                <%= form.text_field :end_time, data: { target: 'calendar.end_time' } %>
+                <%= form.datetime_select :end_time %>
               </div>
   
               <div class="field">
                 <%= form.label :title, "標題" %>
                 <%= form.text_field :title %>
+              </div>
+
+              <div class="field">
+                <%= form.label :content, "內容" %>
+                <%= form.text_field :content %>
+              </div>
+
+              <div class="kind">
+                <%= form.label :vacation_set, "休假設定" %>
+                <%= form.select :vacation_set , Event.all_vacation_set %>
               </div>
             </div>
             <div class="modal-footer">

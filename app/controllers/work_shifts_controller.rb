@@ -6,11 +6,11 @@ class WorkShiftsController < ApplicationController
   end
     
   def new
-    @work_shift = WorkShift.new
+    @work_shift = current_company.work_shifts.new
   end
     
   def create
-    @work_shift = WorkShift.new(work_shift_params.merge(company_id: current_company.id))
+    @work_shift = current_company.work_shifts.new(work_shift_params)
     if @work_shift.save
       redirect_to work_shifts_path
     else
@@ -32,11 +32,13 @@ class WorkShiftsController < ApplicationController
     
   def destroy
     @work_shift.destroy
-    
     redirect_to work_shifts_path
   end
+
+  def set
+    @work_shift = WorkShift.find(params[:work_shift_id])
+  end
       
-    
   private
     
     def work_shift_params

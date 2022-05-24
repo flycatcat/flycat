@@ -13,12 +13,10 @@
     <%= form.label :title, "工作表名稱" %>
     <%= form.text_field :title %>
   </div>
-
+  
   <div class="kind">
-    <%= form.radio_button :kind, '1' %>
-    <%= form.label :kind, "固定班表" %>
-    <%= form.radio_button :kind, '2' %>
-    <%= form.label :kind, "彈性班表" %> 
+    <%= form.label :kind, "工作表類別" %>
+    <%= form.select :kind , WorkShift.all_kind %>
   </div>
 
   <div class="submit">
