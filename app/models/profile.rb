@@ -10,7 +10,7 @@ class Profile < ApplicationRecord
   validates :start_at, presence: true
   validates :department, presence: true
   validates :job_title, presence: true
-  # validates :email,  presence: true
+  validates :email,  presence: true
 
   belongs_to :user, dependent: :delete
   belongs_to :company

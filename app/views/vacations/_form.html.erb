@@ -14,6 +14,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :hour %>
+    <%= form.select :hour, Vacation.all_hour %>
+  </div>
+
+  <div class="field">
     <%= form.label :vacation_at %>
     <%= form.date_field :vacation_at %>
   </div>

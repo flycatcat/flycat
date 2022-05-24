@@ -21,6 +21,7 @@ class VacationsController < ApplicationController
 
   def create
     @vacation = current_company.vacations.new(vacation_combine_id)
+    params[:vacation][:hour] = params[:vacation][:hour].to_i
     if @vacation.save
       redirect_to vacations_path, notice: '假單申請成功.'
     else
@@ -39,7 +40,6 @@ class VacationsController < ApplicationController
   end
 
   def update
-    # authorize :vacation
     if @vacation.update(vacation_params)
       redirect_to vacations_path, notice: '更新成功'
     else
@@ -59,7 +59,7 @@ class VacationsController < ApplicationController
   end
 
   def vacation_params
-    params.require(:vacation).permit(:vacation_type, :vacation_at, :status, :reason, :company_id)
+    params.require(:vacation).permit(:vacation_type, :vacation_at, :status, :reason, :company_id, :hour)
   end
 
   def vacation_combine_id

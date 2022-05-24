@@ -11,7 +11,13 @@ class Vacation < ApplicationRecord
 
   def self.all_type
     [
-      %w[事假半天], %w[事假全天], %w[病假半天], %w[病假全天], %w[特休半天], %w[特休全天], %w[婚假], %w[產/陪產假], %w[喪假], %w[其他(給薪)], %w[其他(不給薪)]
+      %w[事假], %w[病假], %w[特休], %w[婚假], %w[產/陪產假], %w[喪假], %w[其他(給薪)], %w[其他(不給薪)]
+    ]
+  end
+
+  def self.all_hour
+    [
+      %w[8], %w[0.5]
     ]
   end
 
