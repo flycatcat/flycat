@@ -3,6 +3,7 @@
 class Vacation < ApplicationRecord
   belongs_to :user
   belongs_to :company
+  has_one :profile, through: :user
 
   validates :vacation_at, presence: true
 
@@ -17,7 +18,7 @@ class Vacation < ApplicationRecord
 
   def self.all_hour
     [
-      %w[8], %w[0.5]
+      %w[8], %w[0.5], %w[1], %w[2], %w[3], %w[4], %w[5], %w[6], %w[7]
     ]
   end
 

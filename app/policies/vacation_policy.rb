@@ -6,15 +6,15 @@ class VacationPolicy < ApplicationPolicy
   end
 
   def new?
-    create?
+    update?
   end
 
   def create?
-    staff || manager
+    update?
   end
 
   def show?
-    staff
+    update?
   end
 
   def edit?
@@ -22,7 +22,7 @@ class VacationPolicy < ApplicationPolicy
   end
 
   def update?
-    staff
+    staff || manager
   end
 
   def signoff

@@ -1,15 +1,20 @@
 <h1><%= '請假管理' %></h1>
   <table>
     <tr>
+      <td><%= '人員' %></td>
       <td><%= '假別' %></td>
+      <td><%= '時數' %></td>
       <td><%= '請假日' %></td>
       <td><%= '簽核狀態' %></td>
-      <td><%= '原因' %></td>
+      <td><%= '請假事由' %></td>
     </tr>
 
   <% @vacations.each do |vacation|  %>
     <tr>
+      <%# 用&符號代表有就撈沒有就跳過，因為之前資料庫有一些欄位在建的時候資料還沒寫進去，是空白的 %>
+      <td><%= vacation&.profile&.name %></td>
       <td><%= vacation.vacation_type %></td>
+      <td><%= vacation.hour %></td>
       <td><%= vacation.vacation_at %></td>
       <td><%= vacation.status %></td>
       <td><%= vacation.reason %></td>

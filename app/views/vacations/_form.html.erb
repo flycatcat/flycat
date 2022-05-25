@@ -9,22 +9,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :vacation_type %>
+    <%= form.label :vacation_type, "假別" %>
     <%= form.select :vacation_type, Vacation.all_type %>
   </div>
 
   <div class="field">
-    <%= form.label :hour %>
+    <p>請整天假者，不需調整時數。非請整天者，請依實際時數選擇</p>
+    <%= form.label :hour, "時數" %>
     <%= form.select :hour, Vacation.all_hour %>
   </div>
 
   <div class="field">
-    <%= form.label :vacation_at %>
+    <%= form.label :vacation_at, "請假日" %>
     <%= form.date_field :vacation_at %>
   </div>
 
   <div class="field">
-    <%= form.label :reason %>
+    <%= form.label :reason, "請假事由" %>
     <%= form.text_field :reason %>
   </div>
 
