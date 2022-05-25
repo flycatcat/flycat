@@ -4,11 +4,11 @@ class VacationsController < ApplicationController
   before_action :set_vacation, only: %i[show edit update destroy signoff signoff_completed]
 
   def index
-    @vacations = if current_user.role == 'staff'
-                   current_user.vacations
-                 else
-                   current_company.vacations
-                 end
+    @vacations =  if current_user.role == 'staff'
+                  current_user.vacations
+                  else
+                  current_company.vacations
+                  end
   end
 
   def show; end
@@ -17,11 +17,12 @@ class VacationsController < ApplicationController
     @vacation = current_company.vacations.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @vacation = current_company.vacations.new(vacation_combine_id)
-    params[:vacation][:hour] = params[:vacation][:hour].to_i
+    params[:hour] = params[:hour].to_i
     if @vacation.save
       redirect_to vacations_path, notice: '假單申請成功.'
     else
@@ -59,7 +60,7 @@ class VacationsController < ApplicationController
   end
 
   def vacation_params
-    params.require(:vacation).permit(:vacation_type, :vacation_at, :status, :reason, :company_id, :hour)
+    params.require(:vacation).permit(:vacation_type, :vacation_at, :status, :reason, :hour)
   end
 
   def vacation_combine_id
