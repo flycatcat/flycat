@@ -5,24 +5,8 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @profiles = current_company.profiles
-  end
-
-  def new
-    @profile = current_company.profiles.new
-    @work_shift_title = current_company.work_shifts.map(&:title)
-    unused_email
-  end
-
-  def create
-    @staff_profiles = current_company.users.where(role: %w[staff manager]).select(:email)
-    @profile = current_company.profiles.new(params_combine_id)
-
-    if @profile.save
-      redirect_to profiles_path, notice: '新增成功'
-    else
-      render :new
-    end
+    @q = current_company.profiles.ransack(params[:q])
+    @profiles = @q.result
   end
 
   def show; end
@@ -46,11 +30,6 @@ class ProfilesController < ApplicationController
 
   private
 
-  def unused_email
-    @user_email = current_company.users.where.not(role: 'admin').map(&:email)
-    @profile_email = current_company.profiles.where.not(staff_no: nil).map(&:email)
-    @unpaired_profiles = @user_email - @profile_email
-  end
 
   def find_profile
     @profile = current_company.profiles.friendly.find(params[:id])
@@ -61,6 +40,8 @@ class ProfilesController < ApplicationController
   end
 
   def params_combine_id
-    profiles_params.merge(user_id: User.find_by(email: params['profile']['email']).id)
+    profiles_params.merge(user_id: User.last.id)
   end
+
+  
 end

@@ -26,6 +26,8 @@ gem 'stimulus-rails', '~> 1.0', '>= 1.0.4'
 gem 'taiwanese_ubn_validator', '~> 0.0.1'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
+gem 'taiwanese_ubn_validator', '~> 0.0.1'
+gem 'ransack', '~> 3.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
