@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProfilePolicy < ApplicationPolicy
   def index?
     admin
@@ -16,7 +18,7 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def update?
-    admin 
+    admin
   end
 
   def destroy?

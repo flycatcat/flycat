@@ -44,9 +44,9 @@ class ProfilesController < ApplicationController
   private
 
   def unused_email
-    @user_email = current_company.users.where.not(role:"admin").map(&:email)
+    @user_email = current_company.users.where.not(role: 'admin').map(&:email)
     @profile_email = current_company.profiles.where.not(staff_no: nil).map(&:email)
-    @unpaired_profiles = @user_email - @profile_email 
+    @unpaired_profiles = @user_email - @profile_email
   end
 
   def find_profile
@@ -60,5 +60,4 @@ class ProfilesController < ApplicationController
   def params_combine_id
     profiles_params.merge(user_id: User.find_by(email: params['profile']['email']).id)
   end
-
 end

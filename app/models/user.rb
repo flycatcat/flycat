@@ -7,9 +7,10 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[google_oauth2 github]
   belongs_to :company
   has_many :punchcards
+  has_many :vacations
   has_one :profile, dependent: :delete
   accepts_nested_attributes_for :company
-  
+
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |user|
       user.email = provider_data.info.email
@@ -21,13 +22,13 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider 
-      user.uid = auth.uid           
+      user.provider = auth.provider
+      user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
     end
   end
-  
+
   def self.all_gender
     [
       %w[男生], %w[女生]

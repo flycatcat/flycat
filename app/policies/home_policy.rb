@@ -2,7 +2,7 @@
 
 class HomePolicy < ApplicationPolicy
   def index?
-    staff || manager ||admin
+    staff || manager || admin
   end
 
   def new?

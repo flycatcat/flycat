@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DepartmentPolicy < ApplicationPolicy
+class VacationPolicy < ApplicationPolicy
   def index?
-    manager || admin
+    staff || manager || admin
   end
 
   def new?
@@ -10,7 +10,11 @@ class DepartmentPolicy < ApplicationPolicy
   end
 
   def create?
-    manager || admin
+    staff || manager
+  end
+
+  def show?
+    staff
   end
 
   def edit?
@@ -18,10 +22,14 @@ class DepartmentPolicy < ApplicationPolicy
   end
 
   def update?
+    staff
+  end
+
+  def signoff
     manager || admin
   end
 
   def destroy?
-    index?
+    staff || manager || admin
   end
 end

@@ -3,7 +3,7 @@
 class DepartmentsController < ApplicationController
   before_action :find_departments, only: %i[edit update show destroy]
   before_action :authenticate_user!
-  
+
   def index
     @departments = current_company.departments
   end

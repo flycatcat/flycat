@@ -1,0 +1,30 @@
+
+
+
+<%= form_with(model: @vacation ,url: signoff_completed_vacation_path, method: 'post') do |form| %>
+
+  <div class="field">
+    <%= form.label :vacation_type %>
+    <%= form.text_field :vacation_type ,readonly: :true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vacation_at %>
+    <%= form.date_field :vacation_at,readonly: :true %>
+  </div>
+
+    <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status , Vacation.all_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reason %>
+    <%= form.text_field :reason,readonly: :true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+

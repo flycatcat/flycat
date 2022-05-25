@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def google_oauth2
@@ -22,6 +23,7 @@ module Users
         redirect_to new_user_registration_path
       end
     end
+
     def failure
       redirect_to root_path, notice: 'Failure. Please try again'
     end

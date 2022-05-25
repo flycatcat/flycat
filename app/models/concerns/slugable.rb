@@ -7,10 +7,11 @@ module Slugable
     extend FriendlyId
     friendly_id :random_slug, use: :slugged
   end
-  
+
   def normalize_friendly_id(value)
     value.to_s.parameterize(preserve_case: true)
   end
+
   private
 
   def random_slug

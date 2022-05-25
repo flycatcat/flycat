@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   resources :bulletins, except: []
   resources :user_accounts, only: [:index, :new, :create, :destroy]
   resources :punchcards
+  
+  resources :vacations do
+    member do
+      get :signoff
+      post :signoff_completed
+    end
+  end
 
   devise_for :users, controllers: { 
     registrations: 'users/registrations',

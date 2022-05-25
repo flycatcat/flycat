@@ -8,5 +8,5 @@ class Company < ApplicationRecord
   has_many :bulletins, dependent: :destroy
   has_many :departments, dependent: :destroy
   has_many :profiles, dependent: :destroy
-
+  has_many :vacations
 end
