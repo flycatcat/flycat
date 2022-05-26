@@ -14,9 +14,9 @@
         <td class="tp"><%= '編輯假單' %></td>
       <% end %>
 
-      <% if policy(:vacation).signoff? %>
+      <% if policy(:vacation).manager? %>
         <td class="tp"><%= '簽核/編輯假單' %></td>
-      <%else%>
+      <% elsif policy(:vacation).admin? %>
         <td class="tp"><%= '簽核假單' %></td>
       <% end %>
       

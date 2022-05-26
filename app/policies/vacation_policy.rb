@@ -32,4 +32,13 @@ class VacationPolicy < ApplicationPolicy
   def destroy?
     staff || manager || admin
   end
+
+  def admin?
+    admin
+  end
+
+  def manager?
+    manager
+  end
+
 end
