@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>全日:</strong>
-  <%= @event.all_day %>
-</p>
-
-<p>
   <strong>開始時間:</strong>
   <%= @event.start_time %>
 </p>
@@ -21,4 +16,5 @@
 </p>
 
 <%= link_to '編輯', edit_event_path(@work_shift.id,@event.id) %> |
-<%= link_to '返回', sets_work_shift_path(@work_shift.id) %>
+<%= link_to '刪除' , event_path(@work_shift.id,@event.id), method: 'delete', data: {confirm: '你確定嗎?'} %> |
+<%= link_to '返回', set_work_shift_path(@work_shift.id) %>

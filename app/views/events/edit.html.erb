@@ -14,6 +14,8 @@
     <% end %>
   
     <div class="field">
+      <%= form.label :mode, "模式" %>
+      <%= form.select :mode , Event.all_mode %>
       <%= form.label :all_day, "全日" %>
       <%= form.check_box :all_day %>
     </div>
@@ -37,6 +39,11 @@
       <%= form.label :content, "內容" %>
       <%= form.text_field :content %>
     </div>
+
+    <div class="kind">
+      <%= form.label :vacation_set, "休假設定" %>
+      <%= form.select :vacation_set , Event.all_vacation_set %>
+    </div>
   
     <div class="actions">
       <%= form.submit "儲存"%>
@@ -44,4 +51,4 @@
   <% end %>
 
 <%= link_to '明細', event_path(@work_shift.id,@event.id) %> |
-<%= link_to '返回', sets_work_shift_path(@work_shift.id) %>
+<%= link_to '返回', set_work_shift_path(@work_shift.id) %>

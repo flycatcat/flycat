@@ -11,6 +11,12 @@ class Event < ApplicationRecord
     ]
   end
 
+  def self.all_mode
+    [
+      %w[一般], %w[循環例假], %w[循環工作], %w[清空]
+    ]
+  end
+
   private
 
   def end_time_after_start_time

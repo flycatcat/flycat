@@ -1,5 +1,5 @@
 class WorkShiftsController < ApplicationController
-  before_action :find_work_shift, only: [:edit, :update, :destroy]
+  before_action :find_work_shift, only: [:edit, :update, :destroy, :set, :regular_holiday]
 
   def index
     @work_shifts = current_company.work_shifts
