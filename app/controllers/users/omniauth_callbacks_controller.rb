@@ -12,6 +12,7 @@ module Users
         redirect_to new_user_registration_path
       end
     end
+<<<<<<< HEAD
 
     def github
       @user = User.create_from_provider_data(request.env['omniauth.auth'])
@@ -23,9 +24,11 @@ module Users
         redirect_to new_user_registration_path
       end
     end
-
+    
     def failure
       redirect_to root_path, notice: 'Failure. Please try again'
     end
+=======
+>>>>>>> 修正Dashboard文字位移問題
   end
 end

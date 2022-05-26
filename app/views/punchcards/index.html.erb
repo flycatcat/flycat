@@ -1,36 +1,45 @@
-<h1>Flycat考勤打卡系統</h1>
-<br>
-<%= link_to '今日上班打卡', new_punchcard_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
-<%= link_to "今日下班打卡", edit_punchcard_path(@punchout), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-4" %>
-<br>
-<br>
+<h1 class="p-6 bg-gray-200"><%='打卡紀錄'%></h1>
+<div class="px-4 bg-gray-200 rounded-lg">
+  <div class="flex justify-end pb-4 mr-5">
+      <%= link_to '今日上班打卡', new_punchcard_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+      <% if current_user.punchcards.empty? == false %>
+        <%= link_to "今日下班打卡", edit_punchcard_path(@punchout), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4" %>
+      <% end %>
+  </div>
 
-<table>
-  <thead>
-    <tr class="text-white bg-gray-800">
-      <th class="px-4 border-2">員工id</th>
-      <th class="px-4 border-2">員工email</th>
-      <th class="px-4 border-2">今天已打過上班卡</th>
-      <th class="px-4 border-2">今天已打過下班卡</th>
-      <th class="px-4 border-2">體溫(°C)</th>
-      <th class="px-4 border-2">上班時間</th>
-      <th class="px-4 border-2">下班時間</th>
-      <th class="px-4 border-2">刪除打卡</th>
-    </tr>
-  </thead>
+  <div class="flex justify-center">
+    <table>
+      <thead>
+        <tr class="thead">
+          <th class="tp">員工id</th>
+          <th class="tp">Email</th>
+          <th class="tp">今天已打過上班卡</th>
+          <th class="tp">今天已打過下班卡</th>
+          <th class="tp">體溫(°C)</th>
+          <th class="tp">上班時間</th>
+          <th class="tp">下班時間</th>
+          <% if policy(:punchcard).destroy?%>
+            <th class="tp">刪除打卡</th>
+          <% end %>
+        </tr>
+      </thead>
 
-  <tbody class="text-center ">
-    <% @punchcards.order(created_at: :desc).each do |punchcard| %>
-      <tr>
-        <td td class="px-6 "><%= current_user.id %></td>
-        <td td class="px-6 "><%= current_user.email %></td>
-        <td td class="px-6 "><%= punchcard.punch_in_at.to_s.empty?  ? "否" : "是" %></td>
-        <td td class="px-6 "><%= punchcard.punch_out_at.to_s.empty? ? "否" : "是" %></td>
-        <td class="px-6"><%= punchcard.body_temperature %></td>
-        <td class="px-6"><%= punchcard.punch_in_at %></td>
-        <td class="px-6"><%= punchcard.punch_out_at %></td>
-        <td><%= link_to "刪除", punchcard_path(punchcard.id), method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:punchcard).destroy?%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody class="text-center ">
+        <% @punchcards.order(created_at: :desc).each do |punchcard| %>
+          <tr>
+            <td td class="tbody"><%= current_user.id %></td>
+            <td td class="tbody"><%= current_user.email %></td>
+            <td td class="tbody"><%= punchcard.punch_in_at.to_s.empty?  ? "否" : "是" %></td>
+            <td td class="tbody"><%= punchcard.punch_out_at.to_s.empty? ? "否" : "是" %></td>
+            <td class="tbody"><%= punchcard.body_temperature %></td>
+            <td class="tbody"><%= punchcard.punch_in_at %></td>
+            <td class="tbody"><%= punchcard.punch_out_at %></td>
+            <% if policy(:punchcard).destroy?%>
+              <td class="tbody"><%= link_to "刪除", punchcard_path(punchcard.id), method: 'delete', data: {confirm: '確定要刪除嗎？'} %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

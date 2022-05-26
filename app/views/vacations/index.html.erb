@@ -1,26 +1,50 @@
-<h1><%= '請假管理' %></h1>
-  <table>
-    <tr>
-      <td><%= '假別' %></td>
-      <td><%= '請假日' %></td>
-      <td><%= '簽核狀態' %></td>
-      <td><%= '原因' %></td>
-    </tr>
+<h1 class="p-6 bg-gray-200"><%= '請假管理' %></h1>
+<div class="px-4 bg-gray-200 rounded-lg">
+  <div class="flex justify-end mb-3">
+    <%= link_to "新增假單", new_vacation_path,class: "inline-block add-btn" if policy(:vacation).create? %>
+  </div>
+  <table class="w-full text-lg rounded-lg shadow-md">
+    <tr class="thead">
+      <td class="tp"><%= '假別' %></td>
+      <td class="tp"><%= '請假日' %></td>
+      <td class="tp"><%= '簽核狀態' %></td>
+      <td class="tp"><%= '原因' %></td>
+      <td class="tp"><%= '假單詳情' %></td>
+      <% if policy(:vacation).update? %>
+        <td class="tp"><%= '編輯假單' %></td>
+      <% end %>
 
-  <% @vacations.each do |vacation|  %>
-    <tr>
-      <td><%= vacation.vacation_type %></td>
-      <td><%= vacation.vacation_at %></td>
-      <td><%= vacation.status %></td>
-      <td><%= vacation.reason %></td>
-      <td><%= link_to '展開', vacation if policy(:vacation).show? %></td>
-      <td><%= link_to '編輯', edit_vacation_path(vacation) if policy(:vacation).update? %></td>
-      <td><%= link_to '簽核', signoff_vacation_path(vacation) if policy(:vacation).signoff %></td>
-      <td><%= link_to '刪除', vacation_path(vacation.id), method: :delete, data: { confirm: '確定要刪除嗎?' } %></td>
+      <% if policy(:vacation).signoff? %>
+        <td class="tp"><%= '簽核/編輯假單' %></td>
+      <%else%>
+        <td class="tp"><%= '簽核假單' %></td>
+      <% end %>
+      
+      <td class="tp"><%= '刪除假單' %></td>
     </tr>
-  <% end %>
-</table>
-<br>
-<div>
-  <%= link_to "新增假單", new_vacation_path if policy(:vacation).create? %>
+    <% @vacations.each do |vacation|  %>
+      <tr>
+        <td class="tbody"><%= vacation.vacation_type %></td>
+        <td class="tbody"><%= vacation.vacation_at %></td>
+        <div>
+          <% if vacation.status == "approved" %>
+            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="approved-tag"><%= vacation.status %></span></td>
+          <% elsif vacation.status == "rejected" %>
+            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="rejected-tag"><%= vacation.status %></span></td>
+          <% else %>
+            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="pending-tag"><%= vacation.status %></span></td>
+          <% end %>
+          <td class="tbody"><%= vacation.reason %></td>
+          <td class="tbody"><%= link_to '展開', vacation if policy(:vacation).show? %></td>
+          <% if policy(:vacation).update? %>
+            <td class="tbody"><%= link_to '編輯', edit_vacation_path(vacation),class: "edit-btn" %></td>
+          <% end %>  
+          <% if policy(:vacation).signoff? %>
+            <td class="tbody"><%= link_to '簽核', signoff_vacation_path(vacation),class: "signoff-btn" %></td>
+          <% end %>
+          <td class="tbody"><%= link_to '刪除', vacation_path(vacation.id), method: :delete, data: { confirm: '確定要刪除嗎?' },class: "delete-btn" %></td>
+        </div>
+      </tr>
+    <% end %>
+  </table>
 </div>

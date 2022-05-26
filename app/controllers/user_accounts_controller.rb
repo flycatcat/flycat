@@ -15,7 +15,7 @@ class UserAccountsController < ApplicationController
   def create
     @user = current_company.users.new(users_params)
     if @user.save
-      redirect_to root_path, notice: '新增員工成功'
+      redirect_to profiles_path, notice: '新增員工成功'
     else
       render :new
     end

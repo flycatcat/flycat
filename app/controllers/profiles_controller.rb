@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
     @profile = current_company.profiles.new(params_combine_id)
 
     if @profile.save
-      redirect_to root_path, notice: '新增成功'
+      redirect_to profiles_path, notice: '新增成功'
     else
       render :new
     end

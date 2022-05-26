@@ -1,0 +1,21 @@
+.table-center {
+  @apply flex justify-center px-5 py-4 bg-gray-200;
+}
+
+.thead {
+  @apply mb-4 text-center text-gray-200 bg-indigo-900 rounded shadow-md text-lg font-bold text-gray-200 border-b;
+}
+
+.tbody {
+  @apply bg-gray-100 border-b p-3 px-5 text-center;
+}
+
+.tp {
+  @apply p-3 px-5 text-center;
+}
+
+.bg-sky {
+  background-image: url("/assets/flycat_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

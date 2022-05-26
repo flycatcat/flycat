@@ -5,7 +5,7 @@ class PunchcardsController < ApplicationController
   def index
     authorize :punchcard
     @punchcards = current_user.punchcards.all
-    @punchout = current_user.punchcards.last.slug
+    @punchout = current_user&.punchcards&.last&.slug
   end
 
   def new
@@ -15,22 +15,21 @@ class PunchcardsController < ApplicationController
 
   def create
     authorize :punchcard
-    case true
-    when current_user.punchcards.empty?
+    if current_user.punchcards.empty?
       @punchcard = current_user.punchcards.new(punchcards_params)
       if @punchcard.save
         redirect_to punchcards_path, notice: '打卡成功!!!'
       else
-        render :new, notice: '打卡失敗，請勿重複打卡!!!'
+        render :new, notice: '打卡失敗，請重新打卡!!!'
       end
-    when current_user.punchcards.last.punch_in_at.today?
+    elsif current_user.punchcards.last.punch_in_at.today?
       redirect_to punchcards_path, notice: '今日已有上班打卡紀錄，請打下班卡!!!'
     else
       @punchcard = current_user.punchcards.new(punchcards_params)
       if @punchcard.save
         redirect_to punchcards_path, notice: '打卡成功!!!'
       else
-        render :new, notice: '打卡失敗，請勿重複打卡!!!'
+        render :new, notice: '打卡失敗，請重新打卡!!!'
       end
     end
   end
@@ -47,7 +46,7 @@ class PunchcardsController < ApplicationController
       @punchcard.update(punchcards_params)
       redirect_to punchcards_path, notice: '已更新下班打卡紀錄!!!'
     else
-      redirect_to punchcards_path, notice: '打卡失敗，請勿重複打卡!!!'
+      redirect_to punchcards_path, notice: '今日已有下班打卡紀錄，請勿重複打卡!!!'
 
     end
   end

@@ -1,27 +1,30 @@
-<h1><%= t('公布欄') %></h1>
-
-<table>
-  <tr>
-    <td><%= t('公告') %></td>
-    <td><%= t('編輯資訊') %></td>
-    <td><%= t('刪除公告') %></td>
-  </tr>
-
-
-  <% @bulletins.each do |bulletin|  %>
-  <tr>
-    <td><%= link_to bulletin.title , bulletin_path(bulletin) %></td>
-      <% if policy(:bulletin).create?  %>
-        <td><%= link_to "編輯", edit_bulletin_path(bulletin) %></td>
-        <td><%= link_to "刪除", bulletin_path(bulletin.id), method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:bulletin).destroy?%>
-      </td>
-      <% end %>
-  </tr>
-  <% end %>
-  
-</table>
-</br>
-
-<div>
-    <%= link_to t("新增公告"), new_bulletin_path if policy(:bulletin).create?%>
+<div class="h-full bg-gray-200">
+  <h1 class="p-6"><%= t('公告總覽') %></h1>
+    <div class="w-5/6 mx-auto rounded-lg">
+      <div class="flex justify-end">
+        <%= link_to t("新增公告"), new_bulletin_path,class: "add-btn" if policy(:bulletin).create?%>
+      </div>
+      <table class="w-full mx-auto mt-5 text-lg rounded-lg shadow-md">
+        <tr class="thead">
+          <td class="tp"><%= t('公告標題') %></td>
+          <td class="tp"><%= t('公告內容') %></td>
+          <% if policy(:bulletin).create?  %>
+            <td class="tp"><%= t('編輯資訊') %></td>
+            <td class="tp"><%= t('刪除公告') %></td>
+          <% end %>
+        </tr>
+        <% @bulletins.each do |bulletin|  %>
+          <tr>
+            <td class="tbody"><%= link_to bulletin.title , bulletin_path(bulletin) %></td>
+            <td class="tbody">
+              <%= link_to bulletin.content , bulletin_path(bulletin) %>
+            </td>
+              <% if policy(:bulletin).create?  %>
+                <td class="tbody"><%= link_to "編輯", edit_bulletin_path(bulletin),class: "edit-btn" %></td>
+                <td class="tbody"><%= link_to "刪除", bulletin_path(bulletin.id),class: "delete-btn", method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:bulletin).destroy?%></td>
+              <% end %>
+          </tr>
+        <% end %>        
+      </table>
+    </div>
 </div>

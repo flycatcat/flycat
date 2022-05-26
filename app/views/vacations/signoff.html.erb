@@ -1,36 +1,37 @@
+<div class="flex items-start justify-center w-full h-screen text-xl bg-gray-200">
+  <%= form_with(model: @vacation ,url: signoff_completed_vacation_path, method: 'post') do |form| %>
+    <div class="w-screen max-w-xl px-10 mt-10 mb-16 bg-white shadow-md rounded-xl ">
+      <h1 class="py-3 mt-8 font-bold text-center text-gray-500">假單簽核</h1>
+      <div class="py-1 field">
+        <strong><%= form.label :vacation_at %></strong>
+        <%= form.date_field :vacation_at,readonly: :true %>
+      </div>
+      
+      <div class="py-1 field">
+        <strong><%= form.label :vacation_type %></strong>
+        <%= form.text_field :vacation_type ,readonly: :true %>
+      </div>
 
+      <div class="py-1 field">
+        <strong><%= form.label :status %></strong>
+        <%= form.select :status , Vacation.all_status %>
+      </div>
 
+      <div class="py-1 field">
+        <strong><%= form.label :reason %></strong>
+        <%= form.text_field :reason,readonly: :true %>
+      </div>
+      
+      <div class="py-1 field">
+        <strong><%= form.label :proof %></strong>
+        <%= link_to '點此查看請假證明', @vacation.proof,class: "mb-1 font-semibold text-blue-600 pt-3", target: "_blank" if @vacation.proof.attached? %>
+        <%= '未提供證明' unless @vacation.proof.attached? %>
+      </div>
 
-<%= form_with(model: @vacation ,url: signoff_completed_vacation_path, method: 'post') do |form| %>
-
-  <div class="field">
-    <%= form.label :vacation_type %>
-    <%= form.text_field :vacation_type ,readonly: :true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :vacation_at %>
-    <%= form.date_field :vacation_at,readonly: :true %>
-  </div>
-
-    <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status , Vacation.all_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :reason %>
-    <%= form.text_field :reason,readonly: :true %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :proof %>
-    <%= link_to '點此查看請假證明', @vacation.proof, target: "_blank" if @vacation.proof.attached? %>
-    <%= '未提供證明' unless @vacation.proof.attached? %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      <div class="flex justify-end actions">
+        <%= form.submit class: "py-2 mx-2 px-6 m-6 text-lg tracking-wide text-indigo-100 rounded-md bg-gradient-to-tr from-blue-600 to-indigo-600" %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
