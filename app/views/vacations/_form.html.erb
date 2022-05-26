@@ -28,6 +28,11 @@
     <%= form.text_field :reason %>
   </div>
 
+  <div>
+    <%= form.label :proof, "請假證明" %>
+    <%= form.file_field :proof %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

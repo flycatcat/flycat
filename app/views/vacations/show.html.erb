@@ -20,5 +20,11 @@
   <%= @vacation.reason if policy(:vacation).show?%>
 </p>
 
+<p>
+  <strong>Proof:</strong>
+  <%= link_to '點此查看請假證明', @vacation.proof, target: "_blank" if @vacation.proof.attached? %>
+  <%= '未提供證明' unless @vacation.proof.attached? %>
+</p>
+
 <%= link_to 'Edit', edit_vacation_path(@vacation) %> |
 <%= link_to 'Back', vacations_path %>

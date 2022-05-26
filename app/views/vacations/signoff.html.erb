@@ -22,6 +22,12 @@
     <%= form.label :reason %>
     <%= form.text_field :reason,readonly: :true %>
   </div>
+  
+  <div class="field">
+    <%= form.label :proof %>
+    <%= link_to '點此查看請假證明', @vacation.proof, target: "_blank" if @vacation.proof.attached? %>
+    <%= '未提供證明' unless @vacation.proof.attached? %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

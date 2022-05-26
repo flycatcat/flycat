@@ -60,7 +60,7 @@ class VacationsController < ApplicationController
   end
 
   def vacation_params
-    params.require(:vacation).permit(:vacation_type, :vacation_at, :status, :reason, :hour)
+    params.require(:vacation).permit(:vacation_type, :vacation_at, :status, :reason, :hour, :proof)
   end
 
   def vacation_combine_id
