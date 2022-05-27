@@ -2,23 +2,23 @@
 
 class PunchcardPolicy < ApplicationPolicy
   def index?
-    admin || staff
+    staff || manager || admin
   end
 
   def create?
-    index?
+    staff || manager || admin
   end
 
   def new?
-    index?
+    staff || manager || admin
   end
 
   def edit?
-    admin
+    staff || manager || admin
   end
 
   def update?
-    index?
+    staff || manager || admin
   end
 
   def destroy?

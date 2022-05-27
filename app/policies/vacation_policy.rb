@@ -14,7 +14,7 @@ class VacationPolicy < ApplicationPolicy
   end
 
   def show?
-    staff
+    index?
   end
 
   def edit?
@@ -25,11 +25,20 @@ class VacationPolicy < ApplicationPolicy
     staff
   end
 
-  def signoff
+  def signoff?
     manager || admin
   end
 
   def destroy?
     staff || manager || admin
   end
+
+  def admin?
+    admin
+  end
+
+  def manager?
+    manager
+  end
+
 end

@@ -32,4 +32,9 @@ class ApplicationController < ActionController::Base
     flash[:notice] = '你沒有檢視該頁面的權限!'
     redirect_to root_path
   end
+
+  def after_sign_in_path_for(resource)
+    admin_index_path
+  end
+
 end

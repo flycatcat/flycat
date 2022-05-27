@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       post :signoff_completed
     end
   end
+  resources :admin
 
   devise_for :users, controllers: { 
     registrations: 'users/registrations',

@@ -22,7 +22,7 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
-      redirect_to root_path, notice: '更新成功'
+      redirect_to admin_index_path, notice: '更新成功'
     else
       render :edit
     end

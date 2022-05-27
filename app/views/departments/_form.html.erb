@@ -1,18 +1,20 @@
-<%= form_with(model: department) do |form| %>
-  <% if department.errors.any?  %>
-    <ul>
-      <% department.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-  <div class="field">
-    <%= form.label :department_name, "部門名稱" %>
-    <%= form.text_field :department_name %>
+<div class="flex items-start justify-center w-full h-screen pt-10 pt-16 bg-gray-200">
+  <%= form_with(model: department) do |form| %>
+    <% if department.errors.any?  %>
+      <ul>
+        <% department.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div class="w-screen max-w-md px-10 py-8 bg-white shadow-md rounded-xl">
+      <div class="field">
+        <%= form.label :department_name, "部門名稱" %>
+        <%= form.text_field :department_name,class: "p-3 mt-4 leading-none text-gray-900 bg-gray-100 border border-gray-200 rounded focus:outline-none focus:border-blue-700" %>
+      </div>
+        <div class="actions">
+        <%= form.submit class: "px-10 py-4 font-semibold leading-none text-white bg-blue-700 rounded mt-9 hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none" %>
+        </div>
+    <% end %>
   </div>
-
-    <div class="actions">
-    <%= form.submit %>
-    </div>
-
-<% end %>
+</div>

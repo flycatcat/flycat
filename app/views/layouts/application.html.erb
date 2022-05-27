@@ -5,24 +5,27 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('logo.png') %>
   </head>
-
+  
   <body>
-    <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
-    <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
-
-    <%= link_to "資助飛天貓", new_order_path %>
-    
-    <%= render partial: 'home/navbar' %>
-    <div class="container">
-      <% if notice %>
-        <%= render 'layouts/alerts' %>
-      <% end %>
-      <%= yield %>
-    </div>
+      <div class="flex w-full">
+          <div class="w-[180px] max-h-screen min-h-screen">
+              <%= render partial: 'home/sidebar' %>
+          </div>
+          <div class="w-full max-h-screen min-h-screen overflow-auto bg-gray-200">
+              <%= render partial: 'home/header'%>
+              <div class="container">
+                  <% if notice %>
+                      <%= render 'layouts/flash' %>
+                  <% end %>
+              </div>
+            <%= yield %>
+          </div>
+      </div>
   </body>
+  
 </html>

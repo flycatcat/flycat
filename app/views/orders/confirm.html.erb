@@ -1,17 +1,32 @@
-
-<% if @response.status === "SUCCESS" %>
-
-  <table>
-    <tr>
-      <h1>感謝您讓飛天貓飛高高</h1>
-      <td>捐款人<%= @username %></td>
-      <td>捐款編號<%= @response.order_no %></td>
-      <td>付款時間<%= @response.pay_at %></td>
-      <td>卡號後四碼<%= @response.card_last_4_no %></td>
-    <tr>
-  </table>
-<% else %>  
-
-  <h1>資助失敗，請再試一次</h1>
-
-<% end %>
+<div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
+  <div class="w-screen max-w-3xl px-10 py-8 bg-white shadow-md rounded-xl">
+    <% if @response.status === "SUCCESS" %>
+      <table class="w-full rounded-lg shadow-md text-md">
+        <h1 class="mb-5">感謝您讓飛天貓飛高高</h1>
+          <tr class="thead">
+              <td class="tp"><%= '捐款人' %></td>
+              <td class="tp"><%= '捐款編號' %></td>
+              <td class="tp"><%= '付款時間' %></td>
+              <td class="tp"><%= '卡號後四碼' %></td>
+          </tr>
+          <tr>
+              <td class="tbody"><%= @username %></td>
+              <td class="tbody"><%= @response.order_no %></td>
+              <td class="tbody"><%= @response.pay_at %></td>
+              <td class="tbody"><%= @response.card_last_4_no %></td>
+          </tr>
+          <% if user_signed_in? %>
+            <div class="flex justify-end mb-3">
+              <%= link_to '返回管理者後台', admin_index_path,class: "inline-block add-btn" %>
+            </div>
+          <% else %>
+            <div class="flex justify-end mb-3">
+              <%= link_to '返回首頁', root_path,class: "inline-block add-btn" %>
+            </div>
+          <% end %>
+      </table>
+    <% else %>  
+      <h1>資助失敗，請再試一次</h1>
+    <% end %>
+  </div>
+</div>
