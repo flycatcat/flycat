@@ -28,18 +28,18 @@
       <td><%= vacation.status %></td>
       <td><%= vacation.reason %></td>
       <% if policy(:vacation).show? %>
-      <td><%= link_to '展開', vacation %></td>
+      <td><%= link_to t('展開'), vacation %></td>
       <% end %>
       <% if vacation.user_id == current_user.id && policy(:vacation).update? %>
-      <td><%= link_to '編輯', edit_vacation_path(vacation) %></td>
+      <td><%= link_to t('編輯'), edit_vacation_path(vacation) %></td>
       <% elsif policy(:vacation).signoff %>
-      <td><%= link_to '簽核', signoff_vacation_path(vacation) %></td>
+      <td><%= link_to t('簽核'), signoff_vacation_path(vacation) %></td>
       <% end %>
-      <td><%= link_to '刪除', vacation_path(vacation.id), method: :delete, data: { confirm: '確定要刪除嗎?' } %></td>
+      <td><%= link_to t('刪除'), vacation_path(vacation.id), method: :delete, data: { confirm: t('確定要刪除嗎?') } %></td>
     </tr>
   <% end %>
 </table>
 <br>
 <div>
-  <%= link_to "新增假單", new_vacation_path if policy(:vacation).create? %>
+  <%= link_to t("新增假單"), new_vacation_path if policy(:vacation).create? %>
 </div>

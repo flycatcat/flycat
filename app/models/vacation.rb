@@ -10,11 +10,16 @@ class Vacation < ApplicationRecord
   include Slugable
   acts_as_paranoid
 
-  def self.all_type
-    [
-      %w[事假], %w[病假], %w[特休], %w[婚假], %w[產/陪產假], %w[喪假], %w[其他(給薪)], %w[其他(不給薪)]
-    ]
-  end
+  enum vacation_type: {
+    "事假": "事假",
+    "病假": "病假",
+    "特休": "特休",
+    "婚假": "婚假",
+    "產/陪產假": "產/陪產假",
+    "喪假": "喪假",
+    "其他(給薪)": "其他(給薪)",
+    "其他(不給薪)": "其他(不給薪)"
+  }
 
   def self.all_hour
     [

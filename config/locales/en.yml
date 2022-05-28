@@ -30,6 +30,20 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  enums:
+    vacation:
+      vacation_type:
+        事假: "Personal Leave"
+        病假: "Sick Leave"
+        特休: "Annual Leave"
+        婚假: "Marriage Leave"
+        產/陪產假: "Maternity Leave"
+        喪假: "Funeral Leave"
+        其他(給薪): "Others(paid)"
+        其他(不給薪): "Others(without paid)"
+  vacations:
+    create:
+      假單申請成功: "Vacation was successfully created"
   user: "User"
   feedback: "Feedback"
   company: "Company"
@@ -40,6 +54,7 @@ en:
   註冊: "Sign Up"
   刪除: "Delete"
   編輯: "Edit"
+  展開: "Show"
   簽核: "Sign Off"
   簽核/編輯: "Sign Off / Edit"
   歡迎來到Flycat出勤管理系統: "Welcome to Flycat"
@@ -95,9 +110,11 @@ en:
   簽核狀態: "Status"
   請假事由: "Reason"
   詳細資訊: "Detail"
+  新增假單: "New Vacation"
+  確定要刪除嗎?: "Are you sure?"
   activerecord:
     models:
-      vacation: "Vacation"
+      vacation:
       bulletin: "Bulletin"
       company: 
       department: 
