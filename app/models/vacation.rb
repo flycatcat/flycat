@@ -24,10 +24,10 @@ class Vacation < ApplicationRecord
 
   def self.all_status
     [
-      %w[approved], %w[rejected]
+      %w[Approved], %w[Rejected], %w[Pending]
     ]
   end
-  STATUSES = %w[pending approved rejected].freeze
+  STATUSES = %w[Pending Approved Rejected].freeze
 
   STATUSES.each do |s|
     define_method("#{s}?") { status == s }
@@ -40,7 +40,7 @@ class Vacation < ApplicationRecord
 
   before_validation :set_initial_status, on: :create
   def set_initial_status
-    self.status = 'pending'
+    self.status = 'Pending'
   end
 
   # 寄通知email

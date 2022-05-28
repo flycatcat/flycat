@@ -14,7 +14,7 @@ class VacationPolicy < ApplicationPolicy
   end
 
   def show?
-    update?
+    staff || manager || admin
   end
 
   def edit?
@@ -31,5 +31,17 @@ class VacationPolicy < ApplicationPolicy
 
   def destroy?
     staff || manager || admin
+  end
+
+  def only_admin?
+    admin
+  end
+
+  def only_manager?
+    manager
+  end
+
+  def only_staff?
+    staff
   end
 end

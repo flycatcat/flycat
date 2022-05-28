@@ -2,25 +2,39 @@
   <table>
     <tr>
       <td><%= '人員' %></td>
+      <td><%= '請假日' %></td>
       <td><%= '假別' %></td>
       <td><%= '時數' %></td>
-      <td><%= '請假日' %></td>
       <td><%= '簽核狀態' %></td>
       <td><%= '請假事由' %></td>
+      <td><%= '詳細資訊' %></td>
+      <% if policy(:vacation).only_manager? %>
+      <td><%= '簽核/編輯' %></td>
+      <% elsif policy(:vacation).only_admin? %>
+      <td><%= '簽核' %></td>
+      <% else policy(:vacation).only_staff? %>
+      <td><%= '編輯' %></td>
+      <% end %>
+      <td><%= '刪除' %></td>
     </tr>
 
-  <% @vacations.each do |vacation|  %>
+  <% @vacation_result.each do |vacation|  %>
     <tr>
       <%# 用&符號代表有就撈沒有就跳過，因為之前資料庫有一些欄位在建的時候資料還沒寫進去，是空白的 %>
       <td><%= vacation&.profile&.name %></td>
+      <td><%= vacation.vacation_at %></td>
       <td><%= vacation.vacation_type %></td>
       <td><%= vacation.hour %></td>
-      <td><%= vacation.vacation_at %></td>
       <td><%= vacation.status %></td>
       <td><%= vacation.reason %></td>
-      <td><%= link_to '展開', vacation if policy(:vacation).show? %></td>
-      <td><%= link_to '編輯', edit_vacation_path(vacation) if policy(:vacation).update? %></td>
-      <td><%= link_to '簽核', signoff_vacation_path(vacation) if policy(:vacation).signoff %></td>
+      <% if policy(:vacation).show? %>
+      <td><%= link_to '展開', vacation %></td>
+      <% end %>
+      <% if vacation.user_id == current_user.id && policy(:vacation).update? %>
+      <td><%= link_to '編輯', edit_vacation_path(vacation) %></td>
+      <% elsif policy(:vacation).signoff %>
+      <td><%= link_to '簽核', signoff_vacation_path(vacation) %></td>
+      <% end %>
       <td><%= link_to '刪除', vacation_path(vacation.id), method: :delete, data: { confirm: '確定要刪除嗎?' } %></td>
     </tr>
   <% end %>
