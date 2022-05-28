@@ -14,7 +14,7 @@
       <%= link_to '編輯' , edit_work_shift_path(work_shift.id) %> 
       <%= link_to'刪除' , work_shift_path(work_shift.id), method: 'delete', data: {
       confirm: '確定要刪除嗎？'} %>
-      <%= link_to'設定' , set_work_shift_path(work_shift.id) %>
+      <%= link_to'設定' , setting_work_shift_path(work_shift.id) %>
     </td>
   </tr>
   <% end %>

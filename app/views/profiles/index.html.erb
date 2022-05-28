@@ -16,6 +16,7 @@
               <td class="tp"><%= t('員工編號') %></td>
               <td class="tp"><%= t('姓名') %></td>
               <td class="tp"><%= t('部門名稱') %></td>
+              <td class="tp"><%= t('班別名稱') %></td>
               <td class="tp"><%= t('電子信箱') %></td>
               <td class="tp"><%= "聯絡電話" %></td>
               <% if policy(:profile).create?  %>
@@ -29,6 +30,7 @@
               <td class="tbody"><%= profile.staff_no %></td>
               <td class="tbody"><%= profile.name %></td>
               <td class="tbody"><%= profile.department%></td>
+              <td class="tbody"><%= profile.work_shift_title%></td>
               <td class="tbody"><%= profile.email %></td>
               <td class="tbody"><%= profile.tel %></td>
               <% if policy(:profile).create?  %>

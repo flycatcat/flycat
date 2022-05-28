@@ -23,7 +23,7 @@ class EventsController < ApplicationController
       if params["event"]["mode"]=="一般"
         @event = Event.new(event_params.merge(work_shift_id: params[:work_shift_id]))
         if @event.save
-          redirect_to set_work_shift_path, notice: '新增成功!'
+          redirect_to setting_work_shift_path, notice: '新增成功!'
         else
           render :new
         end
@@ -50,9 +50,9 @@ class EventsController < ApplicationController
           end
         }
         if fail_times.sum == 0 
-          redirect_to set_work_shift_path, notice: '新增成功!'
+          redirect_to setting_work_shift_path, notice: '新增成功!'
         else
-          redirect_to set_work_shift_path, notice: '發生錯誤，請重新執行!'
+          redirect_to setting_work_shift_path, notice: '發生錯誤，請重新執行!'
         end 
       elsif params["event"]["mode"]=="循環例假"
         regular_holidays = holidays("例假日")
@@ -76,22 +76,22 @@ class EventsController < ApplicationController
           end
         }
         if fail_times.sum == 0 
-          redirect_to set_work_shift_path, notice: '新增成功!'
+          redirect_to setting_work_shift_path, notice: '新增成功!'
         else
-          redirect_to set_work_shift_path, notice: '發生錯誤，請重新執行!'
+          redirect_to setting_work_shift_path, notice: '發生錯誤，請重新執行!'
         end 
       else
         events = Event.where("start_time >= ? AND end_time <= ? And work_shift_id = ?", format_date("start_time(1i)","start_time(2i)","start_time(3i)"), format_date("end_time(1i)","end_time(2i)","end_time(3i)"), params[:work_shift_id])
         events.each do |event|
           event.destroy
         end   
-        redirect_to set_work_shift_path, notice: '刪除成功'
+        redirect_to setting_work_shift_path, notice: '刪除成功'
       end
     end
   
     def update
       if @event.update(event_params)
-        redirect_to set_work_shift_path, notice: '更新成功!'
+        redirect_to setting_work_shift_path, notice: '更新成功!'
       else
         render :edit
       end
@@ -99,7 +99,7 @@ class EventsController < ApplicationController
   
     def destroy
       @event.destroy
-      redirect_to set_work_shift_path, notice: '刪除成功'
+      redirect_to setting_work_shift_path, notice: '刪除成功'
     end
   
     private

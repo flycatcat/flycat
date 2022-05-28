@@ -1,5 +1,5 @@
 class WorkShiftsController < ApplicationController
-  before_action :find_work_shift, only: [:edit, :update, :destroy, :set, :regular_holiday]
+  before_action :find_work_shift, only: [:edit, :update, :destroy, :setting, :regular_holiday]
 
   def index
     @work_shifts = current_company.work_shifts
@@ -35,8 +35,7 @@ class WorkShiftsController < ApplicationController
     redirect_to work_shifts_path
   end
 
-  def set
-    @work_shift = WorkShift.find(params[:work_shift_id])
+  def setting
   end
       
   private
