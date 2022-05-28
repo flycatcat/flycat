@@ -1,21 +1,21 @@
-<h1><%= '請假管理' %></h1>
+<h1><%= t('請假管理') %></h1>
   <table>
     <tr>
-      <td><%= '人員' %></td>
-      <td><%= '請假日' %></td>
-      <td><%= '假別' %></td>
-      <td><%= '時數' %></td>
-      <td><%= '簽核狀態' %></td>
-      <td><%= '請假事由' %></td>
-      <td><%= '詳細資訊' %></td>
+      <td><%= t('員工') %></td>
+      <td><%= t('請假日') %></td>
+      <td><%= t('假別') %></td>
+      <td><%= t('時數') %></td>
+      <td><%= t('簽核狀態') %></td>
+      <td><%= t('請假事由') %></td>
+      <td><%= t('詳細資訊') %></td>
       <% if policy(:vacation).only_manager? %>
-      <td><%= '簽核/編輯' %></td>
+      <td><%= t('簽核/編輯') %></td>
       <% elsif policy(:vacation).only_admin? %>
-      <td><%= '簽核' %></td>
+      <td><%= t('簽核') %></td>
       <% else policy(:vacation).only_staff? %>
-      <td><%= '編輯' %></td>
+      <td><%= t('編輯') %></td>
       <% end %>
-      <td><%= '刪除' %></td>
+      <td><%= t('刪除') %></td>
     </tr>
 
   <% @vacation_result.each do |vacation|  %>
