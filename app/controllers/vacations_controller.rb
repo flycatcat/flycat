@@ -27,7 +27,6 @@ class VacationsController < ApplicationController
 
   def create
     @vacation = current_company.vacations.new(vacation_combine_id)
-    params[:hour] = params[:hour].to_i
     if @vacation.save
       redirect_to vacations_path, notice: t('.假單申請成功')
     else
