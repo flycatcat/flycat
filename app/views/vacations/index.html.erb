@@ -1,7 +1,7 @@
 <h1 class="p-6 bg-gray-200"><%= t('請假管理') %></h1>
 <div class="px-4 bg-gray-200 rounded-lg">
   <div class="flex justify-end mb-3">
-    <%= link_to "新增假單", new_vacation_path,class: "inline-block add-btn" if policy(:vacation).create? %>
+    <%= link_to t("新增假單"), new_vacation_path,class: "inline-block add-btn" if policy(:vacation).create? %>
   </div>
   <table class="w-full text-lg rounded-lg shadow-md">
     <tr class="thead">
@@ -42,7 +42,7 @@
           <td class="tbody"><%= vacation.reason %></td>
 
           <% if policy(:vacation).show? %>
-            <td class="tbody"><%= link_to t('展開'), vacation %></td>
+            <td class="tbody"><%= link_to t('展開'), vacation,calss: "show-btn" %></td>
           <% end %>
 
           <% if vacation.user_id == current_user.id && policy(:vacation).update? %>

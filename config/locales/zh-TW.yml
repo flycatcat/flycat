@@ -5,6 +5,10 @@ zh-TW:
   輸入姓名: "輸入姓名"
   輸入手機號碼: "輸入手機號碼"
   Back: "返回"
+  vacations:
+    create:
+      假單申請成功: "假單申請成功"
+  確定要刪除嗎?: "確定要刪除嗎?"
   activerecord:
     models:
       vacation: "假單 " 

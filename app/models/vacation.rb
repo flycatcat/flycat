@@ -4,6 +4,7 @@ class Vacation < ApplicationRecord
   belongs_to :user
   belongs_to :company
   has_one :profile, through: :user
+  has_one_attached :proof
 
   validates :vacation_at, presence: true
 

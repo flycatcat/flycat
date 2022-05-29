@@ -17,7 +17,7 @@
       
       <div class="field">
         <%= form.label :vacation_type,"假別",class: "block mb-1 font-semibold text-gray-600 pt-3" %>
-        <%= form.select :vacation_type, Vacation.all_type %>
+        <%= form.select :vacation_type, Vacation.vacation_types %>
       </div>
 
       <div class="field">

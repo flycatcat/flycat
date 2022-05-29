@@ -111,6 +111,7 @@ en:
   請假事由: "Reason"
   詳細資訊: "Detail"
   新增假單: "New Vacation"
+  編輯假單: "Edit Vacation"
   確定要刪除嗎?: "Are you sure?"
   activerecord:
     models:

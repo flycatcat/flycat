@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_05_28_061745) do
-=======
-ActiveRecord::Schema.define(version: 2022_05_25_053533) do
->>>>>>> No.23假排序/假i18n
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +89,13 @@ ActiveRecord::Schema.define(version: 2022_05_25_053533) do
     t.string "vacation_set"
     t.string "mode"
     t.index ["work_shift_id"], name: "index_events_on_work_shift_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "author"
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

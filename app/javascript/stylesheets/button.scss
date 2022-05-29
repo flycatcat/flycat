@@ -13,6 +13,10 @@
   @apply inline-block px-3 py-3 bg-blue-600 text-white font-medium text-base leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 hover:bg-blue-800 hover:shadow-lg transition duration-150 ease-in-out justify-end block;
 }
 
+.show-btn {
+  @apply px-2 py-1.5 text-base text-white bg-green-500 rounded hover:bg-green-700;
+}
+
 .approved-tag {
   @apply px-2 capitalize py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full;
 }
