@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.5'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '~> 4.2'
+gem 'enum_help', '~> 0.0.15'
 gem 'figaro', '~> 1.2'
 gem 'friendly_id', '~> 5.4'
 gem 'image_processing', '~> 1.2'
@@ -25,7 +26,6 @@ gem 'stimulus-rails', '~> 1.0', '>= 1.0.4'
 gem 'taiwanese_ubn_validator', '~> 0.0.1'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'enum_help', '~> 0.0.15'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

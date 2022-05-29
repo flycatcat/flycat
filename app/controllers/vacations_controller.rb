@@ -6,11 +6,11 @@ class VacationsController < ApplicationController
   before_action :unable_signoff, only: %i[signoff]
 
   def index
-    if current_user.role == "staff"
-      vacations = current_user.vacations
-    else
-      vacations = current_company.vacations
-    end
+    vacations = if current_user.role == 'staff'
+                  current_user.vacations
+                else
+                  current_company.vacations
+                end
     vacation_orders = vacations.order(vacation_at: :asc)
     @vacation_result = vacation_orders.Pending + vacation_orders.Approved + vacation_orders.Rejected
   end
@@ -22,7 +22,7 @@ class VacationsController < ApplicationController
   end
 
   def edit
-      redirect_to vacations_path, notice: '不可編輯，簽核已完成' if @vacation.status != "Pending"
+    redirect_to vacations_path, notice: '不可編輯，簽核已完成' if @vacation.status != 'Pending'
   end
 
   def create
@@ -60,22 +60,22 @@ class VacationsController < ApplicationController
 
   private
 
-  def correct_user     
+  def correct_user
     @vacation = current_company.vacations.friendly.find(params[:id])
-    if current_user.id != @vacation.user_id
-      redirect_to vacations_path, notice: "沒有編輯權限！" 
-    else
+    if current_user.id == @vacation.user_id
       @vacation = current_company.vacations.friendly.find(params[:id])
-    end  
+    else
+      redirect_to vacations_path, notice: '沒有編輯權限！'
+    end
   end
 
   def unable_signoff
     @vacation = current_company.vacations.friendly.find(params[:id])
     if current_user.id == @vacation.user_id
-      redirect_to vacations_path, notice: "不能簽核本人假單！" 
+      redirect_to vacations_path, notice: '不能簽核本人假單！'
     else
       @vacation = current_company.vacations.friendly.find(params[:id])
-    end 
+    end
   end
 
   def set_vacation
