@@ -2,13 +2,17 @@
 
 class VacationsController < ApplicationController
   before_action :set_vacation, only: %i[show edit update destroy signoff signoff_completed]
+  before_action :correct_user, only: %i[edit update]
+  before_action :unable_signoff, only: %i[signoff]
 
   def index
-    @vacations =  if current_user.role == 'staff'
-                  current_user.vacations
-                  else
-                  current_company.vacations
-                  end
+    if current_user.role == "staff"
+      vacations = current_user.vacations
+    else
+      vacations = current_company.vacations
+    end
+    vacation_orders = vacations.order(vacation_at: :asc)
+    @vacation_result = vacation_orders.Pending + vacation_orders.Approved + vacation_orders.Rejected
   end
 
   def show; end
@@ -18,13 +22,14 @@ class VacationsController < ApplicationController
   end
 
   def edit
+      redirect_to vacations_path, notice: '不可編輯，簽核已完成' if @vacation.status != "Pending"
   end
 
   def create
     @vacation = current_company.vacations.new(vacation_combine_id)
     params[:hour] = params[:hour].to_i
     if @vacation.save
-      redirect_to vacations_path, notice: '假單申請成功.'
+      redirect_to vacations_path, notice: t('.假單申請成功')
     else
       render :new
     end
@@ -54,6 +59,24 @@ class VacationsController < ApplicationController
   end
 
   private
+
+  def correct_user     
+    @vacation = current_company.vacations.friendly.find(params[:id])
+    if current_user.id != @vacation.user_id
+      redirect_to vacations_path, notice: "沒有編輯權限！" 
+    else
+      @vacation = current_company.vacations.friendly.find(params[:id])
+    end  
+  end
+
+  def unable_signoff
+    @vacation = current_company.vacations.friendly.find(params[:id])
+    if current_user.id == @vacation.user_id
+      redirect_to vacations_path, notice: "不能簽核本人假單！" 
+    else
+      @vacation = current_company.vacations.friendly.find(params[:id])
+    end 
+  end
 
   def set_vacation
     @vacation = current_company.vacations.friendly.find(params[:id])

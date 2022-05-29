@@ -87,6 +87,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.10.0)
     faraday (2.3.0)
       faraday-net_http (~> 2.0)
@@ -296,6 +298,7 @@ DEPENDENCIES
   byebug
   capybara (~> 3.36)
   devise (~> 4.2)
+  enum_help (~> 0.0.15)
   figaro (~> 1.2)
   foreman (~> 0.87.2)
   friendly_id (~> 5.4)
@@ -326,4 +329,4 @@ RUBY VERSION
    ruby 2.7.5p203
 
 BUNDLED WITH
-   2.3.12
+   2.3.14

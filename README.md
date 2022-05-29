@@ -29,6 +29,7 @@ Website : https://flycat.works/
 
 游郁玲 YuLing You
 https://github.com/yulingyou
+ysiad926@gmail.com
 
 負責項目
 
@@ -38,6 +39,7 @@ https://github.com/yulingyou
 
 韓新民 HsinMin Han
 https://github.com/mingohan
+mingohandev@gmail.com
 
 負責項目
 
@@ -48,6 +50,7 @@ https://github.com/mingohan
 
 楊承楚 ChengChu Yang
 https://github.com/JacoChu
+a0976673231@gmai.com
 
 負責項目
 
@@ -57,6 +60,7 @@ https://github.com/JacoChu
 
 林昀希 Yunxi Lin
 https://github.com/linyunxi
+yunxi.lin777@gmail.com
 
 負責項目
 
@@ -67,6 +71,7 @@ https://github.com/linyunxi
 
 黃麒修 ChiShiou Huang
 https://github.com/erichg007
+chishiou0609@gmail.com
 
 負責項目
 

@@ -1,0 +1,35 @@
+<%= form_with(model: vacation) do |form| %>
+  <% if vacation.errors.any? %>
+      <ul>
+        <% vacation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+    <%= form.label :vacation_at, "Vacation Date" %>
+    <%= form.date_field :vacation_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vacation_type, "Vacation Type" %>
+    <%= form.select :vacation_type, Vacation.vacation_types_i18n.invert %>
+  </div>
+
+  <div class="field">
+    <p>Only select the hour option when you are request a non-whole day off</p>
+    <%= form.label :hour, "Hour" %>
+    <%= form.select :hour, Vacation.all_hour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reason, "Reason" %>
+    <%= form.text_field :reason %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
