@@ -65,7 +65,4 @@ class ApplicationPolicy
     user && user.role == 'staff'
   end
 
-  def owner
-    user = @user
-  end
 end

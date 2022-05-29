@@ -22,12 +22,6 @@ class Vacation < ApplicationRecord
     '其他(不給薪)': '其他(不給薪)'
   }
 
-  def self.all_hour
-    [
-      %w[8], %w[0.5], %w[1], %w[2], %w[3], %w[4], %w[5], %w[6], %w[7]
-    ]
-  end
-
   def self.all_status
     [
       %w[Approved], %w[Rejected], %w[Pending]
