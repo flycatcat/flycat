@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2022_05_28_061745) do
 
   # These are extensions that must be enabled in order to support this database
@@ -139,7 +138,6 @@ ActiveRecord::Schema.define(version: 2022_05_28_061745) do
     t.string "department"
     t.string "job_title"
     t.bigint "user_id"
-    t.string "email"
     t.date "end_at"
     t.string "work_shift_title"
     t.index ["company_id"], name: "index_profiles_on_company_id"

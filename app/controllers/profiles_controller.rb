@@ -30,7 +30,6 @@ class ProfilesController < ApplicationController
 
   private
 
-
   def find_profile
     @profile = current_company.profiles.friendly.find(params[:id])
   end
@@ -38,10 +37,5 @@ class ProfilesController < ApplicationController
   def profiles_params
     params.require(:profile).permit(:staff_no, :name, :gender, :department, :tel, :start_at, :job_title, :email, :end_at)
   end
-
-  def params_combine_id
-    profiles_params.merge(user_id: User.last.id)
-  end
-
   
 end
