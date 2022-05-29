@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = current_company.profiles.new
+    @work_shift_title = current_company.work_shifts.map{|x| x.title}
     unused_email
   end
 
@@ -24,9 +25,12 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+  end
 
-  def edit; end
+  def edit
+    @work_shift_title = current_company.work_shifts.map {|x| x.title}
+  end
 
   def update
     if @profile.update(profiles_params)

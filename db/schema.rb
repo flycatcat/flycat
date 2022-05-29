@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_26_025214) do
+ActiveRecord::Schema.define(version: 2022_05_28_061745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,21 @@ ActiveRecord::Schema.define(version: 2022_05_26_025214) do
     t.index ["slug"], name: "index_departments_on_slug", unique: true
   end
 
+  create_table "events", force: :cascade do |t|
+    t.boolean "all_day"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "title"
+    t.string "content"
+    t.date "date"
+    t.bigint "work_shift_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "vacation_set"
+    t.string "mode"
+    t.index ["work_shift_id"], name: "index_events_on_work_shift_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -118,6 +133,7 @@ ActiveRecord::Schema.define(version: 2022_05_26_025214) do
     t.bigint "user_id"
     t.string "email"
     t.date "end_at"
+    t.string "work_shift_title"
     t.index ["company_id"], name: "index_profiles_on_company_id"
     t.index ["slug"], name: "index_profiles_on_slug", unique: true
     t.index ["user_id"], name: "index_profiles_on_user_id"
@@ -181,14 +197,25 @@ ActiveRecord::Schema.define(version: 2022_05_26_025214) do
     t.index ["user_id"], name: "index_vacations_on_user_id"
   end
 
+  create_table "work_shifts", force: :cascade do |t|
+    t.string "title"
+    t.string "kind"
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_work_shifts_on_company_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bulletins", "companies"
   add_foreign_key "departments", "companies"
+  add_foreign_key "events", "work_shifts"
   add_foreign_key "profiles", "companies"
   add_foreign_key "profiles", "users"
   add_foreign_key "punchcards", "users"
   add_foreign_key "users", "companies"
   add_foreign_key "vacations", "companies"
   add_foreign_key "vacations", "users"
+  add_foreign_key "work_shifts", "companies"
 end

@@ -1,0 +1,21 @@
+<h1>工作表設定</h1>
+<%= link_to '新增', new_work_shift_path %>
+<table>
+  <tr>
+    <td>工作表名稱</td>
+    <td>工作表類別</td>
+    <td>執行</td>
+  </tr>
+  <% @work_shifts.each do |work_shift| %>
+  <tr>
+    <td><%= work_shift.title %></td>
+    <td><%= work_shift.kind %></td>
+    <td>
+      <%= link_to '編輯' , edit_work_shift_path(work_shift.id) %> 
+      <%= link_to'刪除' , work_shift_path(work_shift.id), method: 'delete', data: {
+      confirm: '確定要刪除嗎？'} %>
+      <%= link_to'設定' , setting_work_shift_path(work_shift.id) %>
+    </td>
+  </tr>
+  <% end %>
+</table>

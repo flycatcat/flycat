@@ -1,0 +1,27 @@
+<h1>變更工作表</h1>
+
+<%= form_with(model: @work_shift, url: work_shift_path, method: 'patch') do |form| %>
+  <% if @work_shift.errors.any?  %>
+    <ul>
+      <% @work_shift.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="title">
+    <%= form.label :title, "工作表名稱" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="kind">
+    <%= form.label :kind, "工作表類別" %>
+    <%= form.select :kind , WorkShift.all_kind %>
+  </div>
+
+  <div class="submit">
+    <%= form.submit "更新" %>
+  </div>
+
+<% end %>
+

@@ -16,13 +16,19 @@ Rails.application.routes.draw do
     end
   end
   resources :admin
+  resources :work_shifts, param: :work_shift_id do
+    member do
+      resources :events, param: :event_id 
+      get 'setting', to: 'work_shifts#setting', as: 'setting'
+    end
+  end
+  
 
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks',
   }
   root 'home#index'
-  get 'home/about'
 
   resources :orders, only: [:new, :create] do
     collection do
