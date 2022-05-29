@@ -25,9 +25,9 @@
       <div class="px-4 py-5 rounded-lg">
         <table class="w-full text-lg rounded-lg shadow-md">
           <tr class="thead">
-            <td class="tp"><%= '申請人'%></td>
-            <td class="tp"><%= '假別' %></td>
-            <td class="tp"><%= '請假事由' %></td>
+            <td class="tp"><%= t('申請人') %></td>
+            <td class="tp"><%= t('假別') %></td>
+            <td class="tp"><%= t('請假事由') %></td>
           </tr>
           <% @bulletins.order(created_at: :desc).each do |bulletin|  %>
             <tr>

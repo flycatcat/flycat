@@ -1,4 +1,4 @@
-  <h1 class="p-6 bg-gray-200"><%='員工資訊'%></h1>
+  <h1 class="p-6 bg-gray-200"><%=t('員工資訊')%></h1>
   <div class="px-4 bg-gray-200 rounded-lg">
     <% if policy(:profile).create?  %>
       <div class="flex flex-col">
@@ -18,7 +18,7 @@
               <td class="tp"><%= t('部門名稱') %></td>
               <td class="tp"><%= t('班別名稱') %></td>
               <td class="tp"><%= t('電子信箱') %></td>
-              <td class="tp"><%= "聯絡電話" %></td>
+              <td class="tp"><%= t("聯絡電話") %></td>
               <% if policy(:profile).create?  %>
                 <td class="tp"><%= t('編輯員工資訊') %></td>
                 <td class="tp"><%= t('刪除員工資訊') %></td>
@@ -34,8 +34,8 @@
               <td class="tbody"><%= profile.email %></td>
               <td class="tbody"><%= profile.tel %></td>
               <% if policy(:profile).create?  %>
-                <td class="tbody"><%= link_to "編輯", edit_profile_path(profile),class: "edit-btn" %></td>
-                <td class="tbody"><%= link_to "刪除", profile_path(profile.id),class: "delete-btn",method: "delete", data: {confirm: '確定要刪除嗎？'} %></td> 
+                <td class="tbody"><%= link_to t("編輯"), edit_profile_path(profile),class: "edit-btn" %></td>
+                <td class="tbody"><%= link_to t("刪除"), profile_path(profile.id),class: "delete-btn",method: "delete", data: {confirm: t('確定要刪除嗎?')} %></td> 
               <% end %>
             <% end %>
           </tr>

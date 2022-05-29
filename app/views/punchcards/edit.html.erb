@@ -1,4 +1,4 @@
-<h1>下班打卡</h1>
+<h1><%= t('下班打卡') %></h1>
 <div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
     <% if @punchcard.errors.any? %>
         <ul>
@@ -12,12 +12,12 @@
     <div class="w-screen max-w-sm px-10 py-8 bg-white shadow-md rounded-xl">
       <%= form_with model: @punchcard  do |f1| %>
           <div class="field">
-            <%= f1.label :punch_out_at, "下班打卡" ,class: "pt-6 block mb-1 font-semibold text-gray-600"%>
+            <%= f1.label :punch_out_at, t("下班打卡") ,class: "pt-6 block mb-1 font-semibold text-gray-600"%>
             <%= f1.text_field :punch_out_at,value: Time.current,readonly: :true %>
           </div>
           <div class="field">
             <div class="actions">
-              <%= f1.submit "下班打卡",class: "w-full mt-5 bg-indigo-600 text-white py-2 rounded-md font-semibold tracking-tight" %>
+              <%= f1.submit t("下班打卡"),class: "w-full mt-5 bg-indigo-600 text-white py-2 rounded-md font-semibold tracking-tight" %>
             </div>
           </div>
       <% end %>
