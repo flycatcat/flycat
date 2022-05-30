@@ -1,13 +1,13 @@
 <div class="h-full bg-gray-200" >
-  <h1 class="p-6"><%= '工作表設定' %></h1>
+  <h1 class="p-6"><%= t('工作表設定') %></h1>
     <div class="w-5/6 mx-auto rounded-lg">
       <div class="flex justify-end">
         <%= link_to t("新增排班班別"), new_work_shift_path,class: "add-btn" if policy(:work_shift).create?%>
       </div>
       <table class="w-full mx-auto mt-5 text-lg rounded-lg shadow-md">
         <tr class="thead">
-          <td class="tp"><%= '工作表名稱' %></td>
-          <td class="tp"><%= "工作表類別" %></td>
+          <td class="tp"><%= t('工作表名稱') %></td>
+          <td class="tp"><%= t("工作表類別") %></td>
           <% if policy(:work_shift).create?  %>
             <td class="tp"><%= t('編輯資訊') %></td>
             <td class="tp"><%= t('刪除公告') %></td>
@@ -19,9 +19,9 @@
             <td class="tbody"><%= work_shift.title %></td>
             <td class="tbody"><%= work_shift.kind %></td>
               <% if policy(:work_shift).create?  %>
-                <td class="tbody"><%= link_to "編輯", edit_work_shift_path(work_shift.id),class: "edit-btn" %></td>
-                <td class="tbody"><%= link_to "刪除", work_shift_path(work_shift.id),class: "delete-btn", method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:work_shift).destroy?%></td>
-                <td class="tbody"><%= link_to'設定' , setting_work_shift_path(work_shift.id),class: "setting-btn" %></td>
+                <td class="tbody"><%= link_to t("編輯"), edit_work_shift_path(work_shift.id),class: "edit-btn" %></td>
+                <td class="tbody"><%= link_to t("刪除"), work_shift_path(work_shift.id),class: "delete-btn", method: 'delete', data: {confirm: t('確定要刪除嗎？')} if policy(:work_shift).destroy?%></td>
+                <td class="tbody"><%= link_to t('設定') , setting_work_shift_path(work_shift.id),class: "setting-btn" %></td>
               <% end %>
           </tr>
         <% end %>        

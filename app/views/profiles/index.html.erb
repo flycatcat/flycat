@@ -10,18 +10,18 @@
       </div>  
     <% end %>
       <div>
-        <h2 class="mb-3 bg-gray-200"><%= '搜尋關鍵字' %></h2>
+        <h2 class="mb-3 bg-gray-200"><%= t('搜尋關鍵字') %></h2>
       </div>  
-      <div class="flex mb-6 justify-around">
+      <div class="flex justify-around mb-6">
         <%= search_form_for @q do |f| %>
-          <%= f.label :staff_no_cont, "員工編號", class: " mb-2 font-semibold text-gray-600 pt-3" %>
-          <%= f.search_field :staff_no_cont, placeholder:"請輸入員工編號",class: "px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50" %>
+          <%= f.label :staff_no_cont, t("員工編號"), class: " mb-2 font-semibold text-gray-600 pt-3" %>
+          <%= f.search_field :staff_no_cont, placeholder:t("請輸入員工編號"),class: "px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50" %>
 
-          <%= f.label :department_cont,"部門", class: " mb-2 font-semibold text-gray-600 pt-3" %>
-          <%= f.search_field :department_cont, placeholder:"請輸入部門名稱",class: "px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50" %>
+          <%= f.label :department_cont,t("部門"), class: " mb-2 font-semibold text-gray-600 pt-3" %>
+          <%= f.search_field :department_cont, placeholder:t("請輸入部門名稱"),class: "px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50" %>
 
-          <%= f.label :name_cont,"姓名", class: " mb-2 font-semibold text-gray-600 pt-3" %>
-          <%= f.search_field :name_cont, placeholder:"請輸入員工姓名",class: "mr-6 px-4 py-2 rounded-md outline-none bg-indigo-50" %>
+          <%= f.label :name_cont,t("姓名"), class: " mb-2 font-semibold text-gray-600 pt-3" %>
+          <%= f.search_field :name_cont, placeholder:t("請輸入員工姓名"),class: "mr-6 px-4 py-2 rounded-md outline-none bg-indigo-50" %>
 
           <%= f.submit class: "inline-block add-btn" %>
         <% end %>
@@ -32,7 +32,7 @@
               <td class="tp"><%= t('姓名') %></td>
               <td class="tp"><%= t('部門名稱') %></td>
               <td class="tp"><%= t('班表名稱') %></td>
-              <td class="tp"><%= "聯絡電話" %></td>
+              <td class="tp"><%= t("聯絡電話") %></td>
               <% if policy(:profile).create?  %>
                 <td class="tp"><%= t('編輯員工資訊') %></td>
                 <td class="tp"><%= t('刪除員工資訊') %></td>
