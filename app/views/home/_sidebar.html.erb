@@ -15,7 +15,6 @@
     
   <nav class="mt-10 bg-gray-900">
     <% if policy(:bulletin).index? %>
-
                 <%= link_to admin_index_path, class: "flex items-center px-6 py-2 mt-4 text-gray-100 bg-gray-700 bg-opacity-25" do %>
                         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -47,7 +46,16 @@
                 <span class="mx-3"><%= t('假單管理') %></span>
           <%end%>
         <% end %>
+        <% if policy(:work_shift).index? %>
+          <%= link_to work_shifts_path,class:"flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+            </path>
+          </svg>
+                <span class="mx-3">排班管理</span>
+          <%end%>
         
+        <% end %>
         <% if policy(:department).index? %>
           <%= link_to departments_path,class:"flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
           <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

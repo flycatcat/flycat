@@ -4,6 +4,7 @@
     <table class="text-lg rounded-lg shadow-md">
       <tr class="thead">
           <td class="tp">員工信箱</td>
+          <td class="tp">姓名</td>
           <td class="tp"><%= t('編輯員工資訊') %></td>
           <td class="tp"><%= t('刪除員工資訊') %></td>
       <tr>
@@ -11,6 +12,7 @@
       <% @users.each do |user| %>
         <tr>
             <td class="tbody"><%= user.email %></td>
+            <td class="tbody"><%= user.profile&.name %></td>
             <td class="tbody"><%= link_to "編輯", edit_user_registration_path(user),class: "edit-btn" %></td>
             <td class="tbody"><%= link_to "刪除", user_account_path(user.id),class: "delete-btn", method: "delete", data: {confirm: '確定要刪除嗎？'} %></td>
         <tr>

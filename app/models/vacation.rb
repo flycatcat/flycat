@@ -43,5 +43,4 @@ class Vacation < ApplicationRecord
     self.status = 'Pending'
   end
 
-  # 寄通知email
 end

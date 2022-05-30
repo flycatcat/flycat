@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :vacations
   has_one :profile, dependent: :delete
   accepts_nested_attributes_for :company
+  accepts_nested_attributes_for :profile
 
   def self.create_from_provider_data(provider_data)
     where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do |user|

@@ -6,8 +6,7 @@
             <td class="tp"><%= t('姓名') %></td>
             <td class="tp"><%= t('部門名稱') %></td>
             <td class="tp"><%= t('性別') %></td>
-            <td class="tp"><%= t("電子信箱") %></td>
-            <td class="tp"><%= t("聯絡電話") %></td>
+            <td class="tp"><%= "聯絡電話" %></td>
         </tr>
         <% @profiles.order(staff_no: :asc).each do |profile|  %>
         <div class="h-full bg-gray-200">
@@ -16,7 +15,6 @@
             <td class="tbody"><%= profile.name %></td>
             <td class="tbody"><%= profile.department%></td>
             <td class="tbody"><%= profile.gender %></td>
-            <td class="tbody"><%= profile.email %></td>
             <td class="tbody"><%= profile.tel %></td>
           <% end %>
         </tr>

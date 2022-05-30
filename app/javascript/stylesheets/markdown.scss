@@ -1,0 +1,72 @@
+.markdown,
+.editor-preview-full,
+.editor-preview-side,
+{
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    @apply my-4;
+  }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+
+  p {
+    @apply text-lg;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li {
+    list-style-position: inside;
+  }
+
+  a {
+    @apply text-blue-300;
+
+    &:hover {
+      @apply text-blue-300 underline;
+    }
+
+    &:active {
+      @apply text-blue-300 underline;
+    }
+  }
+
+  blockquote {
+    & > p::before {
+      content: "";
+      @apply mr-4 border-l-2 border-2 border-gray-600;
+    }
+  }
+}
+
+.EasyMDEContainer {
+  z-index: 100;
+  @apply w-full;
+
+  div.CodeMirror-focused {
+    @apply border-2 text-gray-900 rounded;
+  }
+}

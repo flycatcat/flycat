@@ -2,6 +2,10 @@
   @apply px-2 py-1.5 text-base text-white bg-green-500 rounded hover:bg-green-700;
 }
 
+.setting-btn {
+  @apply px-2 py-1.5 text-base text-white bg-purple-500 rounded hover:bg-purple-700;
+}
+
 .delete-btn {
   @apply px-2 py-1.5 text-base text-white bg-red-600 rounded hover:bg-red-700;
 }

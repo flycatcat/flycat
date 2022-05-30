@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center w-full h-screen mt-16 bg-gray-200">
-<%= form_with(model: @profile, url: profiles_path, method: 'post') do |f| %>
+  <h2><%= t('新增員工資料') %></h2>
   <% if @profile.errors.any?  %>
     <ul>
         <% @profile.errors.full_messages.each do |message| %>
@@ -7,6 +7,9 @@
         <% end %>
     </ul>
   <% end %>
+
+<%= form_with(model: @profile, url: profiles_path, method: 'post') do |f| %>
+
   <form>
     <div class="w-screen max-w-xl px-10 mt-20 mb-16 bg-white shadow-md rounded-xl ">
       <div>
@@ -55,3 +58,4 @@
   </form>
 <% end %>  
 </div>
+

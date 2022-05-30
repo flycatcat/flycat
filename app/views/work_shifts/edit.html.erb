@@ -1,27 +1,26 @@
-<h1>變更工作表</h1>
+<div class="flex items-start justify-center w-full h-screen pt-10 pt-16 bg-gray-200">
+  <%= form_with(model: @work_shift, url: work_shift_path, method: 'patch') do |form| %>
+    <% if @work_shift.errors.any?  %>
+      <ul>
+        <% @work_shift.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div class="w-screen max-w-md px-10 py-8 bg-white shadow-md rounded-xl">
+    <h1>編輯班表</h1>
+      <div class="field mb-6">
+        <%= form.label :title, "班表名稱" %>
+        <%= form.text_field :title,class: "p-3 mt-4 leading-none text-gray-900 bg-gray-100 border border-gray-200 rounded focus:outline-none focus:border-blue-700" %>
+      </div>
 
-<%= form_with(model: @work_shift, url: work_shift_path, method: 'patch') do |form| %>
-  <% if @work_shift.errors.any?  %>
-    <ul>
-      <% @work_shift.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
-  <div class="title">
-    <%= form.label :title, "工作表名稱" %>
-    <%= form.text_field :title %>
+      <div class="kind">
+        <%= form.label :kind, "班別" %>
+        <%= form.select :kind , WorkShift.all_kind ,class: "p-3 mt-4 leading-none text-gray-900 bg-gray-100 border border-gray-200 rounded focus:outline-none focus:border-blue-700" %>
+      </div>
+        <div class="actions">
+        <%= form.submit class: "px-10 py-4 font-semibold leading-none text-white bg-blue-700 rounded mt-9 hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none" %>
+        </div>
+    <% end %>
   </div>
-
-  <div class="kind">
-    <%= form.label :kind, "工作表類別" %>
-    <%= form.select :kind , WorkShift.all_kind %>
-  </div>
-
-  <div class="submit">
-    <%= form.submit "更新" %>
-  </div>
-
-<% end %>
-
+</div>
