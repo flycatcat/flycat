@@ -32,9 +32,9 @@
         <td class="tbody"><%= vacation.vacation_type %></td>
         <td class="tbody"><%= vacation.hour %></td>
         <div>
-          <% if vacation.status == "approved" %>
+          <% if vacation.status == "Approved" %>
             <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="approved-tag"><%= vacation.status %></span></td>
-          <% elsif vacation.status == "rejected" %>
+          <% elsif vacation.status == "Rejected" %>
             <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="rejected-tag"><%= vacation.status %></span></td>
           <% else %>
             <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="pending-tag"><%= vacation.status %></span></td>
