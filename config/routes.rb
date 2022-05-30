@@ -2,20 +2,26 @@
 
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: { 
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks',
+  }
+
   resources :companies, except: [:index, :destroy, :show]
   resources :profiles, except: [:show]
   resources :departments, except: [:show]
   resources :bulletins, except: []
   resources :user_accounts, only: [:index, :new, :create, :destroy]
   resources :punchcards
-  
+  resources :admin
+
   resources :vacations do
     member do
       get :signoff
       post :signoff_completed
     end
   end
-  resources :admin
+
   resources :work_shifts, param: :work_shift_id do
     member do
       resources :events, param: :event_id 
@@ -23,17 +29,15 @@ Rails.application.routes.draw do
     end
   end
   
-
-  devise_for :users, controllers: { 
-    registrations: 'users/registrations',
-    omniauth_callbacks: 'users/omniauth_callbacks',
-  }
-  root 'home#index'
-
   resources :orders, only: [:new, :create] do
     member do
       post :confirm
       get :success
     end
-  end  
+  end
+  
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_server_error'
+  
+  root 'home#index'
 end

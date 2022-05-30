@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  rescue_from ActionController::RoutingError, with: :not_found
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :set_locale
 
@@ -10,14 +11,6 @@ class ApplicationController < ActionController::Base
 
   def current_company
     @current_company = current_user.company
-  end
-
-  def not_found
-    render status: 404
-  end
-
-  def internal_server_error
-    render status: 500
   end
 
   private
