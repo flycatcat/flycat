@@ -42,7 +42,7 @@
           <td class="tbody"><%= vacation.reason %></td>
 
           <% if policy(:vacation).show? %>
-            <td class="tbody"><%= link_to t('展開'), vacation,calss: "show-btn" %></td>
+            <td class="tbody"><%= link_to t('展開'), vacation,class: "show-btn" %></td>
           <% end %>
 
           <% if vacation.user_id == current_user.id && policy(:vacation).update? %>
