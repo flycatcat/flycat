@@ -35,7 +35,7 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_params
-    params.require(:profile).permit(:staff_no, :name, :gender, :department, :tel, :start_at, :job_title, :email, :end_at)
+    params.require(:profile).permit(:staff_no, :name, :gender, :department, :tel, :start_at, :job_title, :email, :end_at, :work_shift_title)
   end
   
 end

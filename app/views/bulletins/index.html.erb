@@ -17,7 +17,7 @@
           <tr>
             <td class="tbody"><%= link_to bulletin.title , bulletin_path(bulletin) %></td>
             <td class="tbody">
-              <%= bulletin.updated_at.strftime("%Y/%m/%d %I:%M") %>
+              <%= bulletin.updated_at.strftime("%Y/%m/%d %I:%M %p") %>
             </td>
               <% if policy(:bulletin).create?  %>
                 <td class="tbody"><%= link_to t("編輯"), edit_bulletin_path(bulletin),class: "edit-btn" %></td>
