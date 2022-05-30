@@ -54,14 +54,14 @@
   }
 
   a {
-    @apply text-primary-300;
+    @apply text-blue-300;
 
     &:hover {
-      @apply text-primary-300 underline;
+      @apply text-blue-300 underline;
     }
 
     &:active {
-      @apply text-primary-300 underline;
+      @apply text-blue-300 underline;
     }
   }
 
@@ -78,6 +78,6 @@
   @apply w-full;
 
   div.CodeMirror-focused {
-    @apply border-2 border-primary-300 rounded;
+    @apply border-2 text-gray-900 rounded;
   }
 }

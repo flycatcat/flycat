@@ -3,11 +3,8 @@
     <% if policy(:profile).create?  %>
       <div class="flex flex-col">
         <div class="flex justify-end bg-gray-200">
-          <div class="flex justify-end pr-10 mb-3">
-            <%= link_to t('註冊員工帳號'), new_user_account_path,class: "inline-block add-btn" %>
-          </div>
           <div class="flex justify-end mb-3">
-            <%= link_to t('新增員工資料'), new_profile_path,class: "inline-block add-btn" %>
+            <%= link_to t('新增員工資訊'), new_user_account_path,class: "inline-block add-btn" %>
           </div>
         </div>
       <% end %>

@@ -1,3 +1,15 @@
-<article data-controller= "markdown-viewer">
-  <%= @bulletin.content %>
-</article>
+<div class="h-full bg-gray-200">
+  <div class="w-1/2 mx-auto " >
+    <div class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md     hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <article class= "markdown" data-controller= "markdown-viewer">
+          <div>
+            <h1>公告標題：<%= @bulletin.title %></h1>
+          </div>
+          <p>
+            <%= @bulletin.content %>
+          </p>
+      </article>
+    </div>
+  </div>
+</div>
+
