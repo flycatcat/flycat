@@ -23,8 +23,10 @@
               </div>
               <div>
                 <span class="mx-2 text-4xl font-semibold text-white">FlyCat</span>
-                <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
-                <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
+                <p class="text-gray-100">
+                  <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
+                  <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
+                </p>
               </div> 
             </div>
           <% end %>

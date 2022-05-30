@@ -64,5 +64,4 @@ class ApplicationPolicy
   def staff
     user && user.role == 'staff'
   end
-
 end

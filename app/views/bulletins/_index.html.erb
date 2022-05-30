@@ -1,5 +1,5 @@
 <div class="flex flex-wrap">
-  <div class="w-full mt-6 sm:w-1 md:w-1/2 sm:mt-0">
+  <div class="w-full mt-6 bg-gray-200 sm:w-1 md:w-1/2 sm:mt-0">
     <div class="bg-gray-200">
       <h1 class="px-6"><%= t('公告總覽') %></h1>
       <div class="py-5 pl-6 rounded-lg">
@@ -18,26 +18,4 @@
       </div>
     </div>
   </div>
-  <%# <-------> %>
-  <div class="w-full mt-6 sm:w-1 md:w-1/2 sm:mt-0">
-    <div class="bg-gray-200">
-      <h1 class="px-5"><%= t('請假總覽') %></h1>
-      <div class="px-4 py-5 rounded-lg">
-        <table class="w-full text-lg rounded-lg shadow-md">
-          <tr class="thead">
-            <td class="tp"><%= t('申請人') %></td>
-            <td class="tp"><%= t('假別') %></td>
-            <td class="tp"><%= t('請假事由') %></td>
-          </tr>
-          <% @bulletins.order(created_at: :desc).each do |bulletin|  %>
-            <tr>
-              <td class="tbody">王小明</td>
-              <td class="tbody">事假</td>
-              <td class="tbody">家庭旅遊</td>
-            </tr>
-          <% end %>      
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+  
