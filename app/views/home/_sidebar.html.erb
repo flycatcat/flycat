@@ -100,7 +100,7 @@
         <span class="mx-3"><%= t('編輯公司資訊') %></span>
       <%end%>
     <%end%>
-
+    <% if policy(:bulletin).index? %>
       <%= link_to new_order_path ,class: "flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -110,6 +110,7 @@
         </svg>
         <span class="mx-3"><%= t('資助飛天貓') %></span>
       <%end%>
+    <% end %>
 
 
     <% if user_signed_in? %>

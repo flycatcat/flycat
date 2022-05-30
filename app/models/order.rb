@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   validates :username, presence: true
   validates :amount, presence: true
   validates :order_no, uniqueness: true
+  belongs_to :user
 
   before_create :flycatOrderNo
 

@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create] do
     member do
       post :confirm
+      get :success
     end
   end  
 end

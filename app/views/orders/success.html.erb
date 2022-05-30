@@ -1,6 +1,5 @@
 <div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
   <div class="w-screen max-w-3xl px-10 py-8 bg-white shadow-md rounded-xl">
-    <% if @response.status === "SUCCESS" %>
       <table class="w-full rounded-lg shadow-md text-md">
         <h1 class="mb-5">感謝您讓飛天貓飛高高</h1>
           <tr class="thead">
@@ -10,10 +9,10 @@
               <td class="tp"><%= '卡號後四碼' %></td>
           </tr>
           <tr>
-              <td class="tbody"><%= @username %></td>
-              <td class="tbody"><%= @response.order_no %></td>
-              <td class="tbody"><%= @response.pay_at %></td>
-              <td class="tbody"><%= @response.card_last_4_no %></td>
+              <td class="tbody"><%= @order.username %></td>
+              <td class="tbody"><%= @order.order_no %></td>
+              <td class="tbody"><%= @order.pay_at %></td>
+              <td class="tbody"><%= @order.card_last_4_no %></td>
           </tr>
           <% if user_signed_in? %>
             <div class="flex justify-end mb-3">
@@ -25,8 +24,5 @@
             </div>
           <% end %>
       </table>
-    <% else %>  
-      <h1>資助失敗，請再試一次</h1>
-    <% end %>
   </div>
 </div>

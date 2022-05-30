@@ -8,6 +8,7 @@ class User < ApplicationRecord
   belongs_to :company
   has_many :punchcards
   has_many :vacations
+  has_many :orders
   has_one :profile, dependent: :delete
   accepts_nested_attributes_for :company
   accepts_nested_attributes_for :profile
