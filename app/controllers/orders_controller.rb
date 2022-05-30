@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  skip_before_action :verify_authenticity_token, except: :create
+  skip_before_action :verify_authenticity_token, only: %i[new confirm success]
 
   def new
     @order = Order.new
