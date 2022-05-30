@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :orders, only: [:new, :create] do
-    collection do
+    member do
       post :confirm
     end
   end  

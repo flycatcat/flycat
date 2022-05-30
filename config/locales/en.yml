@@ -143,6 +143,8 @@ en:
   名字: "Name"
   金額: "Amount"
   留言: "Memo"
+  請填入捐款金額: "Please enter the amount"
+  藍新頁面結轉中…: "Please wait..."
   activerecord:
     models:
       vacation:
