@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
   validates :start_time, :end_time, presence: true
   validates :title, presence: true
@@ -20,8 +22,6 @@ class Event < ApplicationRecord
   private
 
   def end_time_after_start_time
-    if end_time <= start_time
-      errors.add(:end_time, "必須大於開始時間")
-    end
- end
+    errors.add(:end_time, '必須大於開始時間') if end_time <= start_time
+  end
 end

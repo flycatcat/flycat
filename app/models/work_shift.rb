@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WorkShift < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :company }
   validates :kind, presence: true

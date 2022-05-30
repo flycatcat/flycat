@@ -3,32 +3,31 @@
 class Vacation < ApplicationRecord
   belongs_to :user
   belongs_to :company
+  has_one :profile, through: :user
+  has_one_attached :proof
 
   validates :vacation_at, presence: true
 
   include Slugable
   acts_as_paranoid
 
-  has_one_attached :proof
-
-  def self.all_type
-    [
-      %w[事假], %w[病假], %w[特休], %w[婚假], %w[產/陪產假], %w[喪假], %w[其他(給薪)], %w[其他(不給薪)]
-    ]
-  end
-
-  def self.all_hour
-    [
-      %w[8], %w[0.5]
-    ]
-  end
+  enum vacation_type: {
+    '事假': '事假',
+    '病假': '病假',
+    '特休': '特休',
+    '婚假': '婚假',
+    '產/陪產假': '產/陪產假',
+    '喪假': '喪假',
+    '其他(給薪)': '其他(給薪)',
+    '其他(不給薪)': '其他(不給薪)'
+  }
 
   def self.all_status
     [
-      %w[approved], %w[rejected]
+      %w[Approved], %w[Rejected], %w[Pending]
     ]
   end
-  STATUSES = %w[pending approved rejected].freeze
+  STATUSES = %w[Pending Approved Rejected].freeze
 
   STATUSES.each do |s|
     define_method("#{s}?") { status == s }
@@ -41,7 +40,7 @@ class Vacation < ApplicationRecord
 
   before_validation :set_initial_status, on: :create
   def set_initial_status
-    self.status = 'pending'
+    self.status = 'Pending'
   end
 
   # 寄通知email

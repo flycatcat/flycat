@@ -1,12 +1,18 @@
-    <header class="flex items-center justify-end px-6 py-4 bg-white border-b-4">
-        <div class="flex">
+    
+    <header class="flex items-center justify-between px-6 py-4 bg-white border-b-4">
+        <div class= "py-2 mx-3 text-base font-bold">
+            <%= link_to "中文版 ", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
+            <span class= "py-2 mx-3 text-base font-bold">|</span>
+            <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
+        </div>
+        <div class="flex justify-start">
             <div class= "py-2 mx-3 text-lg font-bold">
                 <% if policy(:bulletin).index? %>
                     <%= current_user.email %>
                 </div>
             <div>
             <%= link_to destroy_user_session_path, method: "delete",class:"block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white" do %>
-              <span class="mx-3 text-xl font-bold">登出</span>
+              <span class="mx-3 text-xl font-bold"><%= t('登出') %></span>
             <%end%>
         <% end %>
     </header>

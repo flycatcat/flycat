@@ -1,31 +1,31 @@
 <div class="flex items-start justify-center w-full h-screen text-xl bg-gray-200">
   <p id="notice"><%= notice %></p>
   <div class="w-full max-w-xl px-10 mt-10 mb-16 bg-white shadow-md rounded-xl ">
-    <h1 class="pb-3 mt-8 font-bold text-center text-gray-500">假單詳情</h1>
+    <h1 class="pb-3 mt-8 font-bold text-center text-gray-500">Vacation Detail</h1>
     <div class="py-1 field">
-      <strong>休假日:</strong>
+      <strong>Vacation Date:</strong>
       <%= @vacation.vacation_at %>
     </div>
     
     <div class="py-1 field">
-      <strong>假別:</strong>
+      <strong>Vacation Type:</strong>
       <%= @vacation.vacation_type %>
     </div>
 
     <div class="py-1 field">
-      <strong>狀態:</strong>
+      <strong>Status:</strong>
       <%= @vacation.status %>
     </div>
 
     <div class="py-1 field">
-      <strong>請假事由:</strong>
+      <strong>Reason:</strong>
       <%= @vacation.reason if policy(:vacation).show? %>
     </div>
 
     <div class="py-1 field">
-      <strong>請假證明:</strong>
-      <%= link_to '點此查看請假證明', @vacation.proof,class: "mb-1 font-semibold text-blue-600 pt-3", target: "_blank" if @vacation.proof.attached? %>
-      <%= '未提供證明' unless @vacation.proof.attached? %>
+      <strong>Proof:</strong>
+      <%= link_to 'Show proof', @vacation.proof,class: "mb-1 font-semibold text-blue-600 pt-3", target: "_blank" if @vacation.proof.attached? %>
+      <%= 'No proof' unless @vacation.proof.attached? %>
     </div>
     <div class="flex justify-end my-8 -mr-10">
       <%= link_to 'Edit', edit_vacation_path(@vacation),class: "py-2 mx-2 px-6 mt-4 text-lg tracking-wide text-indigo-100 rounded-md bg-gradient-to-tr from-blue-600 to-indigo-600" %>

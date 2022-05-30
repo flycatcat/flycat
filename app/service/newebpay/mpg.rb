@@ -46,7 +46,7 @@ module Newebpay
       info[:NotifyURL] = ENV.fetch('NotifyURL', nil)
       info[:LoginType] = 0
       info[:CREDIT] =  1,
-      info[:VACC] = 1
+                       info[:VACC] = 1
     end
 
     def flycatOrderNo

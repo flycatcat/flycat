@@ -13,15 +13,15 @@
             <td class="tp"><%= t('刪除公告') %></td>
           <% end %>
         </tr>
-        <% @bulletins.each do |bulletin|  %>
+        <% @bulletins.order(updated_at: :desc).each do |bulletin|  %>
           <tr>
             <td class="tbody"><%= link_to bulletin.title , bulletin_path(bulletin) %></td>
             <td class="tbody">
               <%= link_to bulletin.content , bulletin_path(bulletin) %>
             </td>
               <% if policy(:bulletin).create?  %>
-                <td class="tbody"><%= link_to "編輯", edit_bulletin_path(bulletin),class: "edit-btn" %></td>
-                <td class="tbody"><%= link_to "刪除", bulletin_path(bulletin.id),class: "delete-btn", method: 'delete', data: {confirm: '確定要刪除嗎？'} if policy(:bulletin).destroy?%></td>
+                <td class="tbody"><%= link_to t("編輯"), edit_bulletin_path(bulletin),class: "edit-btn" %></td>
+                <td class="tbody"><%= link_to t("刪除"), bulletin_path(bulletin.id),class: "delete-btn", method: 'delete', data: {confirm: t('確定要刪除嗎?')} if policy(:bulletin).destroy?%></td>
               <% end %>
           </tr>
         <% end %>        

@@ -1,48 +1,56 @@
-<h1 class="p-6 bg-gray-200"><%= '請假管理' %></h1>
+<h1 class="p-6 bg-gray-200"><%= t('請假管理') %></h1>
 <div class="px-4 bg-gray-200 rounded-lg">
   <div class="flex justify-end mb-3">
-    <%= link_to "新增假單", new_vacation_path,class: "inline-block add-btn" if policy(:vacation).create? %>
+    <%= link_to t("新增假單"), new_vacation_path,class: "inline-block add-btn" if policy(:vacation).create? %>
   </div>
   <table class="w-full text-lg rounded-lg shadow-md">
     <tr class="thead">
-      <td class="tp"><%= '假別' %></td>
-      <td class="tp"><%= '請假日' %></td>
-      <td class="tp"><%= '簽核狀態' %></td>
-      <td class="tp"><%= '原因' %></td>
-      <td class="tp"><%= '假單詳情' %></td>
-      <% if policy(:vacation).update? %>
-        <td class="tp"><%= '編輯假單' %></td>
+      <td class="tp"><%= t('員工') %></td>
+      <td class="tp"><%= t('請假日') %></td>
+      <td class="tp"><%= t('假別') %></td>
+      <td class="tp"><%= t('時數') %></td>
+      <td class="tp"><%= t('簽核狀態') %></td>
+      <td class="tp"><%= t('請假事由') %></td>
+      <td class="tp"><%= t('詳細資訊') %></td>
+      <% if policy(:vacation).only_manager? %>
+        <td class="tp"><%= t('簽核/編輯') %></td>
       <% end %>
 
-      <% if policy(:vacation).manager? %>
-        <td class="tp"><%= '簽核/編輯假單' %></td>
-      <% elsif policy(:vacation).admin? %>
-        <td class="tp"><%= '簽核假單' %></td>
+      <% if policy(:vacation).only_admin? %>
+        <td class="tp"><%= t('簽核') %></td>
+      <% elsif policy(:vacation).only_staff? %>
+        <td class="tp"><%= t('編輯') %></td>
       <% end %>
       
-      <td class="tp"><%= '刪除假單' %></td>
+      <td class="tp"><%=  t('刪除') %></td>
     </tr>
-    <% @vacations.each do |vacation|  %>
+    <% @vacation_result.each do |vacation|  %>
       <tr>
-        <td class="tbody"><%= vacation.vacation_type %></td>
+      <%# 用&符號代表有就撈沒有就跳過，因為之前資料庫有一些欄位在建的時候資料還沒寫進去，是空白的 %>
+        <td class="tbody"><%= vacation&.profile&.name %></td>
         <td class="tbody"><%= vacation.vacation_at %></td>
+        <td class="tbody"><%= vacation.vacation_type %></td>
+        <td class="tbody"><%= vacation.hour %></td>
         <div>
-          <% if vacation.status == "approved" %>
+          <% if vacation.status == "Approved" %>
             <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="approved-tag"><%= vacation.status %></span></td>
-          <% elsif vacation.status == "rejected" %>
+          <% elsif vacation.status == "Rejected" %>
             <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="rejected-tag"><%= vacation.status %></span></td>
           <% else %>
             <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="pending-tag"><%= vacation.status %></span></td>
           <% end %>
           <td class="tbody"><%= vacation.reason %></td>
-          <td class="tbody"><%= link_to '展開', vacation if policy(:vacation).show? %></td>
-          <% if policy(:vacation).update? %>
-            <td class="tbody"><%= link_to '編輯', edit_vacation_path(vacation),class: "edit-btn" %></td>
-          <% end %>  
-          <% if policy(:vacation).signoff? %>
-            <td class="tbody"><%= link_to '簽核', signoff_vacation_path(vacation),class: "signoff-btn" %></td>
+
+          <% if policy(:vacation).show? %>
+            <td class="tbody"><%= link_to t('展開'), vacation,class: "show-btn" %></td>
           <% end %>
-          <td class="tbody"><%= link_to '刪除', vacation_path(vacation.id), method: :delete, data: { confirm: '確定要刪除嗎?' },class: "delete-btn" %></td>
+
+          <% if vacation.user_id == current_user.id && policy(:vacation).update? %>
+            <td class="tbody"><%= link_to t('編輯'), edit_vacation_path(vacation),class: "edit-btn" %></td>
+          <% elsif policy(:vacation).signoff? %>
+            <td class="tbody"><%= link_to t('簽核'), signoff_vacation_path(vacation),class: "signoff-btn" %></td>
+          <% end %>
+          <td class="tbody"><%= link_to t('刪除'), vacation_path(vacation.id), method: :delete, data: { confirm: t('確定要刪除嗎?') },class: "delete-btn" %></td>
         </div>
       </tr>
     <% end %>

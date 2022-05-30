@@ -6,15 +6,15 @@ class VacationPolicy < ApplicationPolicy
   end
 
   def new?
-    create?
+    update?
   end
 
   def create?
-    staff || manager
+    update?
   end
 
   def show?
-    index?
+    staff || manager || admin
   end
 
   def edit?
@@ -22,7 +22,7 @@ class VacationPolicy < ApplicationPolicy
   end
 
   def update?
-    staff
+    staff || manager
   end
 
   def signoff?
@@ -33,12 +33,15 @@ class VacationPolicy < ApplicationPolicy
     staff || manager || admin
   end
 
-  def admin?
+  def only_admin?
     admin
   end
 
-  def manager?
+  def only_manager?
     manager
   end
 
+  def only_staff?
+    staff
+  end
 end

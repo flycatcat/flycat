@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/3e6c58be6f.js" crossorigin="anonymous"></script>
 <div class="flex flex-col flex-1 overflow-hidden bg-gray-200">
     <main class="flex-1 overflow-x-hidden overflow-y-auto">
-        <h3 class="px-6 pt-4 text-3xl font-medium text-gray-700">Dashboard</h3>
+        <h3 class="px-6 pt-4 text-3xl font-medium text-gray-700"><%= t('總覽') %></h3>
         <div class="container px-6 pt-4 pb-8 mx-auto">
             <div class="mt-4">
                 <div class="flex flex-wrap -mx-6">
@@ -9,7 +9,7 @@
                         <div class="flex items-center justify-between px-2 py-6 bg-white rounded-md shadow-sm">
                             <div class="mx-5">
                                     <h4 class="text-3xl font-semibold text-gray-700"><%= Profile.count %></h4>
-                                    <div class="pt-2 text-2xl text-gray-600">員工人數</div>
+                                    <div class="pt-2 text-2xl text-gray-600"><%= t('員工人數') %></div>
                                 </div>
                             <div class="p-3 rounded-full">
                                 <i class="text-5xl text-blue-600 fa-solid fa-user-group"></i>
@@ -21,25 +21,26 @@
                         <div class="flex items-center justify-between px-2 py-6 bg-white rounded-md shadow-sm">
                             <div class="mx-5">
                                     <h4 class="text-3xl font-semibold text-gray-700"><%=Bulletin.count%></h4>
-                                    <div class="pt-2 text-2xl text-gray-600">近期公告</div>
+                                    <div class="pt-2 text-2xl text-gray-600"><%= t('近期公告') %></div>
                                 </div>
                             <div class="p-3 rounded-full">
                                 <i class="text-5xl text-yellow-500 fa-solid fa-bullhorn"></i>
                             </div>                            
                         </div>
                     </div>
-
+                <% if policy(:vacation).signoff? %>
                     <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
                         <div class="flex items-center justify-between px-2 py-6 bg-white rounded-md shadow-sm">
                             <div class="mx-5">
-                                <h4 class="text-3xl font-semibold text-gray-700">3</h4>
-                                <div class="pt-2 text-2xl text-gray-600">待簽核假單</div>
+                                <h4 class="text-3xl font-semibold text-gray-700"><%= Vacation.Pending.count %></h4>
+                                <div class="pt-2 text-2xl text-gray-600"><%= t('待簽核假單') %></div>
                             </div>
                             <div class="p-3 rounded-full">
                                 <i class="text-5xl text-pink-600 fa-solid fa-clipboard-list"></i>
                             </div>
                         </div>
                     </div>
+                <% end  %>
                 </div>
             </div>
             

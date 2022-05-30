@@ -13,13 +13,13 @@
       <% if user_signed_in? %>
         <% if policy(:profile).create?  %>
            <li>
-            <%= link_to '員工帳號列表', user_accounts_path %>
+            <%= link_to t('員工帳號列表'), user_accounts_path %>
           </li>
           <li>
-            <%= link_to '註冊員工帳號', new_user_account_path %>
+            <%= link_to t('註冊員工帳號'), new_user_account_path %>
           </li>
           <li>
-            <%= link_to '上/下打卡系統', new_punchcard_path %>
+            <%= link_to t('上/下班打卡系統'), new_punchcard_path %>
           </li>
           <li>
             <%= link_to t("新增員工資料"), new_profile_path %>
@@ -34,12 +34,12 @@
             <%= link_to t("排班設定"), work_shifts_path %>
           </li>
           <li>
-            <%= link_to "編輯公司資訊", edit_company_path(current_company.id) %>
+            <%= link_to t("編輯公司資訊"), edit_company_path(current_company.id) %>
           </li>
         <% end %>
-
+        
         <li>
-            <%= link_to "請假管理", vacations_path if policy(:vacation).index? %>
+            <%= link_to t("請假管理"), vacations_path if policy(:vacation).index? %>
         </li>
 
         <% if policy(:bulletin).index? %>

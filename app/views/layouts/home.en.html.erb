@@ -24,16 +24,16 @@
               <div>
                 <span class="mx-2 text-4xl font-semibold text-white">FlyCat</span>
                 <p class="text-gray-100">
-                  <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
-                  <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
+                <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
+                <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
                 </p>
               </div> 
             </div>
           <% end %>
         </div>
         <div class="flex items-center justify-around menu">
-          <%= link_to "立即試用", new_user_session_path,class: "block px-6 py-3 mx-3 text-white border-2 border-white rounded-full hover:bg-indigo-500"%>
-          <%= link_to "管理者後台", new_user_session_path,class: "block px-6 py-3 mx-3 text-white bg-blue-500 rounded-full hover:bg-blue-600"%>
+          <%= link_to "Free Trials", new_user_session_path,class: "block px-6 py-3 mx-3 text-white border-2 border-white rounded-full hover:bg-indigo-500"%>
+          <%= link_to "Log In", new_user_session_path,class: "block px-6 py-3 mx-3 text-white bg-blue-500 rounded-full hover:bg-blue-600"%>
         </div>
       </nav>
     </header>
@@ -43,15 +43,15 @@
           <div class="w-full md:w-1/2 md:px-4 ">
             <div class="w-full pb-6 space-y-6 md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
               <h1 class="text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-                <span class="block text-gray-800 xl:inline">FlyCat 人事考勤管理系統</span>
+                <span class="block text-gray-800 xl:inline">FlyCat HR Management</span>
               </h1>
               <div class="w-5/6 pt-2">
-                <p class="text-3xl font-bold text-indigo-600 xl:inline">舉凡員工出勤打卡、請假、排班通通線上搞定！</p>
+                <p class="text-3xl font-bold text-indigo-600 xl:inline">An enterprise management platform tailored for you！</p>
               </div>
-              <p class="mx-auto text-base text-gray-600 sm:max-w-md lg:text-xl md:max-w-3xl">您可以隨時隨地輕鬆查閱「出勤時數明細表」、「打卡時間明細表」、「假單簽核明細表」，協助您統計員工考核出勤狀況，節省大量的作業時間及管理成本！</p>
+              <p class="mx-auto text-base text-gray-600 sm:max-w-md lg:text-xl md:max-w-3xl">All-in-one service simplifies all your business works!</p>
               <div class="relative flex flex-col sm:flex-row sm:space-x-4">
                 <%= link_to new_user_session_path,class: "flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-blue-500 rounded-md sm:mb-0 hover:bg-blue-700 sm:w-auto" do%>
-                  <p>免費試用</p>
+                  <p>Free Trials</p>
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 <% end %>
               </div>
@@ -67,9 +67,3 @@
     </section>
   </body>
 </html>
-
-
-
-
-
-
