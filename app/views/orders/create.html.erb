@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center w-full f-full">
-  <h1>藍新頁面結轉中…</h1>
+  <h1><%= t('藍新頁面結轉中…') %></h1>
   <%= form_with url: "https://ccore.newebpay.com/MPG/mpg_gateway", method: "post", data: { controller: "autosubmit"} do |form| %>
           <%= form.hidden_field :TradeInfo, value: @form_info[:TradeInfo] %>
           <%= form.hidden_field :MerchantID, value: @form_info[:MerchantID] %>

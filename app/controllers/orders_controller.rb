@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  protect_from_forgery except: :create
+  skip_before_action :verify_authenticity_token, only: %i[new confirm success]
 
   def new
     @order = Order.new
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(order_combine_id)
     if @order.save
       @form_info = Newebpay::Mpg.new(@order).form_info
     else
@@ -28,9 +28,23 @@ class OrdersController < ApplicationController
       pay_type: @response.pay_type
     )
     @username = order.username
+
+    redirect_to success_order_path(order)
   end
+
+  def success
+    @order = Order.find(params[:id])
+  end
+
+  private
+
 
   def order_params
     params.require(:order).permit(:username, :amount, :memo)
   end
+
+  def order_combine_id
+    order_params.merge(user_id: current_user.id)
+  end
+
 end
