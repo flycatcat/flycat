@@ -7,7 +7,7 @@ export default class extends Controller {
   }
 
   connect() {
-    this.origContent = this.element.textContent
+    this.origContent = this.element.textContent.trim()
     this.element.innerHTML = marked.parse(this.origContent)
   }
 
