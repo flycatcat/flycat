@@ -9,7 +9,6 @@ Time::DATE_FORMATS.merge!(default: '%Y/%m/%d %H:%M:%S', ymd: '%Y/%m/%d')
 module Flycat
   class Application < Rails::Application
     config.load_defaults 6.1
-    config.exceptions_app = routes
     config.i18n.available_locales = %i[en zh-TW]
     config.i18n.default_locale = :'zh-TW'
     config.hosts << 'flycat.works'
@@ -19,5 +18,6 @@ module Flycat
     config.active_record.default_timezone = :local
     config.i18n.available_locales = %i[en zh-TW]
     config.i18n.default_locale = :'zh-TW'
+    config.exceptions_app = self.routes
   end
 end
