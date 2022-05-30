@@ -8,7 +8,7 @@
             <td class="tp"><%= t('公告日期') %></td>
             <td class="tp"><%= t('公告標題') %></td>
           </tr>
-          <% @bulletins.order(updated_at: :desc).last(5).each do |bulletin|  %>
+          <% @bulletins.order(updated_at: :desc).first(5).each do |bulletin|  %>
             <tr>
               <td class="tbody"><%= bulletin.updated_at.to_date %></td>
               <td class="tbody"><%= link_to bulletin.title , bulletin_path(bulletin) %></td>

@@ -13,7 +13,7 @@
             <td class="tp"><%= t('刪除公告') %></td>
           <% end %>
         </tr>
-        <% @bulletins.each do |bulletin|  %>
+        <% @bulletins.order(updated_at: :desc).each do |bulletin|  %>
           <tr>
             <td class="tbody"><%= link_to bulletin.title , bulletin_path(bulletin) %></td>
             <td class="tbody">

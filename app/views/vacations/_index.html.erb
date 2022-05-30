@@ -8,7 +8,7 @@
             <td class="tp"><%= t('假別') %></td>
             <td class="tp"><%= t('請假事由') %></td>
           </tr>
-          <% @vacation_result.last(5).each do |vacation|  %>
+          <% @vacation_result.first(5).each do |vacation|  %>
             <tr>
               <td class="tbody"><%= vacation&.profile&.name %></td>
               <td class="tbody"><%= vacation.vacation_type %></td>
