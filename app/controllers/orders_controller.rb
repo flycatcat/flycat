@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  # protect_from_forgery except: :create
   skip_before_action :verify_authenticity_token, except: :create
 
   def new
