@@ -14,7 +14,13 @@
 
     <div class="py-1 field">
       <strong>狀態:</strong>
-      <%= @vacation.status %>
+        <% if @vacation.status == "approved" %>
+          <span>同意</span>
+        <% elsif @vacation.status == "rejected" %>
+          <span>駁回</span>
+        <% else %>
+          <span>待簽核</span>
+        <% end %>
     </div>
 
     <div class="py-1 field">
