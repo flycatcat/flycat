@@ -28,8 +28,8 @@
       <%= '未提供證明' unless @vacation.proof.attached? %>
     </div>
     <div class="flex justify-end my-8 -mr-10">
-      <%= link_to 'Edit', edit_vacation_path(@vacation),class: "py-2 mx-2 px-6 mt-4 text-lg tracking-wide text-indigo-100 rounded-md bg-gradient-to-tr from-blue-600 to-indigo-600" %>
-      <%= link_to 'Back', vacations_path ,class: "py-2 mx-2 px-6 mt-4 text-lg tracking-wide text-gray-700 text-bold rounded-md bg-gray-300  mr-6" %>
+      <%= link_to '編輯', edit_vacation_path(@vacation),class: "py-2 mx-2 px-6 mt-4 text-lg tracking-wide text-indigo-100 rounded-md bg-gradient-to-tr from-blue-600 to-indigo-600" %>
+      <%= link_to '返回', vacations_path ,class: "py-2 mx-2 px-6 mt-4 text-lg tracking-wide text-gray-700 text-bold rounded-md bg-gray-300  mr-6" %>
     </div>
   </div>
 </div>

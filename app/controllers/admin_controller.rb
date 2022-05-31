@@ -11,6 +11,6 @@ class AdminController < ApplicationController
                   current_company.vacations
                 end
     vacation_orders = vacations.order(vacation_at: :asc)
-    @vacation_result = vacation_orders.Pending + vacation_orders.Approved + vacation_orders.Rejected
+    @vacation_result = vacation_orders.pending + vacation_orders.approved + vacation_orders.rejected
   end
 end

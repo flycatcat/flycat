@@ -14,7 +14,7 @@
 
       <div class="py-1 field">
         <strong><%= form.label :status, "狀態" %></strong>
-        <%= form.select :status , Vacation.all_status %>
+        <%= form.select :status , Vacation.vacation_statuses %>
       </div>
 
       <div class="py-1 field">

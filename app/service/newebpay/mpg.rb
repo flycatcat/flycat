@@ -43,7 +43,7 @@ module Newebpay
       info[:TimeStamp] = Time.now.to_i
       info[:RespondType] = 'JSON'
       info[:Version] = '2.0'
-      info[:ReturnURL] = "https://72a6-61-220-182-115.jp.ngrok.io/orders/#{@order.user_id}/confirm"
+      info[:ReturnURL] = "https://127c-61-220-182-115.jp.ngrok.io/orders/#{@order.user_id}/confirm"
       info[:NotifyURL] = ENV.fetch('NotifyURL', nil)
       info[:LoginType] = 0
       info[:CREDIT] =  1,

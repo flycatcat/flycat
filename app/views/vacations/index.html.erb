@@ -32,12 +32,12 @@
         <td class="tbody"><%= vacation.vacation_type %></td>
         <td class="tbody"><%= vacation.hour %></td>
         <div>
-          <% if vacation.status == "Approved" %>
-            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="approved-tag"><%= vacation.status %></span></td>
-          <% elsif vacation.status == "Rejected" %>
-            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="rejected-tag"><%= vacation.status %></span></td>
+          <% if vacation.status == "approved" %>
+            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="approved-tag"><%= t('同意') %></span></td>
+          <% elsif vacation.status == "rejected" %>
+            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="rejected-tag"><%= t('駁回') %></span></td>
           <% else %>
-            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="pending-tag"><%= vacation.status %></span></td>
+            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="pending-tag"><%= t('待簽核')  %></span></td>
           <% end %>
           <td class="tbody"><%= vacation.reason %></td>
 
