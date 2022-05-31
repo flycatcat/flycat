@@ -38,7 +38,6 @@ class OrdersController < ApplicationController
 
   private
 
-
   def order_params
     params.require(:order).permit(:username, :amount, :memo)
   end
@@ -46,5 +45,4 @@ class OrdersController < ApplicationController
   def order_combine_id
     order_params.merge(user_id: current_user.id)
   end
-
 end

@@ -23,10 +23,10 @@ class Vacation < ApplicationRecord
   }
 
   enum vacation_status: {
-      '待簽核': 'pending',
-      '同意': 'approved',
-      '駁回': 'rejected',
-    }
+    '待簽核': 'pending',
+    '同意': 'approved',
+    '駁回': 'rejected'
+  }
 
   STATUSES = %w[pending approved rejected].freeze
 
@@ -38,9 +38,8 @@ class Vacation < ApplicationRecord
   end
 
   validates :status, inclusion: { in: STATUSES }
-  
+
   def set_initial_status
     self.status = 'pending'
   end
-
 end

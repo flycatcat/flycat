@@ -57,7 +57,6 @@ class VacationsController < ApplicationController
     redirect_to vacations_path, notice: '已刪除假單'
   end
 
-
   private
 
   def correct_user
