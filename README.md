@@ -65,9 +65,9 @@ yunxi.lin777@gmail.com
 負責項目
 
 - 例外訊息 redirect_to 404、500 畫面切版
-- 請假申請
-- 佈告欄已閱功能
-- Excel 資料匯入
+- 請假上傳附檔功能
+- 佈告欄已讀功能
+- Excel 資料匯入匯出
 
 黃麒修 ChiShiou Huang
 https://github.com/erichg007
