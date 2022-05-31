@@ -6,4 +6,6 @@ class Bulletin < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
   belongs_to :company
+  has_many :bulletin_reads
+  has_many :read_bulletins, through: :bulletin_reads
 end

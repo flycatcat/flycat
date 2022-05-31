@@ -8,6 +8,7 @@
         <tr class="thead">
           <td class="tp"><%= t('公告標題') %></td>
           <td class="tp"><%= t('最新修改時間') %></td>
+          <td class="tp"><%= t('已讀人數') %></td>
           <% if policy(:bulletin).create?  %>
             <td class="tp"><%= t('編輯資訊') %></td>
             <td class="tp"><%= t('刪除公告') %></td>
@@ -18,6 +19,24 @@
             <td class="tbody"><%= link_to bulletin.title , bulletin_path(bulletin) %></td>
             <td class="tbody">
               <%= bulletin.updated_at.strftime("%Y/%m/%d %I:%M %p") %>
+            </td>
+            <td class="tbody">
+              <div data-controller="read-bulletins" 
+                   data-read="<%= current_user.read?(bulletin)%>"
+                   data-bulletin-id="<%= bulletin.id %>">
+                <a href="#" data-read-bulletins-target="read" data-action="click->read-bulletins#read">
+                  <i class="text-lg text-yellow-300 fa-solid fa-envelope"></i>
+                  <i data-read-bulletins-target="readCount">
+                    <%= BulletinRead.where(bulletin_id: bulletin.id, is_read:true).count %>
+                  </i>
+                </a>
+                <a href="#" data-read-bulletins-target="unread" data-action="click->read-bulletins#unread">
+                  <i class="text-lg text-yellow-500 fa-solid fa-envelope-open-text"></i>
+                  <i data-read-bulletins-target="unreadCount">
+                    <%= BulletinRead.where(bulletin_id: bulletin.id, is_read:true).count %>
+                  </i>
+                </a>
+              </div>
             </td>
               <% if policy(:bulletin).create?  %>
                 <td class="tbody"><%= link_to t("編輯"), edit_bulletin_path(bulletin),class: "edit-btn" %></td>
