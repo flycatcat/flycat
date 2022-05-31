@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Vacation < ApplicationRecord
-  belongs_to :user, dependent: :delete
+  belongs_to :user
   belongs_to :company
-  has_one :profile, through: :user, dependent: :delete
+  has_one :profile, through: :user
   has_one_attached :proof
   validates :vacation_at, presence: true
   before_validation :set_initial_status, on: :create
