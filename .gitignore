@@ -50,4 +50,3 @@ yarn-debug.log*
 /config/application.yml
 .vscode
 
-app/models/.vacation.rb

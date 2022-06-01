@@ -46,6 +46,7 @@ en:
   身份: ""
   員工帳號註冊: "Staff Register"
   公司密碼預設為公司統一編號: "The default password is unique business number (UBN)"
+  前往付款: "Pay"
   enums:
     vacation:
       vacation_type:
