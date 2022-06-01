@@ -5,8 +5,8 @@ class Vacation < ApplicationRecord
   belongs_to :company
   has_one :profile, through: :user
   has_one_attached :proof
-
   validates :vacation_at, presence: true
+  before_validation :set_initial_status, on: :create
 
   include Slugable
   acts_as_paranoid
@@ -22,12 +22,13 @@ class Vacation < ApplicationRecord
     '其他(不給薪)': '其他(不給薪)'
   }
 
-  def self.all_status
-    [
-      %w[Approved], %w[Rejected], %w[Pending]
-    ]
-  end
-  STATUSES = %w[Pending Approved Rejected].freeze
+  enum vacation_status: {
+    '待簽核': 'pending',
+    '同意': 'approved',
+    '駁回': 'rejected'
+  }
+
+  STATUSES = %w[pending approved rejected].freeze
 
   STATUSES.each do |s|
     define_method("#{s}?") { status == s }
@@ -38,9 +39,7 @@ class Vacation < ApplicationRecord
 
   validates :status, inclusion: { in: STATUSES }
 
-  before_validation :set_initial_status, on: :create
   def set_initial_status
-    self.status = 'Pending'
+    self.status = 'pending'
   end
-
 end

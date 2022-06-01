@@ -12,7 +12,7 @@ class VacationsController < ApplicationController
                   current_company.vacations
                 end
     vacation_orders = vacations.order(vacation_at: :asc)
-    @vacation_result = vacation_orders.Pending + vacation_orders.Approved + vacation_orders.Rejected
+    @vacation_result = vacation_orders.pending + vacation_orders.approved + vacation_orders.rejected
   end
 
   def show; end
@@ -22,7 +22,7 @@ class VacationsController < ApplicationController
   end
 
   def edit
-    redirect_to vacations_path, notice: '不可編輯，簽核已完成' if @vacation.status != 'Pending'
+    redirect_to vacations_path, notice: '不可編輯，簽核已完成' if @vacation.status != 'pending'
   end
 
   def create

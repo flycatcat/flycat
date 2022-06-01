@@ -39,6 +39,13 @@ en:
   員工資訊: "Staff Info"
   編輯員工資料: "Edit Staff Info"
   班別名稱: "Shift"
+  設定: "Set up"
+  離職日期: "Resign Date"
+  所屬部門: "Department"
+  職稱: "Positon"
+  身份: ""
+  員工帳號註冊: "Staff Register"
+  公司密碼預設為公司統一編號: "The default password is unique business number (UBN)"
   enums:
     vacation:
       vacation_type:
@@ -107,6 +114,7 @@ en:
   刪除打卡: "Delete"
   今日上班打卡: "Punch In"
   今日下班打卡: "Punch Out"
+  打卡紀錄: "Record"
   員工編號: "Staff No"
   個人資料: "Staff Info"
   編輯員工資訊: "Edit"
@@ -139,6 +147,7 @@ en:
   新增假單: "New Vacation"
   編輯假單: "Edit Vacation"
   待簽核假單: "Pending Approval"
+  待核准假單: "Pending Approval"
   確定要刪除嗎?: "Are you sure?"
   名字: "Name"
   金額: "Amount"

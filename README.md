@@ -56,7 +56,7 @@ a0976673231@gmai.com
 
 - 登入系統
 - 權限管理
-- Model 關聯設定
+- 員工建制系統
 
 林昀希 Yunxi Lin
 https://github.com/linyunxi
@@ -75,5 +75,5 @@ chishiou0609@gmail.com
 
 負責項目
 
-- 排班、加班系統
-- Model 關聯設定
+- 排班系統
+- 加班申請

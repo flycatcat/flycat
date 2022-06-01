@@ -20,13 +20,13 @@ gem 'puma', '~> 5.0'
 gem 'pundit', '~> 2.2'
 gem 'rails', '6.1.5.1'
 gem 'rails-i18n', '~> 7.0', '>= 7.0.3'
+gem 'ransack', '~> 3.2'
 gem 'rubocop', '~> 1.29', require: false
 gem 'sass-rails', '>= 6'
 gem 'stimulus-rails', '~> 1.0', '>= 1.0.4'
 gem 'taiwanese_ubn_validator', '~> 0.0.1'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'ransack', '~> 3.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
