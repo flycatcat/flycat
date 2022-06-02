@@ -25,6 +25,7 @@ class BulletinsController < ApplicationController
 
   def show; end
 
+
   def edit
     authorize :bulletin
   end

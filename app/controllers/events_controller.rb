@@ -11,7 +11,8 @@ class EventsController < ApplicationController
     @events = Event.where('start_time >= ? AND end_time <= ? And work_shift_id = ?', start_date, end_date, work_shift_id)
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @event = Event.new

@@ -15,7 +15,7 @@ class VacationsController < ApplicationController
   end
 
   def show; end
-
+  
   def new
     @vacation = Vacation.new
   end
