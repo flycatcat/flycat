@@ -1,10 +1,11 @@
 <div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
   <div class="w-screen max-w-3xl px-10 py-8 bg-white shadow-md rounded-xl">
       <table class="w-full rounded-lg shadow-md text-md">
-        <h1 class="mb-5"><%= t('感謝您讓飛天貓飛高高') %></h1>
+      <% if @order.status === "SUCCESS" %>
+	    <h1 class="mb-5"><%= t('感謝您的支持，已開通員工人數限制') %></h1>
           <tr class="thead">
-              <td class="tp"><%= t('捐款人') %></td>
-              <td class="tp"><%= t('捐款編號') %></td>
+              <td class="tp"><%= t('公司名') %></td>
+              <td class="tp"><%= t('訂單編號') %></td>
               <td class="tp"><%= t('付款時間') %></td>
               <td class="tp"><%= t('卡號後四碼') %></td>
           </tr>
@@ -14,6 +15,9 @@
               <td class="tbody"><%= @order.pay_at %></td>
               <td class="tbody"><%= @order.card_last_4_no %></td>
           </tr>
+      <% else %>
+		  <h1 class="mb-5"><%= t('刷卡失敗，請再試一次') %></h1>
+		  <% end%>
           <% if user_signed_in? %>
             <div class="flex justify-end mb-3">
               <%= link_to t('返回管理者後台'), admin_index_path,class: "inline-block add-btn" %>

@@ -21,7 +21,8 @@ class VacationsController < ApplicationController
   end
 
   def edit
-    redirect_to vacations_path, notice: '不可編輯，簽核已完成' if @vacation.status != 'pending'
+    # redirect_to vacations_path, notice: '不可編輯，簽核已完成' if @vacation.status != 'pending'
+    authorize @vacation
   end
 
   def create
@@ -44,6 +45,7 @@ class VacationsController < ApplicationController
   end
 
   def update
+    authorize @vacation
     if @vacation.update(vacation_params)
       redirect_to vacations_path, notice: '更新成功'
     else
