@@ -1,4 +1,4 @@
-<h1>New Event</h1>
+<h1><%= t('新增班表') %></h1>
 
 <%= form_with(model: @event , url:events_path(@work_shift.id),  method: 'post', local: true) do |form| %>
     <% if @event.errors.any? %>

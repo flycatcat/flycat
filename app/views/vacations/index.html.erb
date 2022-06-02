@@ -13,7 +13,7 @@
       <td class="tp"><%= t('請假事由') %></td>
       <td class="tp"><%= t('詳細資訊') %></td>
       <% if policy(:vacation).only_manager? %>
-        <td class="tp"><%= t('簽核/編輯') %></td>
+        <td class="tp"><%= t('簽核 / 編輯') %></td>
       <% end %>
 
       <% if policy(:vacation).only_admin? %>
