@@ -1,10 +1,10 @@
 <div class="h-full bg-gray-200" >
-  <h1 class="px-16 py-6"><%= t('公告總覽') %></h1>
-    <div class="px-16 mx-auto rounded-lg">
+  <h1 class="p-6 text-primary"><%= t('公告總覽') %></h1>
+    <div class="w-5/6 mx-auto rounded-lg">
       <div class="flex justify-end">
         <%= link_to t("新增公告"), new_bulletin_path,class: "add-btn" if policy(:bulletin).create?%>
       </div>
-      <table class="w-full mx-auto mt-5 text-lg rounded-lg shadow-md" id="bulletin_show">
+      <table class="w-full mx-auto mt-5 text-lg rounded-lg shadow-md " id="bulletin_show">
         <tr class="thead">
           <td class="tp"><%= t('公告標題') %></td>
           <td class="tp"><%= t('最新修改時間') %></td>
@@ -22,8 +22,8 @@
             </td>
             <td class="tbody">
               <div data-controller="read-bulletins" 
-                   data-read="<%= current_user.read?(bulletin)%>"
-                   data-bulletin-id="<%= bulletin.id %>">
+                  data-read="<%= current_user.read?(bulletin)%>"
+                  data-bulletin-id="<%= bulletin.id %>">
                 <a href="#" data-read-bulletins-target="read" data-action="click->read-bulletins#read">
                   <i class="text-lg text-yellow-300 fa-solid fa-envelope"></i>
                   <i data-read-bulletins-target="readCount">
