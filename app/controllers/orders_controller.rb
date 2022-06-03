@@ -41,6 +41,6 @@ class OrdersController < ApplicationController
   end
 
   def order_combine_id
-    order_params.merge(user_id: current_user.id)
+    order_params.merge(company_id: current_company.id)
   end
 end

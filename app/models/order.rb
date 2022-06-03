@@ -4,15 +4,13 @@ class Order < ApplicationRecord
   validates :username, presence: true
   validates :amount, presence: true
   validates :order_no, uniqueness: true
-  belongs_to :user
+  belongs_to :company
 
   before_create :flycatOrderNo
 
   private
 
   def flycatOrderNo
-    flycat = "flycat#{Time.current.strftime('%Y%m%d%H%M%w')}"
-    random = [*'a'..'z', *'A'..'Z', *'0'..'9']
-    self.order_no = flycat + random.sample(7).join
+    self.order_no = "flycat#{Time.current.strftime('%Y%m%d')}#{SecureRandom.alphanumeric(7)}"
   end
 end

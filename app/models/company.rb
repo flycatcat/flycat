@@ -10,4 +10,5 @@ class Company < ApplicationRecord
   has_many :profiles, dependent: :destroy
   has_many :vacations
   has_many :work_shifts, dependent: :destroy
+  has_many :orders
 end

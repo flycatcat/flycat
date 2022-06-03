@@ -8,7 +8,6 @@ class User < ApplicationRecord
   belongs_to :company
   has_many :punchcards
   has_many :vacations
-  has_many :orders
   has_many :bulletins
   has_many :bulletin_reads
   has_many :read_bulletins, through: :bulletin_reads, source: :bulletin

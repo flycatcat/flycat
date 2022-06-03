@@ -1,6 +1,7 @@
 zh-TW: 
   sign_up: "註冊"
   登入: "登入"
+  登出: "登出"
   輸入編號: "輸入編號"
   輸入姓名: "輸入姓名"
   輸入手機號碼: "輸入手機號碼"
@@ -19,6 +20,20 @@ zh-TW:
   更新班表: "更新班表"
   編輯: "編輯"
   簽核: "簽核"
+  新增員工資訊: "新增員工資訊"
+  系統總覽: "系統總覽"
+  公告總覽: "公告總覽"
+  假單管理: "假單管理"
+  排班管理: "排班管理"
+  部門管理: "部門管理"
+  員工資訊: "員工資訊"
+  上/下班打卡系統: "上/下班打卡系統"
+  編輯公司資訊: "編輯公司資訊"
+  升級方案: "升級方案"
+  Sign up: "註冊"
+  Forgot your password?: "忘記密碼?"
+  Sign in with Google: "第三方登入 Google"
+  Log in: "登入"
   vacations:
     create:
       假單申請成功: "假單申請成功"
@@ -33,6 +48,7 @@ zh-TW:
       user: "使用者"
       log_in: "登入"
       sign_up: "註冊"
+      profile: "員工"
     attributes:
       department:
         department_name: "部門名稱"
@@ -62,6 +78,13 @@ zh-TW:
         start_at: "報到日期"
       vacation:
         vacation_at: "請假日"
+      profile:
+        start_at: "開始日"
+        staff_no: "員工編號"
+        department: "部門"
+        job_title: "職稱"
+        tel: "電話"
+        name: "姓名"
   helpers:
     label:
       resource:

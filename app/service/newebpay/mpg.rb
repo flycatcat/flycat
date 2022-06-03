@@ -37,23 +37,17 @@ module Newebpay
     def set_info
       info[:MerchantID] = @merchant_id
       info[:MerchantOrderNo] = @flycatOrderNo
-      info[:Amt] = @amount
+      info[:Amt] = '500'
       info[:ItemDesc] = 'Flycat'
       info[:Email] = ''
       info[:TimeStamp] = Time.now.to_i
       info[:RespondType] = 'JSON'
       info[:Version] = '2.0'
-      info[:ReturnURL] = "https://127c-61-220-182-115.jp.ngrok.io/orders/#{@order.user_id}/confirm"
-      info[:NotifyURL] = ENV.fetch('NotifyURL', nil)
+      info[:ReturnURL] = "#{ENV.fetch('return_url', '')}/orders/#{@order.company_id}/confirm"
+      info[:NotifyURL] = ENV.fetch('notify_url', '')
       info[:LoginType] = 0
-      info[:CREDIT] =  1,
-                       info[:VACC] = 1
-    end
-
-    def flycatOrderNo
-      flycat = "flycat#{Time.current.strftime('%Y%m%d%H%M%w')}"
-      random = [*'a'..'z', *'A'..'Z', *'0'..'9']
-      flycat + random.sample(7).join
+      info[:CREDIT] =  1
+      info[:VACC] = 1
     end
 
     def url_encoded_query_string

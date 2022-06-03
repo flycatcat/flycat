@@ -60,16 +60,12 @@ class VacationsController < ApplicationController
 
   def correct_user
     set_vacation
-    if @vacation.user != current_user
-      redirect_to vacations_path, notice: '沒有編輯權限！'
-    end
+    redirect_to vacations_path, notice: '沒有編輯權限！' if @vacation.user != current_user
   end
 
   def unable_signoff
     set_vacation
-    if @vacation.user == current_user
-      redirect_to vacations_path, notice: '不能簽核本人假單！'
-    end
+    redirect_to vacations_path, notice: '不能簽核本人假單！' if @vacation.user == current_user
   end
 
   def set_vacation
@@ -79,5 +75,4 @@ class VacationsController < ApplicationController
   def vacation_params
     params.require(:vacation).permit(:vacation_type, :vacation_at, :status, :reason, :hour, :proof)
   end
-
 end
