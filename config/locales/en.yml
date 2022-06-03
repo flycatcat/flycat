@@ -50,9 +50,12 @@ en:
   公司密碼預設為公司統一編號: "The default password is unique business number (UBN)"
   前往付款: "Pay"
   更新班表: "Update Work Shift"
-  開通員工人數限制: "Unlimited Staff"
+  升級方案: "Unlimited Staff"
   公司名: "Company Name"
-  開通金額(永久): "Amount(permanent)"
+  升級金額(永久): "Amount(permanent)"
+  感謝您的支持，已開通員工人數限制: "Thank you for your suppor, now you have unlimited staff"
+  訂單編號: "Order No"
+  前往新增員工: "Add Staff"
   enums:
     vacation:
       vacation_type:
