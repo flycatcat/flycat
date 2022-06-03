@@ -43,8 +43,8 @@ module Newebpay
       info[:TimeStamp] = Time.now.to_i
       info[:RespondType] = 'JSON'
       info[:Version] = '2.0'
-      info[:ReturnURL] = "#{ENV.fetch('ReturnURL', '')}/orders/#{@order.company_id}/confirm"
-      info[:NotifyURL] = ENV.fetch('NotifyURL', '')
+      info[:ReturnURL] = "#{ENV.fetch('return_url', '')}/orders/#{@order.company_id}/confirm"
+      info[:NotifyURL] = ENV.fetch('notify_url', '')
       info[:LoginType] = 0
       info[:CREDIT] =  1
       info[:VACC] = 1
