@@ -8,7 +8,11 @@ class UserAccountsController < ApplicationController
   end
 
   def new
+    if current_company.orders.where(status: "SUCCESS").any? || current_company.profiles.size < 2
     @user = current_company.users.new 
+    else
+    redirect_to profiles_path, notice: '請儲值開通'
+    end
   end
 
   def create
