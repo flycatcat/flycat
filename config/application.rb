@@ -13,7 +13,7 @@ module Flycat
     config.i18n.available_locales = %i[en zh-TW]
     config.i18n.default_locale = :'zh-TW'
     config.hosts << 'flycat.works'
-    config.hosts << '127c-61-220-182-115.jp.ngrok.io'
+    config.hosts << "#{ENV.fetch('Ngrok', '')}"
     config.action_controller.forgery_protection_origin_check = false
     config.time_zone = 'Taipei'
     config.active_record.default_timezone = :local

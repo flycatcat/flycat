@@ -27,8 +27,6 @@ class OrdersController < ApplicationController
       card_last_4_no: @response.card_last_4_no,
       pay_type: @response.pay_type
     )
-    @username = order.username
-
     redirect_to success_order_path(order)
   end
 

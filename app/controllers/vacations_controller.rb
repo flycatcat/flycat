@@ -7,18 +7,17 @@ class VacationsController < ApplicationController
 
   def index
     vacations = if current_user.role == 'staff'
-                  current_user.vacations
+                  current_user.vacations.order(vacation_at: :asc)
                 else
-                  current_company.vacations
+                  current_company.vacations.order(vacation_at: :asc)
                 end
-    vacation_orders = vacations.order(vacation_at: :asc)
-    @vacation_result = vacation_orders.pending + vacation_orders.approved + vacation_orders.rejected
+    @vacation_result = vacations.pending + vacations.approved + vacations.rejected
   end
 
   def show; end
 
   def new
-    @vacation = current_company.vacations.new
+    @vacation = Vacation.new
   end
 
   def edit
@@ -26,7 +25,7 @@ class VacationsController < ApplicationController
   end
 
   def create
-    @vacation = current_company.vacations.new(vacation_combine_id)
+    @vacation = current_company.vacations.new(vacation_params.merge(user: current_user))
     if @vacation.save
       redirect_to vacations_path, notice: t('.假單申請成功')
     else
@@ -53,27 +52,23 @@ class VacationsController < ApplicationController
   end
 
   def destroy
-    @vacation.update(deleted_at: Time.now)
+    @vacation.destroy
     redirect_to vacations_path, notice: '已刪除假單'
   end
 
   private
 
   def correct_user
-    @vacation = current_company.vacations.friendly.find(params[:id])
-    if current_user.id == @vacation.user_id
-      @vacation = current_company.vacations.friendly.find(params[:id])
-    else
+    set_vacation
+    if @vacation.user != current_user
       redirect_to vacations_path, notice: '沒有編輯權限！'
     end
   end
 
   def unable_signoff
-    @vacation = current_company.vacations.friendly.find(params[:id])
-    if current_user.id == @vacation.user_id
+    set_vacation
+    if @vacation.user == current_user
       redirect_to vacations_path, notice: '不能簽核本人假單！'
-    else
-      @vacation = current_company.vacations.friendly.find(params[:id])
     end
   end
 
@@ -85,7 +80,4 @@ class VacationsController < ApplicationController
     params.require(:vacation).permit(:vacation_type, :vacation_at, :status, :reason, :hour, :proof)
   end
 
-  def vacation_combine_id
-    vacation_params.merge(user_id: current_user.id)
-  end
 end

@@ -39,6 +39,8 @@ en:
   員工資訊: "Staff Info"
   編輯員工資料: "Edit Staff Info"
   班別名稱: "Shift"
+  班別: "Shift Type"
+  編輯班表: "Edit Shift"
   設定: "Set up"
   離職日期: "Resign Date"
   所屬部門: "Department"
@@ -46,6 +48,8 @@ en:
   身份: ""
   員工帳號註冊: "Staff Register"
   公司密碼預設為公司統一編號: "The default password is unique business number (UBN)"
+  前往付款: "Pay"
+  更新班表: "Update Work Shift"
   enums:
     vacation:
       vacation_type:
