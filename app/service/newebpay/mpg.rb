@@ -37,14 +37,14 @@ module Newebpay
     def set_info
       info[:MerchantID] = @merchant_id
       info[:MerchantOrderNo] = @flycatOrderNo
-      info[:Amt] = "500"
+      info[:Amt] = '500'
       info[:ItemDesc] = 'Flycat'
       info[:Email] = ''
       info[:TimeStamp] = Time.now.to_i
       info[:RespondType] = 'JSON'
       info[:Version] = '2.0'
       info[:ReturnURL] = "#{ENV.fetch('ReturnURL', '')}/orders/#{@order.company_id}/confirm"
-      info[:NotifyURL] = ENV.fetch('NotifyURL', "")
+      info[:NotifyURL] = ENV.fetch('NotifyURL', '')
       info[:LoginType] = 0
       info[:CREDIT] =  1
       info[:VACC] = 1

@@ -13,6 +13,4 @@ class Order < ApplicationRecord
   def flycatOrderNo
     self.order_no = "flycat#{Time.current.strftime('%Y%m%d')}#{SecureRandom.alphanumeric(7)}"
   end
-  
-
 end

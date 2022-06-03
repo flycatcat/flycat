@@ -64,8 +64,4 @@ class ApplicationPolicy
   def staff
     user && user.role == 'staff'
   end
-
-  # def paid_company
-  #   order.status == 'SUCCESS'
-  # end
 end

@@ -22,7 +22,7 @@ class VacationPolicy < ApplicationPolicy
   end
 
   def update?
-    (staff || manager)
+    staff || manager
   end
 
   def signoff?

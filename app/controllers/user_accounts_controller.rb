@@ -8,16 +8,16 @@ class UserAccountsController < ApplicationController
   end
 
   def new
-    if current_company.orders.where(status: "SUCCESS").any? || current_company.profiles.size < 2
-    @user = current_company.users.new 
+    if current_company.orders.where(status: 'SUCCESS').any? || current_company.profiles.size < 2
+      @user = current_company.users.new
     else
-    redirect_to profiles_path, notice: '請儲值開通'
+      redirect_to profiles_path, notice: '請儲值開通'
     end
   end
 
   def create
     @user = current_company.users.new(users_params)
-    if @user.save 
+    if @user.save
       redirect_to profiles_path, notice: '已成功新增員工資訊'
     else
       render :new
@@ -49,7 +49,6 @@ class UserAccountsController < ApplicationController
 
   def users_params
     params.require(:user).permit(:email, :password, :password_confirmation, :role,
-                          profile_attributes:[:id, :staff_no, :name, :gender, :department, :tel, :start_at, :job_title, :end_at, :user_id, :company_id])
+                                 profile_attributes: %i[id staff_no name gender department tel start_at job_title end_at user_id company_id])
   end
-
 end

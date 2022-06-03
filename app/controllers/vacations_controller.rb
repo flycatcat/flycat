@@ -21,8 +21,7 @@ class VacationsController < ApplicationController
   end
 
   def edit
-    # redirect_to vacations_path, notice: '不可編輯，簽核已完成' if @vacation.status != 'pending'
-    authorize @vacation
+    redirect_to vacations_path, notice: '不可編輯，簽核已完成' if @vacation.status != 'pending'
   end
 
   def create
@@ -45,7 +44,6 @@ class VacationsController < ApplicationController
   end
 
   def update
-    authorize @vacation
     if @vacation.update(vacation_params)
       redirect_to vacations_path, notice: '更新成功'
     else
@@ -62,16 +60,12 @@ class VacationsController < ApplicationController
 
   def correct_user
     set_vacation
-    if @vacation.user != current_user
-      redirect_to vacations_path, notice: '沒有編輯權限！'
-    end
+    redirect_to vacations_path, notice: '沒有編輯權限！' if @vacation.user != current_user
   end
 
   def unable_signoff
     set_vacation
-    if @vacation.user == current_user
-      redirect_to vacations_path, notice: '不能簽核本人假單！'
-    end
+    redirect_to vacations_path, notice: '不能簽核本人假單！' if @vacation.user == current_user
   end
 
   def set_vacation
@@ -81,5 +75,4 @@ class VacationsController < ApplicationController
   def vacation_params
     params.require(:vacation).permit(:vacation_type, :vacation_at, :status, :reason, :hour, :proof)
   end
-
 end

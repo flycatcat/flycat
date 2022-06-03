@@ -191,7 +191,6 @@ en:
       staff: "Staff"
       user: 
       log_in: "Log in"
-      
     attributes:
       user: 
         登入: "Log in"
