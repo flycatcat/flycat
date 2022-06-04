@@ -47,7 +47,7 @@
           <% if vacation.user_id == current_user.id && policy(:vacation).update? %>
             <td class="tbody"><%= link_to t('編輯'), edit_vacation_path(vacation),class: "edit-btn", data: {remote: true}%></td>
           <% elsif policy(:vacation).signoff? %>
-            <td class="tbody"><%= link_to t('簽核'), signoff_vacation_path(vacation), class: "signoff-btn" %></td>
+            <td class="tbody"><%= link_to t('簽核'), signoff_vacation_path(vacation),class: "signoff-btn", data: {remote: true} %></td>
           <% end %>
           <td class="tbody"><%= link_to t('刪除'), vacation_path(vacation.id), method: :delete, data: { confirm: t('確定要刪除嗎?') }, class: "delete-btn" %></td>
         </div>

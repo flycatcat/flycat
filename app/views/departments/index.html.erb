@@ -1,6 +1,6 @@
 <div class="h-full bg-gray-200">
-  <h1 class="px-16 py-6"><%= t('部門管理') %></h1>
-  <div class="w-full px-16 mx-auto">
+  <h1 class="p-6 "><%= t('部門管理') %></h1>
+  <div class="w-1/2 mx-auto" id="department_modal">
     <div class="flex justify-end">
       <div class="add-btn">
         <%= link_to t("新增部門"), new_department_path if policy(:department).index? %>
