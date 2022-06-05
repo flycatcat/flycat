@@ -31,9 +31,14 @@ zh-TW:
   編輯公司資訊: "編輯公司資訊"
   升級方案: "升級方案"
   Sign up: "註冊"
-  Forgot your password?: "忘記密碼?"
+  忘記密碼?: "忘記密碼?"
+  重設密碼: "重設密碼"
+  Forgot your password?: "忘記密碼"
   Sign in with Google: "第三方登入 Google"
   Log in: "登入"
+  同意: "同意"
+  駁回: "駁回"
+  待簽核: "待簽核"
   vacations:
     create:
       假單申請成功: "假單申請成功"
