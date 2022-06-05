@@ -1,57 +1,62 @@
-<h1 class="p-6 bg-gray-200"><%= t('請假管理') %></h1>
-<div class="px-4 bg-gray-200 rounded-lg" id="vacation_show">
-  <div class="flex justify-end mb-3">
-    <%= link_to t("新增假單"), new_vacation_path,class: "inline-block add-btn", data: {remote:true} if policy(:vacation).create? %>
+<div class="h-full bg-gray-200">  
+  <h1 class="text-center text-2xl sm:text-4xl sm:text-left pt-6"><%= t('請假管理') %></h1>
+  <div class="max-w-min mx-auto" id="vacation_show">
+    <div class="flex justify-end mb-3">
+      <%= link_to t("新增假單"), new_vacation_path,class: "inline-block add-btn", data: {remote:true} if policy(:vacation).create? %>
+    </div>
+    <div class="overflow-auto rounded-lg">
+      <table class="w-full text-lg  shadow-md whitespace-nowrap" >
+        <tr class="thead">
+          <td class="tp"><%= t('員工') %></td>
+          <td class="tp"><%= t('請假日') %></td>
+          <td class="tp"><%= t('假別') %></td>
+          <td class="tp"><%= t('時數') %></td>
+          <td class="tp"><%= t('簽核狀態') %></td>
+          <td class="tp"><%= t('請假事由') %></td>
+          <td class="tp"><%= t('詳細資訊') %></td>
+          <% if policy(:vacation).only_manager? %>
+            <td class="tp"><%= t('簽核 / 編輯') %></td>
+          <% end %>
+
+          <% if policy(:vacation).only_admin? %>
+            <td class="tp"><%= t('簽核') %></td>
+          <% elsif policy(:vacation).only_staff? %>
+            <td class="tp"><%= t('編輯') %></td>
+          <% end %>
+          
+          <td class="tp"><%=  t('刪除') %></td>
+        </tr>
+        <% @vacation_result.each do |vacation|  %>
+          <tr>
+            <td class="tbody"><%= vacation&.profile&.name %></td>
+            <td class="tbody"><%= vacation.vacation_at %></td>
+            <td class="tbody"><%= vacation.vacation_type %></td>
+            <td class="tbody"><%= vacation.hour %></td>
+            <div>
+              <% if vacation.status == "approved" %>
+                <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="approved-tag"><%= t('同意') %></span></td>
+              <% elsif vacation.status == "rejected" %>
+                <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="rejected-tag"><%= t('駁回') %></span></td>
+              <% else %>
+                <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="pending-tag"><%= t('待簽核')  %></span></td>
+              <% end %>
+              <td class="tbody"><%= vacation.reason %></td>
+
+              <% if policy(:vacation).show? %>
+                <td class="tbody"><%= link_to t('詳情'), vacation,class: "show-btn", data: {remote: true} %></td>
+              <% end %>
+
+              <% if vacation.user_id == current_user.id && policy(:vacation).update? %>
+                <td class="tbody"><%= link_to t('編輯'), edit_vacation_path(vacation),class: "edit-btn", data: {remote: true}%></td>
+              <% elsif policy(:vacation).signoff? %>
+                <td class="tbody"><%= link_to t('簽核'), signoff_vacation_path(vacation),class: "signoff-btn", data: {remote: true} %></td>
+              <% end %>
+              <td class="tbody"><%= link_to t('刪除'), vacation_path(vacation.id), method: :delete, data: { confirm: t('確定要刪除嗎?') }, class: "delete-btn" %></td>
+            </div>
+          </tr>
+        <% end %>
+      </table>
+    </div>  
   </div>
-  <table class="w-full text-lg rounded-lg shadow-md" >
-    <tr class="thead">
-      <td class="tp"><%= t('員工') %></td>
-      <td class="tp"><%= t('請假日') %></td>
-      <td class="tp"><%= t('假別') %></td>
-      <td class="tp"><%= t('時數') %></td>
-      <td class="tp"><%= t('簽核狀態') %></td>
-      <td class="tp"><%= t('請假事由') %></td>
-      <td class="tp"><%= t('詳細資訊') %></td>
-      <% if policy(:vacation).only_manager? %>
-        <td class="tp"><%= t('簽核 / 編輯') %></td>
-      <% end %>
-
-      <% if policy(:vacation).only_admin? %>
-        <td class="tp"><%= t('簽核') %></td>
-      <% elsif policy(:vacation).only_staff? %>
-        <td class="tp"><%= t('編輯') %></td>
-      <% end %>
-      
-      <td class="tp"><%=  t('刪除') %></td>
-    </tr>
-    <% @vacation_result.each do |vacation|  %>
-      <tr>
-        <td class="tbody"><%= vacation&.profile&.name %></td>
-        <td class="tbody"><%= vacation.vacation_at %></td>
-        <td class="tbody"><%= vacation.vacation_type %></td>
-        <td class="tbody"><%= vacation.hour %></td>
-        <div>
-          <% if vacation.status == "approved" %>
-            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="approved-tag"><%= t('同意') %></span></td>
-          <% elsif vacation.status == "rejected" %>
-            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="rejected-tag"><%= t('駁回') %></span></td>
-          <% else %>
-            <td class="px-4 py-3 text-xs text-center bg-gray-100 border-b"><span class="pending-tag"><%= t('待簽核')  %></span></td>
-          <% end %>
-          <td class="tbody"><%= vacation.reason %></td>
-
-          <% if policy(:vacation).show? %>
-            <td class="tbody"><%= link_to t('詳情'), vacation,class: "show-btn", data: {remote: true} %></td>
-          <% end %>
-
-          <% if vacation.user_id == current_user.id && policy(:vacation).update? %>
-            <td class="tbody"><%= link_to t('編輯'), edit_vacation_path(vacation),class: "edit-btn", data: {remote: true}%></td>
-          <% elsif policy(:vacation).signoff? %>
-            <td class="tbody"><%= link_to t('簽核'), signoff_vacation_path(vacation),class: "signoff-btn", data: {remote: true} %></td>
-          <% end %>
-          <td class="tbody"><%= link_to t('刪除'), vacation_path(vacation.id), method: :delete, data: { confirm: t('確定要刪除嗎?') }, class: "delete-btn" %></td>
-        </div>
-      </tr>
-    <% end %>
-  </table>
 </div>
+

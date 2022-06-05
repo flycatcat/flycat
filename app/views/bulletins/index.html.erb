@@ -1,50 +1,52 @@
-<div class="h-full bg-gray-200 " >
-  <h1 class="text-center text-2xl md:text-left pt-6"><%= t('公告總覽') %></h1>
-    <div class=" w-5/6 max-w-screen-sm  mx-auto">
-      <div class="w-full flex justify-end">
+<div class="h-full bg-gray-200" >
+  <h1 class="text-center text-2xl sm:text-4xl sm:text-left pt-6"><%= t('公告總覽') %></h1>
+    <div class="max-w-min  mx-auto">
+      <div class="flex justify-end">
         <%= link_to t("新增公告"), new_bulletin_path,class: "add-btn" if policy(:bulletin).create?%>
       </div>
-      <table class=" block md:table overflow-x-auto mx-auto mt-5 text-sm md:text-lg rounded-lg shadow-md whitespace-nowrap " id="bulletin_show">
-        <tr class="thead">
-          <td class="tp "><%= t('公告標題') %></td>
-          <td class="tp"><%= t('最新修改時間') %></td>
-          <td class="tp"><%= t('已讀人數') %></td>
-          <% if policy(:bulletin).create?  %>
-            <td class="tp"><%= t('編輯資訊') %></td>
-            <td class="tp"><%= t('刪除公告') %></td>
-          <% end %>
-        </tr>
-        <% @bulletins.order(updated_at: :desc).each do |bulletin|  %>
-          <tr>
-            <td class="tbody"><%= link_to bulletin.title , bulletin_path(bulletin),data:{remote:true}, method: 'get' %></td>
-            <td class="tbody">
-              <%= bulletin.updated_at.strftime("%Y/%m/%d %I:%M %p") %>
-            </td>
-            <td class="tbody">
-              <div data-controller="read-bulletins" 
-                  data-read="<%= current_user.read?(bulletin)%>"
-                  data-bulletin-id="<%= bulletin.id %>">
-                <a href="#" data-read-bulletins-target="read" data-action="click->read-bulletins#read">
-                  <i class="text-lg text-yellow-300 fa-solid fa-envelope"></i>
-                  <i data-read-bulletins-target="readCount">
-                    <%= BulletinRead.where(bulletin_id: bulletin.id, is_read:true).count %>
-                  </i>
-                </a>
-                <a href="#" data-read-bulletins-target="unread" data-action="click->read-bulletins#unread">
-                  <i class="text-lg text-yellow-500 fa-solid fa-envelope-open-text"></i>
-                  <i data-read-bulletins-target="unreadCount">
-                    <%= BulletinRead.where(bulletin_id: bulletin.id, is_read:true).count %>
-                  </i>
-                </a>
-              </div>
-            </td>
-              <% if policy(:bulletin).create?  %>
-                <td class="tbody"><%= link_to t("編輯"), edit_bulletin_path(bulletin), class: "edit-btn" %></td>
-                <td class="tbody"><%= link_to t("刪除"), bulletin_path(bulletin.id), class: "delete-btn", method: 'delete', data: {confirm: t('確定要刪除嗎?')} if policy(:bulletin).destroy? %></td>
-              <% end %>
+      <div class="max-w-min  mx-auto ">
+        <table class=" block rounded-lg overflow-x-auto mt-5 text-sm md:text-lg  shadow-md whitespace-nowrap " id="bulletin_show">
+          <tr class="thead">
+            <td class="tp "><%= t('公告標題') %></td>
+            <td class="tp"><%= t('最新修改時間') %></td>
+            <td class="tp"><%= t('已讀人數') %></td>
+            <% if policy(:bulletin).create?  %>
+              <td class="tp"><%= t('編輯資訊') %></td>
+              <td class="tp"><%= t('刪除公告') %></td>
+            <% end %>
           </tr>
-        <% end %>
-      </table>
+          <% @bulletins.order(updated_at: :desc).each do |bulletin|  %>
+            <tr>
+              <td class="tbody"><%= link_to bulletin.title , bulletin_path(bulletin),data:{remote:true}, method: 'get' %></td>
+              <td class="tbody">
+                <%= bulletin.updated_at.strftime("%Y/%m/%d %I:%M %p") %>
+              </td>
+              <td class="tbody">
+                <div data-controller="read-bulletins" 
+                    data-read="<%= current_user.read?(bulletin)%>"
+                    data-bulletin-id="<%= bulletin.id %>">
+                  <a href="#" data-read-bulletins-target="read" data-action="click->read-bulletins#read">
+                    <i class="text-lg text-yellow-300 fa-solid fa-envelope"></i>
+                    <i data-read-bulletins-target="readCount">
+                      <%= BulletinRead.where(bulletin_id: bulletin.id, is_read:true).count %>
+                    </i>
+                  </a>
+                  <a href="#" data-read-bulletins-target="unread" data-action="click->read-bulletins#unread">
+                    <i class="text-lg text-yellow-500 fa-solid fa-envelope-open-text"></i>
+                    <i data-read-bulletins-target="unreadCount">
+                      <%= BulletinRead.where(bulletin_id: bulletin.id, is_read:true).count %>
+                    </i>
+                  </a>
+                </div>
+              </td>
+                <% if policy(:bulletin).create?  %>
+                  <td class="tbody"><%= link_to t("編輯"), edit_bulletin_path(bulletin),class: "edit-btn" %></td>
+                  <td class="tbody"><%= link_to t("刪除"), bulletin_path(bulletin.id),class: "delete-btn", method: 'delete', data: {confirm: t('確定要刪除嗎?')} if policy(:bulletin).destroy?%></td>
+                <% end %>
+            </tr>
+          <% end %>
+        </table>
+      </div>  
     </div>
 </div>
 
