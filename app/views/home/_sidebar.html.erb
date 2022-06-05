@@ -1,60 +1,29 @@
-<div x-data="{ sidebarOpen: false }" class="w-full h-full bg-gray-200">
-  <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" 
-       class="fixed inset-0 z-20 h-full transition-opacity bg-black opacity-50 lg:hidden"></div>
-    <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" 
-    class="fixed inset-y-0 left-0 z-30 w-64 h-full overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0">
-      <div class="flex items-center justify-center mt-8">
-          <div class="flex items-center">
-            <%= image_tag "logo.png" ,class:"w-16 h-16",alt:"FlyCat logo",title:"FlyCat" %>
-          </div>
-          <div>
-            <span class="mx-2 text-4xl font-semibold text-white">FlyCat</span>
-          </div>
-      </div>
+<div x-cloak :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"></div>
 
+<div x-cloak :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0">
+  <div class="fixed z-30" >
     
-  <nav class="mt-10 bg-gray-900">
-    <% if policy(:bulletin).index? %>
-                <%= link_to admin_index_path, class: "flex items-center px-6 py-2 mt-4 text-gray-100 bg-gray-700 bg-opacity-25" do %>
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
-                    </svg>
-                    <span class="mx-3"><%= t('系統總覽') %></span>
-
-                    <% end %>
-                <% end %>
-        <% if policy(:bulletin).index? %>
-          <%= link_to bulletins_path,class:"flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
-          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-            </path>
-          </svg>
-                <span class="mx-3"><%= t('公告總覽') %></span>
-          <%end%>
-        <% end %>
-
-        <% if policy(:vacation).index? %>
-          <%= link_to vacations_path,class:"flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
-          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-            </path>
-          </svg>
-                <span class="mx-3"><%= t('假單管理') %></span>
-          <%end%>
-        <% end %>
-        <% if policy(:work_shift).index? %>
-          <%= link_to work_shifts_path,class:"flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
-          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-            </path>
-          </svg>
-                <span class="mx-3"><%= t('排班管理') %></span>
-          <%end%>
+    <div class="absolute w-64 h-full min-h-screen pt-8 mt-0 ml-0 bg-gray-900"> 
+      <div class="flex items-center justify-center overflow-hidden">
+        <div>
+          <%= image_tag "logo.png", class: "w-16 h-16", alt: "FlyCat", title: "FlyCat" %>
+        </div>
+        <div>
+          <span class="mx-2 text-4xl font-semibold text-white">FlyCat</span>
+        </div>
+      </div>
+      
+      <ul class="overflow-hidden">
+        <li>
+          <% if policy(:bulletin).index? %>
+            <%= link_to admin_index_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-chart-pie"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('系統總覽') %></span>
+            <% end %>
+          <% end %>
+        </li>
         
+<<<<<<< HEAD
         <% end %>
         <% if policy(:department).index? %>
           <%= link_to departments_path,class:"flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
@@ -144,5 +113,98 @@
         <%end%>
       <%end%>
     </nav>
+=======
+        <li>
+          <% if policy(:bulletin).index? %>
+            <%= link_to bulletins_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-bullhorn"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('公告總覽') %></span>
+            <% end %>
+          <% end %>
+        </li>
+  
+        <li>
+          <% if policy(:vacation).index? %>
+            <%= link_to vacations_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-pen-to-square"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('假單管理') %></span>
+            <% end %>
+          <% end %>
+        </li>
+  
+        <li>
+          <% if policy(:work_shift).create? %>
+            <%= link_to work_shifts_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-calendar-days"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('排班管理') %></span>
+            <% end %>
+          <% end %>
+        </li>
+  
+        <li>
+          <% if policy(:department).index? %>
+            <%= link_to departments_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-people-group"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('部門管理') %></span>
+            <% end %>
+          <% end %>
+        </li>
+  
+        <li>
+          <% if policy(:bulletin).index? %>
+            <%= link_to profiles_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-address-card"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('員工資訊') %></span>
+            <% end %>
+          <% end %>
+        </li>
+  
+        <li>
+          <% if policy(:bulletin).index? %>
+            <%= link_to new_punchcard_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-business-time"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('打卡系統') %></span>
+            <% end %>
+          <% end %>
+        </li>
+  
+        <li>
+          <% if policy(:profile).index? %>
+            <%= link_to edit_company_path(current_company.id), class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-building-user"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('公司資訊') %></span>
+            <% end %>
+          <% end %>
+        </li>
+  
+        <li>
+          <% if policy(:bulletin).index? %>
+            <%= link_to new_order_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-cart-shopping"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('資助飛天貓') %></span>
+            <% end %>
+          <% end %>
+        </li>
+  
+        <li class="mt-10">
+          <% if user_signed_in? %>
+            <%= link_to destroy_user_session_path, method: "delete", class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <i class="w-6 h-6 mx-4 fa-solid fa-right-from-bracket"></i>
+            <span class="mx-3 whitespace-nowrap"><%= t('登出') %></span>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-right-to-bracket"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('登入') %></span>          
+            <% end %>
+            <%= link_to new_user_registration_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-user-plus"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('註冊') %></span>          
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+    </div> 
+>>>>>>> cc53f7f (feat: 🎸 新增sidebar 展開/隱藏切換功能)
   </div>
 </div>

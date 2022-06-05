@@ -5,8 +5,8 @@ module Newebpay
     attr_reader :status, :message, :result, :order_no, :trans_no, :newebpay_amt, :card_last_4_no, :pay_at, :pay_type
 
     def initialize(params)
-      @key = ENV.fetch('hash_key', nil)
-      @iv = ENV.fetch('hash_iv', nil)
+      @key = ENV.fetch('HASH_KEY', nil)
+      @iv = ENV.fetch('HASH_IV', nil)
       response = decrypy(params)
       @status = response['Status']
       @message = response['Message']

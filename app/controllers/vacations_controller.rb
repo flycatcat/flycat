@@ -21,13 +21,13 @@ class VacationsController < ApplicationController
   end
 
   def edit
-    redirect_to vacations_path, notice: '不可編輯，簽核已完成' if @vacation.status != 'pending'
+    redirect_to vacations_path, alert: '不可編輯，簽核已完成' if @vacation.status != 'pending'
   end
 
   def create
     @vacation = current_company.vacations.new(vacation_params.merge(user: current_user))
     if @vacation.save
-      redirect_to vacations_path, notice: t('.假單申請成功')
+      redirect_to vacations_path, notice: t('假單申請成功')
     else
       render :new
     end
@@ -53,19 +53,19 @@ class VacationsController < ApplicationController
 
   def destroy
     @vacation.destroy
-    redirect_to vacations_path, notice: '已刪除假單'
+    redirect_to vacations_path, alert: '已刪除假單'
   end
 
   private
 
   def correct_user
     set_vacation
-    redirect_to vacations_path, notice: '沒有編輯權限！' if @vacation.user != current_user
+    redirect_to vacations_path, alert: '沒有編輯權限！' if @vacation.user != current_user
   end
 
   def unable_signoff
     set_vacation
-    redirect_to vacations_path, notice: '不能簽核本人假單！' if @vacation.user == current_user
+    redirect_to vacations_path, alert: '不能簽核本人假單！' if @vacation.user == current_user
   end
 
   def set_vacation

@@ -13,12 +13,16 @@ class ApplicationController < ActionController::Base
   end
 
   def not_found
-    render status: 404
+    render file: "#{Rails.root}/public/not_found.html",
+           status: 404,
+           layout: false
   end
 
   def internal_server_error
-    render status: 500
-  end
+    render file: "#{Rails.root}/public/internal_server_error.html",
+           status: 500,
+           layout: false
+  end 
 
   private
 
@@ -29,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash[:notice] = '你沒有檢視該頁面的權限!'
+    flash[:alert] = '你沒有檢視該頁面的權限!'
     redirect_to root_path
   end
 

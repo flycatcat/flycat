@@ -36,9 +36,9 @@
         <%= form.file_field :proof %>
       </div>
 
-      <div class="flex justify-end py-6 actions">
-        <%= link_to 'Cancel', vacations_path, class: "py-2 px-6 mt-4 text-lg tracking-wide text-gray-700 text-bold rounded-md bg-gray-300  mr-6" %>
-        <%= form.submit class: "py-2 px-6 mt-4 text-lg tracking-wide text-indigo-100 rounded-md bg-gradient-to-tr from-blue-600 to-indigo-600" %>
+      <div class="flex justify-center py-6 actions">
+        <%= link_to 'Cancel', vacations_path, class: "cancel-btn" %>
+        <%= form.submit class: "add-btn" %>
       </div>
     <% end %>
   </div>

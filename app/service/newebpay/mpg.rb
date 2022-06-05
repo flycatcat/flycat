@@ -5,9 +5,9 @@ module Newebpay
     attr_accessor :info
 
     def initialize(order)
-      @key = ENV.fetch('hash_key', nil)
-      @iv = ENV.fetch('hash_iv', nil)
-      @merchant_id = ENV.fetch('merchant_id', nil)
+      @key = ENV.fetch('HASH_KEY', nil)
+      @iv = ENV.fetch('HASH_IV', nil)
+      @merchant_id = ENV.fetch('MERCHANT_ID', nil)
       @info = {}
       @flycatOrderNo = order.order_no
       @amount = order.amount

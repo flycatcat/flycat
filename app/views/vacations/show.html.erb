@@ -33,9 +33,9 @@
       <%= link_to '點此查看請假證明', @vacation.proof,class: "mb-1 font-semibold text-blue-600 pt-3", target: "_blank" if @vacation.proof.attached? %>
       <%= '未提供證明' unless @vacation.proof.attached? %>
     </div>
-    <div class="flex justify-end my-8 -mr-10">
-      <%= link_to '編輯', edit_vacation_path(@vacation),class: "py-2 mx-2 px-6 mt-4 text-lg tracking-wide text-indigo-100 rounded-md bg-gradient-to-tr from-blue-600 to-indigo-600" %>
-      <%= link_to '返回', vacations_path ,class: "py-2 mx-2 px-6 mt-4 text-lg tracking-wide text-gray-700 text-bold rounded-md bg-gray-300  mr-6" %>
+    <div class="flex justify-center my-8">
+      <%= link_to '返回前頁', vacations_path, class: "cancel-btn" %>
+      <%= link_to '編輯假單', edit_vacation_path(@vacation), class: "add-btn" %>
     </div>
   </div>
 </div>

@@ -14,7 +14,7 @@ class WorkShiftsController < ApplicationController
   def create
     @work_shift = current_company.work_shifts.new(work_shift_params)
     if @work_shift.save
-      redirect_to work_shifts_path
+      redirect_to work_shifts_path, notice: '班表新增成功'
     else
       render :new
     end
@@ -24,7 +24,7 @@ class WorkShiftsController < ApplicationController
 
   def update
     if @work_shift.update(work_shift_params)
-      redirect_to work_shifts_path
+      redirect_to work_shifts_path, notice: '班表更新成功'
     else
       render :edit
     end
@@ -32,7 +32,7 @@ class WorkShiftsController < ApplicationController
 
   def destroy
     @work_shift.destroy
-    redirect_to work_shifts_path
+    redirect_to work_shifts_path, alert: '已刪除班表'
   end
 
   def setting; end

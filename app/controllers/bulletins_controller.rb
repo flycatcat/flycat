@@ -41,7 +41,7 @@ class BulletinsController < ApplicationController
   def destroy
     authorize :bulletin
     @bulletin.destroy
-    redirect_to bulletins_path, notice: '已刪除公告'
+    redirect_to bulletins_path, alert: '已刪除公告'
   end
 
   private

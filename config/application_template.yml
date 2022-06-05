@@ -1,6 +1,7 @@
 PG_DATABASE: "YOUR_PG_DATABASE"
 PG_USERNAME: "YOUR_PG_USERNAME"
 PG_PASSWORD: "YOUR_PG_PASSWORD"
+<<<<<<< HEAD
 Github_Client_ID: "YOUR_Github_Client_ID"
 Github_Client_Secret: "YOUR_Github_Client_Secret"
 google_client_id: "YOUR_google_client_id"
@@ -10,3 +11,12 @@ hash_iv: "Flycat_hash_iv"
 merchant_id: "Flycat_merchant_id"
 return_url: "Your_ngrok"
 notify_url: "NotifyURL"
+=======
+GOOGLE_CLIENT_ID: "YOUR_GOOGLE_CLIENT_ID"
+GOOGLE_CLIENT_SECRET: "YOUR_GOOGLE_CLIENT_SECRET"
+HASH_KEY: "FLYCAT_HASH_KEY"
+HASH_IV: "FLYCAT_HASH_IV"
+MERCHANT_ID: "FLYCAT_MERCHANT_ID"
+RETURN_URL: "YOUR_NGROK_RETURN_URL"
+NOTIFY_URL: "NOTIFY_URL"
+>>>>>>> cc53f7f (feat: 🎸 新增sidebar 展開/隱藏切換功能)

@@ -22,7 +22,7 @@
 
       <div class="field">
         <%= form.label :hour,"請假時數",class: "block mb-1 font-semibold text-gray-600 pt-3" %>
-        <p>請整天假者，不需調整時數。非請整天者，請依實際時數選擇</p>
+        <p class="text-red-700">請整天假者，不需調整時數。非請整天者，請依實際時數選擇</p>
         <%= form.number_field :hour,min:0.5,max:8.0, step: 0.5, value: 8 %>
       </div>
       
@@ -36,9 +36,9 @@
         <%= form.file_field :proof %>
       </div>
 
-      <div class="flex justify-end py-6 actions">
-        <%= link_to '取消', vacations_path, class: "py-2 px-6 mt-4 text-lg tracking-wide text-white rounded-md bg-gray-300 hover:bg-gray-100 mr-6" %>
-        <%= form.submit class: "py-2 px-6 mt-4 text-lg tracking-wide text-indigo-100 rounded-md text-white bg-blue-500 rounded hover:bg-blue-700" %>
+      <div class="flex justify-center py-6 actions">
+        <%= link_to '返回前頁', vacations_path, class: "cancel-btn" %>
+        <%= form.submit class: "add-btn" %>
       </div>
     <% end %>
   </div>

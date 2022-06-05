@@ -20,16 +20,16 @@ class PunchcardsController < ApplicationController
       if @punchcard.save
         redirect_to punchcards_path, notice: '打卡成功!!!'
       else
-        render :new, notice: '打卡失敗，請重新打卡!!!'
+        render :new, alert: '打卡失敗，請重新打卡!!!'
       end
     elsif current_user.punchcards.last.punch_in_at.today?
-      redirect_to punchcards_path, notice: '今日已有上班打卡紀錄，請打下班卡!!!'
+      redirect_to punchcards_path, alert: '今日已有上班打卡紀錄，請打下班卡!!!'
     else
       @punchcard = current_user.punchcards.new(punchcards_params)
       if @punchcard.save
         redirect_to punchcards_path, notice: '打卡成功!!!'
       else
-        render :new, notice: '打卡失敗，請重新打卡!!!'
+        render :new, alert: '打卡失敗，請重新打卡!!!'
       end
     end
   end
@@ -46,7 +46,7 @@ class PunchcardsController < ApplicationController
       @punchcard.update(punchcards_params)
       redirect_to punchcards_path, notice: '已更新下班打卡紀錄!!!'
     else
-      redirect_to punchcards_path, notice: '今日已有下班打卡紀錄，請勿重複打卡!!!'
+      redirect_to punchcards_path, alert: '今日已有下班打卡紀錄，請勿重複打卡!!!'
 
     end
   end
@@ -54,7 +54,7 @@ class PunchcardsController < ApplicationController
   def destroy
     authorize :punchcard
     @punchcard.destroy
-    redirect_to punchcards_path, notice: '已刪除打卡紀錄!!!'
+    redirect_to punchcards_path, alert: '已刪除打卡紀錄!!!'
   end
 
   private

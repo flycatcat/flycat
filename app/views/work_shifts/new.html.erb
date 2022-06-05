@@ -7,19 +7,19 @@
         <% end %>
       </ul>
     <% end %>
-    <div class="w-screen max-w-md px-10 py-8 bg-white shadow-md rounded-xl">
-    <h1><%= t('新增班表') %></h1>
+    <div class="w-screen max-w-md px-10 bg-white shadow-md rounded-xl">
+    <h1 class="py-3 font-bold text-center text-gray-500"><%= t('新增班表') %></h1>
       <div class="mb-6 field">
         <%= form.label :title, t("班表名稱") %>
-        <%= form.text_field :title,class: "p-3 mt-4 leading-none text-gray-900 bg-gray-100 border border-gray-200 rounded focus:outline-none focus:border-blue-700" %>
+        <%= form.text_field :title, class: "p-3 mt-4 leading-none text-gray-900 bg-gray-100 border border-gray-200 rounded focus:outline-none focus:border-blue-700" %>
       </div>
 
-      <div class="kind">
+      <div class="mb-4 kind">
         <%= form.label :kind, t("班別") %>
-        <%= form.select :kind , WorkShift.all_kind ,class: "p-3 mt-4 leading-none text-gray-900 bg-gray-100 border border-gray-200 rounded focus:outline-none focus:border-blue-700" %>
+        <%= form.select :kind, WorkShift.all_kind, class: "p-3 my-4 leading-none text-gray-900 bg-gray-100 border border-gray-200 rounded focus:outline-none focus:border-blue-700" %>
       </div>
-        <div class="actions">
-        <%= form.submit t("新增班表"), class: "px-10 py-4 font-semibold leading-none text-white bg-blue-700 rounded mt-9 hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none" %>
+        <div class="flex justify-center actions">
+        <%= form.submit t("新增班表"), class: "add-btn mb-4 w-full" %>
         </div>
     <% end %>
   </div>

@@ -3,11 +3,11 @@
 }
 
 .thead {
-  @apply mb-4 text-center text-gray-200 bg-indigo-900 rounded shadow-md text-lg font-bold text-gray-200 border-b;
+  @apply text-center text-gray-200 bg-indigo-900 rounded shadow-md text-lg font-bold text-gray-200;
 }
 
 .tbody {
-  @apply bg-gray-100 border-b p-3 px-5 text-center;
+  @apply bg-gray-100 p-3 px-5 text-center;
 }
 
 .tp {

@@ -1,6 +1,6 @@
 <div class="h-full bg-gray-200">
-  <h1 class="p-6 "><%= t('部門管理') %></h1>
-  <div class="w-1/2 mx-auto">
+  <h1 class="px-16 py-6"><%= t('部門管理') %></h1>
+  <div class="w-full px-16 mx-auto">
     <div class="flex justify-end">
       <div class="add-btn">
         <%= link_to t("新增部門"), new_department_path if policy(:department).index? %>
@@ -18,8 +18,8 @@
         <tr>
           <td class="tbody"><%= department.department_name %></td>
           <% if policy(:department).index?  %>
-            <td class="tbody"><%= link_to t("編輯"), edit_department_path(department),class: "edit-btn" %></td>
-            <td class="tbody"><%= link_to t("刪除"), department_path(department.id), class: "delete-btn",method: 'delete', data: {confirm: t('確定要刪除嗎?')} %></td>
+            <td class="tbody"><%= link_to t("編輯"), edit_department_path(department), class: "edit-btn" %></td>
+            <td class="tbody"><%= link_to t("刪除"), department_path(department.id), class: "delete-btn", method: 'delete', data: {confirm: t('確定要刪除嗎?')} %></td>
           <% end %>
         </tr>
         <% end %>

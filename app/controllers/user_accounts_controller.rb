@@ -38,7 +38,7 @@ class UserAccountsController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to user_accounts_path, notice: '已刪除員工相關資訊'
+    redirect_to user_accounts_path, alert: '已刪除員工相關資訊'
   end
 
   private
