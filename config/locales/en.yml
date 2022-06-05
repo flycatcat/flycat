@@ -83,8 +83,9 @@ en:
   展開: "Show"
   簽核: "Sign Off"
   簽核/編輯: "Sign Off / Edit"
-  歡迎來到Flycat出勤管理系統: "Welcome to Flycat"
-  歡迎來到飛天貓: "Welcome to Flycat"
+  歡迎來到 FlyCat 出勤管理系統: "Welcome to FlyCat"
+  歡迎來到: "Welcome to"
+  出勤管理系統: ""  
   請輸入以下資訊登入: "Log in Page"
   電子郵件: "Email"
   電子信箱: "Email"
@@ -185,6 +186,8 @@ en:
   卡號後四碼: "Last Credit No"
   返回管理者後台: "Back"
   返回首頁: "Back"
+  忘記密碼?: "Forgot your password?"
+  重設密碼: "Send me reset password instructions"
   activerecord:
     models:
       vacation:
