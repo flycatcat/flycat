@@ -14,6 +14,7 @@ module Flycat
     config.i18n.default_locale = :'zh-TW'
     config.hosts << 'flycat.works'
     config.hosts << "flycat0607.herokuapp.com"
+    config.hosts << "9e46-2001-b400-e23b-24cb-6362-519f-8292-9877.jp.ngrok.io"
     config.action_controller.forgery_protection_origin_check = false
     config.time_zone = 'Taipei'
     config.active_record.default_timezone = :local

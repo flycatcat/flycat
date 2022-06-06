@@ -5,9 +5,9 @@ export default class extends Controller {
   connect() {
     geolocateUser();
     getdistance();
-    const company_latitude = this.element.dataset.latitude;
-    const company_longitude = this.element.dataset.longitude;
-    console.log(company_latitude);
-    console.log(company_longitude);
+    // const company_latitude = this.element.dataset.latitude;
+    // const company_longitude = this.element.dataset.longitude;
+    // console.log(company_latitude);
+    // console.log(company_longitude);
   }
 }

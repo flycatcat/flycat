@@ -55,6 +55,7 @@ export function geolocationError(positionError) {
 }
 
 export function getdistance() {
+  let startPos;
   let startPosLat;
   let startPosLong;
   let distance;
@@ -62,6 +63,7 @@ export function getdistance() {
   if (navigator.geolocation) {
     startPosLat = 25.04264418555442;
     startPosLong = 121.51370557791132;
+
     document.getElementById("startLat").innerHTML = startPosLat;
     document.getElementById("startLon").innerHTML = startPosLong;
 
@@ -70,6 +72,10 @@ export function getdistance() {
         position.coords.latitude;
       document.getElementById("currentLon").innerHTML =
         position.coords.longitude;
+      // document.getElementById("currentLat1").innerHTML =
+      //   position.coords.latitude;
+      // document.getElementById("currentLon1").innerHTML =
+      //   position.coords.longitude;
 
       distance = calculateDistance(
         startPosLat,
