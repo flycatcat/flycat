@@ -1,6 +1,6 @@
 <div class="h-full bg-gray-200" >
-  <h1 class="p-6"><%= t('公告總覽') %></h1>
-    <div class="w-5/6 mx-auto rounded-lg">
+  <h1 class="px-16 py-6"><%= t('公告總覽') %></h1>
+    <div class="px-16 mx-auto rounded-lg">
       <div class="flex justify-end">
         <%= link_to t("新增公告"), new_bulletin_path,class: "add-btn" if policy(:bulletin).create?%>
       </div>
@@ -39,8 +39,8 @@
               </div>
             </td>
               <% if policy(:bulletin).create?  %>
-                <td class="tbody"><%= link_to t("編輯"), edit_bulletin_path(bulletin),class: "edit-btn" %></td>
-                <td class="tbody"><%= link_to t("刪除"), bulletin_path(bulletin.id),class: "delete-btn", method: 'delete', data: {confirm: t('確定要刪除嗎?')} if policy(:bulletin).destroy?%></td>
+                <td class="tbody"><%= link_to t("編輯"), edit_bulletin_path(bulletin), class: "edit-btn" %></td>
+                <td class="tbody"><%= link_to t("刪除"), bulletin_path(bulletin.id), class: "delete-btn", method: 'delete', data: {confirm: t('確定要刪除嗎?')} if policy(:bulletin).destroy? %></td>
               <% end %>
           </tr>
         <% end %>        

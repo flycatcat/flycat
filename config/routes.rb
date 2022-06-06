@@ -6,13 +6,19 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks',
   }
-
+  
   resources :companies, except: [:index, :destroy, :show]
-  resources :profiles, except: [:show]
   resources :departments, except: [:show]
   resources :user_accounts, only: [:index, :new, :create, :destroy]
   resources :punchcards
+  resources :bulletins
   
+  resources :profiles, except: [:show] do
+    collection do
+      post :import
+    end
+  end
+
   resources :vacations do
     member do
       get :signoff
@@ -35,13 +41,6 @@ Rails.application.routes.draw do
     end
   end  
 
-  resources :bulletins do
-    member do
-      post :read
-      delete :unread
-    end
-  end
-  
   namespace :api do
     namespace :v1 do
       resources :bulletins, only: [] do

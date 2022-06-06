@@ -41,7 +41,7 @@ class DepartmentsController < ApplicationController
   def destroy
     authorize :department
     @department.destroy
-    redirect_to departments_path, notice: '已刪除部門'
+    redirect_to departments_path, alert: '已刪除部門'
   end
 
   private

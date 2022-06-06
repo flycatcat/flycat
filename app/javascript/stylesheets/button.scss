@@ -1,5 +1,5 @@
 .edit-btn {
-  @apply px-2 py-1.5 text-base text-white bg-green-500 rounded hover:bg-green-700;
+  @apply px-2 py-1.5 text-base text-white bg-green-600 rounded hover:bg-green-700;
 }
 
 .setting-btn {
@@ -13,8 +13,13 @@
 .signoff-btn {
   @apply px-2 py-1.5 text-base text-white bg-yellow-500 rounded hover:bg-yellow-700;
 }
+
 .add-btn {
-  @apply inline-block px-3 py-3 bg-blue-600 text-white font-medium text-base leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 hover:bg-blue-800 hover:shadow-lg transition duration-150 ease-in-out justify-end block;
+  @apply inline-block px-3 py-3 bg-indigo-700 text-white font-medium text-base uppercase rounded shadow-md hover:bg-indigo-800 hover:shadow-lg focus:bg-indigo-800 focus:shadow-lg focus:outline-none focus:ring-0 hover:bg-indigo-800 hover:shadow-lg transition duration-150 ease-in-out justify-end block;
+}
+
+.cancel-btn {
+  @apply inline-block px-3 py-3 bg-gray-400 text-white font-medium text-base uppercase rounded shadow-md hover:bg-gray-500 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 hover:bg-gray-500 hover:shadow-lg transition duration-150 ease-in-out justify-end block mr-9;
 }
 
 .show-btn {
@@ -22,13 +27,13 @@
 }
 
 .approved-tag {
-  @apply px-2 capitalize py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full;
+  @apply px-2 capitalize py-1 font-semibold text-green-700 bg-green-100 rounded-full;
 }
 
 .pending-tag {
-  @apply px-3 py-1 capitalize font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full;
+  @apply px-3 py-1 capitalize font-semibold text-yellow-700 bg-yellow-100 rounded-full;
 }
 
 .rejected-tag {
-  @apply px-2 py-1 capitalize font-semibold leading-tight text-red-700 bg-red-100 rounded-full;
+  @apply px-2 py-1 capitalize font-semibold text-red-700 bg-red-100 rounded-full;
 }

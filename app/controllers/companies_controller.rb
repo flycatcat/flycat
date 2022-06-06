@@ -30,7 +30,7 @@ class CompaniesController < ApplicationController
 
   def destroy
     @company.destroy
-    redirect_to root_path, notice: '已刪除'
+    redirect_to root_path, alert: '已刪除'
   end
 
   private

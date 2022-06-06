@@ -1,27 +1,23 @@
+<header class="flex items-center justify-between px-6 py-4 bg-white">
+  <div class= "flex items-center py-2 mx-3 text-base font-bold">
+    <button @click="sidebarOpen = true" class="mr-6 focus:outline-none lg:hidden">
+      <i class="text-2xl text-indigo-600 fa-solid fa-bars"></i>
+    </button>
+    <%= link_to "中文版 ", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
+    <span class= "py-2 mx-3 text-base font-bold">|</span>
+    <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
+  </div>
     
-    <header class="flex items-center justify-between px-6 py-4 bg-white border-b-4">
-        <div class= "py-2 mx-3 text-base font-bold">
-            <%= link_to "中文版 ", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
-            <span class= "py-2 mx-3 text-base font-bold">|</span>
-            <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
-        </div>
-        <div class="flex justify-start">
-            <div class= "py-2 mx-3 text-lg font-bold">
-                <% if policy(:bulletin).index? && current_company.orders.where(status: "SUCCESS").size > 0 %>
-                    <%= "VIP" + current_user.email %>
-            </div>
-        <div>
-            <%= link_to destroy_user_session_path, method: "delete",class:"block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white" do %>
-              <span class="mx-3 text-xl font-bold"><%= t('登出') %></span>
-            <%end%>
-                    <div class="flex justify-start">
-            <div class= "py-2 mx-3 text-lg font-bold">
-                <% elsif policy(:bulletin).index? %>
-                    <%= current_user.email %>
-            </div>
-        <div>
-            <%= link_to destroy_user_session_path, method: "delete",class:"block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white" do %>
-              <span class="mx-3 text-xl font-bold"><%= t('登出') %></span>
-            <%end%>
+  <% if policy(:bulletin).index? %>
+    <div class="flex justify-start">
+      <div class= "py-2 mx-3 text-lg font-bold">
+        <%= current_user.email  %>
+      </div>
+      <div>
+        <%= link_to destroy_user_session_path, method: "delete", class: "block px-4 py-2 text-lg hover:bg-red-500 hover:text-white rounded-lg" do %>
+          <span class="mx-3 text-lg font-bold"><%= t('登出') %></span>
         <% end %>
-    </header>
+      </div>
+    </div>
+  <% end %>
+</header>

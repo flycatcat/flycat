@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
-    redirect_to profiles_path, notice: '已刪除員工資訊'
+    redirect_to profiles_path, alert: '已刪除員工資訊'
   end
 
   private

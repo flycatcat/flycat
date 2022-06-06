@@ -16,6 +16,18 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons/faQuestionCi
 import { faUserGroup} from "@fortawesome/free-solid-svg-icons/faUserGroup";
 import { faBullhorn } from "@fortawesome/free-solid-svg-icons/faBullhorn";
 import { faClipboardList } from "@fortawesome/free-solid-svg-icons/faClipboardList";
+import { faChartPie } from "@fortawesome/free-solid-svg-icons/faChartPie";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons/faPenToSquare";
+import { faCalendarDays } from "@fortawesome/free-solid-svg-icons/faCalendarDays";
+import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons/faPeopleGroup";
+import { faAddressCard } from "@fortawesome/free-solid-svg-icons/faAddressCard";
+import { faBusinessTime } from "@fortawesome/free-solid-svg-icons/faBusinessTime";
+import { faBuildingUser } from "@fortawesome/free-solid-svg-icons/faBuildingUser";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons/faRightFromBracket";
+import { faRightToBracket } from "@fortawesome/free-solid-svg-icons/faRightToBracket";
+import { faUserPlus } from "@fortawesome/free-solid-svg-icons/faUserPlus";
+import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 
 config.mutateApproach = "sync";
 
@@ -37,5 +49,17 @@ library.add(
   faUserGroup,
   faBullhorn,
   faClipboardList,
+  faChartPie,
+  faPenToSquare,
+  faCalendarDays,
+  faPeopleGroup,
+  faAddressCard,
+  faBusinessTime,
+  faBuildingUser,
+  faCartShopping,
+  faRightFromBracket,
+  faRightToBracket,
+  faUserPlus,
+  faBars,
 );
 dom.watch();
