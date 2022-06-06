@@ -4,13 +4,30 @@
   <div class="fixed z-30" >
     
     <div class="absolute w-64 h-full min-h-screen pt-8 mt-0 ml-0 bg-gray-900"> 
-      <div class="flex items-center justify-center overflow-hidden">
-        <div>
-          <%= image_tag "logo.png", class: "w-16 h-16", alt: "FlyCat", title: "FlyCat" %>
-        </div>
-        <div>
-          <span class="mx-2 text-4xl font-semibold text-white">FlyCat</span>
-        </div>
+      <div class="flex items-center justify-center w-full overflow-hidden">
+        <% if policy(:bulletin).index? %>
+          <%= link_to admin_index_path do %>
+            <div>
+              <%= image_tag "logo.png", class: "w-16 h-16", alt: "FlyCat", title: "FlyCat" %>
+            </div>
+          <% end %>
+          <%= link_to admin_index_path do %>
+            <div>
+              <span class="mx-2 text-4xl font-semibold text-white">FlyCat</span>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to root_path do %>
+            <div>
+              <%= image_tag "logo.png", class: "w-16 h-16", alt: "FlyCat", title: "FlyCat" %>
+            </div>
+          <% end %>
+          <%= link_to root_path do %>
+            <div>
+              <span class="mx-2 text-4xl font-semibold text-white">FlyCat</span>
+            </div>
+          <% end %>
+        <% end %>
       </div>
       
       <ul class="overflow-hidden">

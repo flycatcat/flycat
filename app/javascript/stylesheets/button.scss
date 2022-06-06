@@ -37,3 +37,11 @@
 .rejected-tag {
   @apply px-2 py-1 capitalize font-semibold text-red-700 bg-red-100 rounded-full;
 }
+
+.free-trial-text {
+  @apply bg-blue-600 hover:bg-blue-800 text-white text-center rounded;
+}
+
+.enter-admin-btn {
+  background-color: #f56f00;
+}

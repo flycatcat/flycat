@@ -7,8 +7,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV.fetch('PG_HOST', 'localhost') %>
-  port: <%= ENV.fetch('PG_PORT', '5432') %>
+  host: <%= ENV.fetch('pg_host', 'localhost') %>
+  port: <%= ENV.fetch('pg_port', '5432') %>
   database: <%= ENV['pg_database'] %>
   pool: 5
   username: <%= ENV['pg_username'] %>
