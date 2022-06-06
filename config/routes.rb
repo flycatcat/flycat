@@ -29,10 +29,18 @@ Rails.application.routes.draw do
   end
 
   resources :admin
-  resources :work_shifts, param: :work_shift_id do
-    member do
-      resources :events, param: :event_id 
-      get 'setting', to: 'work_shifts#setting', as: 'setting'
+  resources :work_shifts do
+    resources :events
+    member do 
+      get :setting
+    end
+  end
+
+  resources :reports, only: [:index] do
+    collection do
+      post 'on_duties/:start_at/:end_at', to:'reports#on_duties'
+      post 'vacations/:start_at/:end_at', to:'reports#vacations'
+      post 'punchcards/:start_at/:end_at', to:'reports#punchcards'
     end
   end
   

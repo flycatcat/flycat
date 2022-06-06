@@ -1,17 +1,17 @@
-import { Controller } from "stimulus"
-import { marked } from "marked"
+import { Controller } from "stimulus";
+import { marked } from "marked";
 
 export default class extends Controller {
   initialize() {
-    this.origContent = ""
+    this.origContent = "";
   }
 
   connect() {
-    this.origContent = this.element.textContent.trim()
-    this.element.innerHTML = marked.parse(this.origContent)
+    this.origContent = this.element.textContent.trim();
+    this.element.innerHTML = marked.parse(this.origContent);
   }
 
   disconnect() {
-    this.element.textContent = this.origContent
+    this.element.textContent = this.origContent;
   }
 }

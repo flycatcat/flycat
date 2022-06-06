@@ -88,16 +88,16 @@ ActiveRecord::Schema.define(version: 2022_06_06_123903) do
 
   create_table "events", force: :cascade do |t|
     t.boolean "all_day"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.string "title"
     t.string "content"
-    t.date "date"
     t.bigint "work_shift_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "vacation_set"
-    t.string "mode"
+    t.string "shifted_mode"
+    t.string "on_duty_staff"
     t.index ["work_shift_id"], name: "index_events_on_work_shift_id"
   end
 

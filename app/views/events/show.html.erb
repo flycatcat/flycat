@@ -2,12 +2,12 @@
 
 <p>
   <strong>開始時間:</strong>
-  <%= @event.start_time %>
+  <%= @event.start_at %>
 </p>
 
 <p>
   <strong>結束時間:</strong>
-  <%= @event.end_time %>
+  <%= @event.end_at %>
 </p>
 
 <p>
@@ -15,7 +15,7 @@
   <%= @event.title %>
 </p>
 
-<%= link_to '編輯', edit_event_path(@work_shift.id,@event.id) %> |
-<%= link_to '刪除' , event_path(@work_shift.id,@event.id), method: 'delete', data: {confirm: '你確定嗎?'} %> |
+<%= link_to '編輯', edit_work_shift_event_path(@work_shift.id,@event.id) %> |
+<%= link_to '刪除' , work_shift_event_path(@work_shift.id,@event.id), method: 'delete', data: {confirm: '你確定嗎?'} %> |
 <%= link_to '返回', setting_work_shift_path(@work_shift.id) %>
 
