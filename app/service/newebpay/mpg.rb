@@ -5,9 +5,9 @@ module Newebpay
     attr_accessor :info
 
     def initialize(order)
-      @key = ENV.fetch('HASH_KEY', nil)
-      @iv = ENV.fetch('HASH_IV', nil)
-      @merchant_id = ENV.fetch('MERCHANT_ID', nil)
+      @key = ENV.fetch('hash_key', nil)
+      @iv = ENV.fetch('hash_iv', nil)
+      @merchant_id = ENV.fetch('merchant_id', nil)
       @info = {}
       @flycatOrderNo = order.order_no
       @amount = order.amount
@@ -43,8 +43,8 @@ module Newebpay
       info[:TimeStamp] = Time.now.to_i
       info[:RespondType] = 'JSON'
       info[:Version] = '2.0'
-      info[:ReturnURL] = "#{ENV.fetch('RETURN_URL', '')}/orders/#{@order.company_id}/confirm"
-      info[:NotifyURL] = ENV.fetch('NOTIFY_URL', '')
+      info[:ReturnURL] = "#{ENV.fetch('return_url', '')}/orders/#{@order.company_id}/confirm"
+      info[:NotifyURL] = ENV.fetch('notify_url', '')
       info[:LoginType] = 0
       info[:CREDIT] =  1
       info[:VACC] = 1
