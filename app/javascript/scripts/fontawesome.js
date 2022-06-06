@@ -13,7 +13,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons/faEye";
 import { faColumns } from "@fortawesome/free-solid-svg-icons/faColumns";
 import { faArrowsAlt } from "@fortawesome/free-solid-svg-icons/faArrowsAlt";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons/faQuestionCircle";
-import { faUserGroup} from "@fortawesome/free-solid-svg-icons/faUserGroup";
+import { faUserGroup } from "@fortawesome/free-solid-svg-icons/faUserGroup";
 import { faBullhorn } from "@fortawesome/free-solid-svg-icons/faBullhorn";
 import { faClipboardList } from "@fortawesome/free-solid-svg-icons/faClipboardList";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons/faChartPie";
@@ -28,6 +28,7 @@ import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons/faRightFro
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons/faRightToBracket";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons/faUserPlus";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
+import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons/faGlobeAmericas";
 
 config.mutateApproach = "sync";
 
@@ -61,5 +62,6 @@ library.add(
   faRightToBracket,
   faUserPlus,
   faBars,
+  faGlobeAmericas
 );
 dom.watch();
