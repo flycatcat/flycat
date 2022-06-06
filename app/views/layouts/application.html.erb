@@ -10,10 +10,11 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path('logo.png') %>
     <script defer="" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-    <%# <% if params[:controller] == "punchcards" %>
-    <%# <% end %> 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeDO45qDSUyd-q1rMl9g7XNXkOLMIXpgs&callback=geolocateUser"></script>
-    <meta name="turbolinks-visit-control" content="reload">
+    <% if params[:controller] == "punchcards" %>
+      <meta name="turbolinks-visit-control" content="reload">
+    <% end %> 
+
   </head>
   
   <body>
