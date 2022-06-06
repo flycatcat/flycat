@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   
+  get 'punchcard_setting/edit'
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks',
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   resources :departments, except: [:show]
   resources :user_accounts, only: [:index, :new, :create, :destroy]
   resources :punchcards
+  resources :punchcard_setting
   resources :bulletins
   
   resources :profiles, except: [:show] do

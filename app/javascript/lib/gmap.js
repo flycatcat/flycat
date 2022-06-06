@@ -55,7 +55,6 @@ export function geolocationError(positionError) {
 }
 
 export function getdistance() {
-  let startPos;
   let startPosLat;
   let startPosLong;
   let distance;
@@ -63,7 +62,6 @@ export function getdistance() {
   if (navigator.geolocation) {
     startPosLat = 25.04264418555442;
     startPosLong = 121.51370557791132;
-
     document.getElementById("startLat").innerHTML = startPosLat;
     document.getElementById("startLon").innerHTML = startPosLong;
 
@@ -71,10 +69,6 @@ export function getdistance() {
       document.getElementById("currentLat").innerHTML =
         position.coords.latitude;
       document.getElementById("currentLon").innerHTML =
-        position.coords.longitude;
-      document.getElementById("currentLat1").innerHTML =
-        position.coords.latitude;
-      document.getElementById("currentLon1").innerHTML =
         position.coords.longitude;
 
       distance = calculateDistance(
@@ -93,17 +87,19 @@ export function getdistance() {
         distance * 1000
       ).toFixed(0);
 
-      let allow_area = 50;
+      let allow_area = 100;
       document.getElementById("allow_area").innerHTML = allow_area;
 
       if ((distance * 1000).toFixed(0) < allow_area) {
-        console.log("小於50");
         document.getElementById("inarea").style.display = "block";
         document.getElementById("outarea").style.display = "none";
+        document.getElementById("punch_enable").style.display = "block";
+        document.getElementById("punch_disable").style.display = "none";
       } else {
-        console.log("大於50");
         document.getElementById("outarea").style.display = "block";
         document.getElementById("inarea").style.display = "none";
+        document.getElementById("punch_disable").style.display = "block";
+        document.getElementById("punch_enable").style.display = "none";
       }
     });
   }

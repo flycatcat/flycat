@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_060756) do
+ActiveRecord::Schema.define(version: 2022_06_06_123903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,17 @@ ActiveRecord::Schema.define(version: 2022_06_02_060756) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "punchcard_settings", force: :cascade do |t|
+    t.string "company_address"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.integer "allow_distance"
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_punchcard_settings_on_company_id"
+  end
+
   create_table "punchcards", force: :cascade do |t|
     t.datetime "punch_in_at"
     t.datetime "punch_out_at"
@@ -226,6 +237,7 @@ ActiveRecord::Schema.define(version: 2022_06_02_060756) do
   add_foreign_key "events", "work_shifts"
   add_foreign_key "profiles", "companies"
   add_foreign_key "profiles", "users"
+  add_foreign_key "punchcard_settings", "companies"
   add_foreign_key "punchcards", "users"
   add_foreign_key "users", "companies"
   add_foreign_key "vacations", "companies"

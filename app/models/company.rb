@@ -11,4 +11,6 @@ class Company < ApplicationRecord
   has_many :vacations
   has_many :work_shifts, dependent: :destroy
   has_many :orders
+  has_one  :punchcard_setting
+  
 end
