@@ -11,7 +11,6 @@ class PunchcardsController < ApplicationController
   def new
     authorize :punchcard
     @punchcard = current_user.punchcards.new
-    @allow_distance = current_company.punchcard_setting.allow_distance
   end
 
   def create
