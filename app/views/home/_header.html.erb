@@ -1,4 +1,7 @@
 <header class="flex items-center justify-between px-6 py-4 bg-white border-b-4">
+<button @click="sidebarOpen = true" class="mr-6 focus:outline-none lg:hidden">
+  <i class="text-2xl text-indigo-600 fa-solid fa-bars"></i>
+</button>
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div data-controller="menu" class="relative inline-block text-left">
   <div data-action="click->menu#toggle">
@@ -53,7 +56,7 @@
             </div>
         <div>
             <%= link_to destroy_user_session_path, method: "delete",class:"block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white" do %>
-              <span class="mx-3 text-xl font-bold"><%= t('登出') %></span>
+              <span class="mx-3 text-sm font-bold md:text-xl"><%= t('登出') %></span>
             <%end%>
         <% end %>
     </header>
