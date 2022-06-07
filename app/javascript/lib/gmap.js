@@ -59,10 +59,9 @@ export function getdistance() {
   let startPosLat;
   let startPosLong;
   let distance;
-
   if (navigator.geolocation) {
-    startPosLat = 25.04264418555442;
-    startPosLong = 121.51370557791132;
+    startPosLat = 25.042600344421476;
+    startPosLong = 121.51366619815181;
 
     document.getElementById("startLat").innerHTML = startPosLat;
     document.getElementById("startLon").innerHTML = startPosLong;
