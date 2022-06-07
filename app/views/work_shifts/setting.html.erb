@@ -1,4 +1,5 @@
-<%= content_tag :div, data: { controller: 'calendar' } do %>
+<div class="w-full bg-white">
+  <%= content_tag :div, data: { controller: 'calendar' } do %>
     <%= content_tag :div, class: 'modal bg-white', data: { target: 'calendar.modal' } do %>
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -44,6 +45,7 @@
       </div>
     <% end %>
   
-    <%= tag :div, data: { target: 'calendar.calendar' } %>
+  <div data-target="calendar.calendar" class="w-5/6 pb-5 mx-auto"></div>
   <% end %>
   <%= link_to '返回工作表', work_shifts_path %>
+</div>
