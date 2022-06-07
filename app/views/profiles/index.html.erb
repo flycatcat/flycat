@@ -1,62 +1,30 @@
-  <h1 class="text-center text-2xl sm:text-4xl sm:text-left pt-6"><%=t('員工資訊')%></h1>
-  <div class="px-4 bg-gray-200">
-    <% if policy(:profile).create?  %>
-      <div class="flex flex-col">
-        <div class="flex justify-end bg-gray-200">
-          <div class="flex justify-end mb-3">
-            <%= link_to t('新增員工資訊'), new_user_account_path,class: "inline-block add-btn" %>
-          </div>
-        </div>
+<h1 class="p-6 bg-gray-200"><%=t('員工資訊')%></h1>
+<div class="px-6 bg-gray-200 rounded-lg overflow-auto">
+  <% if policy(:profile).create?  %>
+    <div class="flex justify-end mb-8 bg-gray-200">
+      <%= link_to t('新增員工資訊'), new_user_account_path,class: "add-btn" %>
+    </div>  
+  <% end %>
+  
+  <h2 class="mb-3 bg-gray-200 "><%= t('搜尋關鍵字') %></h2>
+  <div class="flex md:justify-center mb-3 md:mb-6  ">
+    <%= search_form_for @q, class:"flex flex-col md:flex-row items-center" do |f| %>
+      <div class="sm:flex w-full mt-6 sm:w-1/2 xl:w-1/3 sm:mt-0 md:mr-2">
+        <%= f.label :staff_no_cont, t("員工編號"), class: "block align-middle mb-2 font-semibold text-gray-600 pt-3 flex-shrink-0 mr-2" %>
+        <%= f.search_field :staff_no_cont, placeholder:t("請輸入員工編號"),class: "px-2 py-2 mr-3 rounded-md outline-none bg-indigo-50" %>
       </div>  
-    <% end %>
-      <div>
-        <h2 class="mb-3 bg-gray-200 text-2xl sm:text-3xl sm:text-left"><%= t('搜尋關鍵字') %></h2>
-      </div>  
-      <div class="flex justify-around mb-6 ">
-        <%= search_form_for @q do |f| %>
-          <%= f.label :staff_no_cont, t("員工編號"), class: " mb-2 font-semibold text-gray-600 pt-3" %>
-          <%= f.search_field :staff_no_cont, placeholder:t("請輸入員工編號"),class: "px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50" %>
-
-          <%= f.label :department_cont,t("部門"), class: " mb-2 font-semibold text-gray-600 pt-3" %>
-          <%= f.search_field :department_cont, placeholder:t("請輸入部門名稱"),class: "px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50" %>
-
-          <%= f.label :name_cont,t("姓名"), class: " mb-2 font-semibold text-gray-600 pt-3" %>
-          <%= f.search_field :name_cont, placeholder:t("請輸入員工姓名"),class: "mr-6 px-4 py-2 rounded-md outline-none bg-indigo-50" %>
-
-          <%= f.submit class: "inline-block add-btn" %>
-        <% end %>
+      <div class="sm:flex w-full mt-3 sm:w-1/2 xl:w-1/3 sm:mt-0 sm:ml-3">
+        <%= f.label :department_cont,t("部門"), class: "flex-shrink-0 block align-middle mb-2 font-semibold text-gray-600 pt-3 mr-2" %>
+        <%= f.search_field :department_cont, placeholder:t("請輸入部門名稱"),class: "px-2 py-2  rounded-md outline-none bg-indigo-50" %>
+      </div> 
+      <div class="sm:flex w-full mt-3 sm:w-1/2 xl:w-1/3 sm:mt-0">
+        <%= f.label :name_cont,t("姓名"), class: "block mb-2 font-semibold text-gray-600 pt-3 mr-2 flex-shrink-0" %>
+        <%= f.search_field :name_cont, placeholder:t("請輸入員工姓名"),class: "mr-3 px-2 py-2 rounded-md outline-none bg-indigo-50" %>
       </div>
-      <table class="w-full text-lg rounded-lg shadow-md rounded-lg">
-          <tr class="thead">
-              <td class="tp"><%= t('員工編號') %></td>
-              <td class="tp"><%= t('姓名') %></td>
-              <td class="tp"><%= t('部門名稱') %></td>
-              <td class="tp"><%= t('班表名稱') %></td>
-              <td class="tp"><%= t("聯絡電話") %></td>
-              <% if policy(:profile).create?  %>
-                <td class="tp"><%= t('編輯員工資訊') %></td>
-                <td class="tp"><%= t('刪除員工資訊') %></td>
-              <% end %>
-          </tr>
-          <% @profiles.order(staff_no: :asc).each do |profile|  %>
-          <div class="h-full">
-          <tr>
-              <td class="tbody"><%= profile.staff_no %></td>
-              <td class="tbody"><%= profile.name %></td>
-              <td class="tbody"><%= profile.department%></td>
-              <td class="tbody"><%= profile.work_shift_title%></td>
-              <td class="tbody"><%= profile.tel %></td>
-              <% if policy(:profile).create?  %>
-                <td class="tbody"><%= link_to t("編輯"), edit_profile_path(profile),class: "edit-btn" %></td>
-                <td class="tbody"><%= link_to t("刪除"), profile_path(profile.id),class: "delete-btn",method: "delete", data: {confirm: t('確定要刪除嗎?')} %></td> 
-              <% end %>
-            <% end %>
-          </tr>
-      </table>
-      <div class="text-center my-4"><%= paginate @profiles %></div>
-    </div>
-  </div>
-    <table class="w-full text-lg rounded-lg shadow-md">
+      <%= f.submit class: " text-center add-btn my-5 cursor-pointer rounded-md md: mx-3" %>
+    <% end %>
+  </div>    
+    <table class="w-full text-lg rounded-lg shadow-md whitespace-nowrap">
       <tr class="thead">
         <td class="tp"><%= t('員工編號') %></td>
         <td class="tp"><%= t('姓名') %></td>

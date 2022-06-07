@@ -27,10 +27,7 @@ gem 'stimulus-rails', '~> 1.0', '>= 1.0.4'
 gem 'taiwanese_ubn_validator', '~> 0.0.1'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-<<<<<<< HEAD
 gem 'geocoder', '~> 1.3', '>= 1.3.7'
-=======
->>>>>>> e7bd9d9 (fix bulletin RWD)
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 
 group :development, :test do
