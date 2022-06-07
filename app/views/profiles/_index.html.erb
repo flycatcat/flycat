@@ -1,6 +1,6 @@
-  <h1 class="px-16 pt-3 bg-gray-200"><%= t('員工資訊') %></h1>
-  <div class="px-16 pt-5 pb-10 bg-gray-200">
-    <table class="w-full text-lg">
+  <h1 class="px-6 pt-3 text-center bg-gray-200 md:text-left"><%= t('員工資訊') %></h1>
+  <div class="px-4 pt-5 pb-10 overflow-auto bg-gray-200">
+    <table class="w-full text-lg whitespace-nowrap">
         <tr class="thead">
             <td class="tp"><%= t('員工編號') %></td>
             <td class="tp"><%= t('姓名') %></td>
@@ -9,7 +9,6 @@
             <td class="tp"><%= t('聯絡電話') %></td>
         </tr>
         <% @profiles.order(staff_no: :asc).each do |profile|  %>
-        <div class="h-full bg-gray-200">
         <tr>
             <td class="tbody"><%= profile.staff_no %></td>
             <td class="tbody"><%= profile.name %></td>
@@ -20,4 +19,4 @@
         </tr>
     </table>
   </div>
-</div>
+</div>  

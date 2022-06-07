@@ -1,12 +1,5 @@
-<div class="flex items-start justify-center w-full pt-10 bg-gray-200">
-     <% if @punchcard.errors.any? %>
-        <ul>
-          <% @punchcard.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-    <% end %>
-  <div class="w-screen max-w-sm px-10 py-8 bg-white shadow-md rounded-xl">
+<div class="flex items-start justify-center w-full pt-10 pl-6 pr-6 bg-gray-200">
+  <div class="w-screen max-w-sm px-4 py-8 mb-8 ml-10 mr-10 bg-white shadow-md rounded-x">
     <%= form_with model: @punchcard  do |f| %>
         <div class="field">
           <%= f.label :punch_in_at, "打卡時間" ,class: "block mb-1 font-semibold text-gray-600" %>
@@ -16,89 +9,40 @@
           <%= f.label :body_temperature, "體溫回報" ,class: "pt-6 block mb-1 font-semibold text-gray-600" %>
           <%= f.number_field :body_temperature,min:32,max:42, step: 0.1,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50" %>
         </div>
-        <%#= request.remote_ip %>
-        <%#= request.location %>
-        <%#= request.location.inspect %>
         
-         <%#= request.remote_ip %>
         <p class= "block pt-3 mb-1 font-semibold text-gray-600" >當前位置</p>
         <span id="currentLat"></span>&deg;, <span id="currentLon"></span>&deg;
-        <p class= "block pt-3 mb-1 font-semibold text-gray-600">允許打卡範圍</p>
-        <span id="allow_area"></span><span class="pl-2">公尺</span>
-
-        
-        <%# <%= f.number_field :punch_in_at, id=currentLat1,value: currentLat1.textContent,readonly: :true,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50" %>
-        <%# <%= f.number_field :punch_in_at, id=currentLon1,value: currentLon1,readonly: :true,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50" %>
-
-        <%# <p id="GetUserPosition"></p> %>
-        <%# <p id="longitude"></p> %>
-        <%# <p id="latitude"></p> %>
-        <br>
-        
-        <div data-controller="gmap">
+        <p class= "block pt-3 mb-1 font-semibold text-gray-600">允許上班打卡範圍</p>
+        <span id="allow_area"></span><span class="pl-2">公尺內</span>
+        <div data-controller="gmap" data-latitude="<%= current_company.punchcard_setting&.latitude %>" data-longitude="<%= current_company.punchcard_setting&.longitude %>">
           <p id="inarea" data-gmap-target="inarea" class="my-2 text-lg font-bold text-green-600 bg-yellow-200">與公司相距<span id="distance_in"></span>公尺，可以打卡!</p>
           <p id="outarea" data-gmap-target="outarea" class="my-2 text-lg font-bold text-red-600 bg-yellow-200">與公司相距<span id="distance_out"></span>公尺，請靠近公司範圍內再打卡!</p>
         </div>
-
-
-        <div id="gmap" data-gmap-target="gmap"  class="mt-3 h-72 w-72"></div>
-        <% if (Geocoder::Calculations.distance_between(Geocoder.search(request.remote_ip).first.coordinates, [25.047858319041335, 121.53277976443],:units => :km)*1000).round(2)< 250 %>
-          <div class="actions">
-            <%= f.submit "上班打卡",class: "w-full mt-5 bg-indigo-600 text-white py-2 rounded-md font-semibold tracking-tight" %>
-          </div>
-        <% else %>
-          <div class="actions">
-            <%= f.submit "上班打卡",disabled: true,class: "w-full mt-5 bg-gray-400 text-white py-2 rounded-md font-semibold tracking-tight" %>
-          </div>
-        <% end %>
+        <div class="flex justify-center ">
+          <div id="gmap" data-gmap-target="gmap"  class="mt-3 h-80 w-80 "></div>
+        </div>
+        <div id="punch_enable" class="actions">
+          <%= f.submit "上班打卡",class: "w-full mt-5 bg-indigo-600 text-white py-2 rounded-md font-semibold tracking-tight" %>
+        </div>
+        <div id="punch_disable" class="actions">
+          <%= f.submit "上班打卡",disabled: true,class: "w-full mt-5 bg-gray-400 text-white py-2 rounded-md font-semibold tracking-tight" %>
+        </div>
 
     <% end %>
-       <%# <-----------> %>
 
    
 
-       <div id="tripmeter">
+       <div id="tripmeter" style="display:none">
       <p>
         Starting Location (lat, lon):<br/>
         <span id="startLat">???</span>&deg;, <span id="startLon">???</span>&deg;
       </p>
-      <p>
-        Current Location (lat, lon):<br/>
-        <span id="currentLat1"></span>&deg;, <span id="currentLon1"></span>&deg;<br>
-      </p>
+
       <p>
         Distance from starting location:<br/>
         <span id="distance">0</span> 公尺
       </p>
-       <p>
-        Are we here?<br/>
-        <span id="message">detecting....</span>
-      </p>
+
     </div>
-<%= @d %>
-  
-
-
-    <%# <-----------> %>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   </div>
+  </div>
 </div>

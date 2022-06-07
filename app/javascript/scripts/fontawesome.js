@@ -29,6 +29,8 @@ import { faRightToBracket } from "@fortawesome/free-solid-svg-icons/faRightToBra
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons/faUserPlus";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons/faGlobeAmericas";
+import { faCrown } from "@fortawesome/free-solid-svg-icons/faCrown";
+import { faEarthAsia } from "@fortawesome/free-solid-svg-icons/faEarthAsia";
 
 config.mutateApproach = "sync";
 
@@ -62,6 +64,8 @@ library.add(
   faRightToBracket,
   faUserPlus,
   faBars,
-  faGlobeAmericas
+  faGlobeAmericas,
+  faCrown,
+  faEarthAsia
 );
 dom.watch();

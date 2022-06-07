@@ -1,0 +1,2 @@
+module PunchcardSettingHelper
+end
