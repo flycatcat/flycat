@@ -27,7 +27,7 @@ class VacationsController < ApplicationController
   def create
     @vacation = current_company.vacations.new(vacation_params.merge(user: current_user))
     if @vacation.save
-      redirect_to vacations_path, notice: t('假單申請成功')
+      redirect_to vacations_path, notice: t('.假單申請成功')
     else
       render :new
     end

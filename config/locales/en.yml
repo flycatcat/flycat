@@ -1,39 +1,8 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
   總覽: "Dashboard"
   系統總覽: "Dashboard"
   公告總覽: "Bulletin"
-  假單管理: "Vacation"
+  假單管理: "Vacation Managerment"
   請假總覽: "Vacation Overview"
   申請人: "Staff Name"
   員工資訊: "Staff Info"
@@ -52,7 +21,7 @@ en:
   更新班表: "Update Work Shift"
   升級方案: "Unlimited Staff"
   公司名: "Company Name"
-  升級金額(永久): "Amount(permanent)"
+  升級金額(永久): "Amount"
   感謝您的支持，已開通員工人數限制: "Thank you for your suppor, now you have unlimited staff"
   訂單編號: "Order No"
   前往新增員工: "Add Staff"
@@ -80,12 +49,12 @@ en:
   註冊: "Sign Up"
   刪除: "Delete"
   編輯: "Edit"
-  詳情: "Show"
+  展開: "Show"
   簽核: "Sign Off"
   簽核/編輯: "Sign Off / Edit"
-  歡迎來到: "Welcome to "
-  出勤管理系統: ""
-  歡迎來到飛天貓: "Welcome to FlyCat"
+  歡迎來到 FlyCat 出勤管理系統: "Welcome to FlyCat"
+  歡迎來到: "Welcome to"
+  出勤管理系統: ""  
   請輸入以下資訊登入: "Log in Page"
   電子郵件: "Email"
   電子信箱: "Email"
@@ -138,7 +107,7 @@ en:
   性別: "Gender"
   報到日期: "Start Date"
   部門名稱: "Department ID"
-  公司資訊: "Company Info"
+  公司資訊: "Edit Company Info"
   公司名稱: "Company Title"
   統一編號: "Unified Business No"
   負責人: "Principal"
@@ -174,7 +143,7 @@ en:
   搜尋關鍵字: "Search"
   部門: "Department"
   班表名稱: "Shift Name"
-  新增班表: "Create Shift"
+  新增排班班別: "Create Shift"
   新增員工資訊: "Add Staff Info"
   請輸入員工編號: "Enter staff no"
   請輸入部門名稱: "Enter department name"
@@ -188,6 +157,11 @@ en:
   返回首頁: "Back"
   忘記密碼?: "Forgot your password?"
   重設密碼: "Send me reset password instructions"
+  更改密碼: "Change your password"
+  新密碼: "New password"
+  確認新密碼: "Confirm new password"
+  密碼變更: "Change my password"
+  已讀人數: "Number of people viewed"
   activerecord:
     models:
       vacation:
