@@ -7,11 +7,11 @@
 }
 
 .tbody {
-  @apply bg-gray-100 p-3 px-5 text-center;
+  @apply bg-gray-100 border-b p-3 px-5 text-center text-base sm:text-lg;
 }
 
 .tp {
-  @apply p-3 px-5 text-center;
+  @apply p-3 px-5 text-center text-base sm:text-lg;
 }
 
 .bg-sky {
