@@ -2,7 +2,7 @@ en:
   總覽: "Dashboard"
   系統總覽: "Dashboard"
   公告總覽: "Bulletin"
-  假單管理: "Vacation Managerment"
+  假單管理: "Vacation"
   請假總覽: "Vacation Overview"
   申請人: "Staff Name"
   員工資訊: "Staff Info"
@@ -161,7 +161,7 @@ en:
   新密碼: "New password"
   確認新密碼: "Confirm new password"
   密碼變更: "Change my password"
-  已讀人數: "Number of people viewed"
+  已讀人數: "Viewed"
   activerecord:
     models:
       vacation:
