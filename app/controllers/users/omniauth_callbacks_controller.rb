@@ -12,5 +12,11 @@ module Users
         redirect_to new_user_registration_path
       end
     end
+
+    def failure
+      flash.now[:alert] = '無法獲得驗證！'
+      redirect_to root_path
+    end
+
   end
 end

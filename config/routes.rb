@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   resources :companies, except: [:index, :destroy, :show]
   resources :departments, except: [:show]
   resources :user_accounts, only: [:index, :new, :create, :destroy]
-  resources :punchcards
-  resources :punchcard_setting
-  resources :bulletins
+  resources :punchcards, except: [:show]
+  resources :punchcard_setting, except: [:show,:destroy,:index]
+  resources :bulletins,except: []
   
   resources :profiles, except: [:show] do
     collection do

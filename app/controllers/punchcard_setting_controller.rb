@@ -9,10 +9,7 @@ class PunchcardSettingController < ApplicationController
   end
 
   def create
-    
     @punchcard_setting = current_company.build_punchcard_setting(punchcard_setting_params)
-    # @punchcard_setting = current_company.punchcard_setting.new(punchcard_setting_params)
-
     if @punchcard_setting.save
       redirect_to root_path
     else
@@ -31,7 +28,7 @@ class PunchcardSettingController < ApplicationController
   private
 
   def punchcard_setting_params
-    params.require(:punchcard_setting).permit(:company_address, :latitude, :longitude, :allow_distance, :company_id)
+    params.require(:punchcard_setting).permit(:company_address, :latitude, :longitude, :allow_distance)
   end
 
   def find_punchcard_setting

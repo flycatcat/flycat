@@ -4,7 +4,7 @@ class User < ApplicationRecord
   include Slugable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[google_oauth2]
+         :omniauthable, omniauth_providers: [:google_oauth2]
   belongs_to :company
   has_many :punchcards
   has_many :vacations
