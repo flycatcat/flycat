@@ -15,11 +15,15 @@
 }
 
 .add-btn {
-  @apply inline-block px-3 py-3 bg-indigo-700 text-white font-medium text-base uppercase rounded shadow-md hover:bg-indigo-800 hover:shadow-lg focus:bg-indigo-800 focus:shadow-lg focus:outline-none focus:ring-0 hover:bg-indigo-800 hover:shadow-lg transition duration-150 ease-in-out justify-end block;
+  @apply inline-block px-3 py-3 bg-indigo-700 text-white font-medium text-base uppercase rounded shadow-md hover:bg-indigo-800 hover:shadow-lg focus:bg-indigo-800 focus:shadow-lg focus:outline-none focus:ring-0 hover:bg-indigo-800 hover:shadow-lg transition duration-150 ease-in-out justify-end;
 }
 
 .cancel-btn {
-  @apply inline-block px-3 py-3 bg-gray-400 text-white font-medium text-base uppercase rounded shadow-md hover:bg-gray-500 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 hover:bg-gray-500 hover:shadow-lg transition duration-150 ease-in-out justify-end block mr-9;
+  @apply inline-block px-3 py-3 bg-gray-400 text-white font-medium text-base uppercase rounded shadow-md hover:bg-gray-500 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 hover:bg-gray-500 hover:shadow-lg transition duration-150 ease-in-out justify-end mr-9;
+}
+
+.submit-btn {
+  @apply block mx-auto w-1/2 py-4 font-semibold leading-none text-white bg-indigo-700 rounded mt-9 hover:bg-indigo-800 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none
 }
 
 .show-btn {
@@ -27,7 +31,7 @@
 }
 
 .approved-tag {
-  @apply px-2 capitalize py-1 font-semibold text-green-700 bg-green-100 rounded-full;
+  @apply px-3 py-1 capitalize font-semibold text-green-700 bg-green-100 rounded-full;
 }
 
 .pending-tag {
@@ -35,7 +39,7 @@
 }
 
 .rejected-tag {
-  @apply px-2 py-1 capitalize font-semibold text-red-700 bg-red-100 rounded-full;
+  @apply px-3 py-1 capitalize font-semibold text-red-700 bg-red-100 rounded-full;
 }
 
 .free-trial-text {
