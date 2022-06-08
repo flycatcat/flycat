@@ -1,12 +1,6 @@
 <h1><%= t('下班打卡') %></h1>
 <div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
-    <% if @punchcard.errors.any? %>
-        <ul>
-          <% @punchcard.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-    <% end %>
+
     
   <div class="py-10 ">
     <div class="w-screen max-w-sm px-10 py-8 bg-white shadow-md rounded-xl">

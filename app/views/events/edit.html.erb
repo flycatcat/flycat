@@ -1,25 +1,14 @@
 <%= form_with(model: @event , url:work_shift_event_path(@work_shift.id,@event.id),  method: 'patch', data: { controller: "on-duties" }) do |form| %>
-    <% if @event.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-  
-        <ul>
-          <% @event.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
     
-    <div class="w-max px-20 pt-8 pb-8 mt-20 mx-auto mb-16 bg-white shadow-md rounded-xl">
+    <div class="px-20 pt-8 pb-8 mx-auto mt-20 mb-16 bg-white shadow-md w-max rounded-xl">
       <div class="flex justify-center mb-4 ">
-        <h1 class="font-bold text-3xl">編輯排班</h1>
+        <h1 class="text-3xl font-bold">編輯排班</h1>
       </div>
       <div class="flex justify-start mb-4 ml-4">
         <%= form.label :all_day, "全日", class: "mr-2 mt-1" %>
         <%= form.check_box :all_day, class: "mr-2 mt-2" %>
         <%= form.label :vacation_set, "排休設定", class: "mr-2 mt-1" %>
-        <div class="border-solid border-2">
+        <div class="border-2 border-solid">
           <%= form.select :vacation_set , Event.all_vacation_set%>
         </div>
       </div>
@@ -46,12 +35,12 @@
 
       <div class="flex justify-start mb-4 ml-4">
         <%= form.label "值班人員", class: "mr-2 mt-2" %>
-        <select id="staff_list" class="border-solid border-2 mr-2 h-10">
+        <select id="staff_list" class="h-10 mr-2 border-2 border-solid">
           <% @on_duty_staff.each do |staff| %>
             <option value=<%= staff %>><%= staff %></option>
           <%end %>
         </select>
-        <div id="shifted_list" class="px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50 w-48">
+        <div id="shifted_list" class="w-48 px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50">
         </div>
       </div>
 
