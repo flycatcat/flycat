@@ -1,12 +1,5 @@
 <div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
   <%= form_with(model: @user, url: user_accounts_path, method: 'post') do |f| %>
-    <% if @user.errors.any?  %>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
     </br>
   <div class="w-screen max-w-sm px-10 py-8 bg-white shadow-md rounded-xl">
   <h1 class="pb-3 font-bold text-center text-gray-500"><%= t('員工帳號註冊') %></h1>

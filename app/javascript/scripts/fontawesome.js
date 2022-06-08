@@ -34,7 +34,11 @@ import { faCrown } from "@fortawesome/free-solid-svg-icons/faCrown";
 import { faEarthAsia } from "@fortawesome/free-solid-svg-icons/faEarthAsia";
 =======
 import { faEarthAsia } from "@fortawesome/free-solid-svg-icons/faEarthAsia"
+<<<<<<< HEAD
 >>>>>>> 0f53a93 (style(i18n): fontawesome)
+=======
+import { faCrown } from "@fortawesome/free-solid-svg-icons/faCrown"
+>>>>>>> 476d395 (docs(錯誤訊ｐ息): 註冊)
 
 config.mutateApproach = "sync";
 
@@ -74,6 +78,10 @@ library.add(
   faEarthAsia
 =======
   faEarthAsia,
+<<<<<<< HEAD
 >>>>>>> 0f53a93 (style(i18n): fontawesome)
+=======
+  faCrown
+>>>>>>> 476d395 (docs(錯誤訊ｐ息): 註冊)
 );
 dom.watch();
