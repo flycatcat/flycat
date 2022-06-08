@@ -1,13 +1,5 @@
 <div class="flex items-start justify-center w-full h-screen bg-gray-200">
-  <%= form_with(model: vacation) do |form| %>
-    <% if vacation.errors.any? %>
-        <ul>
-          <% vacation.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>    
+  <%= form_with(model: vacation) do |form| %>  
     <div class="w-screen max-w-xl px-10 pt-2 mb-16 bg-white shadow-md rounded-xl ">
       <h1 class="pb-3 mt-8 font-bold text-center text-gray-500">Vacation Details</h1>
       <div class="field">

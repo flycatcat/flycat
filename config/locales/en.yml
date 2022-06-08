@@ -162,9 +162,13 @@ en:
   確認新密碼: "Confirm new password"
   密碼變更: "Change my password"
 <<<<<<< HEAD
+<<<<<<< HEAD
   已讀人數: "Viewed"
 =======
 >>>>>>> 6540f84 (docs(i18n): password)
+=======
+  已讀人數: "Number of people viewed"
+>>>>>>> 476d395 (docs(錯誤訊ｐ息): 註冊)
   activerecord:
     models:
       vacation:
