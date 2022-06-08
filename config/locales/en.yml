@@ -1,4 +1,5 @@
 en:
+  歡迎來到飛天貓: "Welcome to FlyCat"
   總覽: "Dashboard"
   系統總覽: "Dashboard"
   公告總覽: "Bulletin"
@@ -21,10 +22,16 @@ en:
   更新班表: "Update Work Shift"
   升級方案: "Unlimited Staff"
   公司名: "Company Name"
-  升級金額(永久): "Amount"
-  感謝您的支持，已開通員工人數限制: "Thank you for your suppor, now you have unlimited staff"
+  升級金額: "Amount"
+  感謝您的支持，已開通員工人數限制: "Thank you for your purchase, you can create unlimited staff now"
   訂單編號: "Order No"
   前往新增員工: "Add Staff"
+  立刻升級: "Upgrade Now"
+  線上打卡: "Online Check-in"
+  排班管理: "Shift Management"
+  差勤管理: "Vacation management"
+  可管理員工人數: "Number of manageable employees"
+  無上限: "Unlimited"
   enums:
     vacation:
       vacation_type:
@@ -115,7 +122,7 @@ en:
   公司聯絡人: "Contact Person"
   公司信箱: "Company Email"
   資助飛天貓: "Support FlyCat"
-  請假管理: "Vacation Managerment"
+  請假管理: "Vacation Management"
   員工: "Staff"
   員工人數: "Number of Staff"
   請假日: "Vacation Date"
@@ -135,7 +142,7 @@ en:
   請填入捐款金額: "Please enter the amount"
   藍新頁面結轉中…: "Please wait..."
   最新修改時間: "Last update time"
-  排班管理: "Shift Managerment"
+  排班管理: "Shift Management"
   工作表設定: "Shift set up"
   設定工作表: "Set Up"
   工作表名稱: "Shift Name"
@@ -162,14 +169,14 @@ en:
   新密碼: "New password"
   確認新密碼: "Confirm new password"
   密碼變更: "Change my password"
-<<<<<<< HEAD
-<<<<<<< HEAD
   已讀人數: "Viewed"
-=======
->>>>>>> 6540f84 (docs(i18n): password)
-=======
-  已讀人數: "Number of people viewed"
->>>>>>> 476d395 (docs(錯誤訊ｐ息): 註冊)
+  當前位置: "Current location"
+  允許上班打卡範圍: "Scope of allowable punch-in"
+  公尺內: "meters"
+  與公司相距: "distance from the company"
+  公尺，可以打卡!: "meters, you can punch in!"
+  與公司相距: "distance from the company"
+  公尺，請靠近公司範圍內再打卡!: "Please get close to the company and check in again!"
   activerecord:
     models:
       vacation:

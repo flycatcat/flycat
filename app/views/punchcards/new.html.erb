@@ -2,30 +2,30 @@
   <div class="w-screen max-w-sm px-4 py-8 mb-8 ml-10 mr-10 bg-white shadow-md rounded-x">
     <%= form_with model: @punchcard, class: "flex flex-col w-full max-w-2xl p-4 mx-auto text-gray-800  editor bg-white "  do |f| %>
         <div class="field">
-          <%= f.label :punch_in_at, "打卡時間" ,class: "block mb-1 font-semibold text-gray-600" %>
+          <%= f.label :punch_in_at, t("打卡時間") ,class: "block mb-1 font-semibold text-gray-600" %>
           <%= f.text_field :punch_in_at, value: Time.current.strftime("%Y/%m/%d %H:%M:%S"),readonly: :true,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50" %>
         </div>
         <div class="field">
-          <%= f.label :body_temperature, "體溫回報" ,class: "pt-6 block mb-1 font-semibold text-gray-600" %>
+          <%= f.label :body_temperature, t("體溫回報") ,class: "pt-6 block mb-1 font-semibold text-gray-600" %>
           <%= f.number_field :body_temperature,min:32,max:42, step: 0.1,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50" %>
         </div>  
         
-        <p class= "block pt-3 mb-1 font-semibold text-gray-600" >當前位置</p>
+        <p class= "block pt-3 mb-1 font-semibold text-gray-600" ><%= t('當前位置') %></p>
         <span id="currentLat"></span>&deg;, <span id="currentLon"></span>&deg;
-        <p class= "block pt-3 mb-1 font-semibold text-gray-600">允許上班打卡範圍</p>
-        <span id="allow_area"></span><span class="pl-2">公尺內</span>
+        <p class= "block pt-3 mb-1 font-semibold text-gray-600"><%= t('允許上班打卡範圍') %></p>
+        <span id="allow_area"></span><span class="pl-2"><%= t('公尺內') %></span>
         <div data-controller="gmap" data-latitude="<%= current_company.punchcard_setting&.latitude %>" data-longitude="<%= current_company.punchcard_setting&.longitude %>">
-          <p id="inarea" data-gmap-target="inarea" class="my-2 text-lg font-bold text-green-600 bg-yellow-200">與公司相距<span id="distance_in"></span>公尺，可以打卡!</p>
-          <p id="outarea" data-gmap-target="outarea" class="my-2 text-lg font-bold text-red-600 bg-yellow-200">與公司相距<span id="distance_out"></span>公尺，請靠近公司範圍內再打卡!</p>
+          <p id="inarea" data-gmap-target="inarea" class="my-2 text-lg font-bold text-green-600 bg-yellow-200"><%= t('與公司相距') %><span id="distance_in"></span><%= t('公尺，可以打卡!') %></p>
+          <p id="outarea" data-gmap-target="outarea" class="my-2 text-lg font-bold text-red-600 bg-yellow-200"><%= t('與公司相距') %><span id="distance_out"></span><%= t('公尺，請靠近公司範圍內再打卡!') %></p>
         </div>
         <div class="flex justify-center ">
           <div id="gmap" data-gmap-target="gmap"  class="mt-3 h-80 w-80 "></div>
         </div>
         <div id="punch_enable" class="actions">
-          <%= f.submit "上班打卡",class: "w-full mt-5 bg-indigo-600 text-white py-2 rounded-md font-semibold tracking-tight" %>
+          <%= f.submit t("上班打卡"),class: "w-full mt-5 bg-indigo-600 text-white py-2 rounded-md font-semibold tracking-tight" %>
         </div>
         <div id="punch_disable" class="actions">
-          <%= f.submit "上班打卡",disabled: true,class: "w-full mt-5 bg-gray-400 text-white py-2 rounded-md font-semibold tracking-tight" %>
+          <%= f.submit t("下班打卡"),disabled: true,class: "w-full mt-5 bg-gray-400 text-white py-2 rounded-md font-semibold tracking-tight" %>
         </div>
 
     <% end %>

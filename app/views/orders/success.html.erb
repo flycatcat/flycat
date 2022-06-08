@@ -4,13 +4,11 @@
       <% if @order.status === "SUCCESS" %>
 	    <h1 class="mb-5"><%= t('感謝您的支持，已開通員工人數限制') %></h1>
           <tr class="thead">
-              <td class="tp"><%= t('公司名') %></td>
               <td class="tp"><%= t('訂單編號') %></td>
               <td class="tp"><%= t('付款時間') %></td>
               <td class="tp"><%= t('卡號後四碼') %></td>
           </tr>
           <tr>
-              <td class="tbody"><%= @order.username %></td>
               <td class="tbody"><%= @order.order_no %></td>
               <td class="tbody"><%= @order.pay_at %></td>
               <td class="tbody"><%= @order.card_last_4_no %></td>
