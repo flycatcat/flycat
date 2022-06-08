@@ -6,6 +6,8 @@ import "scripts";
 import "stylesheets";
 import "controllers";
 
+
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
+
