@@ -35,7 +35,6 @@
       <i class="fa-solid fa-crown"></i>
       <%= current_user.email %>
     </div>
-    
     <div>
       <%= link_to destroy_user_session_path, method: "delete",class:"block md:px-4 py-2 text-lg hover:bg-red-500 hover:text-white rounded-lg" do %>
         <span class="mx-3 text-xl font-bold"><%= t('登出') %></span>
