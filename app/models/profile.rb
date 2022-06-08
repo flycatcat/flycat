@@ -13,4 +13,13 @@ class Profile < ApplicationRecord
 
   belongs_to :user, dependent: :delete
   belongs_to :company
+
+  def self.to_csv(fields = column_names, options={})
+    CSV.generate(options) do |csv|
+      csv << fields
+      all.each do |profiles|
+        csv << profiles.attributes.values_at(*fields)
+      end
+    end
+  end
 end

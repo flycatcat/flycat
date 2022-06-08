@@ -2,6 +2,13 @@
 <div class="px-16 bg-gray-200 rounded-lg">
   <% if policy(:profile).create?  %>
     <div class="flex justify-end mb-8 bg-gray-200">
+      
+      <%= form_tag export_profiles_path, multipart: true, class: 'form-inline flex items-center' do %>
+        <div class="mr-8 form-group">
+          <%= link_to "匯出員工資訊", profiles_path(format: "csv"), class: 'add-btn' %>
+        </div>
+      <% end %>
+      
       <%= link_to t('新增員工資訊'), new_user_account_path,class: "add-btn" %>
     </div>  
   <% end %>

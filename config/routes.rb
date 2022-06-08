@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   resources :user_accounts, only: [:index, :new, :create, :destroy]
   resources :punchcards, except: [:show]
   resources :punchcard_setting, except: [:show,:destroy,:index]
-  resources :bulletins,except: []
+  resources :bulletins
   
   resources :profiles, except: [:show] do
     collection do
-      post :import
+      post :export
     end
   end
 
