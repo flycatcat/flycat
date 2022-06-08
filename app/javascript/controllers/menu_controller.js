@@ -10,12 +10,22 @@ export default class extends Controller {
 }
 =======
 import { Controller } from "stimulus"
+import { useClickOutside } from 'stimulus-use'
 
 export default class extends Controller {
   static targets = ["toggleable"]
 
-  toggle(){
+  connect(){
+    useClickOutside(this)
+  }
+
+  toggle(event){
+      event.preventDefault();
       this.toggleableTarget.classList.toggle('hidden')
+      
   }
 }
+<<<<<<< HEAD
 >>>>>>> ee0b706 (docs(i18n): dropdown menu)
+=======
+>>>>>>> dbdf552 (docs(dropdown menu): js)
