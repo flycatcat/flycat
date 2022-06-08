@@ -57,6 +57,7 @@ zh-TW:
   已讀人數: "已讀人數"
   公司名稱: "公司名稱"
   統一編號: "統一編號"
+  前往新增員工: "前往新增員工"
   vacations:
     create:
       假單申請成功: "假單申請成功"
@@ -94,6 +95,8 @@ zh-TW:
         principal: "負責人"
         address: "公司地址"
         linkman: "公司聯絡人"
+        title: "公司名稱"
+        ubn: "統一編號"
       staff:
         staff_no: "員工編號"
         name: "姓名"
@@ -108,6 +111,9 @@ zh-TW:
         job_title: "職稱"
         tel: "電話"
         name: "姓名"
+      event:
+        end_time: "結束時間"
+        title: "標題"
   helpers:
     label:
       resource:

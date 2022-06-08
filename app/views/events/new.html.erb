@@ -1,15 +1,6 @@
 <h1><%= t('新增班表') %></h1>
 
 <%= form_with(model: @event , url:events_path(@work_shift.id),  method: 'post', local: true) do |form| %>
-    <% if @event.errors.any? %>
-      <div id="error_explanation">
-        <ul>
-          <% @event.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
   
     <div class="field">
       <%= form.label :mode, "模式" %>

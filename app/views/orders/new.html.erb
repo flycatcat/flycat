@@ -1,4 +1,5 @@
 <div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
+<<<<<<< HEAD
   <% if @order.errors.any? %>
     <ul>
       <% @order.errors.full_messages.each do |message| %>
@@ -7,6 +8,8 @@
     </ul>
   <% end %>
   
+=======
+>>>>>>> 26236a1 (docs(錯誤訊ｐ息): 員工資訊)
   <div class="w-screen max-w-sm px-10 py-8 bg-white shadow-md rounded-xl">
 
     <%= form_with(model: @order, url: orders_path, method: 'post') do |form| %>
