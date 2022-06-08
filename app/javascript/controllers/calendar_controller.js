@@ -17,14 +17,13 @@ export default class extends Controller {
       navLinks: true,
       headerToolbar: { center: "dayGridMonth,timeGridWeek,timeGridDay" },
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-      navLinkDayClick: function (date, jsEvent) {
+      navLinkDayClick: function (date) {
         _this.modalTarget.style.display = "block";
         let selected_date = new Date(
           Number(date.toISOString().split("-")[0]),
           Number(date.toISOString().split("-")[1]) - 1,
           Number(date.toISOString().split("-")[2].split("T")[0]) + 2
         );
-
         let start_time = [
           document.querySelector("#event_start_time_1i"),
           document.querySelector("#event_start_time_2i"),

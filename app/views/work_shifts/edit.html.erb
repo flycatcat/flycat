@@ -1,12 +1,5 @@
 <div class="flex items-start justify-center w-full h-screen pt-10 pt-16 bg-gray-200">
   <%= form_with(model: @work_shift, url: work_shift_path, method: 'patch') do |form| %>
-    <% if @work_shift.errors.any?  %>
-      <ul>
-        <% @work_shift.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
     <div class="w-screen max-w-md px-10 py-8 bg-white shadow-md rounded-xl">
     <h1 class="py-3 mt-8 font-bold text-center text-gray-500"><%= t('編輯班表') %></h1>
       <div class="mb-6 field">

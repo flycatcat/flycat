@@ -1,23 +1,13 @@
-<%= form_with model: bulletin ,class: "flex flex-col w-10/12 max-w-2xl p-4 mx-auto text-gray-800 border border-gray-300 shadow-lg editor bg-white" do |form|  %>
-  <% if bulletin.errors.any? %>
-      <ul>
-        <% bulletin.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-  <% end %>
-
+<%= form_with model: bulletin ,class: "flex flex-col w-10/12 max-w-2xl p-4 mx-auto text-gray-800 border border-gray-300 shadow-lg editor bg-white " do |form|  %>
   <div class="field">
-    <%= form.label :title, t("公告標題"),class: "text-xl p-3" %>
+    <%= form.label :title, t("公告標題"),class: "text-xl p-3 " %>
     <%= form.text_field :title,class: "p-2 mb-4 bg-gray-100 border border-gray-300 outline-none title" %>
   </div>
-
   <div class="field">
     <%= form.label :content, t("公告內容"),class:"text-xl px-3  " %>
       <%= form.text_area :content,class:"p-3 bg-gray-100 border border-gray-300 outline-none description sec h-60", data: { controller: "markdown-editor"} %>
   </div>
-
-  <div class="flex justify-center py-3 actions">
-    <%= form.submit class: "submit-btn" %>
+  <div class="flex justify-end py-3 actions">
+    <%= form.submit class: "p-1 px-4 ml-2 font-semibold text-gray-200 bg-indigo-500 border border-indigo-500 cursor-pointer btn" %>
   </div>
 <% end %>

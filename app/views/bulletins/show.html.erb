@@ -1,10 +1,13 @@
-<div class="flex items-start justify-center w-full h-screen pt-10 pt-16 bg-gray-200">
-  <div class="w-screen max-w-md px-10 py-8 bg-white shadow-md rounded-xl">
-    <div>
-      <h1>公告標題：<%= @bulletin.title %></h1>
+<div class="flex w-full"> 
+  <div class="flex items-start justify-center w-full h-screen pt-10 pt-16 bg-gray-200">
+    <div class="w-screen max-w-md px-10 py-8 bg-white shadow-md rounded-xl">
+      <div>
+        <h1>公告標題：<%= @bulletin.title %></h1>
+      </div>
+      <article class="markdown" data-controller="markdown-viewer">
+        <%= @bulletin.content %>
+      </article>
     </div>
-    <article class="markdown" data-controller="markdown-viewer">
-      <%= @bulletin.content %>
-    </article>
   </div>
 </div>
+

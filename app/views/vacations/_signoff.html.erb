@@ -1,0 +1,39 @@
+<div class="modal fade fixed top-0 left-0  w-full h-full outline-none overflow-x-hidden overflow-y-auto bg-opacity-50 bg-black" id="vacation_show" tabindex="-1" data-controller="modal">
+  <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none h-full opacity-100">
+    <div class="border-none shadow-lg absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 flex flex-col max-w-min md:w-1/2 xl:max-w-xl pointer-events-auto bg-white rounded-md outline-none text-current m-auto overflow-x-auto">
+      <%= form_with(model: vacation,url: signoff_completed_vacation_path ,method: 'post',data: {remote: true}) do |form| %>
+        <div class="sm:w-screen md:max-w-full px-10 pt-2  shadow-md rounded-xl whitespace-nowrap">
+          <h1 class="pb-3 mt-8 font-bold text-center text-gray-500">假單詳情</h1>
+          <div class="py-1 field">
+        <strong><%= form.label :vacation_at, "請假日" %></strong>
+        <%= form.date_field :vacation_at,readonly: :true %>
+        </div>
+        <div class="py-1 field">
+          <strong><%= form.label :vacation_type, "假別" %></strong>
+          <%= form.text_field :vacation_type ,readonly: :true %>
+        </div>
+
+        <div class="py-1 field">
+          <strong><%= form.label :status, "狀態" %></strong>
+          <%= form.select :status , Vacation.vacation_statuses %>
+        </div>
+
+        <div class="py-1 field">
+          <strong><%= form.label :reason, "請假事由" %></strong>
+          <%= form.text_field :reason,readonly: :true %>
+        </div>
+        
+        <div class="py-1 field">
+          <strong><%= form.label :proof, "證明" %></strong>
+          <%= link_to '點此查看請假證明', @vacation.proof,class: "mb-1 font-semibold text-blue-600 pt-3", target: "_blank" if @vacation.proof.attached? %>
+          <%= '未提供證明' unless @vacation.proof.attached? %>
+        </div>
+          <div class="flex justify-end py-6 actions">
+            <%= link_to '取消', vacations_path, class: "py-2 px-6 mt-4 text-lg tracking-wide text-gray-700 text-bold rounded-md bg-gray-300  mr-6" %>
+            <%= form.submit  class: "py-2 px-6 mt-4 text-lg tracking-wide text-indigo-100 cursor-pointer rounded-md bg-gradient-to-tr from-blue-600 to-indigo-600 "%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

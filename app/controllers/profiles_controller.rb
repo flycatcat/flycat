@@ -6,10 +6,10 @@ class ProfilesController < ApplicationController
 
   def index
     @q = current_company.profiles.ransack(params[:q])
-    @profiles = @q.result
+    @profiles = @q.result.order(id: :desc).page(params[:page]).per(1)
     respond_to do |format|
       format.html
-      format.csv { send_data @profiles.to_csv(['staff_no', 'name', 'gender', 'tel', 'start_at', 'department', 'job_title', 'user_id', 'company_id' ]) }
+      format.csv { send_data @profiles.to_csv(['staff_no', 'name', 'gender', 'tel', 'start_at', 'department', 'job_title' ]) }
     end
   end
 

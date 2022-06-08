@@ -9,3 +9,24 @@ h1 {
 h2 {
   @apply text-3xl font-medium text-gray-700;
 }
+
+#error_explanation{
+  li{
+    @apply text-red-600
+  }
+}
+
+.field_with_errors{
+  label {
+    @apply text-red-600;
+  }
+
+  input[type="new-password"],
+  input[type="file"],
+  input[type="email"],
+  input[type="password"] {
+    @apply border-red-600 bg-red-50;
+  }
+}
+
+
