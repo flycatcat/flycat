@@ -123,6 +123,7 @@ class EventsController < ApplicationController
       redirect_to setting_work_shift_path(id: params[:work_shift_id]), notice: '更新成功!'
     else
       render :edit
+    end
   end
   
   def destroy
@@ -214,5 +215,3 @@ class EventsController < ApplicationController
     return Event.new(:all_day => params["event"]["all_day"], :start_at => start_at, :end_at => end_at, :title => params["event"]["title"], :content => params["event"]["content"], :vacation_set => params["event"]["vacation_set"], :on_duty_staff => params["event"]["on_duty_staff"], :shifted_mode => params["event"]["shifted_mode"], work_shift_id: params[:work_shift_id])
   end
 end
-
-

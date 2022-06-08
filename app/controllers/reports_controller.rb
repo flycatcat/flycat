@@ -1,10 +1,13 @@
 class ReportsController < ApplicationController
   def index
+    authorize :report
   end
   def on_duties
     staff = Profile.where(user_id: current_user.id)
     work_shift_id = WorkShift.find_by(title: staff[0].work_shift_title).id
-    events = Event.where("start_at >= ? AND end_at <= ? And work_shift_id = ?", params[:start_at], params[:end_at], work_shift_id)
+    start_at = time_format(params[:start_at])
+    end_at = time_format(params[:end_at])
+    events = Event.where("start_at >= ? AND end_at <= ? And work_shift_id = ?", start_at, end_at, work_shift_id)
     data = {start_at: [], end_at: [], title: [], content: [], message:[]}
     if events[0].nil?
         data[:message] << "無資料"
@@ -23,7 +26,9 @@ class ReportsController < ApplicationController
   end
 
   def vacations
-    records = Vacation.where("created_at >= ? AND created_at <= ? And user_id = ?", params[:start_at], params[:end_at], current_user.id)
+    start_at = time_format(params[:start_at])
+    end_at = time_format(params[:end_at])
+    records = Vacation.where("created_at >= ? AND created_at <= ? And user_id = ?", start_at, end_at, current_user.id)
     data = {vacation_at: [], vacation_type: [], reason: [], hour: [], status:[], message:[]}
     if records[0].nil?
       data[:message] << "無資料"
@@ -41,7 +46,9 @@ class ReportsController < ApplicationController
   end
 
   def punchcards
-    records = Punchcard.where("created_at >= ? AND created_at <= ? And user_id = ?", params[:start_at], params[:end_at], current_user.id)
+    start_at = time_format(params[:start_at])
+    end_at = time_format(params[:end_at])
+    records = Punchcard.where("created_at >= ? AND created_at <= ? And user_id = ?", start_at, end_at, current_user.id)
     data = {punch_in_at: [], punch_out_at: [], body_temperature: [], message:[]}
     if records[0].nil?
       data[:message] << "無資料"
@@ -54,6 +61,14 @@ class ReportsController < ApplicationController
       end
     end
     render json: data
+  end
+
+  private
+  def time_format(time)
+    day = time.split("T")[0]
+    hour = time.split("T")[1][0]+params[:start_at].split("T")[1][1]
+    min = time.split("T")[1][2]+params[:start_at].split("T")[1][3]
+    return day+" "+hour+":"+min
   end
 
 end

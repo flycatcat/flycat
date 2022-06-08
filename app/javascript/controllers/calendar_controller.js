@@ -62,7 +62,7 @@ export default class extends Controller {
       for (let i = 0; i < on_duty_staffs.length; i++) {
         if (on_duty_staffs[i] != "") {
           let new_on_duty = document.createElement("button");
-          new_on_duty.setAttribute("id", "on_duty");
+          new_on_duty.setAttribute("class", "on_duty staff-btn");
           new_on_duty.textContent = on_duty_staffs[i];
           shifted_list.insertAdjacentElement("afterbegin", new_on_duty);
           new_on_duty.addEventListener("click", function () {
@@ -73,10 +73,10 @@ export default class extends Controller {
     }
     let staff_list = document.querySelector("#staff_list");
     staff_list.addEventListener("change", function () {
-      let on_duty = document.querySelectorAll("#on_duty");
+      let on_duty = document.querySelectorAll(".on_duty");
       if (on_duty.length == 0) {
         let new_on_duty = document.createElement("button");
-        new_on_duty.setAttribute("id", "on_duty");
+        new_on_duty.setAttribute("class", "on_duty staff-btn");
         new_on_duty.textContent = staff_list.value;
         shifted_list.insertAdjacentElement("afterbegin", new_on_duty);
         new_on_duty.addEventListener("click", function () {
@@ -99,7 +99,7 @@ export default class extends Controller {
         }
         if (sum_data_verified == 0) {
           let new_on_duty = document.createElement("button");
-          new_on_duty.setAttribute("id", "on_duty");
+          new_on_duty.setAttribute("class", "on_duty staff-btn");
           new_on_duty.textContent = staff_list.value;
           shifted_list.insertAdjacentElement("afterbegin", new_on_duty);
           new_on_duty.addEventListener("click", function () {
@@ -110,7 +110,7 @@ export default class extends Controller {
     });
     let btn = document.querySelector(".btn");
     btn.addEventListener("click", function () {
-      let on_duty = document.querySelectorAll("#on_duty");
+      let on_duty = document.querySelectorAll(".on_duty");
       let on_duty_staff = document.querySelector("#event_on_duty_staff");
       let accum_staff = "";
       for (let i = 0; i < on_duty.length; i++) {
