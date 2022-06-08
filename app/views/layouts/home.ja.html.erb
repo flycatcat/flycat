@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flycat</title>
+    <title>FlyCat クラウド勤怠管理システム！</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,62 +10,259 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path('logo.png') %>
+    <style>
+      .gradient {
+       background:linear-gradient(to right, #fff6d3 0%, #ffda42 80%);
+      }
+    </style>
   </head>
 
-  <body>
-    <header>
-      <nav class="flex items-center justify-between px-10 py-3 bg-indigo-800">
-        <div class="max-w-screen-xl">
-        <%= link_to root_path do%>
-            <div class="flex items-center justify-between logo" alt="FlyCat logo" title="FlyCat">
-              <div>
-                <%= image_tag "logo.png" ,class:"w-16 h-16",alt:"FlyCat logo",title:"FlyCat" %>
-              </div>
-              <div>
-                <span class="mx-2 text-4xl font-semibold text-white">FlyCat</span>
-                <p class="text-gray-100">
-                <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
-                <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
-                 <%= link_to "日本語", :controller => controller_name, :action => action_name, :locale => "ja" %>
-                </p>
+<body class="leading-normal tracking-normal text-white gradient style="font-family: 'Source Sans Pro', sans-serif;">
+    <!--Nav-->
+    <nav id="header" class="fixed top-0 z-30 w-full pt-4 text-gray-800 bg-white">
+      <div class="container flex flex-wrap items-center justify-around w-full py-2 mx-auto mt-0">
+            <div class="flex items-center justify-around focus-within:flex-wrap logo" alt="FlyCat logo" title="FlyCat">
+              <%= link_to root_path do%>
+                <div>
+                  <%= image_tag "logo.png" ,class:"w-16 h-16",alt:"FlyCat logo",title:"FlyCat" %>
+                </div>
+              <% end %>
+              <div class="flex flex-wrap items-center justify-center w-44">
+                <%= link_to root_path do%>
+                  <div>
+                    <span class="mx-2 text-4xl font-semibold">FlyCat</span>
+                  </div>
+                <% end %>
+                <div class="mt-2 font-bold text-gray-800">
+                  <%= link_to "中文", :controller => controller_name, :action => action_name, :locale => "zh-TW" %> 
+                  <span>|</span>
+                  <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
+                  <span>|</span>
+                  <%= link_to "日本語", :controller => controller_name, :action => action_name, :locale => "ja" %>
+                </div>
               </div> 
             </div>
-          <% end %>
+        <div class="block pr-4 lg:hidden">
+          <button id="nav-toggle" data-controller="toggle" data-action="click->toggle#toggle" class="flex items-center p-1 text-pink-800 transition duration-300 ease-in-out transform hover:text-gray-900 focus:outline-none focus:shadow-outline hover:scale-105">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <title>Menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+          </button>
         </div>
-        <div class="flex items-center justify-around menu">
-          <%= link_to "無料トライアル", new_user_session_path,class: "block px-6 py-3 mx-3 text-white border-2 border-white rounded-full hover:bg-indigo-500"%>
-          <%= link_to "ログイン", new_user_session_path,class: "block px-6 py-3 mx-3 text-white bg-blue-500 rounded-full hover:bg-blue-600"%>
+        <div class="z-20 flex-grow hidden w-full p-4 mt-2 -mb-2 text-black bg-gray-100 border-t-2 border-gray-300 md:mb-4 md:border-0 lg:flex lg:items-center lg:w-auto lg:mt-0 lg:bg-transparent lg:p-0" id="nav-content">
+          <ul class="items-center justify-end flex-1 list-reset lg:flex">
+            <li class="mr-3">
+              <%= link_to new_user_session_path,class: "inline-block py-2 pr-6 text-xl font-bold text-black no-underline" do%><p>スタッフログイン</p><% end %>
+            </li>
+            <li class="mr-3">
+              <%= link_to new_user_registration_path,class: "inline-block py-2 pr-6 text-xl font-bold text-black no-underline" do%><p>無料トライアル</p><% end %>
+            </li>
+          </ul>
+        <%= link_to new_user_session_path,class: "justify-end block inline-block px-5 py-5 text-xl font-bold leading-tight text-gray-100 rounded shadow-md enter-admin-btn hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 hover:bg-yellow-700" do%><p>マネジャー</p><% end %>
         </div>
-      </nav>
-    </header>
-    <section class="px-2 py-32 bg-white md:px-0">
-      <div class="container items-center px-4 mx-auto max-w-7xl xl:px-5">
-        <div class="flex flex-wrap items-center sm:-mx-3">
-          <div class="w-full md:w-1/2 md:px-4 ">
-            <div class="w-full pb-6 space-y-6 md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
-              <h1 class="text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-                <span class="block text-gray-800 xl:inline">FlyCat クラウド勤怠管理システム！</span>
-              </h1>
-              <div class="w-5/6 pt-2">
-                <p class="text-3xl font-bold text-indigo-600 xl:inline">初めてでも、誰でも、簡単に使える!</p>
+      </div>
+      <hr class="py-0 my-0 border-b border-gray-300 shadow-2xl opacity-25" />
+    </nav>
+    <!--Hero-->
+    <div class="pt-24">
+    <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
+            <g class="wave" fill="none">
+              <path d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z"></path>
+            </g>
+            <g transform="translate(1.000000, 20.000000)" fill="#FFFFFF">
+              <g transform="translate(719.500000, 68.500000) rotate(-180.000000) translate(-719.500000, -68.500000) ">
+                <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.300000001"></path>
+                <path d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z" opacity="0.400000001"></path>
+                <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" opacity="0.400000003"></path>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <div class="container relative flex flex-col flex-wrap items-center px-3 mx-auto xl:-mt-24 md:flex-row">
+        <!--Left Col-->
+        <div class="flex flex-col items-start justify-center w-full text-center md:w-2/5 md:text-left">
+          <h1 class="my-4 text-5xl font-bold leading-tight text-black">
+            FlyCat クラウド勤怠管理システム！
+          </h1>
+          <h2 class="my-4 text-3xl font-bold leading-tight text-orange">
+            初めてでも、誰でも、簡単に使える!
+          </h2>
+          <p class="mb-8 text-2xl font-medium leading-normal text-gray-800">
+            フライキャット勤怠管理は、これ1つで勤怠管理業務に必要な機能を備えており、それでいてシンプルな操作性であるため、初めてでもすぐに使い始められます!
+          </p>
+          <div class="flex justify-center w-full md:justify-start">
+            <%= link_to new_user_registration_path,class: "shadow-md px-6 py-3 mb-3 text-2xl enter-admin-btn rounded-md sm:mb-0 hover:bg-yellow-700 sm:w-auto font-bold" do%><p>無料トライアル</p><% end %>
+          </div>
+        </div>
+        <!--Right Col-->
+        <div class="w-full py-6 text-center md:w-3/5">
+          <%= image_tag "laptop.png" ,class:"z-50 w-full mb-10",alt:"FlyCat" %>
+        </div>
+      </div>
+    </div>
+    <div class="relative -mt-12 lg:-mt-24">
+      <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.500000001"></path>
+            <path
+              d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+              opacity="0.300000001"
+            ></path>
+            <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" id="Path-4" opacity="0.400000003"></path>
+          </g>
+          <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path
+              d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z"
+            ></path>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <section class="py-8 bg-white border-b">
+      <div class="container m-8 mx-auto max-w-7xl">
+      
+        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          3つの機能
+        </h1>
+        <div class="w-full mb-4">
+          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t gradient"></div>
+        </div>
+        <div class="flex flex-wrap mt-10">
+          <div class="w-5/6 p-6 sm:w-1/4">
+            <h3 class="mb-3 text-4xl font-bold leading-none text-gray-800">
+              1.オンラインチェックイン
+            </h3>
+            <p class="mb-8 text-2xl text-gray-600">
+              許容パンチイン範囲をカスタマイズする<br>  従業員の欠勤状況を正確に把握する                
+            </p>
+          </div>
+          <div class="flex justify-center w-full p-6 sm:w-3/4">
+            <%= image_tag "punchcards.png",alt:"punchcards" %>
+          </div>
+        </div>
+        <div class="flex flex-col-reverse flex-wrap mt-10 sm:flex-row">
+          <div class="flex justify-center w-full p-6 mt-6 sm:w-3/4">
+            <%= image_tag "work_shifts.png",alt:"work_shifts" %>
+          </div>
+          <div class="w-full p-6 mt-6 sm:w-1/4">
+            <div class="align-middle">
+              <h3 class="mb-3 text-4xl font-bold leading-none text-gray-800">
+                2.シフト管理
+              </h3>
+              <p class="mb-8 text-2xl text-gray-600">
+                 従業員の変更は適切に調整されています               
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap mt-10">
+          <div class="w-5/6 p-6 sm:w-1/4">
+            <h3 class="mb-3 text-4xl font-bold leading-none text-gray-800">
+              3.管理を離れる
+            </h3>
+            <p class="mb-8 text-2xl text-gray-600">
+              漏れなくサインオフ
+            </p>
+          </div>
+          <div class="w-full p-6 sm:w-3/4">
+            <%= image_tag "vacations.png",alt:"vacations" %>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-8 bg-white">
+      <div class="container px-2 pt-4 pb-12 mx-auto text-gray-800">
+        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          プランの説明
+        </h1>
+        <div class="w-full mb-4">
+          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t gradient"></div>
+        </div>
+        <div class="flex flex-col justify-center pt-12 my-12 sm:flex-row sm:my-4">
+          <div class="flex flex-col w-5/6 mx-auto mt-4 bg-white rounded-none lg:w-1/4 lg:mx-0 lg:rounded-l-lg">
+            <div class="flex-1 overflow-hidden text-gray-600 bg-white rounded-t rounded-b-none shadow">
+              <div class="p-8 text-3xl font-bold text-center border-b-4">
+                無料版
               </div>
-              <p class="mx-auto text-base text-gray-600 sm:max-w-md lg:text-xl md:max-w-3xl">ジョブカン勤怠管理は、これ1つで勤怠管理業務に必要な機能を備えており、それでいて
-              シンプルな操作性であるため、初めてでもすぐに使い始められます!</p>
-              <div class="relative flex flex-col sm:flex-row sm:space-x-4">
-                <%= link_to new_user_session_path,class: "flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-blue-500 rounded-md sm:mb-0 hover:bg-blue-700 sm:w-auto" do%>
-                  <p>無料トライアル</p>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                <% end %>
+              <ul class="w-full text-lg font-bold text-center">
+                <li class="py-4 border-b">オンラインチェックイン</li>
+                <li class="py-4 border-b">シフト管理</li>
+                <li class="py-4 border-b">管理を離れる</li>
+                <li class="py-4 border-b">管理可能な従業員の数<span class="pl-4 text-xl">5 人</span></li>
+              </ul>
+            </div>
+            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
+              <div class="w-full pt-6 text-3xl font-bold text-center text-gray-600">
+                NT 0 元
+              </div>
+              <div class="flex items-center justify-center">                
+                <%= link_to new_user_registration_path,class: "px-8 py-4 mx-auto my-6 text-2xl font-bold text-gray-700 transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105" do%><p>無料トライアル</p><% end %>
               </div>
             </div>
           </div>
-          <div class="w-full md:w-1/2 md:px-2">
-            <div class="w-full h-auto overflow-hidden rounded-md shadow-xl sm:rounded-xl">
-              <%= image_tag "banner.png" ,class:"w-full h-full",alt:"FlyCat" %>
+          <div class="z-10 flex flex-col w-5/6 mx-auto mt-4 mt-10 bg-white rounded-lg shadow-lg md:-mt-10 lg:w-1/3 lg:mx-0 sm:-mt-6">
+            <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow">
+              <div class="w-full p-8 text-3xl font-bold text-center">VIP會員</div>
+              <div class="w-full h-1 py-0 my-0 rounded-t gradient"></div>
+              <ul class="w-full text-xl font-bold text-center">
+                <li class="py-4 border-b">オンラインチェックイン</li>
+                <li class="py-4 border-b">シフト管理</li>
+                <li class="py-4 border-b">管理を離れる</li>
+                <li class="py-4 border-b">管理可能な従業員の数<span class="pl-3 text-2xl text-red-500">無制限</span></li>
+              </ul>
+            </div>
+            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
+              <div class="w-full pt-6 text-4xl font-bold text-center">
+                NT 500  元
+              </div>
+              <div class="flex items-center justify-center">
+                <%= link_to new_user_session_path,class: "px-8 py-4 mx-auto my-6 text-2xl font-bold text-black transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105" do%><p>今すぐアップグレード</p><% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <!-- Change the colour #f8fafc to match the previous section colour -->
+    <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
+          <g class="wave" fill="#FFFFFF">
+            <path
+              d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z"
+            ></path>
+          </g>
+          <g transform="translate(1.000000, 15.000000)" fill="#FFFFFF">
+            <g transform="translate(719.500000, 68.500000) rotate(-180.000000) translate(-719.500000, -68.500000) ">
+              <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.700000001"></path>
+              <path
+                d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+                opacity="0.500000001"
+              ></path>
+              <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" opacity="0.600000003"></path>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <section class="container py-6 mx-auto mb-12 text-center">
+      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+        FlyCat クラウド勤怠管理システム！
+      </h1>
+      <div class="w-full mb-4">
+        <div class="w-1/4 h-1 py-0 mx-auto my-0 bg-white rounded-t opacity-75"></div>
+      </div>
+      <h3 class="my-4 text-3xl leading-tight text-gray-800">
+        初めてでも、誰でも、簡単に使える!
+      </h3>
+      <div class="flex justify-center w-full mt-10 md:justify-center">
+        <%= link_to new_user_registration_path,class: "shadow-md px-6 py-3 mb-3 text-2xl enter-admin-btn rounded-md sm:mb-0 hover:bg-yellow-700 sm:w-auto font-bold" do%><p>無料トライアル</p><% end %>
+      </div>
+    </section>    
   </body>
 </html>

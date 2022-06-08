@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:username, :amount, :memo)
+    params.require(:order).permit(:amount)
   end
 
   def order_combine_id
