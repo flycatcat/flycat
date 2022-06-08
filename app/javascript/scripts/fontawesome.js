@@ -16,6 +16,7 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons/faQuestionCi
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons/faUserGroup";
 import { faBullhorn } from "@fortawesome/free-solid-svg-icons/faBullhorn";
 import { faClipboardList } from "@fortawesome/free-solid-svg-icons/faClipboardList";
+<<<<<<< HEAD
 import { faChartPie } from "@fortawesome/free-solid-svg-icons/faChartPie";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons/faPenToSquare";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons/faCalendarDays";
@@ -31,6 +32,9 @@ import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons/faGlobeAmericas";
 import { faCrown } from "@fortawesome/free-solid-svg-icons/faCrown";
 import { faEarthAsia } from "@fortawesome/free-solid-svg-icons/faEarthAsia";
+=======
+import { faEarthAsia } from "@fortawesome/free-solid-svg-icons/faEarthAsia"
+>>>>>>> 0f53a93 (style(i18n): fontawesome)
 
 config.mutateApproach = "sync";
 
@@ -52,6 +56,7 @@ library.add(
   faUserGroup,
   faBullhorn,
   faClipboardList,
+<<<<<<< HEAD
   faChartPie,
   faPenToSquare,
   faCalendarDays,
@@ -67,5 +72,8 @@ library.add(
   faGlobeAmericas,
   faCrown,
   faEarthAsia
+=======
+  faEarthAsia,
+>>>>>>> 0f53a93 (style(i18n): fontawesome)
 );
 dom.watch();
