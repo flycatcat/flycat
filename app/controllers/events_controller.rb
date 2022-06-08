@@ -16,11 +16,11 @@ class EventsController < ApplicationController
   
   def new
     @event = Event.new
-    @on_duty_staff = [""]+current_company.profiles.where(work_shift_title: WorkShift.find(params[:work_shift_id]).title).map{|p| p.staff_no+'_'+p.name}
+    @on_duty_staff = ["請選擇"]+current_company.profiles.where(work_shift_title: WorkShift.find(params[:work_shift_id]).title).map{|p| p.staff_no+'_'+p.name}
   end
   
   def edit
-    @on_duty_staff = [""]+current_company.profiles.where(work_shift_title: WorkShift.find(params[:work_shift_id]).title).map{|p| p.staff_no+'_'+p.name}
+    @on_duty_staff = ["請選擇"]+current_company.profiles.where(work_shift_title: WorkShift.find(params[:work_shift_id]).title).map{|p| p.staff_no+'_'+p.name}
   end
   
   def create
@@ -60,13 +60,13 @@ class EventsController < ApplicationController
         end
       }
       if fail_times.include?(2)
-        redirect_to setting_work_shift_path(id: params[:work_shift_id]), notice: '每日結束時間需大於開始時間'
+        redirect_to setting_work_shift_path(id: params[:work_shift_id]), alert: '每日結束時間需大於開始時間'
       elsif fail_times.include?(3)
-        redirect_to setting_work_shift_path(id: params[:work_shift_id]), notice: '未輸入標題'
+        redirect_to setting_work_shift_path(id: params[:work_shift_id]), alert: '未輸入標題'
       elsif fail_times.sum == 0 
         redirect_to setting_work_shift_path(id: params[:work_shift_id]), notice: '新增成功!'
       else
-        redirect_to setting_work_shift_path(id: params[:work_shift_id]), notice: '發生錯誤，請重新執行!'
+        redirect_to setting_work_shift_path(id: params[:work_shift_id]), alert: '發生錯誤，請重新執行!'
       end 
     elsif params["event"]["shifted_mode"] == "循環例假"
       holidays = holidays(params["event"]["shifted_mode"])
@@ -99,13 +99,13 @@ class EventsController < ApplicationController
         end
       }
       if fail_times.include?(2)
-        redirect_to setting_work_shift_path(id: params[:work_shift_id]), notice: '每日結束時間需大於開始時間'
+        redirect_to setting_work_shift_path(id: params[:work_shift_id]), alert: '每日結束時間需大於開始時間'
       elsif fail_times.include?(3)
-        redirect_to setting_work_shift_path(id: params[:work_shift_id]), notice: '未輸入標題'
+        redirect_to setting_work_shift_path(id: params[:work_shift_id]), alert: '未輸入標題'
       elsif fail_times.sum == 0 
         redirect_to setting_work_shift_path(id: params[:work_shift_id]), notice: '新增成功!'
       else
-        redirect_to setting_work_shift_path(id: params[:work_shift_id]), notice: '發生錯誤，請重新執行!'
+        redirect_to setting_work_shift_path(id: params[:work_shift_id]), alert: '發生錯誤，請重新執行!'
       end 
     else
       start_at = time_split(params["event"]["start_at"])

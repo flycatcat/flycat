@@ -27,6 +27,7 @@ export default class extends Controller {
         let new_on_duty = document.createElement("button");
         new_on_duty.setAttribute("class", "on_duty staff-btn");
         new_on_duty.textContent = staff_list.value;
+        staff_list.value = "請選擇";
         shifted_list.insertAdjacentElement("afterbegin", new_on_duty);
         new_on_duty.addEventListener("click", function () {
           new_on_duty.remove();
@@ -50,10 +51,13 @@ export default class extends Controller {
           let new_on_duty = document.createElement("button");
           new_on_duty.setAttribute("class", "on_duty staff-btn");
           new_on_duty.textContent = staff_list.value;
+          staff_list.value = "請選擇";
           shifted_list.insertAdjacentElement("afterbegin", new_on_duty);
           new_on_duty.addEventListener("click", function () {
             new_on_duty.remove();
           });
+        } else {
+          staff_list.value = "請選擇";
         }
       }
     });

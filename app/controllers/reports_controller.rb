@@ -66,8 +66,8 @@ class ReportsController < ApplicationController
   private
   def time_format(time)
     day = time.split("T")[0]
-    hour = time.split("T")[1][0]+params[:start_at].split("T")[1][1]
-    min = time.split("T")[1][2]+params[:start_at].split("T")[1][3]
+    hour = time.split("T")[1][0]+time.split("T")[1][1]
+    min = time.split("T")[1][2]+time.split("T")[1][3]
     return day+" "+hour+":"+min
   end
 
