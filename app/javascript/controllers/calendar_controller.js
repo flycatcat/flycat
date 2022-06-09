@@ -37,6 +37,23 @@ export default class extends Controller {
       },
       eventDrop: function (info) {
         let data = _this.data(info);
+        if (data["event[end_at]"] === null) {
+          let start_split = String(data["event[start_at]"]).split(" ");
+          data["event[end_at]"] =
+            start_split[0] +
+            " " +
+            start_split[1] +
+            " " +
+            String(Number(start_split[2]) + 1) +
+            " " +
+            start_split[3] +
+            " " +
+            start_split[4] +
+            " " +
+            start_split[5] +
+            " " +
+            start_split[6];
+        }
         Rails.ajax({
           type: "PATCH",
           url: info.event.url,

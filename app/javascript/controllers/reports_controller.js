@@ -35,9 +35,17 @@ export default class extends Controller {
             record_head.insertAdjacentHTML("afterbegin", new_head);
             for (let i = 0; i < data.start_at.length; i++) {
               let new_row = `<tr><td class="tp">${
-                data.start_at[i].split(".")[0]
+                data.start_at[i].split(".")[0].split("T")[0] +
+                " " +
+                data.start_at[i].split(".")[0].split("T")[1].split(":")[0] +
+                ":" +
+                data.start_at[i].split(".")[0].split("T")[1].split(":")[1]
               }</td><td class="tp">${
-                data.end_at[i].split(".")[0]
+                data.end_at[i].split(".")[0].split("T")[0] +
+                " " +
+                data.end_at[i].split(".")[0].split("T")[1].split(":")[0] +
+                ":" +
+                data.end_at[i].split(".")[0].split("T")[1].split(":")[1]
               }</td><td class="tp">${data.title[i]}</td><td class="tp">${
                 data.content[i]
               }</td></tr>`;
@@ -117,9 +125,17 @@ export default class extends Controller {
             record_head.insertAdjacentHTML("afterbegin", new_head);
             for (let i = 0; i < data.punch_in_at.length; i++) {
               let new_row = `<tr><td class="tp">${
-                data.punch_in_at[i].split(".")[0]
+                data.punch_in_at[i].split(".")[0].split("T")[0] +
+                " " +
+                data.punch_in_at[i].split(".")[0].split("T")[1].split(":")[0] +
+                ":" +
+                data.punch_in_at[i].split(".")[0].split("T")[1].split(":")[1]
               }</td><td class="tp">${
-                data.punch_out_at[i].split(".")[0]
+                data.punch_out_at[i].split(".")[0].split("T")[0] +
+                " " +
+                data.punch_out_at[i].split(".")[0].split("T")[1].split(":")[0] +
+                ":" +
+                data.punch_out_at[i].split(".")[0].split("T")[1].split(":")[1]
               }</td><td class="tp">${data.body_temperature[i]}</td></tr>`;
               record_content.insertAdjacentHTML("beforeend", new_row);
             }
