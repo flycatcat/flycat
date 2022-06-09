@@ -4,7 +4,7 @@
   <div class="fixed z-30" >
     
     <div class="absolute w-64 h-full min-h-screen pt-8 mt-0 ml-0 bg-gray-900"> 
-      <div class="flex items-center justify-center w-full mb-8 overflow-hidden">
+      <div class="flex items-center justify-center w-full overflow-hidden">
         <% if policy(:bulletin).index? %>
           <%= link_to admin_index_path do %>
             <div>
@@ -95,10 +95,6 @@
         </li>
 
         <li>
-          <% if policy(:report).index? %>
-            <%= link_to reports_path,local: true, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
-              <i class="w-6 h-6 mx-4 fa-solid fa-file-circle-check"></i>
-              <span class="mx-3 whitespace-nowrap"><%= t('報表管理') %></span>
           <% if policy(:punchcard).destroy? %>
             <%= link_to edit_punchcard_setting_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300   hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-business-time"></i>

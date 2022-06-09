@@ -15,7 +15,7 @@ class Company < ApplicationRecord
   
   # Callback
   after_create do
-    self.create_punchcard_setting
+    self.create_punchcard_setting(company_address: "台北車站",latitude: 25.049270837618625,longitude: 121.51705245794972,allow_distance: 100)
   end
 
 end
