@@ -32,6 +32,7 @@ import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons/faGlobeAmeric
 import { faCrown } from "@fortawesome/free-solid-svg-icons/faCrown";
 import { faEarthAsia } from "@fortawesome/free-solid-svg-icons/faEarthAsia";
 
+
 config.mutateApproach = "sync";
 
 library.add(

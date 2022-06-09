@@ -17,3 +17,20 @@
     @apply hover:bg-red-200 text-red-500 rounded-full px-3 py-1;
   }
 }
+
+.field_with_errors{
+  label {
+    @apply text-red-600;
+  }
+
+  input[type="new-password"],
+  input[type="file"],
+  input[type="email"],
+  input[type="password"],
+  input[type="date"],
+  input[type="text"],
+  input[type="start_at"],
+  input[type="title"]{
+    @apply border-red-600 bg-red-50;
+  }
+}

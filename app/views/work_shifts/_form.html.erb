@@ -1,9 +1,9 @@
-<div class="modal fade fixed top-0 left-0  w-full h-full outline-none overflow-x-hidden overflow-y-auto bg-opacity-50 bg-black" id="vacation_show" tabindex="-1" data-controller="modal">
-  <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none h-full opacity-100 ">
-    <div class="border-none shadow-lg absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 flex flex-col max-w-sm pointer-events-auto bg-white rounded-md outline-none text-current mx-auto ">
-      <div class="flex items-start justify-center w-full  bg-gray-200 whitespace-nowrap ">
+<div class="fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 outline-none modal fade" id="vacation_show" tabindex="-1" data-controller="modal">
+  <div class="relative w-auto h-full opacity-100 pointer-events-none modal-dialog modal-dialog-centered ">
+    <div class="absolute flex flex-col max-w-sm mx-auto text-current transform -translate-x-1/2 -translate-y-1/2 bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto top-1/2 left-1/2 ">
+      <div class="flex items-start justify-center w-full bg-gray-200 whitespace-nowrap ">
         <%= form_with(model: work_shift, url:work_shifts_path, method: 'post' ) do |form| %>
-          <div class="w-screen max-w-md px-10 py-8 bg-white shadow-md rounded-xl overflow-auto">
+          <div class="w-screen max-w-md px-10 py-8 overflow-auto bg-white shadow-md rounded-xl">
           <h1><%= t('新增班表') %></h1>
             <div class="mb-6 field">
               <%= form.label :title, t("班表名稱") %>
@@ -15,8 +15,8 @@
               <%= form.select :kind , WorkShift.all_kind ,class: "p-3 mt-4 leading-none text-gray-900 bg-gray-100 border border-gray-200 rounded focus:outline-none focus:border-blue-700" %>
             </div>
               <div class="flex justify-end py-6 actions">
-                <%= link_to '取消', work_shifts_path, class: "py-2 px-6 mt-4 text-lg tracking-wide text-gray-700 text-bold rounded-md bg-gray-300  mr-6" %>
-                <%= form.submit  class: "py-2 px-6 mt-4 text-lg tracking-wide text-indigo-100 cursor-pointer rounded-md bg-gradient-to-tr from-blue-600 to-indigo-600 "%>
+                <%= link_to t('取消'), work_shifts_path, class: "py-2 px-6 mt-4 text-lg tracking-wide text-gray-700 text-bold rounded-md bg-gray-300  mr-6 hover:bg-gray-400" %>
+                <%= form.submit t('新增班表'), class: "py-2 px-6 mt-4 text-lg tracking-wide text-indigo-100 cursor-pointer rounded-md bg-indigo-600 hover:bg-indigo-700 "%>
               </div>
           <% end %>
         </div>

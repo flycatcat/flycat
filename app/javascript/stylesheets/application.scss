@@ -21,10 +21,7 @@ h2 {
     @apply text-red-600;
   }
 
-  input[type="new-password"],
-  input[type="file"],
-  input[type="email"],
-  input[type="password"] {
+  input {
     @apply border-red-600 bg-red-50;
   }
 }

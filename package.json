@@ -21,6 +21,7 @@
     "postcss": "^7",
     "stimulus": "^3.0.1",
     "stimulus-flatpickr": "^1.4.0",
+    "stimulus-use": "0.41.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",

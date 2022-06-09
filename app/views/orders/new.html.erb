@@ -1,28 +1,33 @@
 <div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
-  <% if @order.errors.any? %>
-    <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-  
   <div class="w-screen max-w-sm px-10 py-8 bg-white shadow-md rounded-xl">
 
+    <div>
+            <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none">
+              <div class="w-full p-8 text-3xl font-bold text-center">
+              <i class="text-yellow-500 fa-solid fa-crown"></i>
+              VIP</div>
+              <div class="w-full h-1 py-0 my-0 rounded-t gradient"></div>
+              <ul class="w-full text-xl font-bold text-center">
+                <li class="py-4 border-b"><%= t('線上打卡') %></li>
+                <li class="py-4 border-b"><%= t('排班管理') %></li>
+                <li class="py-4 border-b"><%= t('差勤管理') %></li>
+                <li class="py-4 border-b"><%= t('可管理員工人數') %><span class="pl-3 text-2xl text-red-500"><%= t('無上限') %></span></li>
+              </ul>
+            </div>
+            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
+              <div class="w-full pt-6 text-4xl font-bold text-center">
+             
+              
     <%= form_with(model: @order, url: orders_path, method: 'post') do |form| %>
-        <div>
-            <%= form.label :username, t("公司名") ,class: "block mb-1 font-semibold text-gray-600 mb-2"%>
-            <%= form.text_field :username,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50 mb-2" %>
-        </div>
         <div >
-            <%= form.label :amount, t("升級金額(永久)") ,class: "block mb-1 font-semibold text-gray-600 mb-2"%>
-            <%= form.number_field :amount,value:500,readonly: :true, class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50 mb-2" %>
+            <%= form.label :amount, t("升級金額") ,class: "w-full pt-6 text-4xl font-bold text-center"%>
+            <%= form.number_field :amount,value:500,readonly: :true, class: "w-full px-4 py-2 rounded-md outline-none text-center" %>
         </div>
-        <div >
-            <%= form.label :memo, t("留言") ,class: "block mb-1 font-semibold text-gray-600 mb-2"%>
-            <%= form.text_area :memo, rows: 5,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50 mb-2" %>
-        </div>
-            <%= form.submit t('前往付款'),class: "submit-btn" %>
+        
+            <%= form.submit t('立刻升級'),class: "px-8 py-4 mx-auto my-6 text-2xl font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105 bg-indigo-700 hover:bg-indigo-800" %>
     <% end %>
+              </div>
+            </div>
+          </div>
   </div>
 </div>
