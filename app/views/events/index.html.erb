@@ -15,12 +15,12 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
+        <td><%= event.start_at %></td>
+        <td><%= event.end_at %></td>
         <td><%= event.title %></td>
-        <td><%= link_to '明細', event_path(@work_shift.id,event.id) %></td>
-        <td><%= link_to '編輯', edit_event_path(@work_shift.id,event.id) %></td>
-        <td><%= link_to '刪除', event_path(@work_shift.id,event.id), method: :delete, data: { confirm: '你確定嗎?' } %></td>
+        <td><%= link_to '明細', work_shift_event_path(@work_shift.id,event.id) %></td>
+        <td><%= link_to '編輯', edit_work_shift_event_path(@work_shift.id,event.id) %></td>
+        <td><%= link_to '刪除', work_shift_event_path(@work_shift.id,event.id), method: :delete, data: { confirm: '你確定嗎?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,5 +28,5 @@
 
 <br>
 
-<%= link_to '新增', new_event_path((@work_shift.id)) %>
+<%= link_to '新增', new_work_shift_event_path((@work_shift.id)) %>
 

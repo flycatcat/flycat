@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
-  validates :start_time, :end_time, presence: true
+  validates :start_at, :end_at, presence: true
   validates :title, presence: true
-  validate :end_time_after_start_time
+  validate :end_at_after_start_at
 
   belongs_to :work_shift
 
@@ -21,7 +21,9 @@ class Event < ApplicationRecord
 
   private
 
-  def end_time_after_start_time
-    errors.add(:end_time, '必須大於開始時間') if end_time <= start_time
+  def end_at_after_start_at
+    if end_at <= start_at
+      errors.add(:end_at, "必須大於開始時間")
+    end
   end
 end

@@ -1,51 +1,68 @@
-<h1><%= t('新增班表') %></h1>
-
-<%= form_with(model: @event , url:events_path(@work_shift.id),  method: 'post', local: true) do |form| %>
-    <% if @event.errors.any? %>
-      <div id="error_explanation">
-        <ul>
-          <% @event.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  
-    <div class="field">
-      <%= form.label :mode, "模式" %>
-      <%= form.select :mode , Event.all_mode %>
-      <%= form.label :all_day, "全日" %>
-      <%= form.check_box :all_day %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :start_time, "開始時間" %>
-      <%= form.datetime_select :start_time %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :end_time, "結束時間" %>
-      <%= form.datetime_select :end_time %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :title, "標題" %>
-      <%= form.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= form.label :content, "內容" %>
-      <%= form.text_field :content %>
-    </div>
-
-    <div class="kind">
-      <%= form.label :vacation_set, "休假設定" %>
-      <%= form.select :vacation_set , Event.all_vacation_set %>
-    </div>
-  
-    <div class="actions">
-      <%= form.submit "儲存"%>
+<%= form_with(model: @event , url:work_shift_events_path(@work_shift.id),  method: 'post', data: { controller: "on-duties" }) do |form| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+  
+  <div class="w-max px-20 pt-8 pb-8 mt-20 mx-auto mb-16 bg-white shadow-md rounded-xl">
+    <div class="flex justify-center mb-4 ">
+      <h1 class="font-bold text-3xl">新增班表</h1>
+    </div>
+    <div class="flex justify-start mb-4 ml-4">
+      <%= form.label :all_day, "全日", class: "mr-2 mt-1" %>
+      <%= form.check_box :all_day, class: "mr-2 mt-2" %>
+      <%= form.label :shifted_mode, "排班模式", class: "mr-2 mt-1" %>
+      <div class="border-solid border-2 mr-2">
+        <%= form.select :shifted_mode , Event.all_mode %>
+      </div>
+      <%= form.label :vacation_set, "排休設定", class: "mr-2 mt-1" %>
+      <div class="border-solid border-2">
+        <%= form.select :vacation_set , Event.all_vacation_set%>
+      </div>
+    </div>
 
-<%= link_to '返回', setting_work_shift_path(@work_shift.id) %>
+    <div class="flex justify-start mb-4 ml-4", data: { target: 'calendar.start_at' }>
+      <%= form.label :start_at, "開始時間", class: "mr-2 mt-2" %>
+      <%= form.datetime_field :start_at, class: "px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50 w-3/4" %>
+    </div>
+
+    <div class="flex justify-start mb-4 ml-4", data: { target: 'calendar.end_at' }>
+      <%= form.label :end_at, "結束時間", class: "mr-2 mt-2" %>
+      <%= form.datetime_field :end_at, class: "px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50 w-3/4"%>
+    </div>
+
+    <div class="flex justify-start mb-4 ml-4">
+      <%= form.label :title, "班表標題", class: "mr-2 mt-2" %>
+      <%= form.text_field :title, class: "px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50 w-3/4" %>
+    </div>
+
+    <div class="flex justify-start mb-4 ml-4">
+      <%= form.label :content, "班表內容", class: "mr-2 mt-8" %>
+      <%= form.text_field :content, class: "px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50 w-3/4 h-24" %>
+    </div>
+
+    <div class="flex justify-start mb-4 ml-4">
+      <%= form.label "值班人員", class: "mr-2 mt-2" %>
+      <select id="staff_list" class="border-solid border-2 mr-2 h-10">
+        <% @on_duty_staff.each do |staff| %>
+          <option value=<%= staff %>><%= staff %></option>
+        <%end %>
+      </select>
+      <div id="shifted_list" class="px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50 w-48">
+      </div>
+    </div>
+
+    <div>
+      <%= form.hidden_field :on_duty_staff %>
+    </div>
+    <div class="flex justify-end mb-4 ml-4 w-96">
+      <%= form.submit "儲存", class: "btn small-btn bg-blue-500 rounded hover:bg-blue-700 mr-2"%>
+      <%= link_to '返回', setting_work_shift_path(@work_shift.id), class: "small-btn bg-gray-400 rounded hover:bg-gray-500 mr-2" %>
+    </div>
+    </div>
+  <% end %>

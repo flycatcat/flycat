@@ -49,3 +49,15 @@
 .enter-admin-btn {
   background-color: #f56f00;
 }
+
+.shift-btn {
+  @apply px-2 py-1.5 text-base text-white;
+}
+
+.staff-btn {
+  @apply px-0.5 mr-1 mb-0.5 text-sm text-white bg-purple-500 rounded hover:bg-purple-700;
+}
+
+.small-btn {
+  @apply px-4 py-1 mr-1 text-base text-white;
+}

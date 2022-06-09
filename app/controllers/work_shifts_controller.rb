@@ -35,8 +35,10 @@ class WorkShiftsController < ApplicationController
     redirect_to work_shifts_path, alert: '已刪除班表'
   end
 
-  def setting; end
-
+  def setting
+    @on_duty_staff = ["請選擇"]+current_company.profiles.where(work_shift_title: WorkShift.find(params[:id]).title).map{|p| p.staff_no+'_'+p.name}
+  end
+      
   private
 
   def work_shift_params
@@ -44,6 +46,6 @@ class WorkShiftsController < ApplicationController
   end
 
   def find_work_shift
-    @work_shift = WorkShift.find(params[:work_shift_id])
+    @work_shift = WorkShift.find(params[:id])
   end
 end
