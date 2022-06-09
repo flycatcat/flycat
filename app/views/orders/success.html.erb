@@ -13,18 +13,15 @@
               <td class="tbody"><%= @order.pay_at %></td>
               <td class="tbody"><%= @order.card_last_4_no %></td>
           </tr>
+              <div class="flex justify-end mb-3">
+                <%= link_to t('前往新增員工'), profiles_path,class: "inline-block add-btn" %>
+              </div>
       <% else %>
-		  <h1 class="mb-5"><%= t('刷卡失敗，請再試一次') %></h1>
+		    <h1 class="mb-5"><%= t('刷卡失敗，請再試一次') %></h1>
+          <div class="flex justify-end mb-3">
+            <%= link_to t('升級方案'), new_order_path,class: "inline-block add-btn" %>
+          </div>
 		  <% end%>
-          <% if user_signed_in? %>
-            <div class="flex justify-end mb-3">
-              <%= link_to t('前往新增員工'), profiles_path,class: "inline-block add-btn" %>
-            </div>
-          <% else %>
-            <div class="flex justify-end mb-3">
-              <%= link_to t('返回首頁'), root_path,class: "inline-block add-btn" %>
-            </div>
-          <% end %>
       </table>
   </div>
 </div>
