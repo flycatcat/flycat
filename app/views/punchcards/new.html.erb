@@ -18,6 +18,15 @@
           <p id="inarea" data-gmap-target="inarea" class="my-2 text-lg font-bold text-green-600 bg-yellow-200"><%= t('與公司相距') %><span id="distance_in"></span><%= t('公尺，可以打卡!') %></p>
           <p id="outarea" data-gmap-target="outarea" class="my-2 text-lg font-bold text-red-600 bg-yellow-200"><%= t('與公司相距') %><span id="distance_out"></span><%= t('公尺，請靠近公司範圍內再打卡!') %></p>
         </div>
+
+      <div id="gmap-border" data-controller="gmap" data-company-lat="<%= current_company.punchcard_setting&.latitude %>"   
+           data-company-lon="<%= current_company.punchcard_setting&.longitude %>" data-pubchcard-distance="<%= current_company.punchcard_setting&.allow_distance %>" class="border-2 border-gray-200 shadow-md">
+        <p id="inarea" class="mt-2 -mb-3 text-lg font-bold text-center text-green-600 -m-b-2">與公司相距
+          <span id="distance_in"></span>公尺，可以打卡!
+        </p>
+        <p id="outarea" class="px-3 my-2 text-lg font-bold text-red-600">與公司相距<span id="distance_out">
+          </span>公尺，請靠近公司再打卡!
+        </p>
         <div class="flex justify-center ">
           <div id="gmap" data-gmap-target="gmap"  class="mt-3 h-80 w-80 "></div>
         </div>
@@ -27,20 +36,16 @@
         <div id="punch_disable" class="actions">
           <%= f.submit t("下班打卡"),disabled: true,class: "w-full mt-5 bg-gray-400 text-white py-2 rounded-md font-semibold tracking-tight" %>
         </div>
+      </div>
+
+      <div id="punch_enable" class="actions">
+        <%= f.submit "上班打卡",class: "w-full mt-5 bg-indigo-600 text-white py-2 rounded-md font-semibold tracking-tight" %>
+      </div>
+      <div id="punch_disable" class="actions">
+        <%= f.submit "上班打卡",disabled: true,class: "w-full mt-8 bg-gray-400 text-white py-2 rounded-md font-semibold tracking-tight mb-6" %>
+      </div>
 
     <% end %>
-
-       <div id="tripmeter" style="display:none">
-      <p>
-        Starting Location (lat, lon):<br/>
-        <span id="startLat">???</span>&deg;, <span id="startLon">???</span>&deg;
-      </p>
-
-      <p>
-        Distance from starting location:<br/>
-        <span id="distance">0</span> 公尺
-      </p>
-
-    </div>
+       <div id="tripmeter" style="display:none"></div>
   </div>
 </div>

@@ -2,18 +2,18 @@
 
 Rails.application.routes.draw do
   
-  get 'punchcard_setting/edit'
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks',
   }
-  
+
   resources :companies, except: [:index, :destroy, :show]
   resources :departments, except: [:show]
   resources :user_accounts, only: [:index, :new, :create, :destroy]
   resources :punchcards, except: [:show]
-  resources :punchcard_setting, except: [:show,:destroy,:index]
-  resources :bulletins
+  resource :punchcard_setting, except: [:show,:destroy,:index]
+  resources :bulletins,except: []
+
   
   resources :profiles, except: [:show] do
     collection do

@@ -13,4 +13,9 @@ class Company < ApplicationRecord
   has_many :orders
   has_one  :punchcard_setting
   
+  # Callback
+  after_create do
+    self.create_punchcard_setting
+  end
+
 end

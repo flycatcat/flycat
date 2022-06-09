@@ -33,7 +33,7 @@
       <ul class="overflow-hidden">
         <li>
           <% if policy(:bulletin).index? %>
-            <%= link_to admin_index_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to admin_index_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300 hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-chart-pie"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('系統總覽') %></span>
             <% end %>
@@ -42,7 +42,7 @@
         
         <li>
           <% if policy(:bulletin).index? %>
-            <%= link_to bulletins_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to bulletins_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300 hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-bullhorn"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('公告總覽') %></span>
             <% end %>
@@ -51,7 +51,7 @@
   
         <li>
           <% if policy(:vacation).index? %>
-            <%= link_to vacations_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to vacations_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300 hover:bg-opacity-100  hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-pen-to-square"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('假單管理') %></span>
             <% end %>
@@ -60,7 +60,7 @@
   
         <li>
           <% if policy(:work_shift).create? %>
-            <%= link_to work_shifts_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to work_shifts_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300   hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-calendar-days"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('排班管理') %></span>
             <% end %>
@@ -69,7 +69,7 @@
   
         <li>
           <% if policy(:department).index? %>
-            <%= link_to departments_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to departments_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300   hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-people-group"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('部門管理') %></span>
             <% end %>
@@ -78,7 +78,7 @@
   
         <li>
           <% if policy(:bulletin).index? %>
-            <%= link_to profiles_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to profiles_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300 hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-address-card"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('員工資訊') %></span>
             <% end %>
@@ -86,9 +86,9 @@
         </li>
   
         <li>
-          <% if policy(:bulletin).index? %>
-            <%= link_to new_punchcard_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
-              <i class="w-6 h-6 mx-4 fa-solid fa-business-time"></i>
+          <% if policy(:punchcard).create? %>
+            <%= link_to new_punchcard_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300   hover:text-gray-700" do %>
+            <i class="w-6 h-6 mx-4 fas fa-clock"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('打卡系統') %></span>
             <% end %>
           <% end %>
@@ -99,13 +99,17 @@
             <%= link_to reports_path,local: true, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-file-circle-check"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('報表管理') %></span>
+          <% if policy(:punchcard).destroy? %>
+            <%= link_to edit_punchcard_setting_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300   hover:text-gray-700" do %>
+              <i class="w-6 h-6 mx-4 fa-solid fa-business-time"></i>
+              <span class="mx-3 whitespace-nowrap"><%= t('打卡設定') %></span>
             <% end %>
           <% end %>
         </li>
   
         <li>
           <% if policy(:profile).index? %>
-            <%= link_to edit_company_path(current_company.id), class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to edit_company_path(current_company.id), class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300   hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-building-user"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('公司資訊') %></span>
             <% end %>
@@ -114,7 +118,7 @@
   
         <li>
             <% if policy(:vacation).only_admin? && current_company.orders.where(status: "SUCCESS").size == 0 %>
-            <%= link_to new_order_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to new_order_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300   hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-cart-shopping"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('升級方案') %></span>
             <% end %>
@@ -123,16 +127,16 @@
   
         <li class="mt-10">
           <% if user_signed_in? %>
-            <%= link_to destroy_user_session_path, method: "delete", class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to destroy_user_session_path, method: "delete", class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300   hover:text-gray-700" do %>
             <i class="w-6 h-6 mx-4 fa-solid fa-right-from-bracket"></i>
             <span class="mx-3 whitespace-nowrap"><%= t('登出') %></span>
             <% end %>
           <% else %>
-            <%= link_to new_user_session_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to new_user_session_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300   hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-right-to-bracket"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('登入') %></span>          
             <% end %>
-            <%= link_to new_user_registration_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100" do %>
+            <%= link_to new_user_registration_path, class: "flex justify-start items-center px-6 py-2 mt-4 text-gray-50 font-bold text-xl hover:bg-yellow-300   hover:text-gray-700" do %>
               <i class="w-6 h-6 mx-4 fa-solid fa-user-plus"></i>
               <span class="mx-3 whitespace-nowrap"><%= t('註冊') %></span>          
             <% end %>

@@ -11,7 +11,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path('logo.png') %>
     <script defer="" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeDO45qDSUyd-q1rMl9g7XNXkOLMIXpgs&callback=geolocateUser"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["maps_api_key"] %>"></script>
   </head>
   
   <body>

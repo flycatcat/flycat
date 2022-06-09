@@ -1,4 +1,4 @@
-class PunchcardSettingController < ApplicationController
+class PunchcardSettingsController < ApplicationController
   before_action :find_punchcard_setting, only: %i[edit update]
 
   def edit
@@ -9,7 +9,9 @@ class PunchcardSettingController < ApplicationController
   end
 
   def create
+    
     @punchcard_setting = current_company.build_punchcard_setting(punchcard_setting_params)
+
     if @punchcard_setting.save
       redirect_to root_path
     else
@@ -19,7 +21,7 @@ class PunchcardSettingController < ApplicationController
 
   def update
     if @punchcard_setting.update(punchcard_setting_params)
-      redirect_to admin_index_path, notice: '更新成功'
+      redirect_to edit_punchcard_setting_path, notice: '更新成功'
     else
       render :edit
     end
@@ -28,7 +30,7 @@ class PunchcardSettingController < ApplicationController
   private
 
   def punchcard_setting_params
-    params.require(:punchcard_setting).permit(:company_address, :latitude, :longitude, :allow_distance)
+    params.require(:punchcard_setting).permit(:company_address, :latitude, :longitude, :allow_distance, :company_id)
   end
 
   def find_punchcard_setting

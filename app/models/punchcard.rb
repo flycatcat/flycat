@@ -5,8 +5,8 @@ class Punchcard < ApplicationRecord
   belongs_to :user
   validates :body_temperature, presence: true
 
-  # Callback
-  after_create do
-    update(first_punch: false)
-  end
+  # # Callback
+  # after_create do
+  #   update(first_punch: false)
+  # end
 end
