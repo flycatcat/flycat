@@ -13,15 +13,15 @@
           <%= f.text_field :name,placeholder: t("輸入姓名") ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"%>
         </div>
         <div>
-          <%= f.label :department, "所屬部門",class: "block mb-1 font-semibold text-gray-600 pt-3" %>
+          <%= f.label :department, t("所屬部門"),class: "block mb-1 font-semibold text-gray-600 pt-3" %>
           <%= f.select :department, current_company.departments.all.map{ |c| [c.department_name] },class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50" %>
         </div>
         <div>
-          <%= f.label :job_title, "職稱",class: "block mb-1 font-semibold text-gray-600 pt-3" %>
+          <%= f.label :job_title, t("職稱"),class: "block mb-1 font-semibold text-gray-600 pt-3" %>
           <%= f.text_field :job_title,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50" %>
         </div>
         <div>
-          <%= f.label :work_shift_title, "班表名稱",class: "block mb-1 font-semibold text-gray-600 pt-3" %>
+          <%= f.label :work_shift_title, t("班表名稱"),class: "block mb-1 font-semibold text-gray-600 pt-3" %>
           <%= f.select :work_shift_title, @work_shift_title,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"  %>
         </div>
         <div>
@@ -37,11 +37,11 @@
           <%= f.date_field :start_at, class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50" %>
         </div>
         <div>
-          <%= f.label :end_at, "離職日期",class: "block mb-1 font-semibold text-gray-600 pt-3" %>
+          <%= f.label :end_at, t("離職日期"),class: "block mb-1 font-semibold text-gray-600 pt-3" %>
           <%= f.date_field :end_at, class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"  %>
         </div>
         <div class="pt-5 pb-10 actions">
-          <%= f.submit "編輯員工資訊",class: "submit-btn" %>
+          <%= f.submit t("編輯員工資訊"),class: "submit-btn" %>
         </div>
       </div>
     </div>

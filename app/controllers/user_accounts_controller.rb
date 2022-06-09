@@ -17,6 +17,7 @@ class UserAccountsController < ApplicationController
   end
 
   def create
+    @work_shift_title = current_company.work_shifts.map(&:title)
     @user = current_company.users.new(users_params)
     if @user.save
       redirect_to profiles_path, notice: '已成功新增員工資訊'
