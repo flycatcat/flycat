@@ -1,11 +1,11 @@
 <div class="h-full bg-gray-200" >
-  <h1 class="text-center text-2xl sm:text-4xl sm:text-left pt-6"><%= t('公告總覽') %></h1>
-    <div class="max-w-min  mx-auto">
+  <h1 class="p-6 text-2xl text-center sm:text-4xl sm:text-left"><%= t('公告總覽') %></h1>
+    <div class="mx-auto max-w-min">
       <div class="flex justify-end">
         <%= link_to t("新增公告"), new_bulletin_path,class: "add-btn" if policy(:bulletin).create?%>
       </div>
-      <div class="max-w-min  mx-auto ">
-        <table class=" block rounded-lg overflow-x-auto mt-5 text-sm md:text-lg  shadow-md whitespace-nowrap " id="bulletin_show">
+      <div class="mx-auto max-w-min">
+        <table class="block mt-5 overflow-x-auto text-sm rounded-lg shadow-md md:text-lg whitespace-nowrap" id="bulletin_show">
           <tr class="thead">
             <td class="tp "><%= t('公告標題') %></td>
             <td class="tp"><%= t('最新修改時間') %></td>

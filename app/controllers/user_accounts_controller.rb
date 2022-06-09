@@ -8,6 +8,7 @@ class UserAccountsController < ApplicationController
   end
 
   def new
+    @work_shift_title = current_company.work_shifts.map(&:title)
     if current_company.orders.where(status: 'SUCCESS').any? || current_company.profiles.size < 5
       @user = current_company.users.new
     else
@@ -49,6 +50,6 @@ class UserAccountsController < ApplicationController
 
   def users_params
     params.require(:user).permit(:email, :password, :password_confirmation, :role,
-                                 profile_attributes: %i[id staff_no name gender department tel start_at job_title end_at user_id company_id])
+                                 profile_attributes: %i[id staff_no name gender department tel start_at job_title end_at user_id company_id  work_shift_title])
   end
 end

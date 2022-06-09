@@ -14,8 +14,9 @@
               <%= form.label :kind, t("班別") %>
               <%= form.select :kind , WorkShift.all_kind ,class: "p-3 mt-4 leading-none text-gray-900 bg-gray-100 border border-gray-200 rounded focus:outline-none focus:border-blue-700" %>
             </div>
-              <div class="actions">
-              <%= form.submit t("新增班表"), class: "px-10 py-4 font-semibold leading-none text-white bg-blue-700 rounded mt-9 hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none" %>
+              <div class="flex justify-end py-6 actions">
+                <%= link_to '取消', work_shifts_path, class: "py-2 px-6 mt-4 text-lg tracking-wide text-gray-700 text-bold rounded-md bg-gray-300  mr-6" %>
+                <%= form.submit  class: "py-2 px-6 mt-4 text-lg tracking-wide text-indigo-100 cursor-pointer rounded-md bg-gradient-to-tr from-blue-600 to-indigo-600 "%>
               </div>
           <% end %>
         </div>

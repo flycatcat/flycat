@@ -1,11 +1,11 @@
 <div class="h-full bg-gray-200" >
-  <h1 class="text-center text-2xl sm:text-4xl sm:text-left pt-6"><%= t('工作表設定') %></h1>
-    <div class="max-w-min  mx-auto " id="work_shift">
+  <h1 class="p-6 text-2xl text-center sm:text-4xl sm:text-left"><%= t('工作表設定') %></h1>
+    <div class="mx-auto max-w-min " id="work_shift">
       <div class="flex justify-end">
         <%= link_to t("新增排班班別"),new_work_shift_path,class: "add-btn", 
         data: {remote: true} if policy(:work_shift).create?%>
       </div>
-        <table class="block rounded-lg overflow-x-auto mt-5 text-sm md:text-lg  shadow-md whitespace-nowrap ">
+        <table class="block mt-5 overflow-x-auto text-sm rounded-lg shadow-md md:text-lg whitespace-nowrap ">
           <tr class="thead">
             <td class="tp"><%= t('工作表名稱') %></td>
             <td class="tp"><%= t("工作表類別") %></td>

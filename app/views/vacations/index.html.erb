@@ -1,11 +1,11 @@
 <div class="h-full bg-gray-200">  
-  <h1 class="text-center text-2xl sm:text-4xl sm:text-left pt-6"><%= t('請假管理') %></h1>
-  <div class="max-w-min mx-auto" id="vacation_show">
+  <h1 class="p-6 text-2xl text-center sm:text-4xl sm:text-left"><%= t('請假管理') %></h1>
+  <div class="mx-auto max-w-min" id="vacation_show">
     <div class="flex justify-end mb-3">
       <%= link_to t("新增假單"), new_vacation_path,class: "inline-block add-btn", data: {remote:true} if policy(:vacation).create? %>
     </div>
     <div class="overflow-auto rounded-lg">
-      <table class="w-full text-lg  shadow-md whitespace-nowrap" >
+      <table class="w-full text-lg shadow-md whitespace-nowrap" >
         <tr class="thead">
           <td class="tp"><%= t('員工') %></td>
           <td class="tp"><%= t('請假日') %></td>
