@@ -31,7 +31,7 @@ export default class extends Controller {
           record_content.setAttribute("id", "record_content");
           record.insertAdjacentElement("beforeend", record_content);
           if (data.message[0] == "") {
-            let new_head = `<tr><span class="p-4 text-xl font-bold">班表彙總</span></tr><tr class="thead"><th class="tp">開始時間</th><th class="tp">結束時間</th><th class="tp">標題</th><th class="tp">內容</th></tr>`;
+            let new_head = `<tr><span class="p-4 text-xl font-bold">班表彙總</span></tr><tr class="thead"><th class="tp">開始時間</th><th class="tp">結束時間</th><th class="tp">班表標題</th><th class="tp">班表內容</th></tr>`;
             record_head.insertAdjacentHTML("afterbegin", new_head);
             for (let i = 0; i < data.start_at.length; i++) {
               let new_row = `<tr><td class="tp">${
@@ -44,10 +44,9 @@ export default class extends Controller {
               record_content.insertAdjacentHTML("beforeend", new_row);
             }
           } else {
-            record.insertAdjacentElement("beforebegin", new_title);
-            let new_head = `<tr><span class="p-4 text-xl font-bold">班表彙總</span></tr><tr><th>開始時間</th><th>結束時間</th><th>標題</th><th>內容</th></tr>`;
+            let new_head = `<tr><span class="p-4 text-xl font-bold">班表彙總</span></tr><tr class="thead"><th class="tp">查詢結果</th></tr>`;
             record_head.insertAdjacentHTML("afterbegin", new_head);
-            let new_row = `<tr><td>無資料</td></tr>`;
+            let new_row = `<tr><td class="tp">無資料</td></tr>`;
             record_content.insertAdjacentHTML("afterbegin", new_row);
           }
         },
@@ -83,10 +82,9 @@ export default class extends Controller {
               record_content.insertAdjacentHTML("beforeend", new_row);
             }
           } else {
-            record.insertAdjacentElement("beforebegin", new_title);
-            let new_head = `<tr><span class="p-4 text-xl font-bold">請假紀錄</span></tr><tr><th>日期</th><th>假別</th><th>原因</th><th>時數</th><th>狀態</th></tr>`;
+            let new_head = `<tr><span class="p-4 text-xl font-bold">請假紀錄</span></tr><tr class="thead"><th class="tp">查詢結果</th></tr>`;
             record_head.insertAdjacentHTML("afterbegin", new_head);
-            let new_row = `<tr><td>無資料</td></tr>`;
+            let new_row = `<tr><td class="tp">無資料</td></tr>`;
             record_content.insertAdjacentHTML("afterbegin", new_row);
           }
         },
@@ -126,10 +124,9 @@ export default class extends Controller {
               record_content.insertAdjacentHTML("beforeend", new_row);
             }
           } else {
-            record.insertAdjacentElement("beforebegin", new_title);
-            let new_head = `<tr><span class="p-4 text-xl font-bold">打卡紀錄</span></tr><tr><th>上班打卡時間</th><th>下班打卡時間</th><th>體溫量測紀錄</th></tr>`;
+            let new_head = `<tr><span class="p-4 text-xl font-bold">打卡紀錄</span></tr><tr class="thead"><th class="tp">查詢結果</th></tr>`;
             record_head.insertAdjacentHTML("afterbegin", new_head);
-            let new_row = `<tr><td>無資料</td></tr>`;
+            let new_row = `<tr><td class="tp">無資料</td></tr>`;
             record_content.insertAdjacentHTML("afterbegin", new_row);
           }
         },

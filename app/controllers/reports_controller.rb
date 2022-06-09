@@ -4,23 +4,39 @@ class ReportsController < ApplicationController
   end
   def on_duties
     staff = Profile.where(user_id: current_user.id)
-    work_shift_id = WorkShift.find_by(title: staff[0].work_shift_title).id
-    start_at = time_format(params[:start_at])
-    end_at = time_format(params[:end_at])
-    events = Event.where("start_at >= ? AND end_at <= ? And work_shift_id = ?", start_at, end_at, work_shift_id)
     data = {start_at: [], end_at: [], title: [], content: [], message:[]}
-    if events[0].nil?
-        data[:message] << "無資料"
+    data_check = []
+    if staff[0].nil?
+      data_check << 0
     else
-      data[:message] << ""
-      events.each do |event|
-        if event.on_duty_staff.split(staff[0].staff_no+"_"+staff[0].name).length > 1
-          data[:start_at] << event.start_at
-          data[:end_at] << event.end_at
-          data[:title] << event.title
-          data[:content] << event.content
+      work_shift_id = WorkShift.find_by(title: staff[0].work_shift_title).id
+      start_at = time_format(params[:start_at])
+      end_at = time_format(params[:end_at])
+      events = Event.where("start_at >= ? AND end_at <= ? And work_shift_id = ?", start_at, end_at, work_shift_id)
+      if events[0].nil?
+        data_check << 0
+      else
+        events.each do |event|
+          if event.on_duty_staff == ""
+            data_check << 0
+          else 
+            if event.on_duty_staff.split(" ").include?(staff[0].staff_no+"_"+staff[0].name)
+              data_check << 1
+              data[:start_at] << event.start_at
+              data[:end_at] << event.end_at
+              data[:title] << event.title
+              data[:content] << event.content
+            else
+              data_check << 0
+            end
+          end
         end
       end
+    end
+    if data_check.sum >0
+      data[:message] << ""
+    else
+      data[:message] << "無資料"
     end
     render json: data
   end
