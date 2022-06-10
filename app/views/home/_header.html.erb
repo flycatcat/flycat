@@ -46,30 +46,19 @@
       
       <div class="flex items-center">
         <%= link_to destroy_user_session_path, method: "delete",class:"block md:px-4 py-2 text-lg hover:bg-red-500 hover:text-white rounded-lg" do %>
-          <span class="mx-3 text-xl font-bold "><%= t('登出') %></span>
+          <span class="hidden mx-3 text-xl font-bold md:inline "><%= t('登出') %></span>
+          <i class="mx-3 text-lg md:hidden fas fa-sign-out-alt"></i>
         <% end %>
         <div class="flex justify-between w-full md:justify-end">
           <div class= "py-2 mx-3 text-lg font-bold">
             <% elsif policy(:bulletin).index? %>
             <div class="hidden md:inline "><%= current_user.email %></div>
           </div>
-          <div class= "py-2 text-lg font-bold">
-            <% if policy(:bulletin).create? %>
-              <%= link_to bulletins_path, title: "公告管理",class: "md:hidden" do %>
-                <i class="w-8 h-8 text-blue-700 fa-solid fa-bullhorn"></i>
-              <% end %>
-            <% end %>
-          </div>
-          <div class= "py-2 text-lg font-bold">
-            <% if policy(:vacation).signoff? %>
-              <%= link_to vacations_path,title: "假單管理" ,class: "md:hidden" do%>
-                <i class="w-8 h-8 text-blue-700 fa-solid fa-pen-to-square"></i>
-              <% end %>
-            <% end %>
-          </div>
+
         <div>
           <%= link_to destroy_user_session_path, method: "delete",class:"block md:px-4 py-2 text-lg hover:bg-red-500 hover:text-white rounded-lg" do %>
-            <span class="mx-3 text-sm font-bold md:text-xl"><%= t('登出') %></span>
+            <span class="hidden mx-3 text-sm font-bold md:inline md:text-xl"><%= t('登出') %></span>
+            <i class="mx-3 text-lg md:hidden fas fa-sign-out-alt"></i>
           <% end %>
         <% end %>
       </div>
