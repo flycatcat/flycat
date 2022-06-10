@@ -2,11 +2,6 @@
 
 class Punchcard < ApplicationRecord
   include Slugable
-  belongs_to :user
+  belongs_to :user, dependent: :delete
   validates :body_temperature, presence: true
-
-  # # Callback
-  # after_create do
-  #   update(first_punch: false)
-  # end
 end

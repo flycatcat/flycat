@@ -1,4 +1,5 @@
 class PunchcardSettingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_punchcard_setting, only: %i[edit update]
 
   def edit
