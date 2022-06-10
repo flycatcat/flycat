@@ -39,12 +39,12 @@
           <td class="tp"><%= t('刪除員工資訊') %></td>
         <% end %>
       </tr>
-      <% @profiles.order(staff_no: :asc).each do |profile|  %>
+      <% @profiles.each do |profile|  %>
       <tr>
         <td class="tbody"><%= profile.staff_no %></td>
         <td class="tbody"><%= profile.name %></td>
         <td class="tbody"><%= profile.department%></td>
-        <td class="tbody"><%= profile.work_shift_title%></td>
+        <td class="tbody"><%= profile&.work_shift_title%></td>
         <td class="tbody"><%= profile.tel %></td>
         <% if policy(:profile).create?  %>
           <td class="tbody"><%= link_to t("編輯"), edit_profile_path(profile),class: "edit-btn" %></td>
@@ -55,7 +55,4 @@
     </table>
     <div class="my-4 text-center"><%= paginate @profiles %></div>
 </div>
-
-  
-
 
