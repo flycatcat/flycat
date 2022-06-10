@@ -46,8 +46,7 @@
       
       <div class="flex items-center">
         <%= link_to destroy_user_session_path, method: "delete",class:"block md:px-4 py-2 text-lg hover:bg-red-500 hover:text-white rounded-lg" do %>
-          <span class="hidden mx-3 text-xl font-bold md:inline "><%= t('登出') %></span>
-          <i class="mx-3 text-lg md:hidden fas fa-sign-out-alt"></i>
+          <i class="mx-3 text-lg fas fa-sign-out-alt"></i>
         <% end %>
         <div class="flex justify-between w-full md:justify-end">
           <div class= "py-2 mx-3 text-lg font-bold">
@@ -57,8 +56,7 @@
 
         <div>
           <%= link_to destroy_user_session_path, method: "delete",class:"block md:px-4 py-2 text-lg hover:bg-red-500 hover:text-white rounded-lg" do %>
-            <span class="hidden mx-3 text-sm font-bold md:inline md:text-xl"><%= t('登出') %></span>
-            <i class="mx-3 text-lg md:hidden fas fa-sign-out-alt"></i>
+            <i class="mx-3 text-lg fas fa-sign-out-alt"></i>
           <% end %>
         <% end %>
       </div>
