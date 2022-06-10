@@ -1,6 +1,6 @@
 <h1 class="px-16 py-6 bg-gray-200">報表管理</h1>
-<div class = "w-screen px-16 bg-gray-200 rounded-lg", data-controller = "reports">
-  <div class="flex flex-wrap justify-start w-3/4 mb-6">
+<div class = "w-screen px-2 bg-gray-200 rounded-lg", data-controller = "reports">
+  <div class="flex flex-wrap justify-start w-full mb-6 md:w-3/4">
       <div class="mb-4 w-65">
         <label class="mt-2 mr-4 text-lg translation_missing">開始時間</label>
         <input type="datetime-local" class="px-4 py-2 mr-6 rounded-md outline-none bg-indigo-50" id="start_at">
@@ -13,7 +13,7 @@
   <div class="flex flex-wrap justify-start mb-6">
     <div class="flex flex-wrap justify-start mb-6 w-65">
         <button id="on_duties" class="mb-4 mr-2 show-btn">班表彙總<button>
-        <button id="vacations" class="mb-4 mr-2 show-btn">請假紀錄<button>
+        <button id="vacations" class="flex flex-wrap justify-center w-full mb-6 md:justify-start">請假紀錄<button>
         <button id="punchcards" class="mb-4 mr-2 show-btn">打卡紀錄<button>
     </div>
   </div>
