@@ -11,7 +11,7 @@
     <table class="block overflow-auto">
       <thead>
         <tr class="thead whitespace-nowrap">
-          <th class="tp"><%= t('員工編號') %></th>
+          <th class="tp"><%= t('員工姓名') %></th>
           <th class="tp"><%= t('信箱') %></th>
           <th class="tp"><%= t('體溫(°C)') %></th>
           <th class="tp"><%= t('上班時間') %></th>
@@ -25,7 +25,7 @@
       <tbody class="w-full text-center">
         <% @punchcards.order(created_at: :desc).each do |punchcard| %>
           <tr>
-            <td td class="tbody"><%= current_user.id %></td>
+            <td td class="tbody"><%= punchcard.user.profile.name %></td>
             <td td class="tbody"><%= current_user.email %></td>
             <td class="tbody"><%= punchcard.body_temperature %></td>
             <td class="tbody"><%= punchcard.punch_in_at %></td>
