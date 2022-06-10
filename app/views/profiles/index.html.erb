@@ -1,7 +1,7 @@
 <h1 class="p-6 text-center bg-gray-200 sm:text-left"><%=t('員工資訊')%></h1>
 <div class="px-6 overflow-auto bg-gray-200 rounded-lg">
   <% if policy(:profile).create?  %>
-    <div class="flex justify-end mb-8 bg-gray-200 ">
+    <div class="flex justify-center mb-8 bg-gray-200 md:justify-end ">
       <%= form_tag export_profiles_path, multipart: true do %>
         <%= link_to t('新增員工資訊'), new_user_account_path,class: "add-btn" %>
         <%= link_to t("匯出員工資訊"), profiles_path(format: "csv"), class: 'add-btn' %>

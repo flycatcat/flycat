@@ -33,7 +33,7 @@ import { faCrown } from "@fortawesome/free-solid-svg-icons/faCrown";
 import { faEarthAsia } from "@fortawesome/free-solid-svg-icons/faEarthAsia";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons/faMapMarkerAlt";
 import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
-
+import { faTable } from "@fortawesome/free-solid-svg-icons/faTable";
 
 config.mutateApproach = "sync";
 
@@ -71,6 +71,7 @@ library.add(
   faCrown,
   faEarthAsia,
   faMapMarkerAlt,
-  faClock
+  faClock,
+  faTable
 );
 dom.watch();
