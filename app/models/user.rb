@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
   belongs_to :company
-  has_many :punchcards
+  has_many :punchcards, dependent: :destroy
   has_many :vacations
   has_many :bulletins
   has_many :bulletin_reads
