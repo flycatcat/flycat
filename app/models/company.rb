@@ -13,9 +13,6 @@ class Company < ApplicationRecord
   has_many :orders
   has_one  :punchcard_setting
   
-  # Callback
-  after_create do
-    self.create_punchcard_setting(company_address: "台北車站",latitude: 25.049270837618625,longitude: 121.51705245794972,allow_distance: 100)
-  end
+
 
 end
