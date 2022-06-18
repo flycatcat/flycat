@@ -8,9 +8,6 @@ class Vacation < ApplicationRecord
   before_validation :set_initial_status, on: :create
 
   validates :vacation_at, presence: true
-  validates :reason, presence: true
-  validates :vacation_type, presence: true
-  validates :status, inclusion: { in: STATUSES }
 
   include Slugable
   acts_as_paranoid
@@ -41,6 +38,7 @@ class Vacation < ApplicationRecord
     scope s.to_sym, -> { where(status: s) }
   end
 
+  validates :status, inclusion: { in: STATUSES }
 
   def set_initial_status
     self.status = 'pending'
