@@ -1,57 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  
+  let(:user) { build(:user) }
 
-  it "email不能重複" do
-    user = User.create(
-    email: "admin@flycat.works",
-    password: "123456",
-    password_confirmation: "123456"
-    )
-
-    u = User.create(
-      email: "admin@flycat.works",
-      password: "12345678",
-      password_confirmation: "12345678"
-      )
-
-    expect(u.errors.any?).to be true
+  it "email 不能重複" do
+   user.email = "flycat@gmail.com"
+   expect(user).to_not be_valid
   end
   
-  it "email必填" do
-    user = User.new(
-      email:"",
-      password:"123456",
-      password_confirmation: "123456"
-    )
+  it "email 必填" do
+    user.email = ''
     expect(user).to_not be_valid
   end
 
-  it "password必填" do
-    user = User.new(
-      email:"kk@gmail.com",
-      password:"",
-      password_confirmation: "123456"
-    )
+  it "password 必填" do
+    user.password = ''
     expect(user).to_not be_valid
   end
 
-  it "password_confirmation須與password相同" do
-    user = User.new(
-      email:"kk@gmail.com",
-      password:"1234567",
-      password_confirmation: "123456"
-    )
+  it "password_confirmation 須與 password 相同" do
+    user = build(:user,password_confirmation: 222222)
     expect(user).to_not be_valid
-  end
-
-  it "belongs to company" do
-    company = Company.create(title:"cat", ubn:24496001)
-    user = User.create(email: "admin@flycat.works",
-    password: "12345678",
-    password_confirmation: "12345678")
-    company.users << user
-    expect(company.users).to include(user) 
   end
 
 end
