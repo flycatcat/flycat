@@ -22,7 +22,7 @@ export default class extends Controller {
         )}/${end_at.value.replace(/:/g, "")}`,
         success: (data) => {
           var record = document.createElement("table");
-          record.setAttribute("class", "w-full text-lg rounded-lg shadow-md");
+          record.setAttribute("class", "block overflow-auto whitespace-nowrap");
           search_results.insertAdjacentElement("afterbegin", record);
           let record_head = document.createElement("thead");
           record_head.setAttribute("id", "record_head");
@@ -74,7 +74,10 @@ export default class extends Controller {
         )}/${end_at.value.replace(/:/g, "")}`,
         success: (data) => {
           let record = document.createElement("table");
-          record.setAttribute("class", "w-full text-lg rounded-lg shadow-md");
+          record.setAttribute(
+            "class",
+            "block overflow-auto whitespace-nowrap w-full"
+          );
           search_results.insertAdjacentElement("afterbegin", record);
           let record_head = document.createElement("thead");
           record_head.setAttribute("id", "record_head");
@@ -112,7 +115,10 @@ export default class extends Controller {
         )}/${end_at.value.replace(/:/g, "")}`,
         success: (data) => {
           let record = document.createElement("table");
-          record.setAttribute("class", "w-full text-lg rounded-lg shadow-md");
+          record.setAttribute(
+            "class",
+            "block overflow-auto whitespace-nowrap w-full"
+          );
           search_results.insertAdjacentElement("afterbegin", record);
           let record_head = document.createElement("thead");
           record_head.setAttribute("id", "record_head");

@@ -54,37 +54,21 @@ export function geolocationError(positionError) {
     "Error: " + positionError.message + "<br />";
 }
 
-export function getdistance() {
-  let startPos;
-  let startPosLat;
-  let startPosLong;
-  let distance;
+export function getdistance(companyLat, companyLon, allowDistance) {
   if (navigator.geolocation) {
-    startPosLat = 25.042600344421476;
-    startPosLong = 121.51366619815181;
-
-    document.getElementById("startLat").innerHTML = startPosLat;
-    document.getElementById("startLon").innerHTML = startPosLong;
-
-    navigator.geolocation.watchPosition(function (position) {
+    navigator.geolocation.getCurrentPosition(function (position) {
       document.getElementById("currentLat").innerHTML =
         position.coords.latitude;
       document.getElementById("currentLon").innerHTML =
         position.coords.longitude;
-      // document.getElementById("currentLat1").innerHTML =
-      //   position.coords.latitude;
-      // document.getElementById("currentLon1").innerHTML =
-      //   position.coords.longitude;
 
-      distance = calculateDistance(
-        startPosLat,
-        startPosLong,
+      let distance = calculateDistance(
+        companyLat,
+        companyLon,
         position.coords.latitude,
         position.coords.longitude
       );
-      document.getElementById("distance").innerHTML = (distance * 1000).toFixed(
-        0
-      );
+
       document.getElementById("distance_in").innerHTML = (
         distance * 1000
       ).toFixed(0);
@@ -92,10 +76,7 @@ export function getdistance() {
         distance * 1000
       ).toFixed(0);
 
-      let allow_area = 100;
-      document.getElementById("allow_area").innerHTML = allow_area;
-
-      if ((distance * 1000).toFixed(0) < allow_area) {
+      if ((distance * 1000).toFixed(0) < allowDistance) {
         document.getElementById("inarea").style.display = "block";
         document.getElementById("outarea").style.display = "none";
         document.getElementById("punch_enable").style.display = "block";

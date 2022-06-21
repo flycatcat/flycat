@@ -1,6 +1,7 @@
 <div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
   <div class="w-screen max-w-3xl px-10 py-8 bg-white shadow-md rounded-xl">
-      <table class="w-full rounded-lg shadow-md text-md">
+    <div class="overflow-auto">
+      <table class="w-full rounded-lg shadow-md text-md whitespace-nowrap">
       <% if @order.status === "SUCCESS" %>
 	    <h1 class="mb-5"><%= t('感謝您的支持，已開通員工人數限制') %></h1>
           <tr class="thead">
@@ -23,5 +24,6 @@
           </div>
 		  <% end%>
       </table>
+    </div>
   </div>
 </div>

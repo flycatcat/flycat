@@ -12,7 +12,7 @@ class UserAccountsController < ApplicationController
     if current_company.orders.where(status: 'SUCCESS').any? || current_company.profiles.size < 5
       @user = current_company.users.new
     else
-      redirect_to profiles_path, notice: '請儲值升級開通權限'
+      redirect_to profiles_path, alert: '請儲值升級開通權限'
     end
   end
 

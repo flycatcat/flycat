@@ -6,19 +6,19 @@ class PunchcardPolicy < ApplicationPolicy
   end
 
   def create?
-    staff || manager || admin
+    staff || manager
   end
 
   def new?
-    staff || manager || admin
+    create?
   end
 
   def edit?
-    staff || manager || admin
+    create?
   end
 
   def update?
-    staff || manager || admin
+    create?
   end
 
   def destroy?

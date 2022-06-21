@@ -1,24 +1,21 @@
 <%= form_for(resource,as: resource_name,html:{class: "h-full"}, url: session_path(resource_name)) do |f| %>
-<div class="h-full bg-gradient-to-tl from-green-600 to-indigo-700 w-full py-16 px-4">
+<div class="w-full h-full px-4 py-16 bg-gradient-to-tl from-green-600 to-indigo-700 gradient-bg">
     <div class="flex flex-col items-center justify-center">
-        <div class="bg-white shadow rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-16">
+        <div class="w-full p-10 mt-16 bg-white shadow rounded-xl lg:w-1/3 md:w-1/2">
             <h2 class="text-xl font-bold text-center"><%= t('歡迎來到')%> FlyCat <%=t('出勤管理系統') %></h2>
-            <h2 class="text-xl font-bold text-center mb-2"><%= t('請輸入以下登入資訊')%></h2>
+            <h2 class="mb-2 text-xl font-bold text-center"><%= t('請輸入以下登入資訊')%></h2>
                 <div>
                     <label id="email" class="text-sm font-medium leading-none text-gray-800">
                       <%= t('電子郵件') %>
                     </label>
                     <%= f.email_field :email, autofocus: true, autocomplete: "off" ,class: "bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"%>
                 </div>
-                <div class="mt-6  w-full">
+                <div class="w-full mt-6">
                     <label for="pass" class="text-sm font-medium leading-none text-gray-800">
                       <%= t('密碼') %>
                     </label>
                     <div class="relative flex items-center justify-center">
                     <%= f.password_field :password, autocomplete: "off" ,class: "bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"%>
-                    <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
-                      <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg5.svg" alt="viewport">                                    
-                    </div>
                     </div>
                 </div>
                 <div class="mt-5">

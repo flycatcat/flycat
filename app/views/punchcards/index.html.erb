@@ -8,13 +8,11 @@
   </div>
 
   <div class="flex justify-center">
-    <table>
+    <table class="block overflow-auto">
       <thead>
-        <tr class="thead">
-          <th class="tp"><%= t('員工編號') %></th>
-          <th class="tp"><%= t('電子郵件') %></th>
-          <th class="tp"><%= t('今天已打過上班卡') %></th>
-          <th class="tp"><%= t('今天已打過下班卡') %></th>
+        <tr class="thead whitespace-nowrap">
+          <th class="tp"><%= t('員工姓名') %></th>
+          <th class="tp"><%= t('信箱') %></th>
           <th class="tp"><%= t('體溫(°C)') %></th>
           <th class="tp"><%= t('上班時間') %></th>
           <th class="tp"><%= t('下班時間') %></th>
@@ -24,16 +22,14 @@
         </tr>
       </thead>
 
-      <tbody class="text-center ">
+      <tbody class="w-full text-center">
         <% @punchcards.order(created_at: :desc).each do |punchcard| %>
           <tr>
-            <td td class="tbody"><%= current_user.id %></td>
+            <td td class="tbody"><%= punchcard.user.profile.name %></td>
             <td td class="tbody"><%= current_user.email %></td>
-            <td td class="tbody"><%= punchcard.punch_in_at.to_s.empty?  ? "否" : "是" %></td>
-            <td td class="tbody"><%= punchcard.punch_out_at.to_s.empty? ? "否" : "是" %></td>
             <td class="tbody"><%= punchcard.body_temperature %></td>
             <td class="tbody"><%= punchcard.punch_in_at %></td>
-            <td class="tbody"><%= punchcard.punch_out_at %></td>
+            <td class="tbody"><%= punchcard.punch_out_at%></td>
             <% if policy(:punchcard).destroy?%>
               <td class="tbody"><%= link_to t("刪除"), punchcard_path(punchcard.id), method: 'delete', data: {confirm: t('確定要刪除嗎?')} %></td>
             <% end %>

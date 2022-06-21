@@ -33,6 +33,10 @@ gem 'kaminari', '~> 1.2', '>= 1.2.2'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 3.36'
+  gem "rspec-rails", "~> 5.1"
+  gem "factory_bot_rails", "~> 6.2"
+  gem 'shoulda-matchers', '~> 5.1'
+  gem 'faker', '~> 2.21'
 end
 
 group :development do
@@ -47,3 +51,7 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+
+
+

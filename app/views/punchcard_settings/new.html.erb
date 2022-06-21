@@ -1,5 +1,5 @@
 <div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
-  <%= form_with(model: @punchcard_setting, url: punchcard_setting_path, method: 'patch') do |f| %>
+  <%= form_with(model: @punchcard_setting, url: punchcard_setting_path, method: 'post') do |f| %>
     </br>
   <div class="w-screen max-w-sm px-10 py-8 bg-white shadow-md rounded-xl">
   <h1 class="pb-3 font-bold text-center text-gray-500"><%= t('打卡設定') %></h1>

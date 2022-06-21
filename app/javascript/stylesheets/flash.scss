@@ -18,19 +18,12 @@
   }
 }
 
-.field_with_errors{
+.field_with_errors {
   label {
     @apply text-red-600;
   }
 
-  input[type="new-password"],
-  input[type="file"],
-  input[type="email"],
-  input[type="password"],
-  input[type="date"],
-  input[type="text"],
-  input[type="start_at"],
-  input[type="title"]{
+  input {
     @apply border-red-600 bg-red-50;
   }
 }

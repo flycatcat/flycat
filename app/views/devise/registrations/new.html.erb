@@ -1,44 +1,46 @@
-<h1 class="px-16 py-6"><%= t('sign_up') %></h1>
-<div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200">
-  <div class="w-screen max-w-sm px-10 py-8 bg-white shadow-md rounded-xl">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
-    ) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+<div class="gradient-bg">
+  <h1 class="px-16 py-6"><%= t('sign_up') %></h1>
+  <div class="flex items-start justify-center w-full h-screen pt-10 bg-gray-200 gradient-bg">
+    <div class="w-screen max-w-sm px-10 py-8 bg-white shadow-md rounded-xl">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+      ) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-<div class="field" >
-  <%= f.fields_for :company, resource.build_company do |cf| %>
-    <div class="<%= f.object.errors.messages[:"company.title"].present? ? "field_with_errors" : "field" %>">
-      <%= cf.label :title, t('公司名稱'),class: "block mb-1 font-semibold text-gray-600" %>
-      <%= cf.text_field :title ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"%>
+  <div class="field" >
+    <%= f.fields_for :company, resource.build_company do |cf| %>
+      <div class="<%= f.object.errors.messages[:"company.title"].present? ? "field_with_errors" : "field" %>">
+        <%= cf.label :title, t('公司名稱'),class: "block mb-1 font-semibold text-gray-600" %>
+        <%= cf.text_field :title ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"%>
+      </div>
+      <div class="<%= f.object.errors.messages[:"company.ubn"].present? ? "field_with_errors" : "field" %>">
+        <%= cf.label :ubn, t('統一編號'),class: "block mb-1 font-semibold text-gray-600" %>
+        <%= cf.text_field :ubn  ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"%>
+      </div>
+    <% end %> 
+  </div>
+
+        <div class="field">
+          <%= f.label :email ,class: "block mb-1 font-semibold text-gray-600"%>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :password ,class: "block mb-1 font-semibold text-gray-600"%>
+          <% if @minimum_password_length %>
+          <em><%= t('至少需6個字元') %></em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation ,class: "block mb-1 font-semibold text-gray-600"%><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit t("sign_up"),class:"add-btn mt-9 w-full"  %>
+        </div>
+      <% end %>
     </div>
-    <div class="<%= f.object.errors.messages[:"company.ubn"].present? ? "field_with_errors" : "field" %>">
-      <%= cf.label :ubn, t('統一編號'),class: "block mb-1 font-semibold text-gray-600" %>
-      <%= cf.text_field :ubn  ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"%>
-    </div>
-  <% end %> 
-</div>
-
-      <div class="field">
-        <%= f.label :email ,class: "block mb-1 font-semibold text-gray-600"%>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"%>
-      </div>
-
-      <div class="field">
-        <%= f.label :password ,class: "block mb-1 font-semibold text-gray-600"%>
-        <% if @minimum_password_length %>
-        <em><%= t('至少需6個字元') %></em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50"%>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation ,class: "block mb-1 font-semibold text-gray-600"%><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class: "w-full px-4 py-2 rounded-md outline-none bg-indigo-50" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit t("sign_up"),class:"add-btn mt-9 w-full"  %>
-      </div>
-    <% end %>
   </div>
 </div>

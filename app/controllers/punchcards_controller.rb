@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PunchcardsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_punchcards, only: %i[edit update show destroy]
   def index
     authorize :punchcard

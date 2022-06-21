@@ -5,7 +5,7 @@ class Profile < ApplicationRecord
 
   validates :staff_no, presence: true, uniqueness: { scope: :company }
   validates :name, presence: true
-  validates :tel, presence: true
+  validates :tel, presence: true, length: { maximum: 10 }
   validates :gender, presence: true
   validates :start_at, presence: true
   validates :department, presence: true

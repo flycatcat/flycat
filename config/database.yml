@@ -24,7 +24,6 @@ development:
 test:
   <<: *default
   database: <%= ENV['pg_database'] %>
-
 production:
   <<: *default
   database: <%= ENV['pg_database'] %>

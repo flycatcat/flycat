@@ -2,18 +2,23 @@
 
 class User < ApplicationRecord
   include Slugable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
+
   belongs_to :company
-  has_many :punchcards
+  has_many :punchcards, dependent: :destroy
   has_many :vacations
   has_many :bulletins
   has_many :bulletin_reads
   has_many :read_bulletins, through: :bulletin_reads, source: :bulletin
   has_one :profile, dependent: :delete
+
   accepts_nested_attributes_for :company
   accepts_nested_attributes_for :profile
+
+  validates :email, presence: true, uniqueness: true
 
   def self.create_from_provider_data(provider_data)
     where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do |user|
@@ -46,4 +51,5 @@ class User < ApplicationRecord
       %w[staff], %w[manager]
     ]
   end
+  
 end

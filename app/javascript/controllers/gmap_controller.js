@@ -1,9 +1,11 @@
 import { Controller } from "stimulus";
-import { geolocateUser, getdistance, calculateDistance } from "lib/gmap";
+import { geolocateUser, getdistance } from "lib/gmap";
 export default class extends Controller {
-  static targets = ["inarea", "outarea", "gmap"];
   connect() {
+    const companyLat = Number(this.element.dataset.companyLat);
+    const companyLon = Number(this.element.dataset.companyLon);
+    const allowDistance = Number(this.element.dataset.pubchcardDistance);
     geolocateUser();
-    getdistance();
+    getdistance(companyLat, companyLon, allowDistance);
   }
 }
