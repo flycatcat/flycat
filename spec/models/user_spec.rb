@@ -23,5 +23,11 @@ RSpec.describe User, type: :model do
     user = build(:user,password_confirmation: 222222)
     expect(user).to_not be_valid
   end
-
+  
+  it "belongs to company" do
+    company = Company.create(title: "cat", ubn: 24496001)
+    user.save
+    company.users << user
+    expect(company.users).to include(user)
+  end
 end
